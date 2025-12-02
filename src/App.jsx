@@ -18,10 +18,10 @@ import HANDICAPP_KNOWLEDGE from './handicappKnowledgeBase';
  * --- GEMINI API UTILITIES ---
  */
 const callGeminiAPI = async (prompt) => {
-  const apiKey = "AIzaSyCIcB7SmsTvxiMck2EQWz8CnoS0n_DeT3M"; 
+  const apiKey = import.meta.env.VITE_GEMINI_API_KEY; 
   
   if (!apiKey) {
-    throw new Error("API Key no configurada. Por favor, agrega tu API Key de Gemini.");
+    throw new Error("API Key no configurada. Por favor, agrega tu API Key de Gemini en el archivo .env");
   }
 
   const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
