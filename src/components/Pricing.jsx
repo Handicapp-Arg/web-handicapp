@@ -18,10 +18,18 @@ const Pricing = ({ t, theme, isDark }) => {
           {t.pricing.plans.map((plan, i) => (
             <div 
               key={i} 
-              className={`relative p-10 rounded-[2rem] border transition-all duration-500 hover:-translate-y-4 ${theme.glass} ${i === 1 ? (isDark ? 'border-[#D1F366] shadow-[0_0_50px_-20px_rgba(209,243,102,0.3)]' : 'border-[#4F46E5] shadow-[0_0_50px_-20px_rgba(79,70,229,0.3)]') : ''}`}
+              className={`relative p-10 rounded-[2rem] border-2 transition-all duration-500 hover:-translate-y-4 ${
+                isDark 
+                  ? 'bg-gradient-to-br from-[#0f172a] to-[#1e293b]' 
+                  : 'bg-white'
+              } ${
+                i === 1 
+                  ? 'border-[#af936f] shadow-[0_0_50px_-20px_rgba(175,147,111,0.4)]' 
+                  : isDark ? 'border-zinc-700' : 'border-zinc-200'
+              }`}
             >
               {i === 1 && (
-                <div className={`absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest ${isDark ? 'bg-[#D1F366] text-black' : 'bg-[#4F46E5] text-white'}`}>
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest bg-gradient-to-r from-[#c9a96e] to-[#af936f] text-white shadow-lg">
                   Most Popular
                 </div>
               )}
@@ -37,7 +45,11 @@ const Pricing = ({ t, theme, isDark }) => {
                   </li>
                 ))}
               </ul>
-              <button className={`w-full py-5 rounded-xl font-bold uppercase tracking-widest text-xs transition-colors ${i===1 ? (isDark ? 'bg-[#D1F366] text-black hover:bg-white' : 'bg-[#4F46E5] text-white hover:bg-black') : `border ${theme.border} hover:bg-current hover:text-transparent hover:bg-clip-text`}`}>
+              <button className={`w-full py-5 rounded-xl font-bold uppercase tracking-widest text-xs transition-all hover:scale-105 ${
+                i === 1 
+                  ? 'bg-gradient-to-r from-[#c9a96e] to-[#af936f] text-white shadow-lg hover:shadow-[0_0_30px_rgba(175,147,111,0.6)]' 
+                  : `border-2 ${isDark ? 'border-[#af936f] hover:bg-[#af936f]/10' : 'border-[#af936f] hover:bg-[#af936f]/5'} ${theme.accent}`
+              }`}>
                 Choose {plan.name}
               </button>
             </div>

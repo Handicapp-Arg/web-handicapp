@@ -21,10 +21,17 @@ const Hero = ({ t, theme, isDark, ASSETS, onVideoOpen }) => {
           {t.hero.desc}
         </p>
         <div className="flex flex-col md:flex-row justify-center gap-6 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300">
-          <a href="https://www.handicapp.com.ar/login" target="_blank" rel="noopener noreferrer" className={`px-12 py-6 rounded-full font-black text-sm uppercase tracking-widest shadow-[0_0_40px_-10px] transition-all hover:scale-105 active:scale-95 ${isDark ? 'bg-[#D1F366] text-black shadow-[#D1F366]/40' : 'bg-[#4F46E5] text-white shadow-[#4F46E5]/40'}`}>
-            {t.hero.cta}
+          <a 
+            href="https://www.handicapp.com.ar/login" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="group relative px-12 py-6 rounded-full font-black text-sm uppercase tracking-widest transition-all hover:scale-105 active:scale-95 bg-gradient-to-r from-[#c9a96e] via-[#af936f] to-[#c9a96e] text-white shadow-[0_0_30px_rgba(175,147,111,0.5)] hover:shadow-[0_0_50px_rgba(175,147,111,0.8)] bg-[length:200%_100%] hover:bg-[position:100%_0] animate-shimmer overflow-hidden"
+          >
+            {/* Efecto de brillo animado */}
+            <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000"></span>
+            <span className="relative z-10">{t.hero.cta}</span>
           </a>
-          <button onClick={onVideoOpen} className={`group px-12 py-6 rounded-full font-black text-sm uppercase tracking-widest border-2 transition-all hover:bg-current hover:text-transparent hover:bg-clip-text flex items-center justify-center gap-3 ${theme.border}`}>
+          <button onClick={onVideoOpen} className={`group px-12 py-6 rounded-full font-black text-sm uppercase tracking-widest border-2 transition-all hover:scale-105 flex items-center justify-center gap-3 ${isDark ? 'border-[#af936f] hover:bg-[#af936f]/10' : 'border-[#af936f] hover:bg-[#af936f]/5'}`}>
             <Play size={18} fill="currentColor" className={`transition-transform group-hover:scale-110 ${theme.accent}`} /> {t.hero.video}
           </button>
         </div>

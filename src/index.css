@@ -28,22 +28,39 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Custom scrollbar */
+/* Animación para botón dorado brillante */
+@keyframes shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+/* Custom scrollbar - Handicapp Colors */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #050505;
+  background: #0f172a;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #D1F366;
+  background: #af936f;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #b8d94d;
+  background: #8f7657;
 }
 
 /* Cursor custom */

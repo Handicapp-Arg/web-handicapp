@@ -64,36 +64,46 @@ const ASSETS = {
   logoIcon: "/images/logo-icon-white.png",  // Logo icono/símbolo
   // Imagen Dashboard asegurada
   dashboardScreen: "/images/dashboard.png", // Screenshot del dashboard
+  
+  // Logos de sponsors y partners hípicos
   logos: [
-    "https://placehold.co/150x50/ffffff/000000?text=HARAS+DEL+SUR",
-    "https://placehold.co/150x50/ffffff/000000?text=LA+QUEBRADA",
-    "https://placehold.co/150x50/ffffff/000000?text=SAN+BENITO",
-    "https://placehold.co/150x50/ffffff/000000?text=EL+PARAISO",
-    "https://placehold.co/150x50/ffffff/000000?text=FIRMAMENTO"
+    "/images/Abolonego.avif",      // Stud Abolengo - Criadero de caballos de carrera
+    "/images/logo.png",             // Hipódromo de San Isidro - Institución hípica
+    "/images/harasParaiso.webp",   // Haras El Paraíso - Establecimiento ecuestre
+    "/images/LADOLFINA.avif"       // La Dolfina - Equipo de polo argentino
   ]
 };
 
 /**
  * --- CONFIGURACIÓN DE TEMA ---
+ * Paleta de identidad Handicapp
  */
 const THEME = {
   dark: {
-    bg: "bg-[#050505]",
-    text: "text-zinc-100",
+    bg: "bg-[#0f172a]",                    // Navy Blue Principal
+    bgSecondary: "bg-[#1e293b]",           // Navy Blue Light
+    text: "text-white",
     textMuted: "text-zinc-400",
-    accent: "text-[#D1F366]",
-    accentBg: "bg-[#D1F366]",
-    border: "border-zinc-800",
-    glass: "bg-zinc-900/60 backdrop-blur-xl border-zinc-800"
+    accent: "text-[#af936f]",              // Golden Brown
+    accentBg: "bg-[#af936f]",              // Golden Brown
+    accentHover: "bg-[#8f7657]",           // Darker Gold (hover)
+    accentCyan: "bg-[#0e445d]",            // Cyan Secundario
+    border: "border-zinc-700",
+    glass: "bg-[#1e293b]/80 backdrop-blur-xl border-zinc-700",
+    navBg: "bg-[#0f172a]"                  // Navbar Navy
   },
   light: {
-    bg: "bg-[#F4F4F5]",
-    text: "text-zinc-900",
-    textMuted: "text-zinc-500",
-    accent: "text-[#4F46E5]", 
-    accentBg: "bg-[#4F46E5]",
-    border: "border-zinc-300",
-    glass: "bg-white/70 backdrop-blur-xl border-zinc-200"
+    bg: "bg-white",
+    bgSecondary: "bg-zinc-50",
+    text: "text-[#0f172a]",                // Navy text en light mode
+    textMuted: "text-zinc-600",
+    accent: "text-[#af936f]",              // Golden Brown
+    accentBg: "bg-[#af936f]",              // Golden Brown
+    accentHover: "bg-[#8f7657]",           // Darker Gold (hover)
+    accentCyan: "bg-[#0e445d]",            // Cyan Secundario
+    border: "border-zinc-200",
+    glass: "bg-white/80 backdrop-blur-xl border-zinc-200",
+    navBg: "bg-white"
   }
 };
 
@@ -191,8 +201,8 @@ const CustomCursor = ({ isDark }) => {
 
   return (
     <div className="hidden md:block pointer-events-none fixed inset-0 z-[9999]">
-      <div ref={cursorRef} className={`absolute w-3 h-3 rounded-full mix-blend-difference ${isDark ? 'bg-[#D1F366]' : 'bg-[#4F46E5]'} top-0 left-0 -mt-1.5 -ml-1.5`} />
-      <div ref={trailingRef} className={`absolute w-8 h-8 rounded-full border opacity-50 top-0 left-0 ${isDark ? 'border-[#D1F366]' : 'border-[#4F46E5]'}`} />
+      <div ref={cursorRef} className={`absolute w-3 h-3 rounded-full mix-blend-difference ${isDark ? 'bg-[#af936f]' : 'bg-[#af936f]'} top-0 left-0 -mt-1.5 -ml-1.5`} />
+      <div ref={trailingRef} className={`absolute w-8 h-8 rounded-full border opacity-50 top-0 left-0 ${isDark ? 'border-[#af936f]' : 'border-[#af936f]'}`} />
     </div>
   );
 };
@@ -221,12 +231,12 @@ const Preloader = ({ onLoadComplete }) => {
   if (!isVisible) return null;
 
   return (
-    <div className={`fixed inset-0 z-[10000] bg-[#050505] flex flex-col items-center justify-center transition-opacity duration-500 ${progress >= 100 ? 'opacity-0' : 'opacity-100'}`}>
+    <div className={`fixed inset-0 z-[10000] bg-[#0f172a] flex flex-col items-center justify-center transition-opacity duration-500 ${progress >= 100 ? 'opacity-0' : 'opacity-100'}`}>
       <div className="mb-8 relative">
-         {ASSETS.logoIcon ? <img src={ASSETS.logoIcon} className="w-20 h-20 md:w-24 md:h-24 animate-pulse" alt="Loading" /> : <div className="w-20 h-20 md:w-24 md:h-24 bg-[#D1F366] rounded-full animate-pulse flex items-center justify-center font-bold text-black text-3xl">H</div>}
+         {ASSETS.logoIcon ? <img src={ASSETS.logoIcon} className="w-20 h-20 md:w-24 md:h-24 animate-pulse" alt="Loading" /> : <div className="w-20 h-20 md:w-24 md:h-24 bg-[#af936f] rounded-full animate-pulse flex items-center justify-center font-bold text-white text-3xl">H</div>}
       </div>
-      <div className="w-80 h-1.5 bg-zinc-800 rounded-full overflow-hidden mb-4"><div className="h-full bg-[#D1F366] transition-all duration-200 shadow-[0_0_10px_rgba(209,243,102,0.5)]" style={{ width: `${progress}%` }}></div></div>
-      <div className="font-mono text-[#D1F366] text-sm tracking-widest">SYSTEM_BOOTING :: {Math.min(100, Math.floor(progress))}%</div>
+      <div className="w-80 h-1.5 bg-[#1e293b] rounded-full overflow-hidden mb-4"><div className="h-full bg-[#af936f] transition-all duration-200 shadow-[0_0_10px_rgba(175,147,111,0.5)]" style={{ width: `${progress}%` }}></div></div>
+      <div className="font-mono text-[#af936f] text-sm tracking-widest">LOADING HANDICAPP :: {Math.min(100, Math.floor(progress))}%</div>
     </div>
   );
 };
@@ -242,7 +252,7 @@ const ThreeEquestrianFlow = ({ isDark }) => {
     if (mountRef.current.firstChild) while(mountRef.current.firstChild) mountRef.current.removeChild(mountRef.current.firstChild);
 
     const scene = new THREE.Scene();
-    scene.fog = new THREE.FogExp2(isDark ? 0x050505 : 0xF4F4F5, 0.005);
+    scene.fog = new THREE.FogExp2(isDark ? 0x0f172a : 0xffffff, 0.005);
     const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
     camera.position.set(0, 0, 50);
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
@@ -261,7 +271,7 @@ const ThreeEquestrianFlow = ({ isDark }) => {
       velocities[i] = 0.2 + Math.random() * 0.5;
     }
     geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-    const material = new THREE.PointsMaterial({ color: isDark ? 0xD1F366 : 0x4F46E5, size: 0.5, transparent: true, opacity: 0.6, blending: THREE.AdditiveBlending });
+    const material = new THREE.PointsMaterial({ color: isDark ? 0xaf936f : 0xaf936f, size: 0.5, transparent: true, opacity: 0.6, blending: THREE.AdditiveBlending });
     const particles = new THREE.Points(geometry, material);
     scene.add(particles);
 
@@ -324,7 +334,7 @@ const RoleSelector = ({ t, isDark, theme }) => {
   };
 
   return (
-    <section className="py-24 relative z-10 px-6">
+    <section className={`py-24 relative z-10 px-6 ${isDark ? 'bg-[#1e293b]/30' : 'bg-zinc-50'}`}>
       <div className="max-w-6xl mx-auto">
         <h2 className="text-4xl md:text-6xl font-black mb-20 text-center">{t.roles.title}</h2>
         
@@ -341,45 +351,53 @@ const RoleSelector = ({ t, isDark, theme }) => {
                   key={i}
                   className="w-full flex-shrink-0 px-4"
                 >
-                  <div className={`p-12 md:p-16 rounded-3xl border ${theme.glass} shadow-2xl min-h-[400px] flex flex-col justify-center items-center text-center`}>
-                    <div className={`w-20 h-20 rounded-full flex items-center justify-center mb-8 ${theme.accentBg} text-white shadow-lg`}>
-                      <role.icon size={40} />
+                  <div className={`p-12 md:p-16 rounded-3xl border-2 min-h-[400px] flex flex-col justify-center items-center text-center relative overflow-hidden ${
+                    isDark 
+                      ? 'bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#0f172a] border-[#af936f]/30' 
+                      : 'bg-white border-[#af936f]/20'
+                  } shadow-2xl hover:shadow-[0_0_60px_-15px_rgba(175,147,111,0.4)] transition-all duration-500`}>
+                    {/* Efecto de brillo sutil */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#af936f]/5 via-transparent to-transparent pointer-events-none"></div>
+                    
+                    <div className={`relative w-20 h-20 rounded-2xl flex items-center justify-center mb-8 ${theme.accentBg} text-white shadow-lg transform hover:scale-110 transition-transform duration-300`}>
+                      <role.icon size={40} strokeWidth={2.5} />
                     </div>
-                    <h3 className="text-4xl md:text-5xl font-black mb-6">{role.title}</h3>
-                    <p className={`text-lg md:text-xl leading-relaxed max-w-2xl ${theme.textMuted}`}>{role.desc}</p>
+                    <h3 className="text-4xl md:text-5xl font-black mb-6 relative">{role.title}</h3>
+                    <p className={`text-lg md:text-xl leading-relaxed max-w-2xl relative ${theme.textMuted}`}>{role.desc}</p>
                   </div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Botones de navegación */}
+          {/* Botones de navegación mejorados */}
           <button 
             onClick={prevRole}
-            className={`absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-12 h-12 rounded-full ${theme.glass} border ${theme.border} flex items-center justify-center hover:scale-110 transition-all shadow-xl`}
+            className={`absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-14 h-14 rounded-full ${theme.accentBg} text-white flex items-center justify-center hover:scale-110 hover:${theme.accentHover} transition-all shadow-2xl z-10`}
             aria-label="Anterior"
           >
-            <ChevronLeft size={24} />
+            <ChevronLeft size={28} strokeWidth={3} />
           </button>
           <button 
             onClick={nextRole}
-            className={`absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-12 h-12 rounded-full ${theme.glass} border ${theme.border} flex items-center justify-center hover:scale-110 transition-all shadow-xl`}
+            className={`absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-14 h-14 rounded-full ${theme.accentBg} text-white flex items-center justify-center hover:scale-110 hover:${theme.accentHover} transition-all shadow-2xl z-10`}
             aria-label="Siguiente"
           >
-            <ChevronRight size={24} />
+            <ChevronRight size={28} strokeWidth={3} />
           </button>
         </div>
 
-        {/* Indicadores */}
+        {/* Indicadores mejorados */}
+        {/* Indicadores mejorados con hover */}
         <div className="flex justify-center gap-3 mt-8">
           {roles.map((_, i) => (
             <button
               key={i}
               onClick={() => goToRole(i)}
-              className={`h-2 rounded-full transition-all duration-300 ${
+              className={`h-2.5 rounded-full transition-all duration-300 hover:scale-110 ${
                 i === activeRole 
-                  ? `w-12 ${theme.accentBg}` 
-                  : `w-2 ${isDark ? 'bg-zinc-700' : 'bg-zinc-300'}`
+                  ? `w-12 ${theme.accentBg} shadow-lg` 
+                  : `w-2.5 ${isDark ? 'bg-zinc-600 hover:bg-zinc-500' : 'bg-zinc-300 hover:bg-zinc-400'}`
               }`}
               aria-label={`Ir al rol ${i + 1}`}
             />
@@ -526,19 +544,178 @@ INSTRUCCIONES:
   );
 };
 
-const SocialProof = ({ t, isDark, theme }) => (
-  <section className={`py-20 border-y ${theme.border} overflow-hidden`}>
-    <div className="max-w-7xl mx-auto px-6 mb-12 text-center"><p className={`text-xs font-black tracking-widest uppercase mb-4 opacity-50`}>{t.trust.title}</p><h3 className={`text-xl md:text-2xl font-bold ${theme.textMuted}`}>{t.trust.desc}</h3></div>
-    <div className="flex overflow-hidden relative"><div className="flex gap-16 animate-marquee whitespace-nowrap opacity-50 hover:opacity-100 transition-opacity">{[...ASSETS.logos, ...ASSETS.logos].map((logo, i) => (<img key={i} src={logo} alt="Partner" className={`h-12 w-auto grayscale mix-blend-difference`} />))}</div></div>
-    <div className="max-w-3xl mx-auto mt-20 px-6"><div className={`p-10 rounded-[2rem] border ${theme.glass} text-center relative`}><div className={`absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 rounded-full ${theme.accentBg} flex items-center justify-center text-white`}><Star fill="currentColor" size={20} /></div><p className="text-xl md:text-2xl font-medium italic mb-6 leading-relaxed">"{t.trust.quote}"</p><p className={`text-sm font-bold tracking-widest ${theme.accent}`}>{t.trust.author}</p></div></div>
-  </section>
-);
+const SocialProof = ({ t, isDark, theme }) => {
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  
+  const testimonials = [
+    {
+      quote: "Handicapp transformó nuestra operación. Dejamos de perder tiempo en papeles.",
+      author: "Roberto Álvarez",
+      position: "Director - Haras El Paraíso"
+    },
+    {
+      quote: "La IA predictiva nos ayudó a mejorar el rendimiento de nuestros caballos en un 40%. Increíble.",
+      author: "Carolina Méndez",
+      position: "Gerente de Operaciones - Hipódromo de San Isidro"
+    },
+    {
+      quote: "Desde que usamos Handicapp, toda nuestra gestión es digital. Ahorramos costos y ganamos eficiencia.",
+      author: "Adolfo Cambiaso",
+      position: "Fundador - La Dolfina Polo Team"
+    },
+    {
+      quote: "El sistema de gestión integral nos permite tener control total de nuestros ejemplares. Es el futuro del turf.",
+      author: "Martín Petrini",
+      position: "Director Técnico - Stud Abolengo"
+    }
+  ];
+  
+  // Auto-rotate testimonials every 5 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+  
+  return (
+    <section className={`py-24 border-y overflow-hidden relative ${isDark ? 'bg-[#1e293b]/20 border-[#af936f]/20' : 'bg-white border-zinc-200'}`}>
+      {/* Decoración de fondo */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#af936f] rounded-full blur-[150px]"></div>
+      </div>
+      
+      <div className="max-w-7xl mx-auto px-6 mb-16 text-center relative z-10">
+        <p className={`text-xs font-black tracking-[0.3em] uppercase mb-4 ${theme.accent}`}>{t.trust.title}</p>
+        <h3 className={`text-2xl md:text-3xl font-bold ${theme.text}`}>{t.trust.desc}</h3>
+      </div>
+      
+      {/* Logos carousel con sponsors reales */}
+      <div className="flex overflow-hidden relative mb-20">
+        <div className="flex gap-16 md:gap-24 animate-marquee whitespace-nowrap">
+          {[...ASSETS.logos, ...ASSETS.logos, ...ASSETS.logos].map((logo, i) => {
+            const isHipodromoLogo = logo.includes('logo.png');
+            return (
+              <div key={i} className="flex items-center justify-center min-w-[180px] h-20">
+                <img 
+                  src={logo} 
+                  alt="Partner" 
+                  className={`h-full w-auto object-contain transition-all duration-300 ${
+                    isHipodromoLogo
+                      ? isDark
+                        ? 'grayscale brightness-150 opacity-60 hover:opacity-90 hover:brightness-200'
+                        : 'grayscale opacity-50 hover:opacity-80'
+                      : isDark 
+                        ? 'brightness-0 invert opacity-50 hover:opacity-90' 
+                        : 'grayscale opacity-40 hover:opacity-80 hover:grayscale-0'
+                  }`} 
+                />
+              </div>
+            );
+          })}
+        </div>
+      </div>
+      
+      {/* Testimonial carousel mejorado */}
+      <div className="max-w-5xl mx-auto px-6 relative z-10 pt-10">
+        {/* Icono de estrella flotante FUERA de la tarjeta */}
+        <div className={`absolute -top-2 left-1/2 -translate-x-1/2 w-16 h-16 rounded-full ${theme.accentBg} flex items-center justify-center text-white shadow-2xl z-20`}>
+          <Star fill="currentColor" size={28} />
+        </div>
+        
+        <div className={`px-16 py-10 md:px-20 md:py-12 rounded-[2rem] border-2 text-center relative ${
+          isDark 
+            ? 'bg-gradient-to-br from-[#0f172a] to-[#1e293b] border-[#af936f]/30' 
+            : 'bg-white border-[#af936f]/20'
+        } shadow-2xl`}>
+          {/* Quote decorativo eliminado para que sea más rectangular */}
+          
+          {/* Testimonial content with fade animation */}
+          <div className="relative min-h-[140px] flex flex-col items-center justify-center">
+            {testimonials.map((testimonial, index) => (
+              <div
+                key={index}
+                className={`absolute inset-0 flex flex-col items-center justify-center transition-all duration-700 ${
+                  currentTestimonial === index 
+                    ? 'opacity-100 translate-y-0' 
+                    : 'opacity-0 translate-y-4 pointer-events-none'
+                }`}
+              >
+                <p className="text-xl md:text-2xl font-medium italic mb-6 leading-relaxed px-4">
+                  "{testimonial.quote}"
+                </p>
+                
+                {/* Divider dorado */}
+                <div className="flex items-center justify-center gap-3 mb-4">
+                  <div className={`h-px w-12 ${theme.accentBg}`}></div>
+                  <div className={`w-2 h-2 rounded-full ${theme.accentBg}`}></div>
+                  <div className={`h-px w-12 ${theme.accentBg}`}></div>
+                </div>
+                
+                <p className={`text-sm font-bold tracking-widest uppercase ${theme.accent}`}>
+                  {testimonial.author}, {testimonial.position}
+                </p>
+              </div>
+            ))}
+          </div>
+          
+          {/* Navigation dots */}
+          <div className="flex items-center justify-center gap-2 mt-8">
+            {testimonials.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentTestimonial(index)}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  currentTestimonial === index 
+                    ? `${theme.accentBg} w-8` 
+                    : 'bg-white/20 hover:bg-white/40'
+                }`}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
 
 const FAQ = ({ t, isDark, theme }) => {
   const [open, setOpen] = useState(0);
   const items = [{ q: t.faq.q1, a: t.faq.a1 }, { q: t.faq.q2, a: t.faq.a2 }, { q: t.faq.q3, a: t.faq.a3 }];
   return (
-    <section className="py-24 px-6 max-w-3xl mx-auto"><h2 className="text-4xl font-black text-center mb-16">{t.faq.title}</h2><div className="space-y-4">{items.map((item, i) => (<div key={i} className={`border ${theme.border} rounded-2xl overflow-hidden ${theme.glass}`}><button onClick={() => setOpen(open === i ? -1 : i)} className="w-full p-6 text-left flex justify-between items-center font-bold text-lg hover:bg-white/5 transition-colors">{item.q}{open === i ? <Minus size={20} className={theme.accent} /> : <Plus size={20} className="opacity-50" />}</button><div className={`px-6 overflow-hidden transition-all duration-300 ${open === i ? 'max-h-40 pb-6 opacity-100' : 'max-h-0 opacity-0'}`}><p className={`${theme.textMuted}`}>{item.a}</p></div></div>))}</div></section>
+    <section className={`py-32 px-6 max-w-4xl mx-auto ${isDark ? 'bg-transparent' : 'bg-white'}`}>
+      <h2 className="text-5xl md:text-6xl font-black text-center mb-20">{t.faq.title}</h2>
+      <div className="space-y-4">
+        {items.map((item, i) => (
+          <div 
+            key={i} 
+            className={`border-2 rounded-2xl overflow-hidden transition-all duration-300 ${
+              open === i 
+                ? isDark 
+                  ? 'bg-gradient-to-br from-[#0f172a] to-[#1e293b] border-[#af936f]' 
+                  : 'bg-white border-[#af936f]'
+                : isDark
+                  ? 'bg-[#1e293b]/30 border-zinc-700 hover:border-zinc-600'
+                  : 'bg-zinc-50 border-zinc-200 hover:border-zinc-300'
+            }`}
+          >
+            <button 
+              onClick={() => setOpen(open === i ? -1 : i)} 
+              className="w-full p-6 md:p-8 text-left flex justify-between items-center font-bold text-lg md:text-xl hover:bg-white/5 transition-colors group"
+            >
+              <span className="pr-4">{item.q}</span>
+              <div className={`flex-shrink-0 w-8 h-8 rounded-lg ${open === i ? theme.accentBg : 'bg-zinc-700'} flex items-center justify-center transition-all group-hover:scale-110`}>
+                {open === i ? <Minus size={20} className="text-white" /> : <Plus size={20} className="text-white" />}
+              </div>
+            </button>
+            <div className={`px-6 md:px-8 overflow-hidden transition-all duration-300 ${open === i ? 'max-h-48 pb-6 md:pb-8 opacity-100' : 'max-h-0 opacity-0'}`}>
+              <div className={`h-px ${theme.accentBg} mb-4 opacity-30`}></div>
+              <p className={`text-base md:text-lg leading-relaxed ${theme.textMuted}`}>{item.a}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
   );
 };
 
@@ -609,7 +786,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className={`min-h-screen transition-colors duration-500 ${theme.bg} ${theme.text} font-['Outfit'] selection:${isDark ? 'bg-[#D1F366] text-black' : 'bg-[#4F46E5] text-white'}`}>
+    <div className={`min-h-screen transition-colors duration-500 ${theme.bg} ${theme.text} font-['Outfit'] selection:${isDark ? 'bg-[#af936f] text-white' : 'bg-[#af936f] text-white'}`}>
       <style>{`.animate-marquee { animation: marquee 30s linear infinite; } @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }`}</style>
       
       <Preloader onLoadComplete={() => setLoaded(true)} />
@@ -619,7 +796,7 @@ export default function App() {
       {loaded && (
         <>
           <ThreeEquestrianFlow isDark={isDark} />
-          <div className={`fixed inset-0 -z-10 pointer-events-none ${isDark ? 'bg-gradient-to-b from-transparent via-[#050505]/50 to-[#050505]' : 'bg-gradient-to-b from-transparent via-white/50 to-white'}`}></div>
+          <div className={`fixed inset-0 -z-10 pointer-events-none ${isDark ? 'bg-gradient-to-b from-transparent via-[#0f172a]/50 to-[#0f172a]' : 'bg-gradient-to-b from-transparent via-white/50 to-white'}`}></div>
           <VideoModal isOpen={videoOpen} onClose={() => setVideoOpen(false)} />
 
           <Navbar 
