@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { 
-<<<<<<< HEAD
   X, Smartphone, Network, Sparkles, Dna, ArrowRight,
   Plus, Minus, Star, Loader2, CheckCircle2,
   User, Radio, BellRing, Cpu, Play,
@@ -14,18 +13,6 @@ import Dashboard from './components/Dashboard';
 import Pricing from './components/Pricing';
 import Footer from './components/Footer';
 
-=======
-  Menu, X, ChevronRight, Activity, Smartphone, 
-  Zap, Shield, Globe, BarChart3, ArrowRight,
-  MousePointer2, Sun, Moon, Play, MessageSquare,
-  CheckCircle2, Mail, Phone, MapPin, FileText,
-  AlertTriangle, Database, Trophy, Star, ChevronDown, Plus, Minus,
-  Scan, Cpu, Network, Sparkles, Dna, Stethoscope, Send, MoveRight,
-  Layers, Lock, User, Radio, BellRing, HelpCircle, Loader2, Check,
-  Target, TrendingUp, HeartPulse, Laptop
-} from 'lucide-react';
-
->>>>>>> b2ae6d6795f872efe2ac532681af53cd09822850
 /**
  * --- GEMINI API UTILITIES ---
  */
@@ -66,19 +53,11 @@ const ASSETS = {
   // Imagen Dashboard asegurada
   dashboardScreen: "/images/dashboard.png", // Screenshot del dashboard
   logos: [
-<<<<<<< HEAD
     "https://placehold.co/150x50/ffffff/000000?text=HARAS+DEL+SUR",
     "https://placehold.co/150x50/ffffff/000000?text=LA+QUEBRADA",
     "https://placehold.co/150x50/ffffff/000000?text=SAN+BENITO",
     "https://placehold.co/150x50/ffffff/000000?text=EL+PARAISO",
     "https://placehold.co/150x50/ffffff/000000?text=FIRMAMENTO"
-=======
-    "https://via.placeholder.com/150x50/ffffff/000000?text=HARAS+DEL+SUR",
-    "https://via.placeholder.com/150x50/ffffff/000000?text=LA+QUEBRADA",
-    "https://via.placeholder.com/150x50/ffffff/000000?text=SAN+BENITO",
-    "https://via.placeholder.com/150x50/ffffff/000000?text=EL+PARAISO",
-    "https://via.placeholder.com/150x50/ffffff/000000?text=FIRMAMENTO"
->>>>>>> b2ae6d6795f872efe2ac532681af53cd09822850
   ]
 };
 
@@ -113,21 +92,13 @@ const I18N = {
   es: {
     lang_code: "ES",
     nav: { system: "ECOSISTEMA", labs: "IA LABS", pricing: "PLANES", contact: "CONTACTO", login: "INGRESAR" },
-<<<<<<< HEAD
     hero: { pill: "HANDICAPP", line1: "INSTINTO", line2: "DIGITAL", desc: "La plataforma operativa definitiva para haras de alto rendimiento. Fusionamos la tradición ecuestre con inteligencia artificial predictiva.", cta: "Empezar Prueba", video: "Ver Film" },
-=======
-    hero: { pill: "HANDICAPP OS 2.0", line1: "INSTINTO", line2: "DIGITAL", desc: "La plataforma operativa definitiva para haras de alto rendimiento. Fusionamos la tradición ecuestre con inteligencia artificial predictiva.", cta: "Empezar Prueba", video: "Ver Film" },
->>>>>>> b2ae6d6795f872efe2ac532681af53cd09822850
     roles: {
       title: "UNA PLATAFORMA, MÚLTIPLES VISIONES",
       r1: "Propietario", r1_d: "Recibe videos y reportes de tus caballos en tiempo real. Transparencia total sobre tu inversión.",
       r2: "Veterinario", r2_d: "Historial clínico digital unificado. Alertas sanitarias y recordatorios de vacunación automáticos.",
-<<<<<<< HEAD
       r3: "Manager", r3_d: "Control de stock, gestión de personal y finanzas del haras en un solo dashboard.",
       r4: "Establecimiento", r4_d: "Administra caballos huéspedes, coordina empleados y asigna tareas operativas del día a día."
-=======
-      r3: "Manager", r3_d: "Control de stock, gestión de personal y finanzas del haras en un solo dashboard."
->>>>>>> b2ae6d6795f872efe2ac532681af53cd09822850
     },
     hotspots: {
       stock: "Control de Stock", stock_d: "Alertas automáticas cuando el alimento o medicina baja del mínimo.",
@@ -149,12 +120,8 @@ const I18N = {
       title: "ONE PLATFORM, MULTIPLE VISIONS",
       r1: "Owner", r1_d: "Receive videos and reports in real-time. Total transparency on your investment.",
       r2: "Veterinarian", r2_d: "Unified digital medical history. Health alerts and auto-vaccination reminders.",
-<<<<<<< HEAD
       r3: "Manager", r3_d: "Stock control, staff management, and farm finances in one dashboard.",
       r4: "Facility", r4_d: "Manage guest horses, coordinate employees and assign day-to-day operational tasks."
-=======
-      r3: "Manager", r3_d: "Stock control, staff management, and farm finances in one dashboard."
->>>>>>> b2ae6d6795f872efe2ac532681af53cd09822850
     },
     hotspots: {
       stock: "Stock Control", stock_d: "Auto-alerts when feed or meds go below minimum.",
@@ -176,12 +143,8 @@ const I18N = {
       title: "EINE PLATTFORM, MEHRERE VISIONEN",
       r1: "Besitzer", r1_d: "Erhalten Sie Videos und Berichte in Echtzeit. Totale Transparenz.",
       r2: "Tierarzt", r2_d: "Digitale Krankenakte. Gesundheitswarnungen und Impferinnerungen.",
-<<<<<<< HEAD
       r3: "Manager", r3_d: "Bestandskontrolle, Personalmanagement und Finanzen in einem Dashboard.",
       r4: "Einrichtung", r4_d: "Verwalten Sie Gastpferde, koordinieren Sie Mitarbeiter und weisen Sie tägliche Aufgaben zu."
-=======
-      r3: "Manager", r3_d: "Bestandskontrolle, Personalmanagement und Finanzen in einem Dashboard."
->>>>>>> b2ae6d6795f872efe2ac532681af53cd09822850
     },
     hotspots: {
       stock: "Bestandskontrolle", stock_d: "Auto-Warnungen bei niedrigem Bestand.",
@@ -316,7 +279,6 @@ const ThreeEquestrianFlow = ({ isDark }) => {
  */
 const RoleSelector = ({ t, isDark, theme }) => {
   const [activeRole, setActiveRole] = useState(0);
-<<<<<<< HEAD
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const roles = [
     { title: t.roles.r1, desc: t.roles.r1_d, icon: User },
@@ -349,19 +311,10 @@ const RoleSelector = ({ t, isDark, theme }) => {
     setActiveRole(index);
   };
 
-=======
-  const roles = [
-    { title: t.roles.r1, desc: t.roles.r1_d, icon: User },
-    { title: t.roles.r2, desc: t.roles.r2_d, icon: HeartPulse },
-    { title: t.roles.r3, desc: t.roles.r3_d, icon: Target }
-  ];
-
->>>>>>> b2ae6d6795f872efe2ac532681af53cd09822850
   return (
     <section className="py-24 relative z-10 px-6">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-4xl md:text-6xl font-black mb-20 text-center">{t.roles.title}</h2>
-<<<<<<< HEAD
         
         {/* Carrusel */}
         <div className="relative">
@@ -418,21 +371,6 @@ const RoleSelector = ({ t, isDark, theme }) => {
               }`}
               aria-label={`Ir al rol ${i + 1}`}
             />
-=======
-        <div className="grid md:grid-cols-3 gap-6">
-          {roles.map((role, i) => (
-            <div 
-              key={i}
-              onClick={() => setActiveRole(i)}
-              className={`cursor-pointer p-10 rounded-2xl border transition-all duration-300 ${activeRole === i ? `${theme.glass} border-current transform scale-105 shadow-2xl` : `border-transparent opacity-50 hover:opacity-100 hover:bg-white/5`}`}
-            >
-              <div className={`w-14 h-14 rounded-full flex items-center justify-center mb-6 ${activeRole === i ? theme.accentBg + ' text-black' : 'bg-white/10'}`}>
-                <role.icon size={28} />
-              </div>
-              <h3 className="text-2xl font-bold mb-4">{role.title}</h3>
-              <p className={`text-base leading-relaxed ${theme.textMuted}`}>{role.desc}</p>
-            </div>
->>>>>>> b2ae6d6795f872efe2ac532681af53cd09822850
           ))}
         </div>
       </div>
@@ -442,32 +380,14 @@ const RoleSelector = ({ t, isDark, theme }) => {
 
 /**
  * --- HOTSPOT OVERLAY ---
-<<<<<<< HEAD
  * Movido a Dashboard.jsx
  */
-=======
- */
-const Hotspot = ({ x, y, label, desc, theme }) => (
-  <div className="absolute group" style={{ top: y, left: x }}>
-    <div className={`w-4 h-4 rounded-full ${theme.accentBg} animate-ping absolute`}></div>
-    <div className={`relative w-4 h-4 rounded-full ${theme.accentBg} border-2 border-white cursor-pointer`}></div>
-    
-    <div className="absolute left-6 top-0 w-48 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none group-hover:pointer-events-auto z-50">
-      <div className={`p-4 rounded-xl ${theme.glass} border ${theme.border} text-left`}>
-        <p className="text-xs font-bold uppercase mb-1">{label}</p>
-        <p className={`text-[10px] ${theme.textMuted}`}>{desc}</p>
-      </div>
-    </div>
-  </div>
-);
->>>>>>> b2ae6d6795f872efe2ac532681af53cd09822850
 
 /**
  * --- VIDEO MODAL ---
  */
 const VideoModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
-<<<<<<< HEAD
   
   // OPCIÓN 1: YouTube - Reemplaza VIDEO_ID con tu ID de YouTube
   const youtubeVideoId = "dQw4w9WgXcQ"; // Ejemplo: https://www.youtube.com/watch?v=dQw4w9WgXcQ
@@ -475,13 +395,10 @@ const VideoModal = ({ isOpen, onClose }) => {
   // OPCIÓN 2: Video local - Pon tu video en /public/videos/showreel.mp4
   // const localVideo = "/videos/showreel.mp4";
   
-=======
->>>>>>> b2ae6d6795f872efe2ac532681af53cd09822850
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-xl animate-in fade-in duration-300 p-6">
       <button onClick={onClose} className="absolute top-6 right-6 text-white hover:text-[#D1F366] transition-colors"><X size={40} /></button>
       <div className="w-full max-w-5xl aspect-video bg-zinc-900 rounded-2xl overflow-hidden shadow-2xl border border-white/10 relative">
-<<<<<<< HEAD
         
         {/* OPCIÓN 1: YouTube */}
         <iframe
@@ -503,12 +420,6 @@ const VideoModal = ({ isOpen, onClose }) => {
         </video>
         */}
         
-=======
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-white/50 space-y-4">
-          <div className="w-20 h-20 rounded-full border-2 border-white/20 flex items-center justify-center"><Play size={40} className="ml-2 text-white" fill="currentColor" /></div>
-          <p className="text-sm font-bold tracking-widest uppercase">Video Showreel</p>
-        </div>
->>>>>>> b2ae6d6795f872efe2ac532681af53cd09822850
       </div>
     </div>
   );
@@ -658,7 +569,6 @@ export default function App() {
           <div className={`fixed inset-0 -z-10 pointer-events-none ${isDark ? 'bg-gradient-to-b from-transparent via-[#050505]/50 to-[#050505]' : 'bg-gradient-to-b from-transparent via-white/50 to-white'}`}></div>
           <VideoModal isOpen={videoOpen} onClose={() => setVideoOpen(false)} />
 
-<<<<<<< HEAD
           <Navbar 
             t={t} 
             theme={theme} 
@@ -677,119 +587,21 @@ export default function App() {
             ASSETS={ASSETS}
             onVideoOpen={() => setVideoOpen(true)}
           />
-=======
-          <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? 'py-4 ' + theme.glass + ' border-b ' + theme.border : 'py-6 bg-transparent'}`}>
-            <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-              <div className="flex items-center gap-3 group cursor-pointer">
-                {ASSETS.logoFull ? (
-                  <img src={ASSETS.logoFull} alt="Handicapp" className={`${scrolled ? 'h-9' : 'h-11'} w-auto transition-all duration-500 group-hover:scale-105 ${isDark ? '' : 'invert'}`} />
-                ) : (
-                  <span className="font-bold tracking-tighter text-2xl">HANDICAPP</span>
-                )}
-              </div>
-              <div className="hidden md:flex items-center gap-8 lg:gap-10 text-[12px] font-bold tracking-[0.15em]">
-                {Object.entries(t.nav).filter(([key]) => key !== 'login').map(([key, label]) => (
-                  <a key={key} href={`#${key}`} className="opacity-70 hover:opacity-100 hover:text-current transition-all hover:-translate-y-0.5 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-current after:transition-all hover:after:w-full">{label}</a>
-                ))}
-              </div>
-              <div className="flex items-center gap-3 lg:gap-4">
-                <button onClick={toggleLang} className={`text-[11px] font-black px-3 py-2.5 rounded-lg border ${theme.border} hover:bg-white/5 transition-all hover:scale-105`}>{t.lang_code}</button>
-                <button onClick={() => setIsDark(!isDark)} className={`p-2.5 rounded-lg border ${theme.border} hover:bg-white/5 transition-all hover:scale-105`}>{isDark ? <Sun size={18} /> : <Moon size={18} />}</button>
-                <button className={`hidden sm:flex px-7 py-3 rounded-lg text-xs font-black uppercase tracking-widest transition-all hover:scale-105 ${isDark ? 'bg-[#D1F366] text-black shadow-[0_0_20px_-5px_rgba(209,243,102,0.5)]' : 'bg-[#4F46E5] text-white shadow-[0_0_20px_-5px_rgba(79,70,229,0.5)]'}`}>{t.nav.login}</button>
-                <button className="md:hidden p-2" onClick={() => setMenuOpen(true)}><Menu size={24}/></button>
-              </div>
-            </div>
-          </nav>
-
-          <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
-            <div className="absolute inset-0 z-0 opacity-40 mix-blend-luminosity"><img src={ASSETS.heroHorse} className="w-full h-full object-cover grayscale scale-105 animate-[pulse_10s_ease-in-out_infinite]" alt="Hero" /></div>
-            <div className={`absolute inset-0 z-0 bg-gradient-to-t ${isDark ? 'from-[#050505] via-[#050505]/80' : 'from-[#F4F4F5] via-[#F4F4F5]/80'} to-transparent`}></div>
-            <div className="relative z-10 text-center px-6 max-w-7xl">
-              <div className={`inline-flex items-center gap-3 px-6 py-3 rounded-full mb-12 border ${theme.glass} shadow-lg animate-in fade-in slide-in-from-bottom-4 duration-1000`}><span className={`w-2.5 h-2.5 rounded-full animate-pulse ${theme.accentBg}`}></span><span className="text-[11px] font-black tracking-[0.25em]">{t.hero.pill}</span></div>
-              <h1 className="text-7xl md:text-[10rem] lg:text-[11rem] leading-[0.8] font-black tracking-tighter mb-12 animate-in fade-in zoom-in duration-1000 delay-100"><span className="block text-transparent bg-clip-text bg-gradient-to-b from-current to-transparent opacity-90">{t.hero.line1}</span><span className={`block ${theme.accent}`}>{t.hero.line2}</span></h1>
-              <p className="text-xl md:text-2xl lg:text-3xl max-w-4xl mx-auto mb-16 opacity-70 leading-relaxed font-light animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-200">{t.hero.desc}</p>
-              <div className="flex flex-col md:flex-row justify-center gap-6 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300">
-                <button className={`px-12 py-6 rounded-full font-black text-sm uppercase tracking-widest shadow-[0_0_40px_-10px] transition-all hover:scale-105 active:scale-95 ${isDark ? 'bg-[#D1F366] text-black shadow-[#D1F366]/40' : 'bg-[#4F46E5] text-white shadow-[#4F46E5]/40'}`}>{t.hero.cta}</button>
-                <button onClick={() => setVideoOpen(true)} className={`group px-12 py-6 rounded-full font-black text-sm uppercase tracking-widest border-2 transition-all hover:bg-current hover:text-transparent hover:bg-clip-text flex items-center justify-center gap-3 ${theme.border}`}><Play size={18} fill="currentColor" className={`transition-transform group-hover:scale-110 ${theme.accent}`} /> {t.hero.video}</button>
-              </div>
-            </div>
-            <div className="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce opacity-40"><MousePointer2 size={28} /></div>
-          </section>
->>>>>>> b2ae6d6795f872efe2ac532681af53cd09822850
 
           <RoleSelector t={t} isDark={isDark} theme={theme} />
           <SocialProof t={t} isDark={isDark} theme={theme} />
           <VerticalWorkflow t={t} isDark={isDark} theme={theme} />
           
-<<<<<<< HEAD
           <Dashboard t={t} theme={theme} isDark={isDark} ASSETS={ASSETS} />
 
           <AILabs t={t} isDark={isDark} theme={theme} />
 
           <Pricing t={t} theme={theme} isDark={isDark} />
-=======
-          <section id="system" className={`py-32 relative overflow-hidden ${theme.glass} border-y ${theme.border}`}>
-            <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
-              <div>
-                <h2 className="text-5xl font-black mb-8 leading-tight">Total Control.<br/>Zero Friction.</h2>
-                <p className={`text-xl mb-8 leading-relaxed ${theme.textMuted}`}>La interfaz de Handicapp fue diseñada con veterinarios y entrenadores olímpicos. Cada píxel tiene un propósito.</p>
-                <ul className="space-y-4 mb-8">
-                  {["Stock Control", "Health Alerts", "Team Notify"].map((item, i) => (
-                    <li key={i} className="flex items-center gap-4 font-bold"><CheckCircle2 className={theme.accent} /> {item}</li>
-                  ))}
-                </ul>
-              </div>
-              <div className="relative group">
-                <div className={`absolute inset-0 rounded-[2rem] blur-2xl opacity-30 ${theme.accentBg}`}></div>
-                <div className={`relative rounded-[2rem] overflow-hidden border ${theme.border} shadow-2xl`}>
-                  {/* FIX PARA DASHBOARD IMAGE: Usamos aspecto ratio fijo para evitar el colapso */}
-                  <div className="aspect-[16/9] w-full bg-zinc-900 relative">
-                    {ASSETS.dashboardScreen ? (
-                      <img src={ASSETS.dashboardScreen} alt="Dashboard" className="w-full h-full object-cover object-top" />
-                    ) : (
-                      <div className="flex items-center justify-center h-full text-zinc-700">Dashboard Preview</div>
-                    )}
-                    {/* HOTSPOTS */}
-                    <Hotspot x="20%" y="30%" label={t.hotspots.stock} desc={t.hotspots.stock_d} theme={theme} />
-                    <Hotspot x="50%" y="50%" label={t.hotspots.health} desc={t.hotspots.health_d} theme={theme} />
-                    <Hotspot x="80%" y="20%" label={t.hotspots.notify} desc={t.hotspots.notify_d} theme={theme} />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <AILabs t={t} isDark={isDark} theme={theme} />
-
-          <section id="pricing" className="py-32 px-6 relative z-10">
-            <div className="max-w-7xl mx-auto">
-              <div className="text-center mb-24"><h2 className="text-5xl font-black mb-6 tracking-tight">{t.pricing.title}</h2><div className={`inline-flex items-center gap-4 p-2 pr-6 rounded-full border ${theme.glass}`}><div className={`px-4 py-2 rounded-full text-xs font-bold ${isDark ? 'bg-zinc-800 text-white' : 'bg-zinc-200 text-black'}`}>{t.pricing.monthly}</div><span className="text-sm font-bold opacity-50">{t.pricing.yearly} (-20%)</span></div></div>
-              <div className="grid md:grid-cols-3 gap-8">{t.pricing.plans.map((plan, i) => (<div key={i} className={`relative p-10 rounded-[2rem] border transition-all duration-500 hover:-translate-y-4 ${theme.glass} ${i === 1 ? (isDark ? 'border-[#D1F366] shadow-[0_0_50px_-20px_rgba(209,243,102,0.3)]' : 'border-[#4F46E5] shadow-[0_0_50px_-20px_rgba(79,70,229,0.3)]') : ''}`}>{i === 1 && <div className={`absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest ${isDark ? 'bg-[#D1F366] text-black' : 'bg-[#4F46E5] text-white'}`}>Most Popular</div>}<h3 className="text-2xl font-bold mb-4">{plan.name}</h3><div className="flex items-baseline gap-1 mb-8"><span className="text-6xl font-black">${plan.price}</span><span className="text-sm opacity-60">/mo</span></div><ul className="space-y-5 mb-12">{plan.feat.map((f, j) => (<li key={j} className="flex items-center gap-3 text-sm font-medium opacity-80"><CheckCircle2 size={18} className={theme.accent} /> {f}</li>))}</ul><button className={`w-full py-5 rounded-xl font-bold uppercase tracking-widest text-xs transition-colors ${i===1 ? (isDark ? 'bg-[#D1F366] text-black hover:bg-white' : 'bg-[#4F46E5] text-white hover:bg-black') : `border ${theme.border} hover:bg-current hover:text-transparent hover:bg-clip-text`}`}>Choose {plan.name}</button></div>))}</div>
-            </div>
-          </section>
->>>>>>> b2ae6d6795f872efe2ac532681af53cd09822850
 
           <FAQ t={t} isDark={isDark} theme={theme} />
           <ContactForm t={t} isDark={isDark} theme={theme} />
 
-<<<<<<< HEAD
           <Footer theme={theme} isDark={isDark} ASSETS={ASSETS} />
-=======
-          <footer className={`py-16 border-t ${theme.border} text-center relative z-10 ${theme.bg}`}>
-            <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
-              <div className="flex items-center gap-4">
-                {ASSETS.logoIcon ? (
-                  <img src={ASSETS.logoIcon} alt="H" className={`w-10 h-10 ${isDark ? '' : 'invert'}`} />
-                ) : (
-                  <div className={`w-10 h-10 rounded-lg flex items-center justify-center font-black text-base ${isDark ? 'bg-white text-black' : 'bg-black text-white'}`}>H</div>
-                )}
-                <span className="font-bold text-sm tracking-widest">HANDICAPP INC.</span>
-              </div>
-              <p className="text-sm opacity-50">© 2026 Future Equestrian Systems. All rights reserved.</p>
-              <div className="flex gap-8 text-[11px] font-black tracking-widest opacity-60"><a href="#" className="hover:opacity-100 transition-opacity">INSTAGRAM</a><a href="#" className="hover:opacity-100 transition-opacity">TWITTER</a><a href="#" className="hover:opacity-100 transition-opacity">LEGAL</a></div>
-            </div>
-          </footer>
->>>>>>> b2ae6d6795f872efe2ac532681af53cd09822850
         </>
       )}
     </div>
