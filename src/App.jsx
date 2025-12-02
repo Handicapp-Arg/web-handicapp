@@ -12,16 +12,16 @@ import Hero from './components/Hero';
 import Dashboard from './components/Dashboard';
 import Pricing from './components/Pricing';
 import Footer from './components/Footer';
+import HANDICAPP_KNOWLEDGE from './handicappKnowledgeBase';
 
 /**
  * --- GEMINI API UTILITIES ---
  */
 const callGeminiAPI = async (prompt) => {
-  const apiKey = ""; 
+  const apiKey = "AIzaSyCIcB7SmsTvxiMck2EQWz8CnoS0n_DeT3M"; 
+  
   if (!apiKey) {
-    await new Promise(resolve => setTimeout(resolve, 2000)); 
-    if (prompt.includes("Names")) return "1. Midnight Storm\n2. Royal Gallop\n3. Cosmic Stride\n4. Velvet Thunder\n5. Golden Mane";
-    return "Basado en los síntomas, recomiendo reposo. Contacte a su veterinario para una ecografía.";
+    throw new Error("API Key no configurada. Por favor, agrega tu API Key de Gemini.");
   }
 
   const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
@@ -33,11 +33,23 @@ const callGeminiAPI = async (prompt) => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
     });
-    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+    
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error(`Error API Gemini: ${response.status} - ${errorData.error?.message || 'Error desconocido'}`);
+    }
+    
     const data = await response.json();
-    return data.candidates?.[0]?.content?.parts?.[0]?.text || "Sin respuesta.";
+    const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
+    
+    if (!text) {
+      throw new Error("La API no devolvió ninguna respuesta válida.");
+    }
+    
+    return text;
   } catch (error) {
-    return "Error de conexión. Modo demo activado.";
+    console.error("Error llamando a Gemini API:", error);
+    throw error;
   }
 };
 
@@ -107,7 +119,7 @@ const I18N = {
     },
     trust: { title: "CONFIANZA", desc: "Los líderes de la industria ya corren con nosotros.", quote: "Handicapp transformó nuestra operación. Dejamos de perder tiempo en papeles.", author: "Roberto Álvarez, Director Haras El Paraíso" },
     workflow: { title: "EL FLUJO PERFECTO", step1_t: "Captura de Campo", step1_d: "Veterinarios y petiseros registran datos vitales en segundos, incluso sin señal.", step2_t: "Sincronización Neural", step2_d: "Nuestra IA procesa la información, detecta anomalías y actualiza el historial clínico.", step3_t: "Impacto Inmediato", step3_d: "El propietario recibe una notificación enriquecida con video y diagnóstico en tiempo real." },
-    labs: { title: "Inteligencia Hípica", desc: "Motores de IA generativa entrenados con datos de campeones.", input_ph: "Ej: Padre 'Galileo'...", btn: "Generar Nombres", chat_ph: "Consulta veterinaria...", disclaimer: "IA Beta." },
+    labs: { title: "Inteligencia Hípica", desc: "Motores de IA generativa entrenados con datos de campeones.", input_ph: "Ej: ¿Cómo funciona Handicapp?", btn: "Consultar IA", chat_ph: "Consulta veterinaria...", disclaimer: "IA Beta." },
     pricing: { title: "Planes", monthly: "Mes", yearly: "Año", plans: [{ name: "Stable", price: "29", feat: ["10 Caballos", "Básico"] }, { name: "Grand Prix", price: "79", feat: ["50 Caballos", "IA", "App Dueños"] }, { name: "Turf Club", price: "199", feat: ["Ilimitado", "API", "Manager"] }] },
     faq: { title: "Preguntas Frecuentes", q1: "¿Funciona offline?", a1: "Sí, sincroniza al reconectar.", q2: "¿Migración?", a2: "Sí, importamos tu Excel gratis.", q3: "¿Seguridad?", a3: "Encriptación bancaria AES-256." },
     contact: { title: "¿Listo?", subtitle: "Agenda demo.", name: "Nombre", email: "Email", msg: "Mensaje", btn: "Enviar", success: "¡Mensaje Enviado!" }
@@ -130,7 +142,7 @@ const I18N = {
     },
     trust: { title: "TRUST", desc: "Industry leaders run with us.", quote: "Handicapp transformed our operation.", author: "Roberto Álvarez, Director El Paraiso Stud" },
     workflow: { title: "THE PERFECT FLOW", step1_t: "Field Capture", step1_d: "Vital data in seconds, offline.", step2_t: "Neural Sync", step2_d: "AI detects anomalies.", step3_t: "Immediate Impact", step3_d: "Auto-notification to owner." },
-    labs: { title: "Equine Intelligence", desc: "AI trained on champion data.", input_ph: "Ex: Sire 'Galileo'...", btn: "Generate Names", chat_ph: "Vet inquiry...", disclaimer: "AI Beta." },
+    labs: { title: "Equine Intelligence", desc: "AI trained on champion data.", input_ph: "Ex: How does Handicapp work?", btn: "Ask AI", chat_ph: "Vet inquiry...", disclaimer: "AI Beta." },
     pricing: { title: "Pricing", monthly: "Mo", yearly: "Yr", plans: [{ name: "Stable", price: "29", feat: ["10 Horses", "Basic"] }, { name: "Grand Prix", price: "79", feat: ["50 Horses", "AI", "Owner App"] }, { name: "Turf Club", price: "199", feat: ["Unlimited", "API", "Manager"] }] },
     faq: { title: "FAQ", q1: "Offline work?", a1: "Yes, syncs on reconnect.", q2: "Migration?", a2: "Yes, free Excel import.", q3: "Secure?", a3: "AES-256 bank-grade." },
     contact: { title: "Ready?", subtitle: "Book demo.", name: "Name", email: "Email", msg: "Message", btn: "Send", success: "Message Sent!" }
@@ -153,7 +165,7 @@ const I18N = {
     },
     trust: { title: "VERTRAUEN", desc: "Branchenführer vertrauen uns.", quote: "Handicapp hat uns verändert.", author: "Roberto Álvarez, Direktor Gestüt El Paraíso" },
     workflow: { title: "PERFEKTER ABLAUF", step1_t: "Felderfassung", step1_d: "Daten in Sekunden, offline.", step2_t: "Neuronale Sync", step2_d: "KI erkennt Anomalien.", step3_t: "Sofortige Wirkung", step3_d: "Auto-Benachrichtigung." },
-    labs: { title: "Pferde-Intelligenz", desc: "KI trainiert mit Champions.", input_ph: "Vater 'Galileo'...", btn: "Generieren", chat_ph: "Tierarztfrage...", disclaimer: "KI Beta." },
+    labs: { title: "Pferde-Intelligenz", desc: "KI trainiert mit Champions.", input_ph: "Wie funktioniert Handicapp?", btn: "KI Fragen", chat_ph: "Tierarztfrage...", disclaimer: "KI Beta." },
     pricing: { title: "Preise", monthly: "Monat", yearly: "Jahr", plans: [{ name: "Stall", price: "29", feat: ["10 Pferde", "Basis"] }, { name: "Grand Prix", price: "79", feat: ["50 Pferde", "KI", "App"] }, { name: "Turf Club", price: "199", feat: ["Unbegrenzt", "API", "Manager"] }] },
     faq: { title: "FAQ", q1: "Offline?", a1: "Ja, sync bei Verbindung.", q2: "Migration?", a2: "Ja, Excel import.", q3: "Sicher?", a3: "AES-256 Verschlüsselung." },
     contact: { title: "Bereit?", subtitle: "Demo buchen.", name: "Name", email: "Email", msg: "Nachricht", btn: "Senden", success: "Gesendet!" }
@@ -453,7 +465,37 @@ const AILabs = ({ t, isDark, theme }) => {
   const [prompt, setPrompt] = useState('');
   const [response, setResponse] = useState('');
   const [loading, setLoading] = useState(false);
-  const handleGen = async () => { if(!prompt) return; setLoading(true); const res = await callGeminiAPI(`Expert equestrian: Names for horse like: ${prompt}. List only.`); setResponse(res); setLoading(false); };
+  const [error, setError] = useState('');
+  
+  const handleGen = async () => { 
+    if(!prompt) return; 
+    setLoading(true); 
+    setError('');
+    setResponse('');
+    
+    try {
+      const fullPrompt = `${HANDICAPP_KNOWLEDGE}
+
+CONSULTA DEL USUARIO: ${prompt}
+
+INSTRUCCIONES:
+- Responde basándote EXCLUSIVAMENTE en la información de la BASE DE CONOCIMIENTO anterior
+- Si la pregunta es sobre nombres de caballos, genera 5 nombres creativos basados en las características mencionadas
+- Si la pregunta es sobre Handicapp (qué hace, cómo funciona, precios, etc.), responde con la información de la base de conocimiento
+- Si es una consulta veterinaria, responde como asesor veterinario equino experto, pero aclara que no reemplaza consulta profesional
+- Sé conciso pero completo
+- Usa formato claro y organizado
+- Si no tienes información suficiente, admítelo y sugiere contactar al equipo`;
+
+      const res = await callGeminiAPI(fullPrompt); 
+      setResponse(res);
+    } catch (err) {
+      setError(err.message || 'Error al conectar con la API');
+    } finally {
+      setLoading(false);
+    }
+  };
+  
   return (
     <section id="labs" className="py-32 px-6 relative">
       <div className={`max-w-6xl mx-auto rounded-[2.5rem] p-8 md:p-16 relative overflow-hidden border ${theme.glass} shadow-2xl`}>
@@ -463,10 +505,21 @@ const AILabs = ({ t, isDark, theme }) => {
             <div><div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider mb-6 ${isDark ? 'bg-[#D1F366] text-black' : 'bg-[#4F46E5] text-white'}`}><Sparkles size={12} fill="currentColor" /> Gemini AI Core</div><h2 className={`text-4xl md:text-5xl font-black mb-4 leading-tight`}>{t.labs.title}</h2><p className={`text-lg ${theme.textMuted}`}>{t.labs.desc}</p></div>
             <div className="space-y-4">
               <div className="relative"><input value={prompt} onChange={(e) => setPrompt(e.target.value)} placeholder={t.labs.input_ph} className={`w-full p-5 rounded-xl border outline-none transition-all font-medium ${isDark ? 'bg-black/50 border-zinc-800 text-white focus:border-[#D1F366]' : 'bg-white border-zinc-200 text-zinc-900 focus:border-[#4F46E5]'}`} /><div className="absolute right-4 top-1/2 -translate-y-1/2"><Dna size={20} className={theme.textMuted} /></div></div>
-              <button onClick={handleGen} disabled={loading} className={`w-full py-5 rounded-xl font-bold uppercase tracking-widest transition-all flex items-center justify-center gap-3 ${isDark ? 'bg-white text-black hover:bg-[#D1F366]' : 'bg-black text-white hover:bg-[#4F46E5]'}`}>{loading ? <Loader2 className="animate-spin" /> : t.labs.btn} <ArrowRight size={18} /></button>
+              <button onClick={handleGen} disabled={loading} className={`w-full py-5 rounded-xl font-bold uppercase tracking-widest transition-all flex items-center justify-center gap-3 ${isDark ? 'bg-white text-black hover:bg-[#D1F366]' : 'bg-black text-white hover:bg-[#4F46E5]'} disabled:opacity-50 disabled:cursor-not-allowed`}>{loading ? <Loader2 className="animate-spin" /> : t.labs.btn} <ArrowRight size={18} /></button>
             </div>
           </div>
-          <div className={`rounded-3xl p-8 border ${isDark ? 'bg-black/40 border-zinc-800' : 'bg-zinc-50 border-zinc-200'} min-h-[400px] flex flex-col relative overflow-hidden`}><div className="flex justify-between items-center mb-6 opacity-50"><div className="flex gap-2"><div className="w-3 h-3 rounded-full bg-red-500"></div><div className="w-3 h-3 rounded-full bg-yellow-500"></div></div><div className="font-mono text-xs">AI_OUTPUT_V1</div></div><div className={`flex-1 font-mono text-sm leading-loose whitespace-pre-wrap ${theme.accent}`}>{response || <span className="opacity-30">// Ready...</span>}</div></div>
+          <div className={`rounded-3xl p-8 border ${isDark ? 'bg-black/40 border-zinc-800' : 'bg-zinc-50 border-zinc-200'} min-h-[400px] flex flex-col relative overflow-hidden`}>
+            <div className="flex justify-between items-center mb-6 opacity-50">
+              <div className="flex gap-2">
+                <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+              </div>
+              <div className="font-mono text-xs">AI_OUTPUT_V1</div>
+            </div>
+            <div className={`flex-1 font-mono text-sm leading-loose whitespace-pre-wrap ${error ? 'text-red-500' : theme.accent}`}>
+              {error ? `❌ ${error}` : response || <span className="opacity-30">// Ready...</span>}
+            </div>
+          </div>
         </div>
       </div>
     </section>
