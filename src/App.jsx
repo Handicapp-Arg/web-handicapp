@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
 import { 
   X, Smartphone, Network, Sparkles, Dna, ArrowRight,
   Plus, Minus, Star, Loader2, CheckCircle2,
@@ -8,10 +9,11 @@ import {
 
 // Importar componentes separados
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
+import HomePage from './components/HomePage';
 import Dashboard from './components/Dashboard';
 import Pricing from './components/Pricing';
 import Footer from './components/Footer';
+import FAQPage from './components/FAQ';
 import HANDICAPP_KNOWLEDGE from './handicappKnowledgeBase';
 
 /**
@@ -131,7 +133,33 @@ const I18N = {
     workflow: { title: "EL FLUJO PERFECTO", step1_t: "Captura de Campo", step1_d: "Veterinarios y petiseros registran datos vitales en segundos, incluso sin señal.", step2_t: "Sincronización Neural", step2_d: "Nuestra IA procesa la información, detecta anomalías y actualiza el historial clínico.", step3_t: "Impacto Inmediato", step3_d: "El propietario recibe una notificación enriquecida con video y diagnóstico en tiempo real." },
     labs: { title: "Inteligencia Hípica", desc: "Motores de IA generativa entrenados con datos de campeones.", input_ph: "Ej: ¿Cómo funciona Handicapp?", btn: "Consultar IA", chat_ph: "Consulta veterinaria...", disclaimer: "IA Beta." },
     pricing: { title: "Planes", monthly: "Mes", yearly: "Año", plans: [{ name: "Stable", price: "29", feat: ["10 Caballos", "Básico"] }, { name: "Grand Prix", price: "79", feat: ["50 Caballos", "IA", "App Dueños"] }, { name: "Turf Club", price: "199", feat: ["Ilimitado", "API", "Manager"] }] },
-    faq: { title: "Preguntas Frecuentes", q1: "¿Funciona offline?", a1: "Sí, sincroniza al reconectar.", q2: "¿Migración?", a2: "Sí, importamos tu Excel gratis.", q3: "¿Seguridad?", a3: "Encriptación bancaria AES-256." },
+    faq: { 
+      title: "Preguntas Frecuentes", 
+      subtitle: "Todo lo que necesitas saber sobre Handicapp",
+      q1: "¿Funciona offline?", 
+      a1: "Sí, la aplicación funciona completamente sin conexión. Los veterinarios y el personal pueden registrar datos en campo y todo se sincroniza automáticamente cuando recuperan señal.",
+      q2: "¿Puedo migrar mis datos actuales?", 
+      a2: "Absolutamente. Importamos tus datos desde Excel, PDF o cualquier sistema anterior de forma gratuita. Nuestro equipo te asiste en todo el proceso de migración.",
+      q3: "¿Qué tan seguro es Handicapp?", 
+      a3: "Utilizamos encriptación bancaria AES-256 y servidores certificados SOC2. Tus datos están más seguros que en cualquier archivo físico.",
+      q4: "¿Cuánto cuesta realmente?", 
+      a4: "Los planes comienzan desde $29/mes para hasta 10 caballos. Sin costos ocultos, sin permanencia. Puedes cambiar o cancelar en cualquier momento.",
+      q5: "¿Qué incluye la IA predictiva?", 
+      a5: "Nuestros algoritmos analizan patrones de salud, rendimiento y predicen problemas antes de que ocurran. Detectamos anomalías en signos vitales y sugerimos acciones preventivas.",
+      q6: "¿Ofrecen soporte técnico?", 
+      a6: "Sí, soporte por chat, email y teléfono incluido en todos los planes. Tiempo de respuesta promedio: 2 horas. Para planes enterprise ofrecemos soporte 24/7.",
+      q7: "¿Se integra con otros sistemas?", 
+      a7: "Sí, tenemos API abierta y conectores para sistemas contables, veterinarios y de gestión más populares. También podemos desarrollar integraciones personalizadas.",
+      q8: "¿Qué pasa con mis datos si cancelo?", 
+      a8: "Tienes control total. Puedes exportar toda tu información en cualquier momento en formatos estándar (CSV, PDF, JSON). Nunca retenemos tus datos.",
+      q9: "¿Hay app móvil?", 
+      a9: "Sí, aplicaciones nativas para iOS y Android. Diseñadas para uso en campo con sincronización automática y modo offline completo.",
+      q10: "¿Cuánto tiempo toma implementarlo?", 
+      a10: "La mayoría de nuestros clientes están operativos en menos de 48 horas. Incluimos onboarding personalizado, capacitación del equipo y acompañamiento durante el primer mes.",
+      stillHaveQuestions: "¿Aún tienes dudas?",
+      contactUs: "Nuestro equipo está listo para ayudarte",
+      getInTouch: "Contactar Ahora"
+    },
     contact: { title: "¿Listo?", subtitle: "Agenda demo.", name: "Nombre", email: "Email", msg: "Mensaje", btn: "Enviar", success: "¡Mensaje Enviado!" }
   },
   en: {
@@ -154,7 +182,33 @@ const I18N = {
     workflow: { title: "THE PERFECT FLOW", step1_t: "Field Capture", step1_d: "Vital data in seconds, offline.", step2_t: "Neural Sync", step2_d: "AI detects anomalies.", step3_t: "Immediate Impact", step3_d: "Auto-notification to owner." },
     labs: { title: "Equine Intelligence", desc: "AI trained on champion data.", input_ph: "Ex: How does Handicapp work?", btn: "Ask AI", chat_ph: "Vet inquiry...", disclaimer: "AI Beta." },
     pricing: { title: "Pricing", monthly: "Mo", yearly: "Yr", plans: [{ name: "Stable", price: "29", feat: ["10 Horses", "Basic"] }, { name: "Grand Prix", price: "79", feat: ["50 Horses", "AI", "Owner App"] }, { name: "Turf Club", price: "199", feat: ["Unlimited", "API", "Manager"] }] },
-    faq: { title: "FAQ", q1: "Offline work?", a1: "Yes, syncs on reconnect.", q2: "Migration?", a2: "Yes, free Excel import.", q3: "Secure?", a3: "AES-256 bank-grade." },
+    faq: { 
+      title: "FAQ", 
+      subtitle: "Everything you need to know about Handicapp",
+      q1: "Does it work offline?", 
+      a1: "Yes, the app works completely offline. Vets and staff can record data in the field and everything syncs automatically when they reconnect.",
+      q2: "Can I migrate my current data?", 
+      a2: "Absolutely. We import your data from Excel, PDF or any previous system for free. Our team assists you throughout the migration process.",
+      q3: "How secure is Handicapp?", 
+      a3: "We use bank-grade AES-256 encryption and SOC2 certified servers. Your data is safer than any physical file.",
+      q4: "What does it really cost?", 
+      a4: "Plans start from $29/month for up to 10 horses. No hidden costs, no commitment. You can change or cancel anytime.",
+      q5: "What does predictive AI include?", 
+      a5: "Our algorithms analyze health and performance patterns to predict issues before they occur. We detect vital sign anomalies and suggest preventive actions.",
+      q6: "Do you offer technical support?", 
+      a6: "Yes, chat, email and phone support included in all plans. Average response time: 2 hours. Enterprise plans get 24/7 support.",
+      q7: "Does it integrate with other systems?", 
+      a7: "Yes, we have open API and connectors for popular accounting, veterinary and management systems. We can also develop custom integrations.",
+      q8: "What happens to my data if I cancel?", 
+      a8: "You have full control. You can export all your information anytime in standard formats (CSV, PDF, JSON). We never retain your data.",
+      q9: "Is there a mobile app?", 
+      a9: "Yes, native apps for iOS and Android. Designed for field use with automatic sync and full offline mode.",
+      q10: "How long does implementation take?", 
+      a10: "Most clients are operational in less than 48 hours. We include personalized onboarding, team training and support during the first month.",
+      stillHaveQuestions: "Still have questions?",
+      contactUs: "Our team is ready to help",
+      getInTouch: "Contact Now"
+    },
     contact: { title: "Ready?", subtitle: "Book demo.", name: "Name", email: "Email", msg: "Message", btn: "Send", success: "Message Sent!" }
   },
   de: {
@@ -177,7 +231,33 @@ const I18N = {
     workflow: { title: "PERFEKTER ABLAUF", step1_t: "Felderfassung", step1_d: "Daten in Sekunden, offline.", step2_t: "Neuronale Sync", step2_d: "KI erkennt Anomalien.", step3_t: "Sofortige Wirkung", step3_d: "Auto-Benachrichtigung." },
     labs: { title: "Pferde-Intelligenz", desc: "KI trainiert mit Champions.", input_ph: "Wie funktioniert Handicapp?", btn: "KI Fragen", chat_ph: "Tierarztfrage...", disclaimer: "KI Beta." },
     pricing: { title: "Preise", monthly: "Monat", yearly: "Jahr", plans: [{ name: "Stall", price: "29", feat: ["10 Pferde", "Basis"] }, { name: "Grand Prix", price: "79", feat: ["50 Pferde", "KI", "App"] }, { name: "Turf Club", price: "199", feat: ["Unbegrenzt", "API", "Manager"] }] },
-    faq: { title: "FAQ", q1: "Offline?", a1: "Ja, sync bei Verbindung.", q2: "Migration?", a2: "Ja, Excel import.", q3: "Sicher?", a3: "AES-256 Verschlüsselung." },
+    faq: { 
+      title: "FAQ", 
+      subtitle: "Alles, was Sie über Handicapp wissen müssen",
+      q1: "Funktioniert es offline?", 
+      a1: "Ja, die App funktioniert komplett offline. Tierärzte und Personal können Daten im Feld erfassen und alles wird automatisch synchronisiert.",
+      q2: "Kann ich meine aktuellen Daten migrieren?", 
+      a2: "Auf jeden Fall. Wir importieren Ihre Daten aus Excel, PDF oder jedem vorherigen System kostenlos. Unser Team unterstützt Sie während des gesamten Migrationsprozesses.",
+      q3: "Wie sicher ist Handicapp?", 
+      a3: "Wir verwenden AES-256-Verschlüsselung in Bankqualität und SOC2-zertifizierte Server. Ihre Daten sind sicherer als jede physische Datei.",
+      q4: "Was kostet es wirklich?", 
+      a4: "Pläne beginnen ab 29€/Monat für bis zu 10 Pferde. Keine versteckten Kosten, keine Bindung. Sie können jederzeit ändern oder kündigen.",
+      q5: "Was beinhaltet die prädiktive KI?", 
+      a5: "Unsere Algorithmen analysieren Gesundheits- und Leistungsmuster, um Probleme vorherzusagen, bevor sie auftreten. Wir erkennen Anomalien bei Vitalwerten.",
+      q6: "Bieten Sie technischen Support an?", 
+      a6: "Ja, Chat-, E-Mail- und Telefonsupport in allen Plänen enthalten. Durchschnittliche Antwortzeit: 2 Stunden. Enterprise-Pläne erhalten 24/7-Support.",
+      q7: "Integriert es sich mit anderen Systemen?", 
+      a7: "Ja, wir haben eine offene API und Konnektoren für beliebte Buchhaltungs-, Veterinär- und Verwaltungssysteme. Wir können auch benutzerdefinierte Integrationen entwickeln.",
+      q8: "Was passiert mit meinen Daten, wenn ich kündige?", 
+      a8: "Sie haben die volle Kontrolle. Sie können alle Ihre Informationen jederzeit in Standardformaten (CSV, PDF, JSON) exportieren. Wir behalten Ihre Daten niemals.",
+      q9: "Gibt es eine mobile App?", 
+      a9: "Ja, native Apps für iOS und Android. Entwickelt für den Feldeinsatz mit automatischer Synchronisation und vollständigem Offline-Modus.",
+      q10: "Wie lange dauert die Implementierung?", 
+      a10: "Die meisten Kunden sind in weniger als 48 Stunden einsatzbereit. Wir bieten personalisiertes Onboarding, Teamschulung und Support im ersten Monat.",
+      stillHaveQuestions: "Haben Sie noch Fragen?",
+      contactUs: "Unser Team ist bereit zu helfen",
+      getInTouch: "Jetzt Kontaktieren"
+    },
     contact: { title: "Bereit?", subtitle: "Demo buchen.", name: "Name", email: "Email", msg: "Nachricht", btn: "Senden", success: "Gesendet!" }
   }
 };
@@ -691,46 +771,6 @@ const SocialProof = ({ t, isDark, theme }) => {
   );
 };
 
-const FAQ = ({ t, isDark, theme }) => {
-  const [open, setOpen] = useState(0);
-  const items = [{ q: t.faq.q1, a: t.faq.a1 }, { q: t.faq.q2, a: t.faq.a2 }, { q: t.faq.q3, a: t.faq.a3 }];
-  return (
-    <section className={`py-32 px-6 max-w-4xl mx-auto ${isDark ? 'bg-transparent' : 'bg-white'}`}>
-      <h2 className="text-5xl md:text-6xl font-black text-center mb-20">{t.faq.title}</h2>
-      <div className="space-y-4">
-        {items.map((item, i) => (
-          <div 
-            key={i} 
-            className={`border-2 rounded-2xl overflow-hidden transition-all duration-300 ${
-              open === i 
-                ? isDark 
-                  ? 'bg-gradient-to-br from-[#0f172a] to-[#1e293b] border-[#af936f]' 
-                  : 'bg-white border-[#af936f]'
-                : isDark
-                  ? 'bg-[#1e293b]/30 border-zinc-700 hover:border-zinc-600'
-                  : 'bg-zinc-50 border-zinc-200 hover:border-zinc-300'
-            }`}
-          >
-            <button 
-              onClick={() => setOpen(open === i ? -1 : i)} 
-              className="w-full p-6 md:p-8 text-left flex justify-between items-center font-bold text-lg md:text-xl hover:bg-white/5 transition-colors group"
-            >
-              <span className="pr-4">{item.q}</span>
-              <div className={`flex-shrink-0 w-8 h-8 rounded-lg ${open === i ? theme.accentBg : 'bg-zinc-700'} flex items-center justify-center transition-all group-hover:scale-110`}>
-                {open === i ? <Minus size={20} className="text-white" /> : <Plus size={20} className="text-white" />}
-              </div>
-            </button>
-            <div className={`px-6 md:px-8 overflow-hidden transition-all duration-300 ${open === i ? 'max-h-48 pb-6 md:pb-8 opacity-100' : 'max-h-0 opacity-0'}`}>
-              <div className={`h-px ${theme.accentBg} mb-4 opacity-30`}></div>
-              <p className={`text-base md:text-lg leading-relaxed ${theme.textMuted}`}>{item.a}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-};
-
 const ContactForm = ({ t, isDark, theme }) => {
   const [status, setStatus] = useState('idle');
   const handleSubmit = (e) => { e.preventDefault(); setStatus('loading'); setTimeout(() => setStatus('success'), 1500); };
@@ -769,7 +809,7 @@ const MobileMenu = ({ isOpen, onClose, t, theme }) => {
 /**
  * --- APP PRINCIPAL ---
  */
-export default function App() {
+function AppContent() {
   const [langIndex, setLangIndex] = useState(0);
   const langs = ['es', 'en', 'de'];
   const toggleLang = () => setLangIndex((prev) => (prev + 1) % langs.length);
@@ -822,30 +862,43 @@ export default function App() {
             onMenuOpen={() => setMenuOpen(true)}
           />
 
-          <Hero 
-            t={t} 
-            theme={theme} 
-            isDark={isDark} 
-            ASSETS={ASSETS}
-            onVideoOpen={() => setVideoOpen(true)}
-          />
-
-          <RoleSelector t={t} isDark={isDark} theme={theme} />
-          <SocialProof t={t} isDark={isDark} theme={theme} />
-          <VerticalWorkflow t={t} isDark={isDark} theme={theme} />
-          
-          <Dashboard t={t} theme={theme} isDark={isDark} ASSETS={ASSETS} />
-
-          <AILabs t={t} isDark={isDark} theme={theme} />
-
-          <Pricing t={t} theme={theme} isDark={isDark} />
-
-          <FAQ t={t} isDark={isDark} theme={theme} />
-          <ContactForm t={t} isDark={isDark} theme={theme} />
+          <Routes>
+            <Route path="/" element={
+              <HomePage 
+                t={t}
+                theme={theme}
+                isDark={isDark}
+                ASSETS={ASSETS}
+                onVideoOpen={() => setVideoOpen(true)}
+                SocialProof={SocialProof}
+                VerticalWorkflow={VerticalWorkflow}
+                AILabs={AILabs}
+                ContactForm={ContactForm}
+                User={User}
+                HeartPulse={HeartPulse}
+                Target={Target}
+                Building2={Building2}
+                ChevronLeft={ChevronLeft}
+                ChevronRight={ChevronRight}
+              />
+            } />
+            
+            <Route path="/faq" element={
+              <FAQPage t={t} isDark={isDark} theme={theme} />
+            } />
+          </Routes>
 
           <Footer theme={theme} isDark={isDark} ASSETS={ASSETS} />
         </>
       )}
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <AppContent />
+    </BrowserRouter>
   );
 }

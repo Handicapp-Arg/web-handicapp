@@ -1,12 +1,16 @@
 import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { Sun, Moon, Menu } from 'lucide-react';
 
 const Navbar = ({ t, theme, isDark, scrolled, ASSETS, onToggleDark, onToggleLang, onMenuOpen }) => {
+  const location = useLocation();
+  const isHome = location.pathname === '/';
+
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? 'py-3 ' + theme.glass + ' border-b ' + theme.border : 'py-5 bg-transparent'}`}>
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-3 group cursor-pointer relative z-10">
+        <Link to="/" className="flex items-center gap-3 group cursor-pointer relative z-10">
           {ASSETS.logoIcon ? (
             <div className={`${scrolled ? 'w-11 h-11' : 'w-14 h-14'} transition-all duration-500 flex-shrink-0`}>
               <img 
@@ -18,19 +22,44 @@ const Navbar = ({ t, theme, isDark, scrolled, ASSETS, onToggleDark, onToggleLang
           ) : (
             <span className="font-bold tracking-tighter text-2xl">HANDICAPP</span>
           )}
-        </a>
+        </Link>
 
         {/* Links de navegación */}
         <div className="hidden md:flex items-center gap-8 lg:gap-10 text-[12px] font-bold tracking-[0.15em]">
-          {Object.entries(t.nav).filter(([key]) => key !== 'login').map(([key, label]) => (
-            <a 
-              key={key} 
-              href={`#${key}`} 
-              className="opacity-70 hover:opacity-100 transition-all hover:-translate-y-0.5 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-white after:transition-all hover:after:w-full"
-            >
-              {label}
-            </a>
-          ))}
+          {isHome ? (
+            <>
+              {Object.entries(t.nav).filter(([key]) => key !== 'login').map(([key, label]) => (
+                <a 
+                  key={key} 
+                  href={`#${key}`} 
+                  className="opacity-70 hover:opacity-100 transition-all hover:-translate-y-0.5 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-white after:transition-all hover:after:w-full"
+                >
+                  {label}
+                </a>
+              ))}
+              <Link 
+                to="/faq"
+                className="opacity-70 hover:opacity-100 transition-all hover:-translate-y-0.5 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-white after:transition-all hover:after:w-full"
+              >
+                FAQ
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link 
+                to="/"
+                className="opacity-70 hover:opacity-100 transition-all hover:-translate-y-0.5 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-white after:transition-all hover:after:w-full"
+              >
+                {t.nav.system || 'HOME'}
+              </Link>
+              <Link 
+                to="/faq"
+                className="opacity-100 relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-white"
+              >
+                FAQ
+              </Link>
+            </>
+          )}
         </div>
 
         {/* Botones de acción */}
@@ -47,14 +76,6 @@ const Navbar = ({ t, theme, isDark, scrolled, ASSETS, onToggleDark, onToggleLang
           >
             {isDark ? <Sun size={18} /> : <Moon size={18} />}
           </button>
-          <a 
-            href="https://www.handicapp.com.ar/login" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="hidden sm:flex items-center px-6 py-2.5 rounded-lg text-xs font-black uppercase tracking-widest transition-all hover:scale-105 bg-gradient-to-r from-[#c9a96e] to-[#af936f] text-white shadow-lg hover:shadow-[0_0_20px_rgba(175,147,111,0.6)]"
-          >
-            {t.nav.login}
-          </a>
           <button className="md:hidden p-2" onClick={onMenuOpen}>
             <Menu size={24}/>
           </button>
