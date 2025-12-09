@@ -4,7 +4,26 @@ import { Sun, Moon, Menu } from 'lucide-react';
 
 const Navbar = ({ t, theme, isDark, scrolled, ASSETS, onToggleDark, onToggleLang, onMenuOpen }) => {
   const location = useLocation();
-  const isHome = location.pathname === '/';
+  const currentPath = location.pathname;
+
+  // Navigation items configuration
+  const navItems = [
+    { path: '/', label: t.nav.system || 'ECOSISTEMA', isExternal: false },
+    { path: '/faq', label: 'FAQ', isExternal: false },
+  ];
+
+  // Helper to determine if link is active
+  const isActive = (path) => currentPath === path;
+
+  // Helper to render nav link styles
+  const getLinkStyles = (path) => {
+    const active = isActive(path);
+    return `${
+      active 
+        ? 'opacity-100 relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-white'
+        : 'opacity-70 hover:opacity-100 transition-all hover:-translate-y-0.5 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-white after:transition-all hover:after:w-full'
+    }`;
+  };
 
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? 'py-3 ' + theme.glass + ' border-b ' + theme.border : 'py-5 bg-transparent'}`}>
@@ -26,8 +45,9 @@ const Navbar = ({ t, theme, isDark, scrolled, ASSETS, onToggleDark, onToggleLang
 
         {/* Links de navegación */}
         <div className="hidden md:flex items-center gap-8 lg:gap-10 text-[12px] font-bold tracking-[0.15em]">
-          {isHome ? (
+          {currentPath === '/' ? (
             <>
+              {/* Home page - show anchor links */}
               {Object.entries(t.nav).filter(([key]) => key !== 'login').map(([key, label]) => (
                 <a 
                   key={key} 
@@ -37,27 +57,28 @@ const Navbar = ({ t, theme, isDark, scrolled, ASSETS, onToggleDark, onToggleLang
                   {label}
                 </a>
               ))}
-              <Link 
-                to="/faq"
-                className="opacity-70 hover:opacity-100 transition-all hover:-translate-y-0.5 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-white after:transition-all hover:after:w-full"
-              >
-                FAQ
-              </Link>
+              {navItems.filter(item => item.path !== '/').map(item => (
+                <Link 
+                  key={item.path}
+                  to={item.path}
+                  className={getLinkStyles(item.path)}
+                >
+                  {item.label}
+                </Link>
+              ))}
             </>
           ) : (
             <>
-              <Link 
-                to="/"
-                className="opacity-70 hover:opacity-100 transition-all hover:-translate-y-0.5 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-white after:transition-all hover:after:w-full"
-              >
-                {t.nav.system || 'HOME'}
-              </Link>
-              <Link 
-                to="/faq"
-                className="opacity-100 relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-white"
-              >
-                FAQ
-              </Link>
+              {/* Other pages - show page links */}
+              {navItems.map(item => (
+                <Link 
+                  key={item.path}
+                  to={item.path}
+                  className={getLinkStyles(item.path)}
+                >
+                  {item.label}
+                </Link>
+              ))}
             </>
           )}
         </div>

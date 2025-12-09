@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Plus, Minus, HelpCircle, Sparkles } from 'lucide-react';
+import { Plus, Minus, HelpCircle } from 'lucide-react';
 
 const FAQ = ({ t, isDark, theme }) => {
   const [openIndex, setOpenIndex] = useState(null);
@@ -31,20 +31,13 @@ const FAQ = ({ t, isDark, theme }) => {
             <HelpCircle size={40} className="text-white" />
           </div>
           
-          <h1 className="text-5xl md:text-7xl font-black bg-clip-text text-transparent bg-gradient-to-r from-[#af936f] via-[#c9a97a] to-[#af936f] animate-gradient">
+          <h1 className={`text-5xl md:text-7xl font-black tracking-tight ${isDark ? 'text-white' : 'text-zinc-900'}`}>
             {t.faq.title}
           </h1>
           
           <p className={`text-lg md:text-xl max-w-2xl mx-auto ${theme.textMuted}`}>
             {t.faq.subtitle}
           </p>
-          
-          {/* Decoración */}
-          <div className="flex justify-center gap-2 mt-8">
-            <Sparkles className="text-[#af936f] animate-pulse" size={24} />
-            <Sparkles className="text-[#c9a97a] animate-pulse delay-100" size={20} />
-            <Sparkles className="text-[#af936f] animate-pulse delay-200" size={24} />
-          </div>
         </div>
 
         {/* Grid de FAQs */}
@@ -127,24 +120,23 @@ const FAQ = ({ t, isDark, theme }) => {
           ))}
         </div>
 
-        {/* Call to action al final */}
+        {/* Call to action al final - Con box pero texto simplificado */}
         <div className={`mt-20 text-center p-10 rounded-3xl border-2 ${
           isDark 
             ? 'bg-gradient-to-br from-[#1e293b] to-[#0f172a] border-zinc-700'
             : 'bg-gradient-to-br from-zinc-50 to-white border-zinc-200'
         }`}>
-          <h3 className="text-2xl md:text-3xl font-bold mb-4">
-            {t.faq.stillHaveQuestions}
+          <h3 className={`text-2xl md:text-3xl font-bold mb-4 ${isDark ? 'text-white' : 'text-zinc-900'}`}>
+            ¿No encontraste lo que buscabas?
           </h3>
-          <p className={`${theme.textMuted} mb-6 text-lg`}>
-            {t.faq.contactUs}
+          <p className={`${theme.textMuted} mb-8 text-lg`}>
+            Nuestro equipo está listo para ayudarte
           </p>
           <a
-            href="#contact"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-[#af936f] to-[#8f7657] text-white font-bold rounded-xl hover:scale-105 transition-transform duration-300 shadow-lg hover:shadow-xl"
+            href="/#contact"
+            className="inline-block px-8 py-4 bg-gradient-to-r from-[#af936f] to-[#8f7657] text-white font-bold rounded-xl hover:scale-105 transition-transform duration-300 shadow-lg hover:shadow-xl"
           >
-            {t.faq.getInTouch}
-            <Sparkles size={20} />
+            Ir a Contacto
           </a>
         </div>
       </div>
@@ -159,20 +151,6 @@ const FAQ = ({ t, isDark, theme }) => {
             opacity: 1;
             transform: translateY(0);
           }
-        }
-
-        @keyframes gradient {
-          0%, 100% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-        }
-
-        .animate-gradient {
-          background-size: 200% auto;
-          animation: gradient 3s ease infinite;
         }
 
         .animate-bounce-slow {
@@ -190,14 +168,6 @@ const FAQ = ({ t, isDark, theme }) => {
           to {
             opacity: 1;
           }
-        }
-
-        .delay-100 {
-          animation-delay: 0.1s;
-        }
-
-        .delay-200 {
-          animation-delay: 0.2s;
         }
       `}</style>
     </div>

@@ -12,6 +12,7 @@ export default {
       },
       animation: {
         'marquee': 'marquee 30s linear infinite',
+        'bounce-slow': 'bounce 3s ease-in-out infinite',
       },
       keyframes: {
         marquee: {

@@ -13,7 +13,9 @@ import HomePage from './components/HomePage';
 import Dashboard from './components/Dashboard';
 import Pricing from './components/Pricing';
 import Footer from './components/Footer';
+import WhatsAppButton from './components/WhatsAppButton';
 import FAQPage from './components/FAQ';
+import LegalPage from './components/Legal';
 import HANDICAPP_KNOWLEDGE from './handicappKnowledgeBase';
 
 /**
@@ -116,7 +118,7 @@ const I18N = {
   es: {
     lang_code: "ES",
     nav: { system: "ECOSISTEMA", labs: "IA LABS", pricing: "PLANES", contact: "CONTACTO", login: "INGRESAR" },
-    hero: { pill: "HANDICAPP", line1: "INSTINTO", line2: "DIGITAL", desc: "La plataforma operativa definitiva para haras de alto rendimiento. Fusionamos la tradición ecuestre con inteligencia artificial predictiva.", cta: "Empezar Prueba", video: "Ver Film" },
+    hero: { pill: "HANDICAPP", line1: "PLATAFORMA", line2: "ECUESTRE", desc: "De papeles a datos. De intuición a inteligencia. La plataforma ecuestre que escala con vos, desde un caballo hasta tu haras completo.", cta: "Conocer Más", video: "Hablar con Ventas" },
     roles: {
       title: "UNA PLATAFORMA, MÚLTIPLES VISIONES",
       r1: "Propietario", r1_d: "Recibe videos y reportes de tus caballos en tiempo real. Transparencia total sobre tu inversión.",
@@ -131,7 +133,7 @@ const I18N = {
     },
     trust: { title: "CONFIANZA", desc: "Los líderes de la industria ya corren con nosotros.", quote: "Handicapp transformó nuestra operación. Dejamos de perder tiempo en papeles.", author: "Roberto Álvarez, Director Haras El Paraíso" },
     workflow: { title: "EL FLUJO PERFECTO", step1_t: "Captura de Campo", step1_d: "Veterinarios y petiseros registran datos vitales en segundos, incluso sin señal.", step2_t: "Sincronización Neural", step2_d: "Nuestra IA procesa la información, detecta anomalías y actualiza el historial clínico.", step3_t: "Impacto Inmediato", step3_d: "El propietario recibe una notificación enriquecida con video y diagnóstico en tiempo real." },
-    labs: { title: "Inteligencia Hípica", desc: "Motores de IA generativa entrenados con datos de campeones.", input_ph: "Ej: ¿Cómo funciona Handicapp?", btn: "Consultar IA", chat_ph: "Consulta veterinaria...", disclaimer: "IA Beta." },
+    labs: { title: "Asistente IA", desc: "Pregunta lo que quieras saber de Handicapp. Gestión ecuestre, veterinaria, planes o cualquier duda.", input_ph: "Ej: ¿Cómo funciona Handicapp?", btn: "Consultar IA", chat_ph: "Consulta veterinaria...", disclaimer: "IA Beta." },
     pricing: { title: "Planes", monthly: "Mes", yearly: "Año", plans: [{ name: "Stable", price: "29", feat: ["10 Caballos", "Básico"] }, { name: "Grand Prix", price: "79", feat: ["50 Caballos", "IA", "App Dueños"] }, { name: "Turf Club", price: "199", feat: ["Ilimitado", "API", "Manager"] }] },
     faq: { 
       title: "Preguntas Frecuentes", 
@@ -165,7 +167,7 @@ const I18N = {
   en: {
     lang_code: "EN",
     nav: { system: "ECOSYSTEM", labs: "AI LABS", pricing: "PRICING", contact: "CONTACT", login: "LOGIN" },
-    hero: { pill: "HANDICAPP OS 2.0", line1: "DIGITAL", line2: "INSTINCT", desc: "The ultimate operating platform for high-performance stud farms.", cta: "Start Trial", video: "Watch Film" },
+    hero: { pill: "HANDICAPP", line1: "EQUESTRIAN", line2: "PLATFORM", desc: "From paperwork to data. From intuition to intelligence. The equestrian platform that scales with you, from one horse to your entire stud farm.", cta: "Learn More", video: "Talk to Sales" },
     roles: {
       title: "ONE PLATFORM, MULTIPLE VISIONS",
       r1: "Owner", r1_d: "Receive videos and reports in real-time. Total transparency on your investment.",
@@ -180,7 +182,7 @@ const I18N = {
     },
     trust: { title: "TRUST", desc: "Industry leaders run with us.", quote: "Handicapp transformed our operation.", author: "Roberto Álvarez, Director El Paraiso Stud" },
     workflow: { title: "THE PERFECT FLOW", step1_t: "Field Capture", step1_d: "Vital data in seconds, offline.", step2_t: "Neural Sync", step2_d: "AI detects anomalies.", step3_t: "Immediate Impact", step3_d: "Auto-notification to owner." },
-    labs: { title: "Equine Intelligence", desc: "AI trained on champion data.", input_ph: "Ex: How does Handicapp work?", btn: "Ask AI", chat_ph: "Vet inquiry...", disclaimer: "AI Beta." },
+    labs: { title: "AI Assistant", desc: "Ask anything you want to know about Handicapp. Equine management, veterinary, plans or any question.", input_ph: "Ex: How does Handicapp work?", btn: "Ask AI", chat_ph: "Vet inquiry...", disclaimer: "AI Beta." },
     pricing: { title: "Pricing", monthly: "Mo", yearly: "Yr", plans: [{ name: "Stable", price: "29", feat: ["10 Horses", "Basic"] }, { name: "Grand Prix", price: "79", feat: ["50 Horses", "AI", "Owner App"] }, { name: "Turf Club", price: "199", feat: ["Unlimited", "API", "Manager"] }] },
     faq: { 
       title: "FAQ", 
@@ -214,7 +216,7 @@ const I18N = {
   de: {
     lang_code: "DE",
     nav: { system: "ÖKOSYSTEM", labs: "KI LABS", pricing: "PREISE", contact: "KONTAKT", login: "ANMELDEN" },
-    hero: { pill: "HANDICAPP OS 2.0", line1: "DIGITALER", line2: "INSTINKT", desc: "Die ultimative Betriebsplattform für Hochleistungsgestüte.", cta: "Starten", video: "Film" },
+    hero: { pill: "HANDICAPP", line1: "PFERDE", line2: "PLATTFORM", desc: "Von Papier zu Daten. Von Intuition zu Intelligenz. Die Pferdeplattform, die mit dir wächst, von einem Pferd bis zu deinem kompletten Gestüt.", cta: "Mehr Erfahren", video: "Verkauf Kontaktieren" },
     roles: {
       title: "EINE PLATTFORM, MEHRERE VISIONEN",
       r1: "Besitzer", r1_d: "Erhalten Sie Videos und Berichte in Echtzeit. Totale Transparenz.",
@@ -229,7 +231,7 @@ const I18N = {
     },
     trust: { title: "VERTRAUEN", desc: "Branchenführer vertrauen uns.", quote: "Handicapp hat uns verändert.", author: "Roberto Álvarez, Direktor Gestüt El Paraíso" },
     workflow: { title: "PERFEKTER ABLAUF", step1_t: "Felderfassung", step1_d: "Daten in Sekunden, offline.", step2_t: "Neuronale Sync", step2_d: "KI erkennt Anomalien.", step3_t: "Sofortige Wirkung", step3_d: "Auto-Benachrichtigung." },
-    labs: { title: "Pferde-Intelligenz", desc: "KI trainiert mit Champions.", input_ph: "Wie funktioniert Handicapp?", btn: "KI Fragen", chat_ph: "Tierarztfrage...", disclaimer: "KI Beta." },
+    labs: { title: "KI-Assistent", desc: "Fragen Sie alles über Handicapp. Pferdemanagement, Tierarzt, Pläne oder jede Frage.", input_ph: "Wie funktioniert Handicapp?", btn: "KI Fragen", chat_ph: "Tierarztfrage...", disclaimer: "KI Beta." },
     pricing: { title: "Preise", monthly: "Monat", yearly: "Jahr", plans: [{ name: "Stall", price: "29", feat: ["10 Pferde", "Basis"] }, { name: "Grand Prix", price: "79", feat: ["50 Pferde", "KI", "App"] }, { name: "Turf Club", price: "199", feat: ["Unbegrenzt", "API", "Manager"] }] },
     faq: { 
       title: "FAQ", 
@@ -612,10 +614,13 @@ EJEMPLO MALO: "Handicapp ofrece tres planes de precios diferentes: 1. Plan Stabl
         <div className={`absolute -top-40 -right-40 w-96 h-96 rounded-full blur-[120px] opacity-20 ${theme.accentBg}`}></div>
         <div className="relative z-10 grid lg:grid-cols-2 gap-16">
           <div className="space-y-8">
-            <div><div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider mb-6 ${isDark ? 'bg-[#D1F366] text-black' : 'bg-[#4F46E5] text-white'}`}><Sparkles size={12} fill="currentColor" /> Gemini AI Core</div><h2 className={`text-4xl md:text-5xl font-black mb-4 leading-tight`}>{t.labs.title}</h2><p className={`text-lg ${theme.textMuted}`}>{t.labs.desc}</p></div>
+            <div>
+              <h2 className={`text-4xl md:text-5xl font-black mb-4 leading-tight ${isDark ? 'text-white' : 'text-zinc-900'}`}>{t.labs.title}</h2>
+              <p className={`text-lg ${theme.textMuted}`}>{t.labs.desc}</p>
+            </div>
             <div className="space-y-4">
-              <div className="relative"><input value={prompt} onChange={(e) => setPrompt(e.target.value)} placeholder={t.labs.input_ph} className={`w-full p-5 rounded-xl border outline-none transition-all font-medium ${isDark ? 'bg-black/50 border-zinc-800 text-white focus:border-[#D1F366]' : 'bg-white border-zinc-200 text-zinc-900 focus:border-[#4F46E5]'}`} /><div className="absolute right-4 top-1/2 -translate-y-1/2"><Dna size={20} className={theme.textMuted} /></div></div>
-              <button onClick={handleGen} disabled={loading} className={`w-full py-5 rounded-xl font-bold uppercase tracking-widest transition-all flex items-center justify-center gap-3 ${isDark ? 'bg-white text-black hover:bg-[#D1F366]' : 'bg-black text-white hover:bg-[#4F46E5]'} disabled:opacity-50 disabled:cursor-not-allowed`}>{loading ? <Loader2 className="animate-spin" /> : t.labs.btn} <ArrowRight size={18} /></button>
+              <div className="relative"><input value={prompt} onChange={(e) => setPrompt(e.target.value)} placeholder={t.labs.input_ph} className={`w-full p-5 rounded-xl border outline-none transition-all font-medium ${isDark ? 'bg-black/50 border-zinc-800 text-white focus:border-[#af936f]' : 'bg-white border-zinc-200 text-zinc-900 focus:border-[#af936f]'}`} /><div className="absolute right-4 top-1/2 -translate-y-1/2"><Dna size={20} className={theme.textMuted} /></div></div>
+              <button onClick={handleGen} disabled={loading} className={`w-full py-5 rounded-xl font-bold uppercase tracking-widest transition-all flex items-center justify-center gap-3 ${isDark ? 'bg-white text-black hover:bg-[#af936f] hover:text-white' : 'bg-black text-white hover:bg-[#af936f]'} disabled:opacity-50 disabled:cursor-not-allowed`}>{loading ? <Loader2 className="animate-spin" /> : t.labs.btn} <ArrowRight size={18} /></button>
             </div>
           </div>
           <div className={`rounded-3xl p-8 border ${isDark ? 'bg-black/40 border-zinc-800' : 'bg-zinc-50 border-zinc-200'} min-h-[400px] flex flex-col relative overflow-hidden`}>
@@ -783,7 +788,7 @@ const ContactForm = ({ t, isDark, theme }) => {
              <div><label className="text-xs font-bold uppercase opacity-50 mb-2 block">{t.contact.name}</label><input className={`w-full p-4 rounded-xl border bg-transparent outline-none ${theme.border} focus:border-current`} /></div>
              <div><label className="text-xs font-bold uppercase opacity-50 mb-2 block">{t.contact.email}</label><input className={`w-full p-4 rounded-xl border bg-transparent outline-none ${theme.border} focus:border-current`} /></div>
              <div><label className="text-xs font-bold uppercase opacity-50 mb-2 block">{t.contact.msg}</label><textarea rows={4} className={`w-full p-4 rounded-xl border bg-transparent outline-none ${theme.border} focus:border-current`}></textarea></div>
-             <button disabled={status !== 'idle'} className={`w-full py-5 rounded-xl font-bold uppercase tracking-widest transition-all hover:scale-105 flex items-center justify-center gap-2 ${isDark ? 'bg-white text-black' : 'bg-black text-white'} ${status === 'success' ? 'bg-green-500 text-white' : ''}`}>
+             <button disabled={status !== 'idle'} className={`w-full py-5 rounded-xl font-bold uppercase tracking-widest transition-all hover:scale-105 flex items-center justify-center gap-2 ${status === 'success' ? 'bg-green-500 text-white' : isDark ? 'bg-white text-black' : 'bg-black text-white'}`}>
                {status === 'loading' ? <Loader2 className="animate-spin" /> : status === 'success' ? <><CheckCircle2 /> {t.contact.success}</> : t.contact.btn}
              </button>
           </form>
@@ -886,9 +891,14 @@ function AppContent() {
             <Route path="/faq" element={
               <FAQPage t={t} isDark={isDark} theme={theme} />
             } />
+            
+            <Route path="/legal" element={
+              <LegalPage t={t} isDark={isDark} theme={theme} />
+            } />
           </Routes>
 
           <Footer theme={theme} isDark={isDark} ASSETS={ASSETS} />
+          <WhatsAppButton phoneNumber="5492477357665" isDark={isDark} />
         </>
       )}
     </div>

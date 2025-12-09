@@ -1,7 +1,6 @@
 import React from 'react';
-import { MousePointer2, Play } from 'lucide-react';
 
-const Hero = ({ t, theme, isDark, ASSETS, onVideoOpen }) => {
+const Hero = ({ t, theme, isDark, ASSETS }) => {
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
       <div className="absolute inset-0 z-0 opacity-40 mix-blend-luminosity">
@@ -31,13 +30,7 @@ const Hero = ({ t, theme, isDark, ASSETS, onVideoOpen }) => {
             <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000"></span>
             <span className="relative z-10">{t.hero.cta}</span>
           </a>
-          <button onClick={onVideoOpen} className={`group px-12 py-6 rounded-full font-black text-sm uppercase tracking-widest border-2 transition-all hover:scale-105 flex items-center justify-center gap-3 ${isDark ? 'border-[#af936f] hover:bg-[#af936f]/10' : 'border-[#af936f] hover:bg-[#af936f]/5'}`}>
-            <Play size={18} fill="currentColor" className={`transition-transform group-hover:scale-110 ${theme.accent}`} /> {t.hero.video}
-          </button>
         </div>
-      </div>
-      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce opacity-40">
-        <MousePointer2 size={28} />
       </div>
     </section>
   );

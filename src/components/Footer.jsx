@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer = ({ theme, isDark, ASSETS }) => {
   return (
@@ -28,11 +29,11 @@ const Footer = ({ theme, isDark, ASSETS }) => {
         {/* Copyright */}
         <p className="text-sm opacity-50">© 2026 Handicapp Inc. All rights reserved.</p>
         
-        {/* Links sociales */}
+        {/* Links de contacto y legal */}
         <div className="flex gap-8 text-[11px] font-black tracking-widest">
-          <a href="#" className={`opacity-60 hover:opacity-100 transition-all ${theme.accent} hover:scale-110`}>INSTAGRAM</a>
-          <a href="#" className={`opacity-60 hover:opacity-100 transition-all ${theme.accent} hover:scale-110`}>TWITTER</a>
-          <a href="#" className={`opacity-60 hover:opacity-100 transition-all ${theme.accent} hover:scale-110`}>LEGAL</a>
+          <a href="mailto:info@handicapp.com" className={`opacity-60 hover:opacity-100 transition-all ${theme.accent} hover:scale-110`}>INFO@HANDICAPP.COM</a>
+          <a href="tel:+5492477357665" className={`opacity-60 hover:opacity-100 transition-all ${theme.accent} hover:scale-110`}>+54 9 2477 357665</a>
+          <Link to="/legal" className={`opacity-60 hover:opacity-100 transition-all ${theme.accent} hover:scale-110`}>LEGAL</Link>
         </div>
       </div>
     </footer>
