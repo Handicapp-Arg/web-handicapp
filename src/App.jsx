@@ -117,106 +117,239 @@ const THEME = {
 const I18N = {
   es: {
     lang_code: "ES",
-    nav: { system: "ECOSISTEMA", labs: "IA LABS", pricing: "PLANES", contact: "CONTACTO", login: "INGRESAR" },
-    hero: { pill: "HANDICAPP", line1: "PLATAFORMA", line2: "ECUESTRE", desc: "De papeles a datos. De intuición a inteligencia. La plataforma ecuestre que escala con vos, desde un caballo hasta tu haras completo.", cta: "Conocer Más", video: "Hablar con Ventas" },
+    nav: { system: "PLATAFORMA", labs: "ASISTENTE IA", pricing: "PLANES", contact: "CONTACTO", login: "INGRESAR" },
+    hero: { 
+      pill: "HANDICAPP", 
+      line1: "GESTIÓN ECUESTRE", 
+      line2: "PROFESIONAL", 
+      desc: "Sistema integral para la administración completa de tu actividad ecuestre. Gestiona caballos, salud, competencias, entrenamientos y establecimientos desde un solo lugar.", 
+      cta: "Ver Demo", 
+      video: "Hablar con Ventas" 
+    },
     roles: {
-      title: "UNA PLATAFORMA, MÚLTIPLES VISIONES",
-      r1: "Propietario", r1_d: "Recibe videos y reportes de tus caballos en tiempo real. Transparencia total sobre tu inversión.",
-      r2: "Veterinario", r2_d: "Historial clínico digital unificado. Alertas sanitarias y recordatorios de vacunación automáticos.",
-      r3: "Manager", r3_d: "Control de stock, gestión de personal y finanzas del haras en un solo dashboard.",
-      r4: "Establecimiento", r4_d: "Administra caballos huéspedes, coordina empleados y asigna tareas operativas del día a día."
+      title: "UNA PLATAFORMA, TODOS LOS ROLES",
+      r1: "Propietario", 
+      r1_d: "Accede al perfil completo de tus caballos, historial de salud, competencias y entrenamientos. Mantén el control total de tu inversión.",
+      r2: "Veterinario", 
+      r2_d: "Historia clínica digital completa, calendario de vacunas, recordatorios automáticos y seguimiento médico profesional.",
+      r3: "Manager", 
+      r3_d: "Dashboard central con reportes, gestión de tareas, control de eventos y administración integral del establecimiento.",
+      r4: "Establecimiento", 
+      r4_d: "Administra múltiples caballos, coordina tu equipo con el sistema de tareas y mantén el control de todas las operaciones diarias."
     },
     hotspots: {
-      stock: "Control de Stock", stock_d: "Alertas automáticas cuando el alimento o medicina baja del mínimo.",
-      health: "Estado Físico", health_d: "Monitoreo 24/7 de signos vitales y recuperación post-entreno.",
-      notify: "Notificaciones", notify_d: "Avisos push instantáneos a todo el equipo."
+      stock: "Gestión de Tareas", 
+      stock_d: "Crea, asigna y controla tareas diarias para tu equipo. Sistema completo de gestión de rutinas del establo.",
+      health: "Salud Integral", 
+      health_d: "Historia clínica completa, calendario de vacunas, consultas veterinarias y seguimiento médico continuo.",
+      notify: "Notificaciones Inteligentes", 
+      notify_d: "Recordatorios automáticos de controles veterinarios, eventos próximos y actualizaciones importantes del sistema."
     },
-    trust: { title: "CONFIANZA", desc: "Los líderes de la industria ya corren con nosotros.", quote: "Handicapp transformó nuestra operación. Dejamos de perder tiempo en papeles.", author: "Roberto Álvarez, Director Haras El Paraíso" },
-    workflow: { title: "EL FLUJO PERFECTO", step1_t: "Captura de Campo", step1_d: "Veterinarios y petiseros registran datos vitales en segundos, incluso sin señal.", step2_t: "Sincronización Neural", step2_d: "Nuestra IA procesa la información, detecta anomalías y actualiza el historial clínico.", step3_t: "Impacto Inmediato", step3_d: "El propietario recibe una notificación enriquecida con video y diagnóstico en tiempo real." },
-    labs: { title: "Asistente IA", desc: "Pregunta lo que quieras saber de Handicapp. Gestión ecuestre, veterinaria, planes o cualquier duda.", input_ph: "Ej: ¿Cómo funciona Handicapp?", btn: "Consultar IA", chat_ph: "Consulta veterinaria...", disclaimer: "IA Beta." },
-    pricing: { title: "Planes", monthly: "Mes", yearly: "Año", plans: [{ name: "Stable", price: "29", feat: ["10 Caballos", "Básico"] }, { name: "Grand Prix", price: "79", feat: ["50 Caballos", "IA", "App Dueños"] }, { name: "Turf Club", price: "199", feat: ["Ilimitado", "API", "Manager"] }] },
+    trust: { 
+      title: "CONFIANZA", 
+      desc: "Los principales establecimientos ecuestres de Argentina ya confían en Handicapp.", 
+      quote: "Handicapp transformó nuestra operación. Pasamos de planillas Excel a una gestión profesional y centralizada.", 
+      author: "Roberto Álvarez, Director Haras El Paraíso" 
+    },
+    workflow: { 
+      title: "TU GESTIÓN ECUESTRE EN 3 PASOS", 
+      step1_t: "Registra Todo en un Solo Lugar", 
+      step1_d: "Carga caballos, establecimientos, datos de salud, competencias programadas y sesiones de entrenamiento. Todo organizado y fácil de encontrar.",
+      step2_t: "Controla y Planifica", 
+      step2_d: "Usa el sistema de tareas para coordinar tu equipo, programa eventos en el calendario y genera reportes detallados de rendimiento y salud.",
+      step3_t: "Optimiza con Información", 
+      step3_d: "Dashboard con métricas clave, historial completo de cada caballo y notificaciones inteligentes para tomar mejores decisiones." 
+    },
+    labs: { 
+      title: "Asistente IA", 
+      desc: "Pregunta lo que necesites sobre Handicapp: funcionalidades, gestión ecuestre, planes o cualquier duda.", 
+      input_ph: "Ej: ¿Qué funcionalidades tiene Handicapp?", 
+      btn: "Consultar IA", 
+      chat_ph: "Escribe tu pregunta...", 
+      disclaimer: "IA Beta - Respuestas basadas en información oficial." 
+    },
+    pricing: { 
+      title: "Planes para Cada Necesidad", 
+      monthly: "Mes", 
+      yearly: "Año", 
+      plans: [
+        { 
+          name: "Starter", 
+          price: "29", 
+          feat: ["Hasta 10 Caballos", "Dashboard", "Salud", "Notificaciones", "Soporte Email"] 
+        }, 
+        { 
+          name: "Professional", 
+          price: "79", 
+          feat: ["Hasta 50 Caballos", "Todas las funciones", "Competencias", "Reportes", "Asistente IA", "Soporte Prioritario"] 
+        }, 
+        { 
+          name: "Enterprise", 
+          price: "199", 
+          feat: ["Caballos Ilimitados", "Multi-establecimiento", "API Integración", "Manager dedicado", "Onboarding personalizado", "Soporte 24/7"] 
+        }
+      ] 
+    },
     faq: { 
       title: "Preguntas Frecuentes", 
       subtitle: "Todo lo que necesitas saber sobre Handicapp",
-      q1: "¿Funciona offline?", 
-      a1: "Sí, la aplicación funciona completamente sin conexión. Los veterinarios y el personal pueden registrar datos en campo y todo se sincroniza automáticamente cuando recuperan señal.",
+      q1: "¿Qué incluye Handicapp?", 
+      a1: "Handicapp incluye 12 módulos completos: Dashboard, Notificaciones, Establecimientos, Mis Caballos, Salud, Competencias, Entrenamiento, Eventos, Reportes, Tareas, Configuración y Suscripciones. Todo lo necesario para gestionar tu actividad ecuestre profesionalmente.",
       q2: "¿Puedo migrar mis datos actuales?", 
-      a2: "Absolutamente. Importamos tus datos desde Excel, PDF o cualquier sistema anterior de forma gratuita. Nuestro equipo te asiste en todo el proceso de migración.",
+      a2: "Sí, importamos tus datos desde Excel, planillas o cualquier sistema anterior sin costo. Nuestro equipo te asiste personalmente en todo el proceso de migración.",
       q3: "¿Qué tan seguro es Handicapp?", 
-      a3: "Utilizamos encriptación bancaria AES-256 y servidores certificados SOC2. Tus datos están más seguros que en cualquier archivo físico.",
+      a3: "Utilizamos encriptación AES-256 (nivel bancario) y servidores certificados. Tus datos están protegidos con los más altos estándares de seguridad y disponibles 24/7.",
       q4: "¿Cuánto cuesta realmente?", 
-      a4: "Los planes comienzan desde $29/mes para hasta 10 caballos. Sin costos ocultos, sin permanencia. Puedes cambiar o cancelar en cualquier momento.",
-      q5: "¿Qué incluye la IA predictiva?", 
-      a5: "Nuestros algoritmos analizan patrones de salud, rendimiento y predicen problemas antes de que ocurran. Detectamos anomalías en signos vitales y sugerimos acciones preventivas.",
+      a4: "Planes desde $29/mes para hasta 10 caballos. El plan Professional ($79/mes) incluye todas las funciones para hasta 50 caballos. Sin costos ocultos, sin permanencia.",
+      q5: "¿Qué módulos de gestión tiene?", 
+      a5: "Gestión completa de caballos, salud veterinaria, competencias deportivas, entrenamientos, calendario de eventos, sistema de tareas para tu equipo, reportes detallados y administración de establecimientos.",
       q6: "¿Ofrecen soporte técnico?", 
-      a6: "Sí, soporte por chat, email y teléfono incluido en todos los planes. Tiempo de respuesta promedio: 2 horas. Para planes enterprise ofrecemos soporte 24/7.",
+      a6: "Sí, todos los planes incluyen soporte. El plan Professional tiene soporte prioritario y el Enterprise cuenta con manager dedicado y atención 24/7.",
       q7: "¿Se integra con otros sistemas?", 
-      a7: "Sí, tenemos API abierta y conectores para sistemas contables, veterinarios y de gestión más populares. También podemos desarrollar integraciones personalizadas.",
+      a7: "El plan Enterprise incluye API para integraciones personalizadas con sistemas contables, veterinarios y de gestión. También podemos desarrollar conectores específicos.",
       q8: "¿Qué pasa con mis datos si cancelo?", 
-      a8: "Tienes control total. Puedes exportar toda tu información en cualquier momento en formatos estándar (CSV, PDF, JSON). Nunca retenemos tus datos.",
-      q9: "¿Hay app móvil?", 
-      a9: "Sí, aplicaciones nativas para iOS y Android. Diseñadas para uso en campo con sincronización automática y modo offline completo.",
+      a8: "Tienes control total de tu información. Puedes exportar todos tus datos en formatos estándar (CSV, PDF, Excel) en cualquier momento. Nunca retenemos tu información.",
+      q9: "¿Cómo funciona el sistema de tareas?", 
+      a9: "Puedes crear tareas, asignarlas a miembros de tu equipo, establecer fechas límite y marcarlas como completas. Ideal para coordinar las rutinas diarias del establo.",
       q10: "¿Cuánto tiempo toma implementarlo?", 
-      a10: "La mayoría de nuestros clientes están operativos en menos de 48 horas. Incluimos onboarding personalizado, capacitación del equipo y acompañamiento durante el primer mes.",
+      a10: "La mayoría de nuestros clientes están operativos en 24-48 horas. Incluimos onboarding personalizado, capacitación del equipo y acompañamiento durante el primer mes de uso.",
       stillHaveQuestions: "¿Aún tienes dudas?",
-      contactUs: "Nuestro equipo está listo para ayudarte",
+      contactUs: "Nuestro equipo está listo para ayudarte y responder todas tus preguntas",
       getInTouch: "Contactar Ahora"
     },
-    contact: { title: "¿Listo?", subtitle: "Agenda demo.", name: "Nombre", email: "Email", msg: "Mensaje", btn: "Enviar", success: "¡Mensaje Enviado!" }
+    contact: { 
+      title: "¿Listo para transformar tu gestión?", 
+      subtitle: "Agenda una demo personalizada y descubre cómo Handicapp puede optimizar tu operación.", 
+      name: "Nombre completo", 
+      email: "Email", 
+      msg: "Cuéntanos sobre tu establecimiento y necesidades", 
+      btn: "Solicitar Demo", 
+      success: "¡Mensaje Enviado! Te contactaremos pronto." 
+    }
   },
   en: {
     lang_code: "EN",
-    nav: { system: "ECOSYSTEM", labs: "AI LABS", pricing: "PRICING", contact: "CONTACT", login: "LOGIN" },
-    hero: { pill: "HANDICAPP", line1: "EQUESTRIAN", line2: "PLATFORM", desc: "From paperwork to data. From intuition to intelligence. The equestrian platform that scales with you, from one horse to your entire stud farm.", cta: "Learn More", video: "Talk to Sales" },
+    nav: { system: "PLATFORM", labs: "AI ASSISTANT", pricing: "PRICING", contact: "CONTACT", login: "LOGIN" },
+    hero: { 
+      pill: "HANDICAPP", 
+      line1: "PROFESSIONAL", 
+      line2: "EQUESTRIAN MANAGEMENT", 
+      desc: "Comprehensive system for complete equestrian activity management. Manage horses, health, competitions, training and facilities from one place.", 
+      cta: "View Demo", 
+      video: "Talk to Sales" 
+    },
     roles: {
-      title: "ONE PLATFORM, MULTIPLE VISIONS",
-      r1: "Owner", r1_d: "Receive videos and reports in real-time. Total transparency on your investment.",
-      r2: "Veterinarian", r2_d: "Unified digital medical history. Health alerts and auto-vaccination reminders.",
-      r3: "Manager", r3_d: "Stock control, staff management, and farm finances in one dashboard.",
-      r4: "Facility", r4_d: "Manage guest horses, coordinate employees and assign day-to-day operational tasks."
+      title: "ONE PLATFORM, ALL ROLES",
+      r1: "Owner", 
+      r1_d: "Access complete horse profiles, health history, competitions and training. Maintain total control of your investment.",
+      r2: "Veterinarian", 
+      r2_d: "Complete digital medical history, vaccination calendar, automatic reminders and professional medical tracking.",
+      r3: "Manager", 
+      r3_d: "Central dashboard with reports, task management, event control and comprehensive facility administration.",
+      r4: "Facility", 
+      r4_d: "Manage multiple horses, coordinate your team with the task system and maintain control of all daily operations."
     },
     hotspots: {
-      stock: "Stock Control", stock_d: "Auto-alerts when feed or meds go below minimum.",
-      health: "Physical Status", health_d: "24/7 monitoring of vitals and recovery.",
-      notify: "Notifications", notify_d: "Instant push alerts to the whole team."
+      stock: "Task Management", 
+      stock_d: "Create, assign and control daily tasks for your team. Complete stable routine management system.",
+      health: "Comprehensive Health", 
+      health_d: "Complete medical history, vaccination calendar, veterinary consultations and continuous medical tracking.",
+      notify: "Smart Notifications", 
+      notify_d: "Automatic veterinary check-up reminders, upcoming events and important system updates."
     },
-    trust: { title: "TRUST", desc: "Industry leaders run with us.", quote: "Handicapp transformed our operation.", author: "Roberto Álvarez, Director El Paraiso Stud" },
-    workflow: { title: "THE PERFECT FLOW", step1_t: "Field Capture", step1_d: "Vital data in seconds, offline.", step2_t: "Neural Sync", step2_d: "AI detects anomalies.", step3_t: "Immediate Impact", step3_d: "Auto-notification to owner." },
-    labs: { title: "AI Assistant", desc: "Ask anything you want to know about Handicapp. Equine management, veterinary, plans or any question.", input_ph: "Ex: How does Handicapp work?", btn: "Ask AI", chat_ph: "Vet inquiry...", disclaimer: "AI Beta." },
-    pricing: { title: "Pricing", monthly: "Mo", yearly: "Yr", plans: [{ name: "Stable", price: "29", feat: ["10 Horses", "Basic"] }, { name: "Grand Prix", price: "79", feat: ["50 Horses", "AI", "Owner App"] }, { name: "Turf Club", price: "199", feat: ["Unlimited", "API", "Manager"] }] },
+    trust: { 
+      title: "TRUST", 
+      desc: "Argentina's leading equestrian facilities already trust Handicapp.", 
+      quote: "Handicapp transformed our operation. We went from Excel spreadsheets to professional and centralized management.", 
+      author: "Roberto Álvarez, Director El Paraiso Stud" 
+    },
+    workflow: { 
+      title: "YOUR EQUESTRIAN MANAGEMENT IN 3 STEPS", 
+      step1_t: "Register Everything in One Place", 
+      step1_d: "Upload horses, facilities, health data, scheduled competitions and training sessions. Everything organized and easy to find.",
+      step2_t: "Control and Plan", 
+      step2_d: "Use the task system to coordinate your team, schedule events in the calendar and generate detailed performance and health reports.",
+      step3_t: "Optimize with Information", 
+      step3_d: "Dashboard with key metrics, complete history of each horse and smart notifications to make better decisions." 
+    },
+    labs: { 
+      title: "AI Assistant", 
+      desc: "Ask what you need about Handicapp: features, equestrian management, plans or any question.", 
+      input_ph: "Ex: What features does Handicapp have?", 
+      btn: "Ask AI", 
+      chat_ph: "Write your question...", 
+      disclaimer: "AI Beta - Answers based on official information." 
+    },
+    pricing: { 
+      title: "Plans for Every Need", 
+      monthly: "Mo", 
+      yearly: "Yr", 
+      plans: [
+        { 
+          name: "Starter", 
+          price: "29", 
+          feat: ["Up to 10 Horses", "Dashboard", "Health", "Notifications", "Email Support"] 
+        }, 
+        { 
+          name: "Professional", 
+          price: "79", 
+          feat: ["Up to 50 Horses", "All Features", "Competitions", "Reports", "AI Assistant", "Priority Support"] 
+        }, 
+        { 
+          name: "Enterprise", 
+          price: "199", 
+          feat: ["Unlimited Horses", "Multi-facility", "API Integration", "Dedicated Manager", "Custom Onboarding", "24/7 Support"] 
+        }
+      ] 
+    },
     faq: { 
       title: "FAQ", 
       subtitle: "Everything you need to know about Handicapp",
-      q1: "Does it work offline?", 
-      a1: "Yes, the app works completely offline. Vets and staff can record data in the field and everything syncs automatically when they reconnect.",
+      q1: "What does Handicapp include?", 
+      a1: "Handicapp includes 12 complete modules: Dashboard, Notifications, Facilities, My Horses, Health, Competitions, Training, Events, Reports, Tasks, Settings and Subscriptions. Everything needed to manage your equestrian activity professionally.",
       q2: "Can I migrate my current data?", 
-      a2: "Absolutely. We import your data from Excel, PDF or any previous system for free. Our team assists you throughout the migration process.",
+      a2: "Yes, we import your data from Excel, spreadsheets or any previous system at no cost. Our team personally assists you throughout the migration process.",
       q3: "How secure is Handicapp?", 
-      a3: "We use bank-grade AES-256 encryption and SOC2 certified servers. Your data is safer than any physical file.",
+      a3: "We use AES-256 encryption (bank-level) and certified servers. Your data is protected with the highest security standards and available 24/7.",
       q4: "What does it really cost?", 
-      a4: "Plans start from $29/month for up to 10 horses. No hidden costs, no commitment. You can change or cancel anytime.",
-      q5: "What does predictive AI include?", 
-      a5: "Our algorithms analyze health and performance patterns to predict issues before they occur. We detect vital sign anomalies and suggest preventive actions.",
+      a4: "Plans from $29/month for up to 10 horses. Professional plan ($79/month) includes all features for up to 50 horses. No hidden costs, no commitment.",
+      q5: "What management modules does it have?", 
+      a5: "Complete horse management, veterinary health, sports competitions, training, event calendar, team task system, detailed reports and facility administration.",
       q6: "Do you offer technical support?", 
-      a6: "Yes, chat, email and phone support included in all plans. Average response time: 2 hours. Enterprise plans get 24/7 support.",
+      a6: "Yes, all plans include support. Professional plan has priority support and Enterprise has dedicated manager and 24/7 attention.",
       q7: "Does it integrate with other systems?", 
-      a7: "Yes, we have open API and connectors for popular accounting, veterinary and management systems. We can also develop custom integrations.",
+      a7: "Enterprise plan includes API for custom integrations with accounting, veterinary and management systems. We can also develop specific connectors.",
       q8: "What happens to my data if I cancel?", 
-      a8: "You have full control. You can export all your information anytime in standard formats (CSV, PDF, JSON). We never retain your data.",
-      q9: "Is there a mobile app?", 
-      a9: "Yes, native apps for iOS and Android. Designed for field use with automatic sync and full offline mode.",
+      a8: "You have full control of your information. You can export all your data in standard formats (CSV, PDF, Excel) at any time. We never retain your information.",
+      q9: "How does the task system work?", 
+      a9: "You can create tasks, assign them to team members, set deadlines and mark them as complete. Ideal for coordinating daily stable routines.",
       q10: "How long does implementation take?", 
-      a10: "Most clients are operational in less than 48 hours. We include personalized onboarding, team training and support during the first month.",
+      a10: "Most of our clients are operational within 24-48 hours. We include personalized onboarding, team training and support during the first month of use.",
       stillHaveQuestions: "Still have questions?",
-      contactUs: "Our team is ready to help",
+      contactUs: "Our team is ready to help you and answer all your questions",
       getInTouch: "Contact Now"
     },
-    contact: { title: "Ready?", subtitle: "Book demo.", name: "Name", email: "Email", msg: "Message", btn: "Send", success: "Message Sent!" }
+    contact: { 
+      title: "Ready to transform your management?", 
+      subtitle: "Schedule a personalized demo and discover how Handicapp can optimize your operation.", 
+      name: "Full name", 
+      email: "Email", 
+      msg: "Tell us about your facility and needs", 
+      btn: "Request Demo", 
+      success: "Message Sent! We'll contact you soon." 
+    }
   },
   de: {
     lang_code: "DE",
-    nav: { system: "ÖKOSYSTEM", labs: "KI LABS", pricing: "PREISE", contact: "KONTAKT", login: "ANMELDEN" },
-    hero: { pill: "HANDICAPP", line1: "PFERDE", line2: "PLATTFORM", desc: "Von Papier zu Daten. Von Intuition zu Intelligenz. Die Pferdeplattform, die mit dir wächst, von einem Pferd bis zu deinem kompletten Gestüt.", cta: "Mehr Erfahren", video: "Verkauf Kontaktieren" },
+    nav: { system: "PLATTFORM", labs: "KI-ASSISTENT", pricing: "PREISE", contact: "KONTAKT", login: "ANMELDEN" },
+    hero: { 
+      pill: "HANDICAPP", 
+      line1: "PROFESSIONELLE", 
+      line2: "PFERDEHALTUNG", 
+      desc: "Umfassendes System für komplette Pferdehaltungsverwaltung. Verwalten Sie Pferde, Gesundheit, Wettbewerbe, Training und Einrichtungen an einem Ort.", 
+      cta: "Demo Ansehen", 
+      video: "Vertrieb Kontaktieren" 
+    },
     roles: {
       title: "EINE PLATTFORM, MEHRERE VISIONEN",
       r1: "Besitzer", r1_d: "Erhalten Sie Videos und Berichte in Echtzeit. Totale Transparenz.",
@@ -225,42 +358,59 @@ const I18N = {
       r4: "Einrichtung", r4_d: "Verwalten Sie Gastpferde, koordinieren Sie Mitarbeiter und weisen Sie tägliche Aufgaben zu."
     },
     hotspots: {
-      stock: "Bestandskontrolle", stock_d: "Auto-Warnungen bei niedrigem Bestand.",
-      health: "Physischer Status", health_d: "24/7 Überwachung der Vitalwerte.",
-      notify: "Benachrichtigungen", notify_d: "Sofortige Push-Benachrichtigungen."
+      stock: "Aufgabenverwaltung", stock_d: "Aufgabensystem mit Verantwortungszuweisung und Stallroutinenkontrolle.",
+      health: "Krankenakte", health_d: "Vollständige medizinische Überwachung, Impfkalender und tierärztliche Kontrollen.",
+      notify: "Benachrichtigungen", notify_d: "Automatische Gesundheitserinnerungen, Ereignisse und Systemaktualisierungen."
     },
     trust: { title: "VERTRAUEN", desc: "Branchenführer vertrauen uns.", quote: "Handicapp hat uns verändert.", author: "Roberto Álvarez, Direktor Gestüt El Paraíso" },
-    workflow: { title: "PERFEKTER ABLAUF", step1_t: "Felderfassung", step1_d: "Daten in Sekunden, offline.", step2_t: "Neuronale Sync", step2_d: "KI erkennt Anomalien.", step3_t: "Sofortige Wirkung", step3_d: "Auto-Benachrichtigung." },
+    workflow: { title: "KOMPLETTE VERWALTUNG", step1_t: "Registrieren & Organisieren", step1_d: "Pferdeprofile, Einrichtungen, Gesundheit, Wettbewerbe und Training an einem Ort verwalten.", step2_t: "Kontrollieren & Planen", step2_d: "Aufgabensystem, automatische Erinnerungen, Ereigniskalender und detaillierte Leistungsberichte.", step3_t: "Entscheidungen Treffen", step3_d: "Dashboard mit wichtigen Metriken, vollständiger Historie und intelligenten Benachrichtigungen." },
     labs: { title: "KI-Assistent", desc: "Fragen Sie alles über Handicapp. Pferdemanagement, Tierarzt, Pläne oder jede Frage.", input_ph: "Wie funktioniert Handicapp?", btn: "KI Fragen", chat_ph: "Tierarztfrage...", disclaimer: "KI Beta." },
-    pricing: { title: "Preise", monthly: "Monat", yearly: "Jahr", plans: [{ name: "Stall", price: "29", feat: ["10 Pferde", "Basis"] }, { name: "Grand Prix", price: "79", feat: ["50 Pferde", "KI", "App"] }, { name: "Turf Club", price: "199", feat: ["Unbegrenzt", "API", "Manager"] }] },
+    pricing: { 
+      title: "Pläne für Jeden Bedarf", 
+      monthly: "Monat", 
+      yearly: "Jahr", 
+      plans: [
+        { name: "Starter", price: "29", feat: ["Bis 10 Pferde", "Dashboard", "Gesundheit", "Benachrichtigungen", "Email Support"] }, 
+        { name: "Professional", price: "79", feat: ["Bis 50 Pferde", "Alle Funktionen", "Wettbewerbe", "Berichte", "KI-Assistent", "Prioritäts-Support"] }, 
+        { name: "Enterprise", price: "199", feat: ["Unbegrenzte Pferde", "Mehrere Einrichtungen", "API Integration", "Dedizierter Manager", "Persönliches Onboarding", "24/7 Support"] }
+      ] 
+    },
     faq: { 
       title: "FAQ", 
       subtitle: "Alles, was Sie über Handicapp wissen müssen",
-      q1: "Funktioniert es offline?", 
-      a1: "Ja, die App funktioniert komplett offline. Tierärzte und Personal können Daten im Feld erfassen und alles wird automatisch synchronisiert.",
+      q1: "Was beinhaltet Handicapp?", 
+      a1: "Handicapp ist eine komplette Lösung mit 12 Modulen: Dashboard, Benachrichtigungen, Einrichtungen, Meine Pferde, Gesundheit, Wettbewerbe, Training, Ereignisse, Berichte, Aufgaben, Konfiguration und Abonnements. Alle Tools, die Sie für professionelles Management benötigen.",
       q2: "Kann ich meine aktuellen Daten migrieren?", 
       a2: "Auf jeden Fall. Wir importieren Ihre Daten aus Excel, PDF oder jedem vorherigen System kostenlos. Unser Team unterstützt Sie während des gesamten Migrationsprozesses.",
       q3: "Wie sicher ist Handicapp?", 
-      a3: "Wir verwenden AES-256-Verschlüsselung in Bankqualität und SOC2-zertifizierte Server. Ihre Daten sind sicherer als jede physische Datei.",
+      a3: "Wir verwenden moderne Verschlüsselung und sichere Server. Ihre Daten sind sicherer als jede physische Datei. Wir befolgen strenge Datenschutz- und Sicherheitsprotokolle.",
       q4: "Was kostet es wirklich?", 
-      a4: "Pläne beginnen ab 29€/Monat für bis zu 10 Pferde. Keine versteckten Kosten, keine Bindung. Sie können jederzeit ändern oder kündigen.",
-      q5: "Was beinhaltet die prädiktive KI?", 
-      a5: "Unsere Algorithmen analysieren Gesundheits- und Leistungsmuster, um Probleme vorherzusagen, bevor sie auftreten. Wir erkennen Anomalien bei Vitalwerten.",
+      a4: "Pläne beginnen ab 29€/Monat für bis zu 10 Pferde. Keine versteckten Kosten, keine Bindung. Sie können jederzeit Ihren Plan ändern oder kündigen.",
+      q5: "Welche Verwaltungsmodule sind enthalten?", 
+      a5: "Sie haben Zugriff auf: Zentral-Dashboard mit wichtigen Metriken, Einrichtungsverwaltung, Komplettes Pferdeprofil, Krankenakten, Wettbewerbskalender, Trainingsplanung, Ereignisverwaltung und detaillierte Berichte.",
       q6: "Bieten Sie technischen Support an?", 
-      a6: "Ja, Chat-, E-Mail- und Telefonsupport in allen Plänen enthalten. Durchschnittliche Antwortzeit: 2 Stunden. Enterprise-Pläne erhalten 24/7-Support.",
+      a6: "Ja, E-Mail- und Chat-Support in allen Plänen enthalten. Durchschnittliche Antwortzeit: 2 Stunden. Professional- und Enterprise-Pläne erhalten Prioritäts-Support.",
       q7: "Integriert es sich mit anderen Systemen?", 
-      a7: "Ja, wir haben eine offene API und Konnektoren für beliebte Buchhaltungs-, Veterinär- und Verwaltungssysteme. Wir können auch benutzerdefinierte Integrationen entwickeln.",
+      a7: "Ja, wir haben eine API und Konnektoren für beliebte Verwaltungs- und Buchhaltungssysteme. Enterprise-Pläne können benutzerdefinierte Integrationen anfordern.",
       q8: "Was passiert mit meinen Daten, wenn ich kündige?", 
-      a8: "Sie haben die volle Kontrolle. Sie können alle Ihre Informationen jederzeit in Standardformaten (CSV, PDF, JSON) exportieren. Wir behalten Ihre Daten niemals.",
-      q9: "Gibt es eine mobile App?", 
-      a9: "Ja, native Apps für iOS und Android. Entwickelt für den Feldeinsatz mit automatischer Synchronisation und vollständigem Offline-Modus.",
+      a8: "Sie haben die volle Kontrolle. Sie können alle Ihre Informationen jederzeit in Standardformaten (CSV, PDF) exportieren. Wir behalten Ihre Daten niemals ohne Ihre Zustimmung.",
+      q9: "Wie funktioniert das Aufgabensystem?", 
+      a9: "Das Aufgabenmodul ermöglicht es Ihnen, tägliche Routinen zu erstellen, Verantwortliche zuzuweisen und den Fortschritt in Echtzeit zu verfolgen. Ideal für die Koordination von Stallteams und sicherzustellen, dass keine Pflege vergessen wird.",
       q10: "Wie lange dauert die Implementierung?", 
-      a10: "Die meisten Kunden sind in weniger als 48 Stunden einsatzbereit. Wir bieten personalisiertes Onboarding, Teamschulung und Support im ersten Monat.",
+      a10: "Die meisten Kunden sind in weniger als 48 Stunden einsatzbereit. Wir bieten personalisiertes Onboarding, Teamschulung und Support im ersten Monat kostenlos.",
       stillHaveQuestions: "Haben Sie noch Fragen?",
       contactUs: "Unser Team ist bereit zu helfen",
       getInTouch: "Jetzt Kontaktieren"
     },
-    contact: { title: "Bereit?", subtitle: "Demo buchen.", name: "Name", email: "Email", msg: "Nachricht", btn: "Senden", success: "Gesendet!" }
+    contact: { 
+      title: "Bereit, Ihre Verwaltung zu transformieren?", 
+      subtitle: "Vereinbaren Sie eine persönliche Demo und entdecken Sie, wie Handicapp Ihren Betrieb optimieren kann.", 
+      name: "Vollständiger Name", 
+      email: "Email", 
+      msg: "Erzählen Sie uns von Ihrer Einrichtung und Ihren Anforderungen", 
+      btn: "Demo Anfragen", 
+      success: "Nachricht Gesendet! Wir werden uns bald bei Ihnen melden." 
+    }
   }
 };
 
@@ -553,7 +703,7 @@ const VerticalWorkflow = ({ t, isDark, theme }) => {
       <div className="max-w-7xl mx-auto px-6">
         <h2 className="text-4xl md:text-6xl font-black mb-24 text-center">{t.workflow.title}</h2>
         <div className="flex flex-col md:flex-row gap-20">
-          <div className="md:w-1/2 hidden md:block"><div className="sticky top-32 h-[500px] w-full"><div className={`relative w-full h-full rounded-[2.5rem] border ${theme.border} ${theme.glass} overflow-hidden shadow-2xl`}><div className={`absolute inset-0 opacity-20 transition-colors duration-700 ${activeStep === 0 ? 'bg-zinc-500' : activeStep === 1 ? 'bg-[#D1F366]' : 'bg-[#4F46E5]'}`}></div><div className="absolute inset-0 flex flex-col items-center justify-center p-12 text-center"><div className={`mb-8 p-8 rounded-full border-2 ${theme.border} transition-all duration-500 transform ${activeStep === 0 ? 'scale-100 rotate-0' : activeStep === 1 ? 'scale-110 rotate-180' : 'scale-100 rotate-0'}`}>{activeStep === 0 && <Radio size={64} className="animate-pulse" />}{activeStep === 1 && <Cpu size={64} className={theme.accent} />}{activeStep === 2 && <User size={64} className={isDark ? 'text-white' : 'text-black'} />}</div><h3 className="text-2xl font-black mb-4 uppercase tracking-widest">{activeStep === 0 ? "DATA_INPUT" : activeStep === 1 ? "NEURAL_PROCESSING" : "CLIENT_DELIVERY"}</h3></div></div></div></div>
+          <div className="md:w-1/2 hidden md:block"><div className="sticky top-32 h-[500px] w-full"><div className={`relative w-full h-full rounded-[2.5rem] border ${theme.border} ${theme.glass} overflow-hidden shadow-2xl`}><div className={`absolute inset-0 opacity-20 transition-colors duration-700 ${activeStep === 0 ? 'bg-zinc-500' : activeStep === 1 ? 'bg-[#D1F366]' : 'bg-[#4F46E5]'}`}></div><div className="absolute inset-0 flex flex-col items-center justify-center p-12 text-center"><div className={`mb-8 p-8 rounded-full border-2 ${theme.border} transition-all duration-500 transform ${activeStep === 0 ? 'scale-100 rotate-0' : activeStep === 1 ? 'scale-110 rotate-180' : 'scale-100 rotate-0'}`}>{activeStep === 0 && <Radio size={64} className="animate-pulse" />}{activeStep === 1 && <Cpu size={64} className={theme.accent} />}{activeStep === 2 && <User size={64} className={isDark ? 'text-white' : 'text-black'} />}</div><h3 className="text-2xl font-black mb-4 uppercase tracking-widest">{activeStep === 0 ? "ORGANIZE" : activeStep === 1 ? "CONTROL" : "OPTIMIZE"}</h3></div></div></div></div>
           <div className="md:w-1/2 space-y-[60vh] py-[10vh]">{steps.map((step, i) => (<div key={i} data-index={i} ref={el => stepsRef.current[i] = el} className={`transition-all duration-500 ${activeStep === i ? 'opacity-100 translate-x-0' : 'opacity-30 translate-x-10'}`}><div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 shadow-lg ${theme.accentBg} text-white`}><step.icon size={32} /></div><h3 className="text-4xl font-bold mb-4">{step.title}</h3><p className={`text-xl leading-relaxed ${theme.textMuted}`}>{step.desc}</p></div>))}</div>
         </div>
       </div>

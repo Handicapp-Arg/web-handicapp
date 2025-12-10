@@ -22,56 +22,125 @@ Handicapp es un sistema integral que conecta a todos los actores del mundo ecues
 
 ## FUNCIONALIDADES PRINCIPALES
 
-### 1. GESTIÓN VETERINARIA
-- Historial clínico digital completo de cada caballo
-- Alertas sanitarias automáticas
-- Recordatorios de vacunación y desparasitación
-- Registro de signos vitales y evolución post-entreno
-- Monitoreo 24/7 del estado físico
-- Sistema de diagnóstico asistido por IA
+### 1. DASHBOARD (Panel Principal)
+Resumen general del estado de tu actividad ecuestre:
+- Cantidad de caballos activos
+- Competencias próximas
+- Consultas veterinarias del mes
+- Estado general de salud
+- Accesos rápidos a funciones principales
+- Próximos eventos
+- Vista panorámica de todas las operaciones
 
-### 2. COMUNICACIÓN CON PROPIETARIOS
-- Videos automáticos del caballo enviados al propietario
-- Reportes detallados en tiempo real
-- Notificaciones push instantáneas
-- Transparencia total sobre la inversión
-- App móvil dedicada para propietarios
+### 2. NOTIFICACIONES
+Sistema interno de alertas inteligentes:
+- Recordatorios de salud automáticos
+- Vencimiento de controles veterinarios
+- Próximos eventos y competencias
+- Actualizaciones del sistema
+- Alertas personalizadas por tipo de usuario
 
-### 3. CONTROL DE STOCK
-- Alertas automáticas cuando alimento o medicina baja del mínimo
-- Gestión de inventario en tiempo real
-- Predicción de necesidades basada en consumo histórico
-- Control de costos y presupuesto
+### 3. ESTABLECIMIENTOS
+Gestión completa de los lugares donde están tus caballos:
+- Administración de Haras / Stud / Establos
+- Información de contacto y responsables
+- Dirección y datos del establecimiento
+- Caballos asignados a cada lugar
+- Control de instalaciones
 
-### 4. GESTIÓN DE PERSONAL
-- Asignación de tareas diarias
-- Coordinación de empleados (petiseros, veterinarios, managers)
-- Control de horarios y responsabilidades
-- Sistema de notificaciones para todo el equipo
+### 4. MIS CABALLOS
+Administración detallada de cada caballo:
+- Ficha individual completa
+- Datos de identificación (nombre, edad, raza)
+- Documentación y registro
+- Pedigree y antecedentes
+- Estado de salud actual
+- Actividad reciente
+- Historial completo
+- Galería de fotos
+- Propietarios y cuidadores asignados
 
-### 5. INTELIGENCIA ARTIFICIAL
-- Generador de nombres de caballos basado en pedigree
-- Análisis predictivo de salud
-- Detección de anomalías en signos vitales
-- Consultas veterinarias asistidas por IA
-- Motor entrenado con datos de campeones
+### 5. SALUD
+Módulo veterinario completo:
+- Historia clínica digital
+- Seguimiento médico continuo
+- Calendario de controles y vacunas
+- Consultas veterinarias programadas
+- Evaluación del estado de salud
+- Registro de tratamientos
+- Control de medicamentos
 
-### 6. DASHBOARD UNIFICADO
-- Vista completa de todos los caballos del establecimiento
-- Hotspots interactivos para acceso rápido a información crítica
-- Métricas de rendimiento en tiempo real
-- Gestión financiera integrada
+### 6. COMPETENCIAS
+Gestión deportiva profesional:
+- Competencias programadas
+- Resultados históricos
+- Estadísticas de rendimiento
+- Preparación para eventos
+- Clasificaciones y categorías
+- Estado del caballo para competir
+- Seguimiento de logros
 
-## CÓMO FUNCIONA - EL FLUJO PERFECTO
+### 7. ENTRENAMIENTO
+Planificación y seguimiento de rutinas:
+- Programación de entrenamientos
+- Historial de actividad física
+- Seguimiento de progreso
+- Tipos de ejercicios
+- Planificación semanal/mensual
+- Herramienta ideal para jinetes y entrenadores
 
-### PASO 1: CAPTURA DE CAMPO
-Veterinarios y petiseros registran datos vitales en segundos, incluso sin señal de internet. La app móvil funciona offline y sincroniza automáticamente cuando recupera conexión.
+### 8. EVENTOS
+Agenda y calendario integrado:
+- Eventos próximos
+- Eventos pasados
+- Recordatorios automáticos
+- Integración con calendario
+- Incluye: competencias, controles veterinarios, entrenamientos especiales
 
-### PASO 2: SINCRONIZACIÓN NEURAL
-Nuestra IA procesa la información, detecta anomalías y actualiza el historial clínico automáticamente. El sistema aprende patrones y genera alertas preventivas.
+### 9. REPORTES
+Sistema de análisis y métricas:
+- Reportes de salud por caballo
+- Reportes de rendimiento deportivo
+- Reportes por establecimiento
+- Actividad mensual y anual
+- Análisis de largo plazo
+- Estadísticas comparativas
 
-### PASO 3: IMPACTO INMEDIATO
-El propietario recibe una notificación enriquecida con video y diagnóstico en tiempo real. Transparencia total, sin demoras.
+### 10. TAREAS
+Sistema de gestión diaria:
+- Crear y asignar tareas
+- Asignar responsables al equipo
+- Marcar tareas como completas
+- Control de rutinas del establo
+- Gestión de actividades diarias
+- Ideal para coordinación de equipos
+
+### 11. CONFIGURACIÓN
+Personalización del sistema:
+- Perfil del usuario
+- Preferencias de notificaciones
+- Ajustes del sistema
+- Datos del establecimiento
+- Configuración de privacidad
+
+### 12. SUSCRIPCIONES
+Gestión de membresía:
+- Plan actual activo
+- Métodos de pago
+- Historial de pagos
+- Actualización de plan
+- Facturación automática
+
+## CÓMO FUNCIONA - GESTIÓN COMPLETA
+
+### PASO 1: REGISTRA Y ORGANIZA
+Gestiona fichas de caballos, establecimientos, salud, competencias y entrenamientos en un solo lugar. Todo centralizado, fácil de acceder.
+
+### PASO 2: CONTROLA Y PLANIFICA
+Sistema de tareas con asignación de responsables, recordatorios automáticos, calendario de eventos y reportes detallados de rendimiento.
+
+### PASO 3: TOMA DECISIONES
+Dashboard con métricas clave, historial completo y notificaciones inteligentes para optimizar resultados y tomar decisiones informadas.
 
 ## USUARIOS Y ROLES
 
