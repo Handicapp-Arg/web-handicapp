@@ -84,21 +84,21 @@ const Navbar = ({ t, theme, isDark, scrolled, ASSETS, onToggleDark, onToggleLang
         </div>
 
         {/* Botones de acción */}
-        <div className="flex items-center gap-3 lg:gap-4">
+        <div className="flex items-center gap-2 md:gap-3 lg:gap-4">
           <button 
             onClick={onToggleLang} 
-            className="text-[11px] font-black px-3 py-2.5 rounded-lg border border-white/20 hover:border-white/40 hover:bg-white/5 transition-all hover:scale-105"
+            className="text-[10px] md:text-[11px] font-black px-2.5 md:px-3 py-2 md:py-2.5 rounded-lg border border-white/20 hover:border-white/40 hover:bg-white/5 transition-all hover:scale-105"
           >
             {t.lang_code}
           </button>
           <button 
             onClick={onToggleDark} 
-            className="p-2.5 rounded-lg border border-white/20 hover:border-white/40 hover:bg-white/5 transition-all hover:scale-105"
+            className="p-2 md:p-2.5 rounded-lg border border-white/20 hover:border-white/40 hover:bg-white/5 transition-all hover:scale-105"
           >
-            {isDark ? <Sun size={18} /> : <Moon size={18} />}
+            {isDark ? <Sun size={16} className="md:w-[18px] md:h-[18px]" /> : <Moon size={16} className="md:w-[18px] md:h-[18px]" />}
           </button>
           <button className="md:hidden p-2" onClick={onMenuOpen}>
-            <Menu size={24}/>
+            <Menu size={22}/>
           </button>
         </div>
       </div>

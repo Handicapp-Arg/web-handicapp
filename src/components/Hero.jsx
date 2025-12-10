@@ -12,11 +12,11 @@ const Hero = ({ t, theme, isDark, ASSETS }) => {
           <span className={`w-2.5 h-2.5 rounded-full animate-pulse ${theme.accentBg}`}></span>
           <span className="text-[11px] font-black tracking-[0.25em]">{t.hero.pill}</span>
         </div>
-        <h1 className="text-7xl md:text-[10rem] lg:text-[11rem] leading-[0.8] font-black tracking-tighter mb-12 animate-in fade-in zoom-in duration-1000 delay-100">
+        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl 2xl:text-[10rem] leading-[0.85] font-black tracking-tighter mb-8 md:mb-12 animate-in fade-in zoom-in duration-1000 delay-100">
           <span className="block  bg-clip-text bg-gradient-to-b from-current to-transparent opacity-90">{t.hero.line1}</span>
           <span className={`block ${theme.accent}`}>{t.hero.line2}</span>
         </h1>
-        <p className="text-xl md:text-2xl lg:text-3xl max-w-4xl mx-auto mb-16 opacity-70 leading-relaxed font-light animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-200">
+        <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-2xl max-w-4xl mx-auto mb-12 md:mb-16 opacity-70 leading-relaxed font-light animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-200">
           {t.hero.desc}
         </p>
         <div className="flex flex-col md:flex-row justify-center gap-6 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300">
@@ -24,7 +24,7 @@ const Hero = ({ t, theme, isDark, ASSETS }) => {
             href="https://www.handicapp.com.ar/login" 
             target="_blank" 
             rel="noopener noreferrer" 
-            className="group relative px-12 py-6 rounded-full font-black text-sm uppercase tracking-widest transition-all hover:scale-105 active:scale-95 bg-gradient-to-r from-[#c9a96e] via-[#af936f] to-[#c9a96e] text-white shadow-[0_0_30px_rgba(175,147,111,0.5)] hover:shadow-[0_0_50px_rgba(175,147,111,0.8)] bg-[length:200%_100%] hover:bg-[position:100%_0] animate-shimmer overflow-hidden"
+            className="group relative px-12 py-6 rounded-full font-black text-sm uppercase tracking-widest transition-all hover:scale-105 active:scale-95 bg-gradient-to-r from-[#c9a96e] via-[#af936f] to-[#c9a96e] text-white shadow-[0_0_20px_rgba(175,147,111,0.3)] hover:shadow-[0_0_35px_rgba(175,147,111,0.5)] bg-[length:200%_100%] hover:bg-[position:100%_0] animate-shimmer overflow-hidden"
           >
             {/* Efecto de brillo animado */}
             <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000"></span>

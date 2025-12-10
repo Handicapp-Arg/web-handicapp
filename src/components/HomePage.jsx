@@ -108,6 +108,7 @@ const HomePage = ({
 
   return (
     <>
+      {/* 1. Hero - Impacto inicial */}
       <Hero 
         t={t} 
         theme={theme} 
@@ -116,6 +117,7 @@ const HomePage = ({
         onVideoOpen={onVideoOpen}
       />
 
+      {/* 2. RoleSelector - Muestra versatilidad */}
       <RoleSelector 
         t={t} 
         isDark={isDark} 
@@ -129,15 +131,22 @@ const HomePage = ({
         ChevronRight={ChevronRight}
       />
       
-      <SocialProof t={t} isDark={isDark} theme={theme} />
-      <VerticalWorkflow t={t} isDark={isDark} theme={theme} />
-      
+      {/* 3. Dashboard - Muestra el producto */}
       <Dashboard t={t} theme={theme} isDark={isDark} ASSETS={ASSETS} />
 
+      {/* 4. VerticalWorkflow - Cómo funciona */}
+      <VerticalWorkflow t={t} isDark={isDark} theme={theme} />
+      
+      {/* 5. AI Labs - Feature diferenciadora (antes de validación social) */}
       <AILabs t={t} isDark={isDark} theme={theme} />
 
+      {/* 6. SocialProof - Validación social */}
+      <SocialProof t={t} isDark={isDark} theme={theme} />
+
+      {/* 7. Pricing - Decisión de compra */}
       <Pricing t={t} theme={theme} isDark={isDark} />
 
+      {/* 8. ContactForm - Conversión final */}
       <ContactForm t={t} isDark={isDark} theme={theme} />
     </>
   );

@@ -222,7 +222,7 @@ const I18N = {
       subtitle: "Agenda una demo personalizada y descubre cómo Handicapp puede optimizar tu operación.", 
       name: "Nombre completo", 
       email: "Email", 
-      msg: "Cuéntanos sobre tu establecimiento y necesidades", 
+      msg: "Cuéntanos sobre tu proyecto y necesidades", 
       btn: "Solicitar Demo", 
       success: "¡Mensaje Enviado! Te contactaremos pronto." 
     }
@@ -334,7 +334,7 @@ const I18N = {
       subtitle: "Schedule a personalized demo and discover how Handicapp can optimize your operation.", 
       name: "Full name", 
       email: "Email", 
-      msg: "Tell us about your facility and needs", 
+      msg: "Tell us about your project and needs", 
       btn: "Request Demo", 
       success: "Message Sent! We'll contact you soon." 
     }
@@ -407,7 +407,7 @@ const I18N = {
       subtitle: "Vereinbaren Sie eine persönliche Demo und entdecken Sie, wie Handicapp Ihren Betrieb optimieren kann.", 
       name: "Vollständiger Name", 
       email: "Email", 
-      msg: "Erzählen Sie uns von Ihrer Einrichtung und Ihren Anforderungen", 
+      msg: "Erzählen Sie uns von Ihrem Projekt und Ihren Anforderungen", 
       btn: "Demo Anfragen", 
       success: "Nachricht Gesendet! Wir werden uns bald bei Ihnen melden." 
     }

@@ -12,7 +12,7 @@ const WhatsAppButton = ({ phoneNumber = '5492477357665', isDark }) => {
       rel="noopener noreferrer"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="fixed bottom-6 right-6 z-50 group"
+      className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50 group"
       aria-label="Contactar por WhatsApp"
     >
       {/* Tooltip */}
