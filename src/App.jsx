@@ -97,17 +97,17 @@ const THEME = {
     navBg: "bg-[#0f172a]"                  // Navbar Navy
   },
   light: {
-    bg: "bg-white",
-    bgSecondary: "bg-zinc-50",
+    bg: "bg-gradient-to-br from-zinc-50 via-white to-zinc-100",
+    bgSecondary: "bg-gradient-to-br from-white to-zinc-50",
     text: "text-[#0f172a]",                // Navy text en light mode
     textMuted: "text-zinc-600",
     accent: "text-[#af936f]",              // Golden Brown
     accentBg: "bg-[#af936f]",              // Golden Brown
     accentHover: "bg-[#8f7657]",           // Darker Gold (hover)
     accentCyan: "bg-[#0e445d]",            // Cyan Secundario
-    border: "border-zinc-200",
-    glass: "bg-white/80 backdrop-blur-xl border-zinc-200",
-    navBg: "bg-white"
+    border: "border-zinc-300",
+    glass: "bg-white/90 backdrop-blur-xl border-zinc-300 shadow-xl",
+    navBg: "bg-white/95 backdrop-blur-xl"
   }
 };
 
@@ -117,56 +117,56 @@ const THEME = {
 const I18N = {
   es: {
     lang_code: "ES",
-    nav: { system: "PLATAFORMA", labs: "ASISTENTE IA", pricing: "PLANES", contact: "CONTACTO", login: "INGRESAR" },
+    nav: { funcionalidades: "FUNCIONALIDADES", workflow: "CÓMO FUNCIONA", labs: "ASISTENTE IA", contact: "CONTACTO" },
     hero: { 
       pill: "HANDICAPP", 
-      line1: "GESTIÓN ECUESTRE", 
-      line2: "PROFESIONAL", 
-      desc: "Sistema integral para la administración completa de tu actividad ecuestre. Gestiona caballos, salud, competencias, entrenamientos y establecimientos desde un solo lugar.", 
-      cta: "Ver Demo", 
+      line1: "GESTIÓN DE HARAS", 
+      line2: "SIN PRECEDENTES.", 
+      desc: "Reemplaza el caos de WhatsApp y Excel por una plataforma inteligente. Trazabilidad clínica, administrativa y deportiva en un solo lugar.", 
+      cta: "Probar Gratis 14 Días", 
       video: "Hablar con Ventas" 
     },
     roles: {
-      title: "UNA PLATAFORMA, TODOS LOS ROLES",
+      title: "TODO LO QUE NECESITAS, EN UN SOLO LUGAR",
       r1: "Propietario", 
-      r1_d: "Accede al perfil completo de tus caballos, historial de salud, competencias y entrenamientos. Mantén el control total de tu inversión.",
+      r1_d: "Protege tu inversión ecuestre con visibilidad total en tiempo real. Reportes médicos instantáneos, historial completo, seguimiento de competencias y alertas automáticas. Controla tu patrimonio desde cualquier lugar, 24/7.",
       r2: "Veterinario", 
-      r2_d: "Historia clínica digital completa, calendario de vacunas, recordatorios automáticos y seguimiento médico profesional.",
-      r3: "Manager", 
-      r3_d: "Dashboard central con reportes, gestión de tareas, control de eventos y administración integral del establecimiento.",
-      r4: "Establecimiento", 
-      r4_d: "Administra múltiples caballos, coordina tu equipo con el sistema de tareas y mantén el control de todas las operaciones diarias."
+      r2_d: "Trabaja más rápido y profesionalmente. Historial clínico digital completo, calendario inteligente de vacunas, recordatorios automáticos y registro centralizado. Más tiempo para tus pacientes, menos tiempo en papelería.",
+      r3: "Manager / Administrador", 
+      r3_d: "Optimiza la operación y reduce costos hasta un 40%. Dashboard ejecutivo con KPIs en vivo, sistema de tareas para coordinar equipos, reportes financieros automáticos y control total de recursos. Gestión profesional sin complicaciones.",
+      r4: "Haras / Establecimiento", 
+      r4_d: "Aumenta tu reputación y rentabilidad. Administra múltiples caballos huéspedes, coordina equipos profesionales, genera reportes automáticos para propietarios y mantén contratos organizados. La herramienta que usan los haras líderes."
     },
     hotspots: {
-      stock: "Gestión de Tareas", 
-      stock_d: "Crea, asigna y controla tareas diarias para tu equipo. Sistema completo de gestión de rutinas del establo.",
-      health: "Salud Integral", 
-      health_d: "Historia clínica completa, calendario de vacunas, consultas veterinarias y seguimiento médico continuo.",
-      notify: "Notificaciones Inteligentes", 
-      notify_d: "Recordatorios automáticos de controles veterinarios, eventos próximos y actualizaciones importantes del sistema."
+      stock: "Coordina Tu Equipo Sin Esfuerzo", 
+      stock_d: "Olvídate del WhatsApp y los papeles. Asigna tareas, controla rutinas diarias, marca completadas y supervisa a todo el equipo en tiempo real. Reduce errores operativos hasta un 60% y mejora la comunicación interna.",
+      health: "Salud Veterinaria Inteligente", 
+      health_d: "Nunca más pierdas una vacuna o control médico. Calendario automatizado, alertas preventivas, historial clínico completo y recordatorios automáticos. Cuida mejor a tus caballos, mejora resultados deportivos.",
+      notify: "Nunca Más Pierdas Un Evento Importante", 
+      notify_d: "Sistema de alertas inteligente que te avisa de todo lo crítico: vacunas por vencer, controles veterinarios próximos, competencias programadas y tareas urgentes. Personalizable según tu rol. Mantén el control sin estrés."
     },
     trust: { 
-      title: "CONFIANZA", 
-      desc: "Los principales establecimientos ecuestres de Argentina ya confían en Handicapp.", 
-      quote: "Handicapp transformó nuestra operación. Pasamos de planillas Excel a una gestión profesional y centralizada.", 
-      author: "Roberto Álvarez, Director Haras El Paraíso" 
+      title: "YA CONFÍAN EN HANDICAPP", 
+      desc: "Los principales haras, studs y establecimientos ecuestres de Argentina ya digitalizaron su gestión.", 
+      quote: "Antes perdíamos 15 horas semanales en planillas Excel. Hoy todo es automático: historial médico, tareas del equipo y reportes para propietarios. Handicapp aumentó nuestra eficiencia un 40% y mejoró nuestra reputación profesional. Es la mejor inversión que hicimos.", 
+      author: "Director de Operaciones - Haras Premium Argentino" 
     },
     workflow: { 
-      title: "TU GESTIÓN ECUESTRE EN 3 PASOS", 
-      step1_t: "Registra Todo en un Solo Lugar", 
-      step1_d: "Carga caballos, establecimientos, datos de salud, competencias programadas y sesiones de entrenamiento. Todo organizado y fácil de encontrar.",
-      step2_t: "Controla y Planifica", 
-      step2_d: "Usa el sistema de tareas para coordinar tu equipo, programa eventos en el calendario y genera reportes detallados de rendimiento y salud.",
-      step3_t: "Optimiza con Información", 
-      step3_d: "Dashboard con métricas clave, historial completo de cada caballo y notificaciones inteligentes para tomar mejores decisiones." 
+      title: "EMPIEZA HOY, VE RESULTADOS MAÑANA", 
+      step1_t: "1. Sube Tu Información en Minutos", 
+      step1_d: "Importa datos desde Excel/PDF o carga manualmente. Fichas de caballos, historial médico, establecimientos y documentación. Sin instalaciones complicadas, sin capacitación técnica. En 24 horas estás operativo. Migración gratuita incluida.",
+      step2_t: "2. Automatiza Tu Operación Diaria", 
+      step2_d: "Deja que Handicapp haga el trabajo pesado: asigna tareas automáticas, programa controles médicos recurrentes, genera reportes para propietarios con un click y coordina todo el equipo desde un solo lugar. Ahorra hasta 15 horas semanales.",
+      step3_t: "3. Accede a Reportes y Análisis Completos", 
+      step3_d: "Dashboard con vista panorámica de todas tus operaciones: caballos activos, competencias próximas, consultas veterinarias del mes y estado general de salud. Genera reportes de rendimiento deportivo, análisis de largo plazo y estadísticas comparativas con un solo click." 
     },
     labs: { 
-      title: "Asistente IA", 
-      desc: "Pregunta lo que necesites sobre Handicapp: funcionalidades, gestión ecuestre, planes o cualquier duda.", 
-      input_ph: "Ej: ¿Qué funcionalidades tiene Handicapp?", 
-      btn: "Consultar IA", 
-      chat_ph: "Escribe tu pregunta...", 
-      disclaimer: "IA Beta - Respuestas basadas en información oficial." 
+      title: "Pregunta Lo Que Necesites, Respuestas Al Instante", 
+      desc: "Nuestro asistente inteligente responde todas tus dudas sobre Handicapp: funcionalidades, migración de datos, planes, comparativas o cómo mejorar la gestión de tu haras. Disponible 24/7.", 
+      input_ph: "Ej: ¿Cuánto tiempo ahorro con Handicapp vs Excel?", 
+      btn: "Consultar Ahora", 
+      chat_ph: "Escribe tu pregunta aquí...", 
+      disclaimer: "Asistente IA entrenado con documentación oficial de Handicapp. Respuestas instantáneas." 
     },
     pricing: { 
       title: "Planes para Cada Necesidad", 
@@ -191,45 +191,45 @@ const I18N = {
       ] 
     },
     faq: { 
-      title: "Preguntas Frecuentes", 
-      subtitle: "Todo lo que necesitas saber sobre Handicapp",
-      q1: "¿Qué incluye Handicapp?", 
-      a1: "Handicapp incluye 12 módulos completos: Dashboard, Notificaciones, Establecimientos, Mis Caballos, Salud, Competencias, Entrenamiento, Eventos, Reportes, Tareas, Configuración y Suscripciones. Todo lo necesario para gestionar tu actividad ecuestre profesionalmente.",
-      q2: "¿Puedo migrar mis datos actuales?", 
-      a2: "Sí, importamos tus datos desde Excel, planillas o cualquier sistema anterior sin costo. Nuestro equipo te asiste personalmente en todo el proceso de migración.",
-      q3: "¿Qué tan seguro es Handicapp?", 
-      a3: "Utilizamos encriptación AES-256 (nivel bancario) y servidores certificados. Tus datos están protegidos con los más altos estándares de seguridad y disponibles 24/7.",
-      q4: "¿Cuánto cuesta realmente?", 
-      a4: "Planes desde $29/mes para hasta 10 caballos. El plan Professional ($79/mes) incluye todas las funciones para hasta 50 caballos. Sin costos ocultos, sin permanencia.",
-      q5: "¿Qué módulos de gestión tiene?", 
-      a5: "Gestión completa de caballos, salud veterinaria, competencias deportivas, entrenamientos, calendario de eventos, sistema de tareas para tu equipo, reportes detallados y administración de establecimientos.",
-      q6: "¿Ofrecen soporte técnico?", 
-      a6: "Sí, todos los planes incluyen soporte. El plan Professional tiene soporte prioritario y el Enterprise cuenta con manager dedicado y atención 24/7.",
-      q7: "¿Se integra con otros sistemas?", 
-      a7: "El plan Enterprise incluye API para integraciones personalizadas con sistemas contables, veterinarios y de gestión. También podemos desarrollar conectores específicos.",
-      q8: "¿Qué pasa con mis datos si cancelo?", 
-      a8: "Tienes control total de tu información. Puedes exportar todos tus datos en formatos estándar (CSV, PDF, Excel) en cualquier momento. Nunca retenemos tu información.",
-      q9: "¿Cómo funciona el sistema de tareas?", 
-      a9: "Puedes crear tareas, asignarlas a miembros de tu equipo, establecer fechas límite y marcarlas como completas. Ideal para coordinar las rutinas diarias del establo.",
-      q10: "¿Cuánto tiempo toma implementarlo?", 
-      a10: "La mayoría de nuestros clientes están operativos en 24-48 horas. Incluimos onboarding personalizado, capacitación del equipo y acompañamiento durante el primer mes de uso.",
-      stillHaveQuestions: "¿Aún tienes dudas?",
-      contactUs: "Nuestro equipo está listo para ayudarte y responder todas tus preguntas",
-      getInTouch: "Contactar Ahora"
+      title: "Resolvemos Tus Dudas", 
+      subtitle: "Las respuestas más directas a las preguntas más importantes",
+      q1: "¿Qué incluye Handicapp realmente?", 
+      a1: "12 módulos profesionales todo incluido: Dashboard con métricas en vivo, Notificaciones automáticas inteligentes, Gestión de establecimientos múltiples, Fichas digitales completas de caballos, Módulo veterinario con historial clínico, Calendario de competencias y eventos, Sistema de entrenamiento y progreso, Reportes ejecutivos descargables, Sistema de tareas para coordinar equipos, Configuración personalizable y Gestión de suscripciones. Todo en una sola plataforma, sin módulos adicionales que comprar.",
+      q2: "¿Es complicado migrar desde Excel o papeles?", 
+      a2: "Es lo más fácil que existe. Importación automática desde Excel/CSV/PDF + nuestro equipo hace la migración por ti sin costo extra. Promedio: 24-48h y estás operativo. Incluye capacitación del equipo y soporte personalizado. Cero pérdida de datos, cero dolor de cabeza.",
+      q3: "¿Mis datos están realmente seguros?", 
+      a3: "Más seguros que en tu oficina. Encriptación militar AES-256 (misma que usan bancos), backup automático cada 6 horas, servidores certificados en Argentina, cumplimiento total GDPR y acceso controlado por roles. Tu información está más protegida que en cualquier archivo físico o Excel.",
+      q4: "¿Cuánto cuesta comparado con mi sistema actual?", 
+      a4: "Desde $29/mes (menos que una cena). Plan Professional $79/mes con TODO incluido para 50 caballos. Sin permanencia, cancela cuando quieras. Ahorra hasta 15 horas/semana en gestión manual. ROI positivo desde el primer mes. Incluye migración, capacitación y soporte sin costo extra.",
+      q5: "¿Realmente funciona para MI haras?", 
+      a5: "Sí, 100%. Ya sea que tengas 5 o 500 caballos, 1 o 10 establecimientos, equipo pequeño o grande. Handicapp se adapta a tu operación. Usado desde pequeños haras familiares hasta studs premium con operaciones complejas. Empieza simple, crece cuando necesites. Escalable sin límites.",
+      q6: "¿Qué pasa si mi equipo no es técnico?", 
+      a6: "No hay problema. Interfaz ultra simple, diseñada para gente de campo (no ingenieros). Incluye capacitación personalizada de tu equipo sin costo, videos tutoriales paso a paso y soporte técnico en español respondiendo en menos de 2 horas. Si usas WhatsApp, puedes usar Handicapp.",
+      q7: "¿Puedo integrarlo con mi sistema contable?", 
+      a7: "Plan Enterprise incluye API completa para conectar con sistemas contables (facturación automática), software veterinario externo, plataformas de gestión existentes y cualquier herramienta que uses. También desarrollamos conectores personalizados para grandes operaciones.",
+      q8: "¿Hay costos ocultos o sorpresas?", 
+      a8: "Cero. Precio fijo mensual, todo incluido. Sin costos de setup, sin cargos por usuario extra, sin módulos premium que desbloquear. Lo que ves es lo que pagas. Migración, capacitación y soporte incluidos. Sin permanencia, cancela cuando quieras y llévate toda tu información en CSV/Excel/PDF.",
+      q9: "¿Funciona en el campo sin internet?", 
+      a9: "La app funciona offline para consultar información y cargar datos básicos. Cuando recuperas conexión, todo se sincroniza automáticamente. Diseñado para funcionar en zonas rurales con conectividad intermitente. También optimizado para datos móviles (bajo consumo).",
+      q10: "¿Qué tan rápido veo resultados reales?", 
+      a10: "Resultados desde el Día 1. Implementación en 24-48h, equipo capacitado en 1 semana, ROI positivo en 30 días. Clientes reportan: 40% reducción de tiempo administrativo, 60% menos errores operativos, 100% mejor comunicación con propietarios. Primera semana gratis para comprobar.",
+      stillHaveQuestions: "¿Todavía tienes preguntas?",
+      contactUs: "Hablemos directamente. Respuesta en menos de 2 horas.",
+      getInTouch: "Hablar con un Experto"
     },
     contact: { 
-      title: "¿Listo para transformar tu gestión?", 
-      subtitle: "Agenda una demo personalizada y descubre cómo Handicapp puede optimizar tu operación.", 
+      title: "Empieza Gratis Hoy", 
+      subtitle: "Prueba Handicapp 14 días sin compromiso. Si no ves resultados, no pagas nada. Así de simple.", 
       name: "Nombre completo", 
-      email: "Email", 
-      msg: "Cuéntanos sobre tu proyecto y necesidades", 
-      btn: "Solicitar Demo", 
-      success: "¡Mensaje Enviado! Te contactaremos pronto." 
+      email: "Email de contacto", 
+      msg: "Cuéntanos sobre tu haras (cantidad de caballos, equipo, principales desafíos)", 
+      btn: "Empezar Prueba Gratuita", 
+      success: "🎉 ¡Listo! Revisa tu email para acceder a tu cuenta de prueba." 
     }
   },
   en: {
     lang_code: "EN",
-    nav: { system: "PLATFORM", labs: "AI ASSISTANT", pricing: "PRICING", contact: "CONTACT", login: "LOGIN" },
+    nav: { funcionalidades: "FEATURES", workflow: "HOW IT WORKS", labs: "AI ASSISTANT", contact: "CONTACT" },
     hero: { 
       pill: "HANDICAPP", 
       line1: "PROFESSIONAL", 
@@ -341,7 +341,7 @@ const I18N = {
   },
   de: {
     lang_code: "DE",
-    nav: { system: "PLATTFORM", labs: "KI-ASSISTENT", pricing: "PREISE", contact: "KONTAKT", login: "ANMELDEN" },
+    nav: { funcionalidades: "FUNKTIONEN", workflow: "WIE ES FUNKTIONIERT", labs: "KI-ASSISTENT", contact: "KONTAKT" },
     hero: { 
       pill: "HANDICAPP", 
       line1: "PROFESSIONELLE", 
@@ -566,9 +566,9 @@ const RoleSelector = ({ t, isDark, theme }) => {
   };
 
   return (
-    <section className={`py-24 relative z-10 px-6 ${isDark ? 'bg-[#1e293b]/30' : 'bg-zinc-50'}`}>
+    <section className={`py-24 relative z-10 px-6 ${isDark ? 'bg-[#1e293b]/30' : 'bg-gradient-to-b from-zinc-50 to-white'}`}>
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl md:text-6xl font-black mb-20 text-center">{t.roles.title}</h2>
+        <h2 className={`text-4xl md:text-6xl font-black mb-20 text-center ${theme.text}`}>{t.roles.title}</h2>
         
         {/* Carrusel */}
         <div className="relative">
@@ -586,7 +586,7 @@ const RoleSelector = ({ t, isDark, theme }) => {
                   <div className={`p-12 md:p-16 rounded-3xl border-2 min-h-[400px] flex flex-col justify-center items-center text-center relative overflow-hidden ${
                     isDark 
                       ? 'bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#0f172a] border-[#af936f]/30' 
-                      : 'bg-white border-[#af936f]/20'
+                      : 'bg-gradient-to-br from-white via-zinc-50 to-white border-[#af936f]/30'
                   } shadow-2xl hover:shadow-[0_0_60px_-15px_rgba(175,147,111,0.4)] transition-all duration-500`}>
                     {/* Efecto de brillo sutil */}
                     <div className="absolute inset-0 bg-gradient-to-br from-[#af936f]/5 via-transparent to-transparent pointer-events-none"></div>
@@ -594,7 +594,7 @@ const RoleSelector = ({ t, isDark, theme }) => {
                     <div className={`relative w-20 h-20 rounded-2xl flex items-center justify-center mb-8 ${theme.accentBg} text-white shadow-lg transform hover:scale-110 transition-transform duration-300`}>
                       <role.icon size={40} strokeWidth={2.5} />
                     </div>
-                    <h3 className="text-4xl md:text-5xl font-black mb-6 relative">{role.title}</h3>
+                    <h3 className={`text-4xl md:text-5xl font-black mb-6 relative ${theme.text}`}>{role.title}</h3>
                     <p className={`text-lg md:text-xl leading-relaxed max-w-2xl relative ${theme.textMuted}`}>{role.desc}</p>
                   </div>
                 </div>
@@ -690,6 +690,14 @@ const VideoModal = ({ isOpen, onClose }) => {
 const VerticalWorkflow = ({ t, isDark, theme }) => {
   const [activeStep, setActiveStep] = useState(0);
   const stepsRef = useRef([]);
+  
+  // Imágenes para cada paso
+  const stepImages = [
+    "/images/0T1A5784.jpg",  // Paso 1: Sube Tu Información
+    "/images/0T1A6227.jpg",  // Paso 2: Automatiza Tu Operación
+    "/images/DSC04294.jpg"   // Paso 3: Toma Mejores Decisiones
+  ];
+  
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => { if (entry.isIntersecting) setActiveStep(parseInt(entry.target.getAttribute('data-index'))); });
@@ -697,14 +705,76 @@ const VerticalWorkflow = ({ t, isDark, theme }) => {
     stepsRef.current.forEach(step => { if (step) observer.observe(step); });
     return () => observer.disconnect();
   }, []);
-  const steps = [ { title: t.workflow.step1_t, desc: t.workflow.step1_d, icon: Smartphone, id: 0 }, { title: t.workflow.step2_t, desc: t.workflow.step2_d, icon: Network, id: 1 }, { title: t.workflow.step3_t, desc: t.workflow.step3_d, icon: BellRing, id: 2 }];
+  
+  const steps = [ 
+    { title: t.workflow.step1_t, desc: t.workflow.step1_d, icon: Smartphone, id: 0 }, 
+    { title: t.workflow.step2_t, desc: t.workflow.step2_d, icon: Network, id: 1 }, 
+    { title: t.workflow.step3_t, desc: t.workflow.step3_d, icon: BellRing, id: 2 }
+  ];
+  
   return (
-    <section className={`py-24 relative ${isDark ? 'bg-zinc-900/30' : 'bg-white/50'}`}>
+    <section id="workflow" className={`scroll-mt-24 py-24 relative ${isDark ? 'bg-zinc-900/30' : 'bg-gradient-to-b from-white to-zinc-100'}`}>
       <div className="max-w-7xl mx-auto px-6">
-        <h2 className="text-4xl md:text-6xl font-black mb-24 text-center">{t.workflow.title}</h2>
+        <h2 className={`text-4xl md:text-6xl font-black mb-24 text-center ${theme.text}`}>{t.workflow.title}</h2>
         <div className="flex flex-col md:flex-row gap-20">
-          <div className="md:w-1/2 hidden md:block"><div className="sticky top-32 h-[500px] w-full"><div className={`relative w-full h-full rounded-[2.5rem] border ${theme.border} ${theme.glass} overflow-hidden shadow-2xl`}><div className={`absolute inset-0 opacity-20 transition-colors duration-700 ${activeStep === 0 ? 'bg-zinc-500' : activeStep === 1 ? 'bg-[#D1F366]' : 'bg-[#4F46E5]'}`}></div><div className="absolute inset-0 flex flex-col items-center justify-center p-12 text-center"><div className={`mb-8 p-8 rounded-full border-2 ${theme.border} transition-all duration-500 transform ${activeStep === 0 ? 'scale-100 rotate-0' : activeStep === 1 ? 'scale-110 rotate-180' : 'scale-100 rotate-0'}`}>{activeStep === 0 && <Radio size={64} className="animate-pulse" />}{activeStep === 1 && <Cpu size={64} className={theme.accent} />}{activeStep === 2 && <User size={64} className={isDark ? 'text-white' : 'text-black'} />}</div><h3 className="text-2xl font-black mb-4 uppercase tracking-widest">{activeStep === 0 ? "ORGANIZE" : activeStep === 1 ? "CONTROL" : "OPTIMIZE"}</h3></div></div></div></div>
-          <div className="md:w-1/2 space-y-[60vh] py-[10vh]">{steps.map((step, i) => (<div key={i} data-index={i} ref={el => stepsRef.current[i] = el} className={`transition-all duration-500 ${activeStep === i ? 'opacity-100 translate-x-0' : 'opacity-30 translate-x-10'}`}><div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 shadow-lg ${theme.accentBg} text-white`}><step.icon size={32} /></div><h3 className="text-4xl font-bold mb-4">{step.title}</h3><p className={`text-xl leading-relaxed ${theme.textMuted}`}>{step.desc}</p></div>))}</div>
+          <div className="md:w-1/2 hidden md:block">
+            <div className="sticky top-32 h-[500px] w-full">
+              <div className={`relative w-full h-full rounded-[2.5rem] border ${theme.border} ${theme.glass} overflow-hidden shadow-2xl`}>
+                {/* Imagen de fondo con transición */}
+                {stepImages.map((image, index) => (
+                  <div
+                    key={index}
+                    className={`absolute inset-0 transition-opacity duration-700 ${
+                      activeStep === index ? 'opacity-100' : 'opacity-0'
+                    }`}
+                  >
+                    <img 
+                      src={image} 
+                      alt={`Paso ${index + 1}`}
+                      className="w-full h-full object-cover"
+                    />
+                    {/* Overlay oscuro para mejor legibilidad */}
+                    <div className={`absolute inset-0 ${
+                      isDark 
+                        ? 'bg-gradient-to-t from-[#0f172a] via-[#0f172a]/60 to-transparent' 
+                        : 'bg-gradient-to-t from-black/70 via-black/40 to-transparent'
+                    }`}></div>
+                  </div>
+                ))}
+                
+                {/* Contenido sobre la imagen */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center p-12 text-center z-10">
+                  <div className={`mb-8 p-8 rounded-full border-2 ${theme.border} bg-[#0f172a]/80 backdrop-blur-sm transition-all duration-500 transform ${
+                    activeStep === 0 ? 'scale-100 rotate-0' : activeStep === 1 ? 'scale-110 rotate-180' : 'scale-100 rotate-0'
+                  }`}>
+                    {activeStep === 0 && <Radio size={64} className="animate-pulse text-[#af936f]" />}
+                    {activeStep === 1 && <Cpu size={64} className="text-[#af936f]" />}
+                    {activeStep === 2 && <User size={64} className="text-white" />}
+                  </div>
+                  <h3 className={`text-2xl font-black mb-4 uppercase tracking-widest drop-shadow-lg ${isDark ? 'text-white' : 'text-white'}`}>
+                    {activeStep === 0 ? "ORGANIZA" : activeStep === 1 ? "AUTOMATIZA" : "OPTIMIZA"}
+                  </h3>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="md:w-1/2 space-y-[60vh] py-[10vh]">
+            {steps.map((step, i) => (
+              <div 
+                key={i} 
+                data-index={i} 
+                ref={el => stepsRef.current[i] = el} 
+                className={`transition-all duration-500 ${activeStep === i ? 'opacity-100 translate-x-0' : 'opacity-30 translate-x-10'}`}
+              >
+                <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 shadow-lg ${theme.accentBg} text-white`}>
+                  <step.icon size={32} />
+                </div>
+                <h3 className={`text-4xl font-bold mb-4 ${theme.text}`}>{step.title}</h3>
+                <p className={`text-xl leading-relaxed ${theme.textMuted}`}>{step.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -759,7 +829,7 @@ EJEMPLO MALO: "Handicapp ofrece tres planes de precios diferentes: 1. Plan Stabl
   };
   
   return (
-    <section id="labs" className="py-32 px-6 relative">
+    <section id="labs" className="scroll-mt-24 py-32 px-6 relative">
       <div className={`max-w-6xl mx-auto rounded-[2.5rem] p-8 md:p-16 relative overflow-hidden border ${theme.glass} shadow-2xl`}>
         <div className={`absolute -top-40 -right-40 w-96 h-96 rounded-full blur-[120px] opacity-20 ${theme.accentBg}`}></div>
         <div className="relative z-10 grid lg:grid-cols-2 gap-16">
@@ -773,15 +843,15 @@ EJEMPLO MALO: "Handicapp ofrece tres planes de precios diferentes: 1. Plan Stabl
               <button onClick={handleGen} disabled={loading} className={`w-full py-5 rounded-xl font-bold uppercase tracking-widest transition-all flex items-center justify-center gap-3 ${isDark ? 'bg-white text-black hover:bg-[#af936f] hover:text-white' : 'bg-black text-white hover:bg-[#af936f]'} disabled:opacity-50 disabled:cursor-not-allowed`}>{loading ? <Loader2 className="animate-spin" /> : t.labs.btn} <ArrowRight size={18} /></button>
             </div>
           </div>
-          <div className={`rounded-3xl p-8 border ${isDark ? 'bg-black/40 border-zinc-800' : 'bg-zinc-50 border-zinc-200'} min-h-[400px] flex flex-col relative overflow-hidden`}>
-            <div className="flex justify-between items-center mb-6 opacity-50">
+          <div className={`rounded-3xl p-8 border ${isDark ? 'bg-black/40 border-zinc-800' : 'bg-gradient-to-br from-zinc-50 to-white border-zinc-300 shadow-inner'} min-h-[400px] flex flex-col relative overflow-hidden`}>
+            <div className={`flex justify-between items-center mb-6 ${isDark ? 'opacity-50' : 'opacity-60'}`}>
               <div className="flex gap-2">
                 <div className="w-3 h-3 rounded-full bg-red-500"></div>
                 <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
               </div>
-              <div className="font-mono text-xs">AI_OUTPUT_V1</div>
+              <div className={`font-mono text-xs ${theme.textMuted}`}>AI_OUTPUT_V1</div>
             </div>
-            <div className={`flex-1 font-mono text-sm leading-loose whitespace-pre-wrap ${error ? 'text-red-500' : theme.accent}`}>
+            <div className={`flex-1 font-mono text-sm leading-loose whitespace-pre-wrap ${error ? 'text-red-500' : isDark ? theme.accent : 'text-[#af936f] font-semibold'}`}>
               {error ? `❌ ${error}` : response || <span className="opacity-30">// Ready...</span>}
             </div>
           </div>
@@ -826,9 +896,9 @@ const SocialProof = ({ t, isDark, theme }) => {
   }, []);
   
   return (
-    <section className={`py-24 border-y overflow-hidden relative ${isDark ? 'bg-[#1e293b]/20 border-[#af936f]/20' : 'bg-white border-zinc-200'}`}>
+    <section className={`py-24 border-y overflow-hidden relative ${isDark ? 'bg-[#1e293b]/20 border-[#af936f]/20' : 'bg-gradient-to-b from-zinc-50 to-white border-zinc-300'}`}>
       {/* Decoración de fondo */}
-      <div className="absolute inset-0 opacity-5">
+      <div className={`absolute inset-0 ${isDark ? 'opacity-5' : 'opacity-10'}`}>
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#af936f] rounded-full blur-[150px]"></div>
       </div>
       
@@ -873,7 +943,7 @@ const SocialProof = ({ t, isDark, theme }) => {
         <div className={`px-16 py-10 md:px-20 md:py-12 rounded-[2rem] border-2 text-center relative ${
           isDark 
             ? 'bg-gradient-to-br from-[#0f172a] to-[#1e293b] border-[#af936f]/30' 
-            : 'bg-white border-[#af936f]/20'
+            : 'bg-gradient-to-br from-white via-zinc-50 to-white border-[#af936f]/40'
         } shadow-2xl`}>
           {/* Quote decorativo eliminado para que sea más rectangular */}
           
@@ -888,7 +958,7 @@ const SocialProof = ({ t, isDark, theme }) => {
                     : 'opacity-0 translate-y-4 pointer-events-none'
                 }`}
               >
-                <p className="text-xl md:text-2xl font-medium italic mb-6 leading-relaxed px-4">
+                <p className={`text-xl md:text-2xl font-medium italic mb-6 leading-relaxed px-4 ${theme.text}`}>
                   "{testimonial.quote}"
                 </p>
                 
@@ -915,7 +985,7 @@ const SocialProof = ({ t, isDark, theme }) => {
                 className={`w-2 h-2 rounded-full transition-all duration-300 ${
                   currentTestimonial === index 
                     ? `${theme.accentBg} w-8` 
-                    : 'bg-white/20 hover:bg-white/40'
+                    : isDark ? 'bg-white/20 hover:bg-white/40' : 'bg-zinc-300 hover:bg-zinc-400'
                 }`}
               />
             ))}
@@ -930,7 +1000,7 @@ const ContactForm = ({ t, isDark, theme }) => {
   const [status, setStatus] = useState('idle');
   const handleSubmit = (e) => { e.preventDefault(); setStatus('loading'); setTimeout(() => setStatus('success'), 1500); };
   return (
-    <section id="contact" className={`py-40 px-6 relative overflow-hidden border-t ${theme.border}`}>
+    <section id="contact" className={`scroll-mt-24 py-40 px-6 relative overflow-hidden border-t ${theme.border}`}>
        <div className={`absolute inset-0 opacity-10 ${theme.accentBg} blur-[200px]`}></div>
        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 relative z-10 items-center">
           <div><h2 className="text-6xl md:text-8xl font-black tracking-tighter mb-10 leading-[0.9]">{t.contact.title}</h2><p className={`text-xl ${theme.textMuted}`}>{t.contact.subtitle}</p></div>
@@ -1003,7 +1073,7 @@ function AppContent() {
       {loaded && (
         <>
           <ThreeEquestrianFlow isDark={isDark} />
-          <div className={`fixed inset-0 -z-10 pointer-events-none ${isDark ? 'bg-gradient-to-b from-transparent via-[#0f172a]/50 to-[#0f172a]' : 'bg-gradient-to-b from-transparent via-white/50 to-white'}`}></div>
+          <div className={`fixed inset-0 -z-10 pointer-events-none ${isDark ? 'bg-gradient-to-b from-transparent via-[#0f172a]/50 to-[#0f172a]' : 'bg-gradient-to-br from-zinc-50 via-white to-zinc-100'}`}></div>
           <VideoModal isOpen={videoOpen} onClose={() => setVideoOpen(false)} />
 
           <Navbar 
