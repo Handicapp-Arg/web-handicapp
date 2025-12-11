@@ -117,7 +117,7 @@ const THEME = {
 const I18N = {
   es: {
     lang_code: "ES",
-    nav: { funcionalidades: "FUNCIONALIDADES", workflow: "CÓMO FUNCIONA", labs: "ASISTENTE IA", contact: "CONTACTO" },
+    nav: { funcionalidades: "FUNCIONALIDADES", workflow: "CÓMO FUNCIONA", labs: "ASISTENTE IA", about: "NOSOTROS", contact: "CONTACTO" },
     hero: { 
       pill: "HANDICAPP", 
       line1: "GESTIÓN DE HARAS", 
@@ -161,7 +161,7 @@ const I18N = {
       step3_d: "Dashboard con vista panorámica de todas tus operaciones: caballos activos, competencias próximas, consultas veterinarias del mes y estado general de salud. Genera reportes de rendimiento deportivo, análisis de largo plazo y estadísticas comparativas con un solo click." 
     },
     labs: { 
-      title: "Pregunta Lo Que Necesites, Respuestas Al Instante", 
+      title: "Pregunta Lo Que Necesites", 
       desc: "Nuestro asistente inteligente responde todas tus dudas sobre Handicapp: funcionalidades, migración de datos, planes, comparativas o cómo mejorar la gestión de tu haras. Disponible 24/7.", 
       input_ph: "Ej: ¿Cuánto tiempo ahorro con Handicapp vs Excel?", 
       btn: "Consultar Ahora", 
@@ -217,19 +217,30 @@ const I18N = {
       contactUs: "Hablemos directamente. Respuesta en menos de 2 horas.",
       getInTouch: "Hablar con un Experto"
     },
+    about: { 
+      title: "NUESTRO ADN", 
+      subtitle: "Nacidos en el campo, criados en el código.", 
+      desc: "Handicapp nace de la frustración de perder registros médicos en papeles arrugados. Somos un equipo híbrido de jinetes, veterinarios e ingenieros de software obsesionados con una misión: digitalizar la tradición sin perder el alma.",
+      val1: "Pasión Ecuestre", 
+      val1_d: "Entendemos el sudor y la gloria del campo.",
+      val2: "Innovación Radical", 
+      val2_d: "Tecnología de punta aplicada al mundo hípico.",
+      val3: "Transparencia Total", 
+      val3_d: "Datos claros para propietarios claros."
+    },
     contact: { 
       title: "Empieza Gratis Hoy", 
       subtitle: "Prueba Handicapp 14 días sin compromiso. Si no ves resultados, no pagas nada. Así de simple.", 
       name: "Nombre completo", 
       email: "Email de contacto", 
-      msg: "Cuéntanos sobre tu haras (cantidad de caballos, equipo, principales desafíos)", 
+      msg: "Cuéntanos sobre tu operación (cantidad de caballos, equipo, principales necesidades)", 
       btn: "Empezar Prueba Gratuita", 
-      success: "🎉 ¡Listo! Revisa tu email para acceder a tu cuenta de prueba." 
+      success: "¡LISTO! REVISA TU EMAIL PARA ACCEDER A TU CUENTA DE PRUEBA." 
     }
   },
   en: {
     lang_code: "EN",
-    nav: { funcionalidades: "FEATURES", workflow: "HOW IT WORKS", labs: "AI ASSISTANT", contact: "CONTACT" },
+    nav: { funcionalidades: "FEATURES", workflow: "HOW IT WORKS", labs: "AI ASSISTANT", about: "ABOUT US", contact: "CONTACT" },
     hero: { 
       pill: "HANDICAPP", 
       line1: "PROFESSIONAL", 
@@ -273,7 +284,7 @@ const I18N = {
       step3_d: "Dashboard with key metrics, complete history of each horse and smart notifications to make better decisions." 
     },
     labs: { 
-      title: "AI Assistant", 
+      title: "Ask What You Need", 
       desc: "Ask what you need about Handicapp: features, equestrian management, plans or any question.", 
       input_ph: "Ex: What features does Handicapp have?", 
       btn: "Ask AI", 
@@ -329,19 +340,30 @@ const I18N = {
       contactUs: "Our team is ready to help you and answer all your questions",
       getInTouch: "Contact Now"
     },
+    about: { 
+      title: "OUR DNA", 
+      subtitle: "Born in the field, raised in code.", 
+      desc: "Handicapp was born from the frustration of losing medical records on crumpled paper. We are a hybrid team of riders, vets, and software engineers obsessed with one mission: digitizing tradition without losing its soul.",
+      val1: "Equestrian Passion", 
+      val1_d: "We understand the sweat and glory of the field.",
+      val2: "Radical Innovation", 
+      val2_d: "Cutting-edge technology applied to equestrian world.",
+      val3: "Total Transparency", 
+      val3_d: "Clear data for clear owners."
+    },
     contact: { 
       title: "Ready to transform your management?", 
       subtitle: "Schedule a personalized demo and discover how Handicapp can optimize your operation.", 
       name: "Full name", 
       email: "Email", 
-      msg: "Tell us about your project and needs", 
+      msg: "Tell us about your operation (number of horses, team, main needs)", 
       btn: "Request Demo", 
-      success: "Message Sent! We'll contact you soon." 
+      success: "DONE! CHECK YOUR EMAIL TO ACCESS YOUR TRIAL ACCOUNT." 
     }
   },
   de: {
     lang_code: "DE",
-    nav: { funcionalidades: "FUNKTIONEN", workflow: "WIE ES FUNKTIONIERT", labs: "KI-ASSISTENT", contact: "KONTAKT" },
+    nav: { funcionalidades: "FUNKTIONEN", workflow: "WIE ES FUNKTIONIERT", labs: "KI-ASSISTENT", about: "ÜBER UNS", contact: "KONTAKT" },
     hero: { 
       pill: "HANDICAPP", 
       line1: "PROFESSIONELLE", 
@@ -401,6 +423,17 @@ const I18N = {
       stillHaveQuestions: "Haben Sie noch Fragen?",
       contactUs: "Unser Team ist bereit zu helfen",
       getInTouch: "Jetzt Kontaktieren"
+    },
+    about: { 
+      title: "UNSERE DNA", 
+      subtitle: "Geboren auf dem Feld, aufgewachsen im Code.", 
+      desc: "Handicapp entstand aus der Frustration über verlorene Krankenakten. Wir sind ein hybrides Team aus Reitern, Tierärzten und Softwareingenieuren mit einer Mission: Tradition digitalisieren ohne die Seele zu verlieren.",
+      val1: "Pferdeleidenschaft", 
+      val1_d: "Wir verstehen Schweiß und Ruhm des Feldes.",
+      val2: "Radikale Innovation", 
+      val2_d: "Spitzentechnologie für die Pferdewelt.",
+      val3: "Totale Transparenz", 
+      val3_d: "Klare Daten für klare Besitzer."
     },
     contact: { 
       title: "Bereit, Ihre Verwaltung zu transformieren?", 
@@ -839,7 +872,7 @@ EJEMPLO MALO: "Handicapp ofrece tres planes de precios diferentes: 1. Plan Stabl
               <p className={`text-lg ${theme.textMuted}`}>{t.labs.desc}</p>
             </div>
             <div className="space-y-4">
-              <div className="relative"><input value={prompt} onChange={(e) => setPrompt(e.target.value)} placeholder={t.labs.input_ph} className={`w-full p-5 rounded-xl border outline-none transition-all font-medium ${isDark ? 'bg-black/50 border-zinc-800 text-white focus:border-[#af936f]' : 'bg-white border-zinc-200 text-zinc-900 focus:border-[#af936f]'}`} /><div className="absolute right-4 top-1/2 -translate-y-1/2"><Dna size={20} className={theme.textMuted} /></div></div>
+              <div className="relative"><input value={prompt} onChange={(e) => setPrompt(e.target.value)} placeholder={t.labs.input_ph} className={`w-full p-5 rounded-xl border outline-none transition-all font-medium placeholder:opacity-50 ${isDark ? 'bg-black/50 border-zinc-800 text-white focus:border-[#af936f]' : 'bg-white border-zinc-200 text-zinc-900 focus:border-[#af936f]'}`} /><div className="absolute right-4 top-1/2 -translate-y-1/2"><Dna size={20} className={theme.textMuted} /></div></div>
               <button onClick={handleGen} disabled={loading} className={`w-full py-5 rounded-xl font-bold uppercase tracking-widest transition-all flex items-center justify-center gap-3 ${isDark ? 'bg-white text-black hover:bg-[#af936f] hover:text-white' : 'bg-black text-white hover:bg-[#af936f]'} disabled:opacity-50 disabled:cursor-not-allowed`}>{loading ? <Loader2 className="animate-spin" /> : t.labs.btn} <ArrowRight size={18} /></button>
             </div>
           </div>
@@ -1009,7 +1042,7 @@ const ContactForm = ({ t, isDark, theme }) => {
              <div><label className="text-xs font-bold uppercase opacity-50 mb-2 block">{t.contact.email}</label><input className={`w-full p-4 rounded-xl border bg-transparent outline-none ${theme.border} focus:border-current`} /></div>
              <div><label className="text-xs font-bold uppercase opacity-50 mb-2 block">{t.contact.msg}</label><textarea rows={4} className={`w-full p-4 rounded-xl border bg-transparent outline-none ${theme.border} focus:border-current`}></textarea></div>
              <button disabled={status !== 'idle'} className={`w-full py-5 rounded-xl font-bold uppercase tracking-widest transition-all hover:scale-105 flex items-center justify-center gap-2 ${status === 'success' ? 'bg-green-500 text-white' : isDark ? 'bg-white text-black' : 'bg-black text-white'}`}>
-               {status === 'loading' ? <Loader2 className="animate-spin" /> : status === 'success' ? <><CheckCircle2 /> {t.contact.success}</> : t.contact.btn}
+               {status === 'loading' ? <Loader2 className="animate-spin" /> : status === 'success' ? t.contact.success : t.contact.btn}
              </button>
           </form>
        </div>
