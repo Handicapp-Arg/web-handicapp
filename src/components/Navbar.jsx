@@ -6,9 +6,27 @@ const Navbar = ({ t, theme, isDark, scrolled, ASSETS, onToggleDark, onToggleLang
   const location = useLocation();
   const currentPath = location.pathname;
 
+  // Handler para el click en el logo
+  const handleLogoClick = (e) => {
+    if (currentPath === '/') {
+      // Si ya estamos en home, hacer scroll al top
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    // Si no estamos en home, el Link manejará la navegación
+  };
+
+  // Handler para links que deben ir al top de la página
+  const handlePageClick = (e, path) => {
+    // Siempre hacer scroll al top cuando se navega a una página
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 100);
+  };
+
   // Navigation items configuration
   const navItems = [
-    { path: '/', label: t.nav.system || 'ECOSISTEMA', isExternal: false },
+    { path: '/', label: 'INICIO', isExternal: false },
     { path: '/faq', label: 'FAQ', isExternal: false },
   ];
 
@@ -29,7 +47,7 @@ const Navbar = ({ t, theme, isDark, scrolled, ASSETS, onToggleDark, onToggleLang
     <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? 'py-3 ' + theme.glass + ' border-b ' + theme.border : 'py-5 bg-transparent'}`}>
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-3 group cursor-pointer relative z-10">
+        <Link to="/" onClick={handleLogoClick} className="flex items-center gap-3 group cursor-pointer relative z-10">
           {ASSETS.logoIcon ? (
             <div className={`${scrolled ? 'w-11 h-11' : 'w-14 h-14'} transition-all duration-500 flex-shrink-0`}>
               <img 
@@ -61,6 +79,7 @@ const Navbar = ({ t, theme, isDark, scrolled, ASSETS, onToggleDark, onToggleLang
                 <Link 
                   key={item.path}
                   to={item.path}
+                  onClick={(e) => handlePageClick(e, item.path)}
                   className={getLinkStyles(item.path)}
                 >
                   {item.label}
@@ -74,6 +93,7 @@ const Navbar = ({ t, theme, isDark, scrolled, ASSETS, onToggleDark, onToggleLang
                 <Link 
                   key={item.path}
                   to={item.path}
+                  onClick={(e) => handlePageClick(e, item.path)}
                   className={getLinkStyles(item.path)}
                 >
                   {item.label}

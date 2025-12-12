@@ -147,9 +147,9 @@ const I18N = {
     },
     trust: { 
       title: "YA CONFÍAN EN HANDICAPP", 
-      desc: "Los principales haras, studs y establecimientos ecuestres de Argentina ya digitalizaron su gestión.", 
-      quote: "Antes perdíamos 15 horas semanales en planillas Excel. Hoy todo es automático: historial médico, tareas del equipo y reportes para propietarios. Handicapp aumentó nuestra eficiencia un 40% y mejoró nuestra reputación profesional. Es la mejor inversión que hicimos.", 
-      author: "Director de Operaciones - Haras Premium Argentino" 
+      desc: "Los principales establecimientos ecuestres de Argentina digitalizaron su gestión.", 
+      quote: "El sistema de gestión integral nos permite tener control total de nuestros ejemplares. Es el futuro del turf.", 
+      author: "Martín Petrini, Director Técnico - Stud Abolengo" 
     },
     workflow: { 
       title: "EMPIEZA HOY, VE RESULTADOS MAÑANA", 
@@ -162,7 +162,7 @@ const I18N = {
     },
     labs: { 
       title: "Pregunta Lo Que Necesites", 
-      desc: "Nuestro asistente inteligente responde todas tus dudas sobre Handicapp: funcionalidades, migración de datos, planes, comparativas o cómo mejorar la gestión de tu haras. Disponible 24/7.", 
+      desc: "Nuestro asistente inteligente responde todas tus dudas sobre Handicapp: funcionalidades, migración de datos, planes, comparativas o cómo mejorar la gestión de tu haras.", 
       input_ph: "Ej: ¿Cuánto tiempo ahorro con Handicapp vs Excel?", 
       btn: "Consultar Ahora", 
       chat_ph: "Escribe tu pregunta aquí...", 
@@ -726,9 +726,9 @@ const VerticalWorkflow = ({ t, isDark, theme }) => {
   
   // Imágenes para cada paso
   const stepImages = [
-    "/images/0T1A5784.jpg",  // Paso 1: Sube Tu Información
-    "/images/0T1A6227.jpg",  // Paso 2: Automatiza Tu Operación
-    "/images/DSC04294.jpg"   // Paso 3: Toma Mejores Decisiones
+    "/images/0T1A5784.webp",  // Paso 1: Sube Tu Información
+    "/images/0T1A6227.webp",  // Paso 2: Automatiza Tu Operación
+    "/images/DSC04294.webp"   // Paso 3: Toma Mejores Decisiones
   ];
   
   useEffect(() => {
@@ -752,7 +752,11 @@ const VerticalWorkflow = ({ t, isDark, theme }) => {
         <div className="flex flex-col md:flex-row gap-20">
           <div className="md:w-1/2 hidden md:block">
             <div className="sticky top-32 h-[500px] w-full">
-              <div className={`relative w-full h-full rounded-[2.5rem] border ${theme.border} ${theme.glass} overflow-hidden shadow-2xl`}>
+              <div className={`relative w-full h-full rounded-[2.5rem] border-2 overflow-hidden shadow-2xl ${
+                isDark 
+                  ? 'border-zinc-800/50 bg-zinc-900/20' 
+                  : 'border-zinc-300 bg-white'
+              }`}>
                 {/* Imagen de fondo con transición */}
                 {stepImages.map((image, index) => (
                   <div
@@ -764,7 +768,10 @@ const VerticalWorkflow = ({ t, isDark, theme }) => {
                     <img 
                       src={image} 
                       alt={`Paso ${index + 1}`}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover will-change-transform"
+                      loading={index === 0 ? "eager" : "lazy"}
+                      decoding="async"
+                      fetchpriority={index === 0 ? "high" : "low"}
                     />
                     {/* Overlay oscuro para mejor legibilidad */}
                     <div className={`absolute inset-0 ${
@@ -777,7 +784,11 @@ const VerticalWorkflow = ({ t, isDark, theme }) => {
                 
                 {/* Contenido sobre la imagen */}
                 <div className="absolute inset-0 flex flex-col items-center justify-center p-12 text-center z-10">
-                  <div className={`mb-8 p-8 rounded-full border-2 ${theme.border} bg-[#0f172a]/80 backdrop-blur-sm transition-all duration-500 transform ${
+                  <div className={`mb-8 p-8 rounded-full border-2 bg-[#0f172a]/80 backdrop-blur-sm transition-all duration-500 transform ${
+                    isDark 
+                      ? 'border-zinc-700/50' 
+                      : 'border-zinc-600/30'
+                  } ${
                     activeStep === 0 ? 'scale-100 rotate-0' : activeStep === 1 ? 'scale-110 rotate-180' : 'scale-100 rotate-0'
                   }`}>
                     {activeStep === 0 && <Radio size={64} className="animate-pulse text-[#af936f]" />}
@@ -862,29 +873,29 @@ EJEMPLO MALO: "Handicapp ofrece tres planes de precios diferentes: 1. Plan Stabl
   };
   
   return (
-    <section id="labs" className="scroll-mt-24 py-32 px-6 relative">
-      <div className={`max-w-6xl mx-auto rounded-[2.5rem] p-8 md:p-16 relative overflow-hidden border ${theme.glass} shadow-2xl`}>
-        <div className={`absolute -top-40 -right-40 w-96 h-96 rounded-full blur-[120px] opacity-20 ${theme.accentBg}`}></div>
-        <div className="relative z-10 grid lg:grid-cols-2 gap-16">
-          <div className="space-y-8">
+    <section id="labs" className="scroll-mt-24 py-16 sm:py-20 md:py-24 lg:py-32 px-4 sm:px-6 relative">
+      <div className={`max-w-6xl mx-auto rounded-2xl sm:rounded-[2rem] md:rounded-[2.5rem] p-6 sm:p-8 md:p-12 lg:p-16 relative overflow-hidden border ${theme.glass} shadow-2xl`}>
+        <div className={`absolute -top-32 -right-32 sm:-top-40 sm:-right-40 w-80 h-80 sm:w-96 sm:h-96 rounded-full blur-[100px] sm:blur-[120px] opacity-20 ${theme.accentBg}`}></div>
+        <div className="relative z-10 grid lg:grid-cols-2 gap-8 sm:gap-12 md:gap-16">
+          <div className="space-y-6 sm:space-y-8">
             <div>
-              <h2 className={`text-4xl md:text-5xl font-black mb-4 leading-tight ${isDark ? 'text-white' : 'text-zinc-900'}`}>{t.labs.title}</h2>
-              <p className={`text-lg ${theme.textMuted}`}>{t.labs.desc}</p>
+              <h2 className={`text-3xl sm:text-4xl md:text-5xl font-black mb-3 sm:mb-4 leading-tight ${isDark ? 'text-white' : 'text-zinc-900'}`}>{t.labs.title}</h2>
+              <p className={`text-base sm:text-lg ${theme.textMuted}`}>{t.labs.desc}</p>
             </div>
-            <div className="space-y-4">
-              <div className="relative"><input value={prompt} onChange={(e) => setPrompt(e.target.value)} placeholder={t.labs.input_ph} className={`w-full p-5 rounded-xl border outline-none transition-all font-medium placeholder:opacity-50 ${isDark ? 'bg-black/50 border-zinc-800 text-white focus:border-[#af936f]' : 'bg-white border-zinc-200 text-zinc-900 focus:border-[#af936f]'}`} /><div className="absolute right-4 top-1/2 -translate-y-1/2"><Dna size={20} className={theme.textMuted} /></div></div>
-              <button onClick={handleGen} disabled={loading} className={`w-full py-5 rounded-xl font-bold uppercase tracking-widest transition-all flex items-center justify-center gap-3 ${isDark ? 'bg-white text-black hover:bg-[#af936f] hover:text-white' : 'bg-black text-white hover:bg-[#af936f]'} disabled:opacity-50 disabled:cursor-not-allowed`}>{loading ? <Loader2 className="animate-spin" /> : t.labs.btn} <ArrowRight size={18} /></button>
+            <div className="space-y-3 sm:space-y-4">
+              <div className="relative"><input value={prompt} onChange={(e) => setPrompt(e.target.value)} placeholder={t.labs.input_ph} className={`w-full p-4 sm:p-5 rounded-xl border outline-none transition-all font-medium placeholder:opacity-50 text-sm sm:text-base ${isDark ? 'bg-black/50 border-zinc-800 text-white focus:border-[#af936f]' : 'bg-white border-zinc-200 text-zinc-900 focus:border-[#af936f]'}`} /><div className="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2"><Dna size={18} className="sm:w-5 sm:h-5 ${theme.textMuted}" /></div></div>
+              <button onClick={handleGen} disabled={loading} className={`w-full py-4 sm:py-5 rounded-xl font-bold uppercase tracking-widest transition-all flex items-center justify-center gap-2 sm:gap-3 text-sm sm:text-base ${isDark ? 'bg-white text-black hover:bg-[#af936f] hover:text-white' : 'bg-black text-white hover:bg-[#af936f]'} disabled:opacity-50 disabled:cursor-not-allowed`}>{loading ? <Loader2 className="animate-spin w-4 h-4 sm:w-5 sm:h-5" /> : t.labs.btn} <ArrowRight size={16} className="sm:w-[18px] sm:h-[18px]" /></button>
             </div>
           </div>
-          <div className={`rounded-3xl p-8 border ${isDark ? 'bg-black/40 border-zinc-800' : 'bg-gradient-to-br from-zinc-50 to-white border-zinc-300 shadow-inner'} min-h-[400px] flex flex-col relative overflow-hidden`}>
-            <div className={`flex justify-between items-center mb-6 ${isDark ? 'opacity-50' : 'opacity-60'}`}>
-              <div className="flex gap-2">
-                <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+          <div className={`rounded-2xl sm:rounded-3xl p-6 sm:p-8 border ${isDark ? 'bg-black/40 border-zinc-800' : 'bg-gradient-to-br from-zinc-50 to-white border-zinc-300 shadow-inner'} min-h-[300px] sm:min-h-[400px] flex flex-col relative overflow-hidden`}>
+            <div className={`flex justify-between items-center mb-4 sm:mb-6 ${isDark ? 'opacity-50' : 'opacity-60'}`}>
+              <div className="flex gap-1.5 sm:gap-2">
+                <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-red-500"></div>
+                <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-yellow-500"></div>
               </div>
-              <div className={`font-mono text-xs ${theme.textMuted}`}>AI_OUTPUT_V1</div>
+              <div className={`font-mono text-[10px] sm:text-xs ${theme.textMuted}`}>AI_OUTPUT_V1</div>
             </div>
-            <div className={`flex-1 font-mono text-sm leading-loose whitespace-pre-wrap ${error ? 'text-red-500' : isDark ? theme.accent : 'text-[#af936f] font-semibold'}`}>
+            <div className={`flex-1 font-mono text-xs sm:text-sm leading-relaxed sm:leading-loose whitespace-pre-wrap ${error ? 'text-red-500' : isDark ? theme.accent : 'text-[#af936f] font-semibold'}`}>
               {error ? `❌ ${error}` : response || <span className="opacity-30">// Ready...</span>}
             </div>
           </div>
@@ -929,24 +940,24 @@ const SocialProof = ({ t, isDark, theme }) => {
   }, []);
   
   return (
-    <section className={`py-24 border-y overflow-hidden relative ${isDark ? 'bg-[#1e293b]/20 border-[#af936f]/20' : 'bg-gradient-to-b from-zinc-50 to-white border-zinc-300'}`}>
+    <section className={`py-16 sm:py-20 md:py-24 lg:py-32 border-y overflow-hidden relative ${isDark ? 'bg-[#1e293b]/20 border-[#af936f]/20' : 'bg-gradient-to-b from-zinc-50 to-white border-zinc-300'}`}>
       {/* Decoración de fondo */}
       <div className={`absolute inset-0 ${isDark ? 'opacity-5' : 'opacity-10'}`}>
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#af936f] rounded-full blur-[150px]"></div>
       </div>
       
-      <div className="max-w-7xl mx-auto px-6 mb-16 text-center relative z-10">
-        <p className={`text-xs font-black tracking-[0.3em] uppercase mb-4 ${theme.accent}`}>{t.trust.title}</p>
-        <h3 className={`text-2xl md:text-3xl font-bold ${theme.text}`}>{t.trust.desc}</h3>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 sm:mb-14 md:mb-16 lg:mb-20 text-center relative z-10">
+        <p className={`text-[10px] sm:text-xs font-black tracking-[0.3em] uppercase mb-3 sm:mb-4 ${theme.accent}`}>{t.trust.title}</p>
+        <h3 className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold ${theme.text} px-4`}>{t.trust.desc}</h3>
       </div>
       
       {/* Logos carousel con sponsors reales */}
-      <div className="flex overflow-hidden relative mb-20">
-        <div className="flex gap-16 md:gap-24 animate-marquee whitespace-nowrap">
+      <div className="flex overflow-hidden relative mb-16 sm:mb-20 md:mb-24 lg:mb-28">
+        <div className="flex gap-12 sm:gap-16 md:gap-20 lg:gap-24 animate-marquee whitespace-nowrap">
           {[...ASSETS.logos, ...ASSETS.logos, ...ASSETS.logos].map((logo, i) => {
             const isHipodromoLogo = logo.includes('logo.png');
             return (
-              <div key={i} className="flex items-center justify-center min-w-[180px] h-20">
+              <div key={i} className="flex items-center justify-center min-w-[140px] sm:min-w-[160px] md:min-w-[180px] lg:min-w-[200px] h-16 sm:h-20 md:h-24">
                 <img 
                   src={logo} 
                   alt="Partner" 
@@ -967,13 +978,13 @@ const SocialProof = ({ t, isDark, theme }) => {
       </div>
       
       {/* Testimonial carousel mejorado */}
-      <div className="max-w-5xl mx-auto px-6 relative z-10 pt-10">
+      <div className="max-w-4xl lg:max-w-5xl 2xl:max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-8 sm:pt-10 md:pt-12">
         {/* Icono de estrella flotante FUERA de la tarjeta */}
-        <div className={`absolute -top-2 left-1/2 -translate-x-1/2 w-16 h-16 rounded-full ${theme.accentBg} flex items-center justify-center text-white shadow-2xl z-20`}>
-          <Star fill="currentColor" size={28} />
+        <div className={`absolute -top-1 sm:-top-2 left-1/2 -translate-x-1/2 w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full ${theme.accentBg} flex items-center justify-center text-white shadow-2xl z-20`}>
+          <Star fill="currentColor" size={20} className="sm:w-6 sm:h-6 md:w-7 md:h-7" />
         </div>
         
-        <div className={`px-16 py-10 md:px-20 md:py-12 rounded-[2rem] border-2 text-center relative ${
+        <div className={`px-6 py-10 sm:px-10 sm:py-12 md:px-14 lg:px-18 2xl:px-24 md:py-14 lg:py-16 rounded-xl sm:rounded-2xl md:rounded-[2rem] border-2 text-center relative ${
           isDark 
             ? 'bg-gradient-to-br from-[#0f172a] to-[#1e293b] border-[#af936f]/30' 
             : 'bg-gradient-to-br from-white via-zinc-50 to-white border-[#af936f]/40'
@@ -981,7 +992,7 @@ const SocialProof = ({ t, isDark, theme }) => {
           {/* Quote decorativo eliminado para que sea más rectangular */}
           
           {/* Testimonial content with fade animation */}
-          <div className="relative min-h-[140px] flex flex-col items-center justify-center">
+          <div className="relative min-h-[200px] sm:min-h-[180px] md:min-h-[160px] lg:min-h-[170px] flex flex-col items-center justify-center">
             {testimonials.map((testimonial, index) => (
               <div
                 key={index}
@@ -991,18 +1002,18 @@ const SocialProof = ({ t, isDark, theme }) => {
                     : 'opacity-0 translate-y-4 pointer-events-none'
                 }`}
               >
-                <p className={`text-xl md:text-2xl font-medium italic mb-6 leading-relaxed px-4 ${theme.text}`}>
+                <p className={`text-base sm:text-lg md:text-xl lg:text-2xl 2xl:text-3xl font-medium italic mb-5 sm:mb-6 md:mb-7 leading-relaxed px-2 sm:px-4 md:px-6 ${theme.text}`}>
                   "{testimonial.quote}"
                 </p>
                 
                 {/* Divider dorado */}
-                <div className="flex items-center justify-center gap-3 mb-4">
-                  <div className={`h-px w-12 ${theme.accentBg}`}></div>
-                  <div className={`w-2 h-2 rounded-full ${theme.accentBg}`}></div>
-                  <div className={`h-px w-12 ${theme.accentBg}`}></div>
+                <div className="flex items-center justify-center gap-2 sm:gap-3 mb-4 sm:mb-5">
+                  <div className={`h-px w-10 sm:w-12 md:w-16 ${theme.accentBg}`}></div>
+                  <div className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full ${theme.accentBg}`}></div>
+                  <div className={`h-px w-10 sm:w-12 md:w-16 ${theme.accentBg}`}></div>
                 </div>
                 
-                <p className={`text-sm font-bold tracking-widest uppercase ${theme.accent}`}>
+                <p className={`text-[10px] sm:text-xs md:text-sm lg:text-base font-bold tracking-widest uppercase ${theme.accent} px-4`}>
                   {testimonial.author}, {testimonial.position}
                 </p>
               </div>
@@ -1010,14 +1021,14 @@ const SocialProof = ({ t, isDark, theme }) => {
           </div>
           
           {/* Navigation dots */}
-          <div className="flex items-center justify-center gap-2 mt-8">
+          <div className="flex items-center justify-center gap-2 sm:gap-2.5 mt-8 sm:mt-10 md:mt-12">
             {testimonials.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentTestimonial(index)}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                className={`w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full transition-all duration-300 ${
                   currentTestimonial === index 
-                    ? `${theme.accentBg} w-8` 
+                    ? `${theme.accentBg} w-8 sm:w-10 lg:w-12` 
                     : isDark ? 'bg-white/20 hover:bg-white/40' : 'bg-zinc-300 hover:bg-zinc-400'
                 }`}
               />
@@ -1033,16 +1044,16 @@ const ContactForm = ({ t, isDark, theme }) => {
   const [status, setStatus] = useState('idle');
   const handleSubmit = (e) => { e.preventDefault(); setStatus('loading'); setTimeout(() => setStatus('success'), 1500); };
   return (
-    <section id="contact" className={`scroll-mt-24 py-40 px-6 relative overflow-hidden border-t ${theme.border}`}>
-       <div className={`absolute inset-0 opacity-10 ${theme.accentBg} blur-[200px]`}></div>
-       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 relative z-10 items-center">
-          <div><h2 className="text-6xl md:text-8xl font-black tracking-tighter mb-10 leading-[0.9]">{t.contact.title}</h2><p className={`text-xl ${theme.textMuted}`}>{t.contact.subtitle}</p></div>
-          <form onSubmit={handleSubmit} className={`p-10 rounded-[2rem] border ${theme.glass} space-y-6`}>
-             <div><label className="text-xs font-bold uppercase opacity-50 mb-2 block">{t.contact.name}</label><input className={`w-full p-4 rounded-xl border bg-transparent outline-none ${theme.border} focus:border-current`} /></div>
-             <div><label className="text-xs font-bold uppercase opacity-50 mb-2 block">{t.contact.email}</label><input className={`w-full p-4 rounded-xl border bg-transparent outline-none ${theme.border} focus:border-current`} /></div>
-             <div><label className="text-xs font-bold uppercase opacity-50 mb-2 block">{t.contact.msg}</label><textarea rows={4} className={`w-full p-4 rounded-xl border bg-transparent outline-none ${theme.border} focus:border-current`}></textarea></div>
-             <button disabled={status !== 'idle'} className={`w-full py-5 rounded-xl font-bold uppercase tracking-widest transition-all hover:scale-105 flex items-center justify-center gap-2 ${status === 'success' ? 'bg-green-500 text-white' : isDark ? 'bg-white text-black' : 'bg-black text-white'}`}>
-               {status === 'loading' ? <Loader2 className="animate-spin" /> : status === 'success' ? t.contact.success : t.contact.btn}
+    <section id="contact" className={`scroll-mt-24 py-20 sm:py-28 md:py-32 lg:py-40 px-4 sm:px-6 relative overflow-hidden border-t ${theme.border}`}>
+       <div className={`absolute inset-0 opacity-10 ${theme.accentBg} blur-[150px] sm:blur-[200px]`}></div>
+       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 sm:gap-12 md:gap-16 relative z-10 items-center">
+          <div><h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tighter mb-6 sm:mb-8 md:mb-10 leading-[0.9]">{t.contact.title}</h2><p className={`text-base sm:text-lg md:text-xl ${theme.textMuted}`}>{t.contact.subtitle}</p></div>
+          <form onSubmit={handleSubmit} className={`p-6 sm:p-8 md:p-10 rounded-xl sm:rounded-2xl md:rounded-[2rem] border ${theme.glass} space-y-4 sm:space-y-6`}>
+             <div><label className="text-[10px] sm:text-xs font-bold uppercase opacity-50 mb-1.5 sm:mb-2 block">{t.contact.name}</label><input className={`w-full p-3 sm:p-4 rounded-xl border bg-transparent outline-none text-sm sm:text-base ${theme.border} focus:border-current`} /></div>
+             <div><label className="text-[10px] sm:text-xs font-bold uppercase opacity-50 mb-1.5 sm:mb-2 block">{t.contact.email}</label><input className={`w-full p-3 sm:p-4 rounded-xl border bg-transparent outline-none text-sm sm:text-base ${theme.border} focus:border-current`} /></div>
+             <div><label className="text-[10px] sm:text-xs font-bold uppercase opacity-50 mb-1.5 sm:mb-2 block">{t.contact.msg}</label><textarea rows={4} className={`w-full p-3 sm:p-4 rounded-xl border bg-transparent outline-none text-sm sm:text-base ${theme.border} focus:border-current`}></textarea></div>
+             <button disabled={status !== 'idle'} className={`w-full py-4 sm:py-5 rounded-xl font-bold uppercase tracking-widest transition-all hover:scale-105 flex items-center justify-center gap-2 text-sm sm:text-base ${status === 'success' ? 'bg-green-500 text-white' : isDark ? 'bg-white text-black' : 'bg-black text-white'}`}>
+               {status === 'loading' ? <Loader2 className="animate-spin w-4 h-4 sm:w-5 sm:h-5" /> : status === 'success' ? t.contact.success : t.contact.btn}
              </button>
           </form>
        </div>
