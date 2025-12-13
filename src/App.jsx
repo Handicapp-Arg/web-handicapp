@@ -64,17 +64,17 @@ const ASSETS = {
   heroHorse: "https://images.unsplash.com/photo-1534078362425-387ae9668c17?q=80&w=2669&auto=format&fit=crop", 
   noise: "https://grainy-gradients.vercel.app/noise.svg",
   // LOGOS LOCALES - TUS LOGOS REALES
-  logoFull: "/images/logo-full-white.png",  // Logo completo horizontal
-  logoIcon: "/images/logo-icon-white.png",  // Logo icono/símbolo
+  logoFull: "https://res.cloudinary.com/dh2m9ychv/image/upload/v1765636413/handicapp/uploads/logo-full-white.webp",  // Logo completo horizontal
+  logoIcon: "https://res.cloudinary.com/dh2m9ychv/image/upload/v1765636415/handicapp/uploads/logo-icon-white.webp",  // Logo icono/símbolo
   // Imagen Dashboard asegurada
   dashboardScreen: "/images/dashboard.png", // Screenshot del dashboard
   
   // Logos de sponsors y partners hípicos
   logos: [
     "/images/Abolonego.avif",      // Stud Abolengo - Criadero de caballos de carrera
-    "/images/logo.png",             // Hipódromo de San Isidro - Institución hípica
+    "https://res.cloudinary.com/dh2m9ychv/image/upload/v1765636416/handicapp/uploads/logo.webp",             // Hipódromo de San Isidro - Institución hípica
     "/images/harasParaiso.webp",   // Haras El Paraíso - Establecimiento ecuestre
-    "/images/LADOLFINA.avif"       // La Dolfina - Equipo de polo argentino
+    "https://res.cloudinary.com/dh2m9ychv/image/upload/v1765636408/handicapp/uploads/LADOLFINA.webp"       // La Dolfina - Equipo de polo argentino
   ]
 };
 

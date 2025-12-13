@@ -445,7 +445,7 @@ const AboutSection = ({ t, isDark, theme }) => (
           {/* Imagen - object-cover centrado para mostrar bien el caballo */}
           <div className="absolute inset-0">
             <img 
-              src="/images/RE1_4060.jpg"
+              src="https://res.cloudinary.com/dh2m9ychv/image/upload/v1765636411/handicapp/uploads/RE1_4060.webp"
               alt="Gestión ecuestre profesional con Handicapp" 
               className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
             />
