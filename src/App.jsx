@@ -74,7 +74,8 @@ const ASSETS = {
     "/images/Abolonego.avif",      // Stud Abolengo - Criadero de caballos de carrera
     "https://res.cloudinary.com/dh2m9ychv/image/upload/v1765636416/handicapp/uploads/logo.webp",             // Hipódromo de San Isidro - Institución hípica
     "/images/harasParaiso.webp",   // Haras El Paraíso - Establecimiento ecuestre
-    "https://res.cloudinary.com/dh2m9ychv/image/upload/v1765636408/handicapp/uploads/LADOLFINA.webp"       // La Dolfina - Equipo de polo argentino
+    "https://res.cloudinary.com/dh2m9ychv/image/upload/v1765636408/handicapp/uploads/LADOLFINA.webp",       // La Dolfina - Equipo de polo argentino
+    "https://res.cloudinary.com/dh2m9ychv/image/upload/v1765640273/handicapp/uploads/0T1A5784.webp"         // Nueva imagen agregada
   ]
 };
 
@@ -733,7 +734,7 @@ const VerticalWorkflow = ({ t, isDark, theme }) => {
   
   // Imágenes para cada paso
   const stepImages = [
-    "/images/0T1A5784.webp",  // Paso 1: Sube Tu Información
+    "https://res.cloudinary.com/dh2m9ychv/image/upload/v1765640273/handicapp/uploads/0T1A5784.webp",  // Paso 1: Sube Tu Información
     "https://res.cloudinary.com/dh2m9ychv/image/upload/v1765579209/orejitas_serqac.jpg",  // Paso 2: Automatiza Tu Operación (nuevo link)
     "https://res.cloudinary.com/dh2m9ychv/image/upload/v1763217620/handicapp/uploads/caballo.webp" // Paso 3: Toma Mejores Decisiones
   ];
