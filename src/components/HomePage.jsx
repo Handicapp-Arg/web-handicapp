@@ -406,65 +406,75 @@ const RoleSelector = ({ t, isDark, theme, roles, activeRole, setActiveRole, isAu
 };
 
 // AboutSection - Sección Nosotros
-const AboutSection = ({ t, isDark, theme }) => (
-  <section id="about" className={`py-32 px-6 relative border-y ${theme.border} ${isDark ? 'bg-[#1e293b]/30' : 'bg-zinc-50'}`}>
-    <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
-      <div>
-        <div className={`inline-flex items-center gap-2 mb-6 ${theme.accent} font-bold text-xs uppercase tracking-widest`}>
-          <Dna size={16} /> {t.about.title}
-        </div>
-        <h2 className="text-5xl font-black mb-8 leading-tight">{t.about.subtitle}</h2>
-        <p className={`text-lg leading-relaxed mb-10 ${theme.textMuted}`}>{t.about.desc}</p>
-        
-        <div className="grid gap-6">
-          {[
-            { t: t.about.val1, d: t.about.val1_d, i: Heart },
-            { t: t.about.val2, d: t.about.val2_d, i: Code2 },
-            { t: t.about.val3, d: t.about.val3_d, i: Award }
-          ].map((val, i) => (
-            <div key={i} className={`flex items-start gap-4 p-4 rounded-xl border transition-all ${theme.glass} hover:border-current`}>
-              <div className={`mt-1 p-2 rounded-lg ${theme.accentBg} text-white`}>
-                <val.i size={18} />
-              </div>
-              <div>
-                <h4 className="font-bold text-lg">{val.t}</h4>
-                <p className={`text-sm ${theme.textMuted}`}>{val.d}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-      
-      {/* Imagen del equipo/operación ecuestre */}
-      <div className="relative aspect-[4/5] lg:aspect-[3/4] group">
-        {/* Glow effect detrás de la imagen */}
-        <div className={`absolute inset-0 rounded-full blur-[120px] opacity-30 ${theme.accentBg} animate-pulse`}></div>
-        
-        {/* Contenedor principal de la imagen */}
-        <div className={`relative h-full w-full rounded-[3rem] overflow-hidden border-2 ${theme.border} shadow-2xl transition-all duration-700 group-hover:scale-[1.02] group-hover:shadow-[0_0_60px_-15px_rgba(175,147,111,0.5)]`}>
-          {/* Imagen - object-cover centrado para mostrar bien el caballo */}
-          <div className="absolute inset-0">
-            <img 
-              src="https://res.cloudinary.com/dh2m9ychv/image/upload/v1765636411/handicapp/uploads/RE1_4060.webp"
-              alt="Gestión ecuestre profesional con Handicapp" 
-              className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
-            />
-            
-            {/* Overlay sutil solo en los bordes para mantener el foco en el caballo */}
-            <div className={`absolute inset-0 bg-gradient-to-t ${isDark ? 'from-[#0f172a]/40 via-transparent to-transparent' : 'from-zinc-900/20 via-transparent to-transparent'}`}></div>
-            
-            {/* Efecto glass muy sutil en hover */}
-            <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+const aboutImages = [
+  "https://res.cloudinary.com/dh2m9ychv/image/upload/v1765636411/handicapp/uploads/RE1_4060.webp",
+  "https://res.cloudinary.com/dh2m9ychv/image/upload/v1765652228/handicapp/uploads/0T1A5723.webp",
+  "https://res.cloudinary.com/dh2m9ychv/image/upload/v1765652254/handicapp/uploads/DSC07420.webp"
+];
+
+const AboutSection = ({ t, isDark, theme }) => {
+  const [activeImage, setActiveImage] = React.useState(0);
+  const aboutVals = [
+    { t: t.about.val1, d: t.about.val1_d, i: Heart },
+    { t: t.about.val2, d: t.about.val2_d, i: Code2 },
+    { t: t.about.val3, d: t.about.val3_d, i: Award }
+  ];
+  return (
+    <section id="about" className={`py-32 px-6 relative border-y ${theme.border} ${isDark ? 'bg-[#1e293b]/30' : 'bg-zinc-50'}`}>
+      <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
+        <div>
+          <div className={`inline-flex items-center gap-2 mb-6 ${theme.accent} font-bold text-xs uppercase tracking-widest`}>
+            <Dna size={16} /> {t.about.title}
           </div>
-          
-          {/* Decorative corner accents dorados */}
-          <div className={`absolute top-4 right-4 w-20 h-20 border-t-2 border-r-2 rounded-tr-3xl opacity-40 transition-all duration-500 group-hover:w-24 group-hover:h-24 group-hover:opacity-60 ${isDark ? 'border-[#af936f]' : 'border-[#af936f]'}`}></div>
-          <div className={`absolute bottom-4 left-4 w-20 h-20 border-b-2 border-l-2 rounded-bl-3xl opacity-40 transition-all duration-500 group-hover:w-24 group-hover:h-24 group-hover:opacity-60 ${isDark ? 'border-[#af936f]' : 'border-[#af936f]'}`}></div>
+          <h2 className="text-5xl font-black mb-8 leading-tight">{t.about.subtitle}</h2>
+          <p className={`text-lg leading-relaxed mb-10 ${theme.textMuted}`}>{t.about.desc}</p>
+          <div className="grid gap-6">
+            {aboutVals.map((val, i) => (
+              <button
+                key={i}
+                className={`flex items-start gap-4 p-4 rounded-xl border transition-all ${theme.glass} hover:border-current focus:outline-none focus:ring-2 focus:ring-[#af936f] ${activeImage === i ? 'ring-2 ring-[#af936f] border-[#af936f]' : ''}`}
+                onClick={() => setActiveImage(i)}
+                type="button"
+              >
+                <div className={`mt-1 p-2 rounded-lg ${theme.accentBg} text-white`}>
+                  <val.i size={18} />
+                </div>
+                <div>
+                  <h4 className="font-bold text-lg">{val.t}</h4>
+                  <p className={`text-sm ${theme.textMuted}`}>{val.d}</p>
+                </div>
+              </button>
+            ))}
+          </div>
+        </div>
+        {/* Imagen del equipo/operación ecuestre */}
+        <div className="relative aspect-[4/5] lg:aspect-[3/4] group">
+          {/* Glow effect detrás de la imagen */}
+          <div className={`absolute inset-0 rounded-full blur-[120px] opacity-30 ${theme.accentBg} animate-pulse`}></div>
+          {/* Contenedor principal de la imagen */}
+          <div className={`relative h-full w-full rounded-[3rem] overflow-hidden border-2 ${theme.border} shadow-2xl transition-all duration-700 group-hover:scale-[1.02] group-hover:shadow-[0_0_60px_-15px_rgba(175,147,111,0.5)]`}>
+            {/* Imagen - object-cover centrado para mostrar bien el caballo */}
+            <div className="absolute inset-0">
+              <img 
+                src={aboutImages[activeImage]}
+                alt="Gestión ecuestre profesional con Handicapp"
+                className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+              />
+              {/* Overlay sutil solo en los bordes para mantener el foco en el caballo */}
+              <div className={`absolute inset-0 bg-gradient-to-t ${isDark ? 'from-[#0f172a]/40 via-transparent to-transparent' : 'from-zinc-900/20 via-transparent to-transparent'}`}></div>
+              {/* Efecto glass muy sutil en hover */}
+              <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            </div>
+            {/* Decorative corner accents dorados */}
+            <div className={`absolute top-4 right-4 w-20 h-20 border-t-2 border-r-2 rounded-tr-3xl opacity-40 transition-all duration-500 group-hover:w-24 group-hover:h-24 group-hover:opacity-60 ${isDark ? 'border-[#af936f]' : 'border-[#af936f]'}`}></div>
+            <div className={`absolute bottom-4 left-4 w-20 h-20 border-b-2 border-l-2 rounded-bl-3xl opacity-40 transition-all duration-500 group-hover:w-24 group-hover:h-24 group-hover:opacity-60 ${isDark ? 'border-[#af936f]' : 'border-[#af936f]'}`}></div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 const HomePage = ({ 
   t, 
