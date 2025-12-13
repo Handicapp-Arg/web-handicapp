@@ -721,20 +721,31 @@ const VideoModal = ({ isOpen, onClose }) => {
 };
 
 const VerticalWorkflow = ({ t, isDark, theme }) => {
+  // Precarga de imágenes pesadas al cargar la app
+  useEffect(() => {
+    stepImages.forEach((src) => {
+      const img = new window.Image();
+      img.src = src;
+    });
+  }, []);
   const [activeStep, setActiveStep] = useState(0);
   const stepsRef = useRef([]);
   
   // Imágenes para cada paso
   const stepImages = [
     "/images/0T1A5784.webp",  // Paso 1: Sube Tu Información
-    "/images/0T1A6227.webp",  // Paso 2: Automatiza Tu Operación
-    "/images/DSC04294.webp"   // Paso 3: Toma Mejores Decisiones
+    "https://res.cloudinary.com/dh2m9ychv/image/upload/v1765579209/orejitas_serqac.jpg",  // Paso 2: Automatiza Tu Operación (nuevo link)
+    "https://res.cloudinary.com/dh2m9ychv/image/upload/v1763217620/handicapp/uploads/caballo.webp" // Paso 3: Toma Mejores Decisiones
   ];
   
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => { if (entry.isIntersecting) setActiveStep(parseInt(entry.target.getAttribute('data-index'))); });
-    }, { threshold: 0.6 });
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setActiveStep(parseInt(entry.target.getAttribute('data-index')));
+        }
+      });
+    }, { threshold: 0.3 }); // Más sensible, responde antes
     stepsRef.current.forEach(step => { if (step) observer.observe(step); });
     return () => observer.disconnect();
   }, []);
@@ -762,16 +773,17 @@ const VerticalWorkflow = ({ t, isDark, theme }) => {
                   <div
                     key={index}
                     className={`absolute inset-0 transition-opacity duration-700 ${
-                      activeStep === index ? 'opacity-100' : 'opacity-0'
+                      activeStep === index ? 'opacity-100' : 'opacity-0 pointer-events-none'
                     }`}
                   >
                     <img 
                       src={image} 
                       alt={`Paso ${index + 1}`}
                       className="w-full h-full object-cover will-change-transform"
-                      loading={index === 0 ? "eager" : "lazy"}
+                      loading={index <= 1 ? "eager" : "lazy"}
                       decoding="async"
-                      fetchpriority={index === 0 ? "high" : "low"}
+                      fetchpriority={index <= 1 ? "high" : "low"}
+                      style={{transition: 'opacity 0.7s', opacity: activeStep === index ? 1 : 0}}
                     />
                     {/* Overlay oscuro para mejor legibilidad */}
                     <div className={`absolute inset-0 ${
@@ -781,7 +793,6 @@ const VerticalWorkflow = ({ t, isDark, theme }) => {
                     }`}></div>
                   </div>
                 ))}
-                
                 {/* Contenido sobre la imagen */}
                 <div className="absolute inset-0 flex flex-col items-center justify-center p-12 text-center z-10">
                   <div className={`mb-8 p-8 rounded-full border-2 bg-[#0f172a]/80 backdrop-blur-sm transition-all duration-500 transform ${
@@ -802,8 +813,8 @@ const VerticalWorkflow = ({ t, isDark, theme }) => {
               </div>
             </div>
           </div>
-          
-          <div className="md:w-1/2 space-y-[60vh] py-[10vh]">
+          {/* Espaciado vertical aún más amplio y sin scroll interno */}
+          <div className="md:w-1/2 space-y-96 py-40">
             {steps.map((step, i) => (
               <div 
                 key={i} 
