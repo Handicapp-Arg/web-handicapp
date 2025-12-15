@@ -139,13 +139,23 @@ const I18N = {
       r4: "Haras / Establecimiento", 
       r4_d: "Aumenta tu reputación y rentabilidad. Administra múltiples caballos huéspedes, coordina equipos profesionales, genera reportes automáticos para propietarios y mantén contratos organizados. La herramienta que usan los haras líderes."
     },
-    hotspots: {
-      stock: "Coordina Tu Equipo Sin Esfuerzo", 
-      stock_d: "Olvídate del WhatsApp y los papeles. Asigna tareas, controla rutinas diarias, marca completadas y supervisa a todo el equipo en tiempo real. Reduce errores operativos hasta un 60% y mejora la comunicación interna.",
-      health: "Salud Veterinaria Inteligente", 
-      health_d: "Nunca más pierdas una vacuna o control médico. Calendario automatizado, alertas preventivas, historial clínico completo y recordatorios automáticos. Cuida mejor a tus caballos, mejora resultados deportivos.",
-      notify: "Nunca Más Pierdas Un Evento Importante", 
-      notify_d: "Sistema de alertas inteligente que te avisa de todo lo crítico: vacunas por vencer, controles veterinarios próximos, competencias programadas y tareas urgentes. Personalizable según tu rol. Mantén el control sin estrés."
+    keyFeatures: {
+      title: "EL SISTEMA OPERATIVO DE TU ESTABLECIMIENTO",
+      desc: "No es solo una app, es una infraestructura completa diseñada para escalar con tu haras.",
+      mobile_title: "Mobile First & Offline",
+      mobile_desc: "Diseñada para el campo real: funciona sin señal y sincroniza automáticamente. La app nativa que tu equipo sí va a querer usar.",
+      mobile_badge: "Modo Avión Soportado",
+      trace_title: "Trazabilidad Inmutable",
+      trace_desc: "Cada evento (vacuna, herraje, traslado) queda registrado para siempre con fecha, hora y responsable. Auditoría perfecta y confianza para tus clientes.",
+      roles_title: "Roles & Permisos",
+      roles_desc: "Seguridad de nivel bancario: cada usuario accede solo a lo que le corresponde.",
+      roles_list: ["Admin", "Veterinario", "Capataz", "Propietario"],
+      docs_title: "Docs Digitales",
+      docs_desc: "Pasaportes, radiografías y análisis siempre a mano, adjuntos al perfil de cada animal.",
+      bulk_title: "Carga Masiva",
+      bulk_desc: "¿Día de vacunación general? Selecciona todos los caballos y aplica el evento a la vez. Ahorra horas de carga manual y evita errores.",
+      bulk_lote: "Lote Destete",
+      bulk_select: "Select All"
     },
     trust: { 
       title: "YA CONFÍAN EN HANDICAPP", 
@@ -266,13 +276,23 @@ const I18N = {
       r4: "Facility", 
       r4_d: "Manage multiple horses, coordinate your team with the task system and maintain control of all daily operations."
     },
-    hotspots: {
-      stock: "Task Management", 
-      stock_d: "Create, assign and control daily tasks for your team. Complete stable routine management system.",
-      health: "Comprehensive Health", 
-      health_d: "Complete medical history, vaccination calendar, veterinary consultations and continuous medical tracking.",
-      notify: "Smart Notifications", 
-      notify_d: "Automatic veterinary check-up reminders, upcoming events and important system updates."
+    keyFeatures: {
+      title: "THE OPERATING SYSTEM FOR YOUR STABLE",
+      desc: "Not just an app, but a complete infrastructure designed to scale with your operation.",
+      mobile_title: "Mobile First & Offline",
+      mobile_desc: "Designed for real-world use: works without signal and syncs automatically. The native app your team will actually want to use.",
+      mobile_badge: "Airplane Mode Supported",
+      trace_title: "Immutable Traceability",
+      trace_desc: "Every event (vaccine, shoeing, transfer) is recorded forever with date, time, and responsible. Perfect audit trail and trust for your clients.",
+      roles_title: "Roles & Permissions",
+      roles_desc: "Bank-level security: each user only accesses what they need.",
+  roles_list: ["Admin", "Veterinarian", "Foreman", "Owner", "Reduction"],
+      docs_title: "Digital Docs",
+      docs_desc: "Passports, x-rays, and analyses always at hand, attached to each animal's profile.",
+      bulk_title: "Bulk Actions",
+      bulk_desc: "Vaccination day? Select all horses and apply the event at once. Save hours of manual entry and avoid mistakes.",
+      bulk_lote: "Weaning Lot",
+      bulk_select: "Select All"
     },
     trust: { 
       title: "TRUST", 
@@ -389,10 +409,23 @@ const I18N = {
       r3: "Manager", r3_d: "Bestandskontrolle, Personalmanagement und Finanzen in einem Dashboard.",
       r4: "Einrichtung", r4_d: "Verwalten Sie Gastpferde, koordinieren Sie Mitarbeiter und weisen Sie tägliche Aufgaben zu."
     },
-    hotspots: {
-      stock: "Aufgabenverwaltung", stock_d: "Aufgabensystem mit Verantwortungszuweisung und Stallroutinenkontrolle.",
-      health: "Krankenakte", health_d: "Vollständige medizinische Überwachung, Impfkalender und tierärztliche Kontrollen.",
-      notify: "Benachrichtigungen", notify_d: "Automatische Gesundheitserinnerungen, Ereignisse und Systemaktualisierungen."
+    keyFeatures: {
+      title: "DAS BETRIEBSSYSTEM FÜR IHREN BETRIEB",
+      desc: "Nicht nur eine App, sondern eine komplette Infrastruktur, die mit Ihrem Gestüt mitwächst.",
+      mobile_title: "Mobile First & Offline",
+      mobile_desc: "Für den echten Einsatz entwickelt: Funktioniert ohne Signal und synchronisiert automatisch. Die native App, die Ihr Team wirklich nutzen will.",
+      mobile_badge: "Flugmodus Unterstützt",
+      trace_title: "Unveränderliche Rückverfolgbarkeit",
+      trace_desc: "Jedes Ereignis (Impfung, Beschlag, Transport) wird für immer mit Datum, Uhrzeit und Verantwortlichem gespeichert. Perfekte Audit-Trails und Vertrauen für Ihre Kunden.",
+      roles_title: "Rollen & Berechtigungen",
+      roles_desc: "Bankenähnliche Sicherheit: Jeder Nutzer sieht nur, was er darf.",
+      roles_list: ["Admin", "Tierarzt", "Vorarbeiter", "Besitzer"],
+      docs_title: "Digitale Dokumente",
+      docs_desc: "Pferdepässe, Röntgenbilder und Analysen immer griffbereit, direkt am Tierprofil angehängt.",
+      bulk_title: "Massenaktionen",
+      bulk_desc: "Impf-Tag? Wählen Sie alle Pferde aus und wenden Sie das Ereignis auf einmal an. Spart Stunden manueller Eingabe und verhindert Fehler.",
+      bulk_lote: "Absetzgruppe",
+      bulk_select: "Alle Auswählen"
     },
     trust: { title: "VERTRAUEN", desc: "Branchenführer vertrauen uns.", quote: "Handicapp hat uns verändert.", author: "Roberto Álvarez, Direktor Gestüt El Paraíso" },
     workflow: { title: "KOMPLETTE VERWALTUNG", step1_t: "Registrieren & Organisieren", step1_d: "Pferdeprofile, Einrichtungen, Gesundheit, Wettbewerbe und Training an einem Ort verwalten.", step2_t: "Kontrollieren & Planen", step2_d: "Aufgabensystem, automatische Erinnerungen, Ereigniskalender und detaillierte Leistungsberichte.", step3_t: "Entscheidungen Treffen", step3_d: "Dashboard mit wichtigen Metriken, vollständiger Historie und intelligenten Benachrichtigungen." },

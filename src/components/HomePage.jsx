@@ -134,16 +134,15 @@ const KeyFeatures = ({ t, isDark, theme }) => {
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         <div className="text-center mb-20">
           <h2 className={`text-4xl md:text-6xl font-black mb-6 ${theme.text}`}>
-            EL SISTEMA OPERATIVO <br/> DE TU ESTABLECIMIENTO
+            {t.keyFeatures.title}
           </h2>
           <p className={`${theme.textMuted} max-w-2xl mx-auto text-lg`}>
-            No es solo una app, es una infraestructura completa diseñada para escalar con tu haras.
+            {t.keyFeatures.desc}
           </p>
         </div>
 
         {/* BENTO GRID LAYOUT */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6 auto-rows-[minmax(250px,auto)]">
-          
           {/* Card 1: Mobile First - Large Square */}
           <div className={`md:col-span-2 md:row-span-2 group relative p-8 md:p-12 rounded-[2rem] border transition-all duration-500 overflow-hidden hover:shadow-2xl ${
             isDark 
@@ -158,14 +157,12 @@ const KeyFeatures = ({ t, isDark, theme }) => {
                 }`}>
                   <IconDeviceMobile size={32} stroke={1.5} className="text-indigo-400" />
                 </div>
-                <h3 className={`text-3xl font-bold mb-4 ${theme.text}`}>Mobile First & Offline</h3>
-                <p className={`text-lg leading-relaxed ${theme.textMuted}`}>
-                  Diseñado para manos grandes y sol fuerte. Funciona perfecto sin señal y sincroniza automáticamente al volver al casco o tener WiFi. La app nativa que tu equipo sí va a querer usar.
-                </p>
+                <h3 className={`text-3xl font-bold mb-4 ${theme.text}`}>{t.keyFeatures.mobile_title}</h3>
+                <p className={`text-lg leading-relaxed ${theme.textMuted}`}>{t.keyFeatures.mobile_desc}</p>
               </div>
               <div className="mt-8">
                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 text-xs font-bold uppercase tracking-wider">
-                   <IconWifiOff size={14} /> Modo Avión Soportado
+                   <IconWifiOff size={14} /> {t.keyFeatures.mobile_badge}
                  </div>
               </div>
             </div>
@@ -189,8 +186,8 @@ const KeyFeatures = ({ t, isDark, theme }) => {
                   <IconHistory size={28} stroke={1.5} className="text-emerald-400" />
                 </div>
                 <div>
-                   <h3 className={`text-2xl font-bold mb-2 ${theme.text}`}>Trazabilidad Inmutable</h3>
-                   <p className={theme.textMuted}>Cada evento (vacuna, herraje, traslado) queda registrado para siempre con fecha, hora y responsable. Auditoría perfecta.</p>
+                   <h3 className={`text-2xl font-bold mb-2 ${theme.text}`}>{t.keyFeatures.trace_title}</h3>
+                   <p className={theme.textMuted}>{t.keyFeatures.trace_desc}</p>
                 </div>
              </div>
           </div>
@@ -208,15 +205,18 @@ const KeyFeatures = ({ t, isDark, theme }) => {
                 }`}>
                   <IconUsersGroup size={28} stroke={1.5} className="text-orange-400" />
                 </div>
-                <h3 className={`text-2xl font-bold mb-4 ${theme.text}`}>Roles & Permisos</h3>
+                <h3 className={`text-2xl font-bold mb-4 ${theme.text}`}>{t.keyFeatures.roles_title}</h3>
                 <p className={`${theme.textMuted} mb-6 flex-grow`}>
-                  Seguridad militar para tus datos.
+                  {t.keyFeatures.roles_desc}
                 </p>
                 <ul className={`space-y-3 text-sm ${theme.textMuted}`}>
-                  <li className="flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-green-500"></div> Admin</li>
-                  <li className="flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-blue-500"></div> Veterinario</li>
-                  <li className="flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-orange-500"></div> Capataz</li>
-                  <li className="flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-purple-500"></div> Propietario</li>
+                  {t.keyFeatures.roles_list.map((role, idx) => (
+                    <li key={role+idx} className="flex items-center gap-2">
+                      <div className={`w-2 h-2 rounded-full ${[
+                        'bg-green-500','bg-blue-500','bg-orange-500','bg-purple-500','bg-pink-500'
+                      ][idx % 5]}`}></div> {role}
+                    </li>
+                  ))}
                 </ul>
             </div>
           </div>
@@ -233,8 +233,8 @@ const KeyFeatures = ({ t, isDark, theme }) => {
                 }`}>
                   <IconFileCheck size={24} stroke={1.5} />
                 </div>
-                <h3 className={`text-xl font-bold mb-2 ${theme.text}`}>Docs Digitales</h3>
-                <p className={`text-sm ${theme.textMuted}`}>Pasaportes, radiografías y análisis adjuntos al perfil del animal.</p>
+                <h3 className={`text-xl font-bold mb-2 ${theme.text}`}>{t.keyFeatures.docs_title}</h3>
+                <p className={`text-sm ${theme.textMuted}`}>{t.keyFeatures.docs_desc}</p>
             </div>
           </div>
 
@@ -253,17 +253,17 @@ const KeyFeatures = ({ t, isDark, theme }) => {
                     }`}>
                       <IconBolt size={24} stroke={1.5} className="text-blue-400" />
                     </div>
-                    <h3 className={`text-2xl font-bold ${theme.text}`}>Carga Masiva</h3>
+                    <h3 className={`text-2xl font-bold ${theme.text}`}>{t.keyFeatures.bulk_title}</h3>
                   </div>
-                  <p className={theme.textMuted}>¿Día de vacunación general? Selecciona 50 caballos y aplica el evento a todos en un solo clic. Ahorra horas de carga manual.</p>
+                  <p className={theme.textMuted}>{t.keyFeatures.bulk_desc}</p>
                 </div>
                 {/* Visual Representation */}
                 <div className={`w-full md:w-1/3 rounded-xl p-3 border ${
                   isDark ? 'bg-neutral-800/50 border-white/10' : 'bg-zinc-50 border-zinc-300'
                 }`}>
                    <div className={`flex items-center justify-between mb-2 text-xs uppercase font-bold ${theme.textMuted}`}>
-                     <span>Lote Destete</span>
-                     <span>Select All</span>
+                     <span>{t.keyFeatures.bulk_lote}</span>
+                     <span>{t.keyFeatures.bulk_select}</span>
                    </div>
                    <div className="space-y-2">
                      {[1,2,3].map(i => (
