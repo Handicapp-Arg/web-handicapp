@@ -68,7 +68,7 @@ const ContactForm = React.memo(({ t, theme }) => {
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 sm:gap-12 md:gap-16 relative z-10 items-center">
         <div>
           <h2 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tighter mb-6 sm:mb-8 md:mb-10 leading-[0.9] ${theme.text}`}>
-            Empieza gratis <span className={theme.accent}>Hoy</span>
+            {t.contact.title}
           </h2>
           <p className={`text-base sm:text-lg md:text-xl ${theme.textMuted}`}>{t.contact.subtitle}</p>
         </div>

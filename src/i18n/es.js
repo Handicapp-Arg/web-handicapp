@@ -167,7 +167,7 @@ export default {
   },
 
   contact: {
-    title: "EMPEZÁ GRATIS HOY",
+    title: "Empieza gratis Hoy",
     subtitle: "Prueba Handicapp 14 días sin compromiso. Si no ves resultados, no pagas nada. Así de simple.",
     name: "Nombre completo",
     email: "Email de contacto",

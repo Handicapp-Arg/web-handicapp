@@ -167,12 +167,12 @@ export default {
   },
 
   contact: {
-    title: "Bereit, Ihre Verwaltung zu transformieren?",
-    subtitle: "Vereinbaren Sie eine persönliche Demo und entdecken Sie, wie Handicapp Ihren Betrieb optimieren kann.",
+    title: "Heute kostenlos starten",
+    subtitle: "Testen Sie Handicapp 14 Tage ohne Verpflichtung. Wenn Sie keine Ergebnisse sehen, zahlen Sie nichts. So einfach ist das.",
     name: "Vollständiger Name",
     email: "Email",
-    msg: "Erzählen Sie uns von Ihrem Projekt und Ihren Anforderungen",
-    btn: "Demo Anfragen",
-    success: "Nachricht Gesendet! Wir werden uns bald bei Ihnen melden."
+    msg: "Erzählen Sie uns von Ihrem Betrieb: Anzahl der Pferde, Team, Hauptbedürfnisse",
+    btn: "Anfrage senden",
+    success: "NACHRICHT GESENDET! WIR WERDEN UNS BALD BEI IHNEN MELDEN."
   }
 };

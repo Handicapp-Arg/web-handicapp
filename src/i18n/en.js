@@ -167,8 +167,8 @@ export default {
   },
 
   contact: {
-    title: "Ready to transform your management?",
-    subtitle: "Schedule a personalized demo and discover how Handicapp can optimize your operation.",
+    title: "Start Free Today",
+    subtitle: "Try Handicapp for 14 days with no commitment. If you don't see results, you don't pay anything. It's that simple.",
     name: "Full name",
     email: "Email",
     msg: "Tell us about your operation: number of horses, team, main needs",
