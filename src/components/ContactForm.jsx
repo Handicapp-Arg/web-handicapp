@@ -1,9 +1,9 @@
-import { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { Loader2 } from "lucide-react";
 import { postContactForm } from "../api";
 import useFormValidation from "../hooks/useFormValidation";
 
-const ContactForm = ({ t, theme }) => {
+const ContactForm = React.memo(({ t, theme }) => {
   const [submitStatus, setSubmitStatus] = useState("idle"); // idle, loading, success, error
   const [submitError, setSubmitError] = useState("");
   
@@ -24,15 +24,18 @@ const ContactForm = ({ t, theme }) => {
     mensaje: "" 
   });
 
-  const handleChange = (e) => {
+  // Memoizar el handler de cambios
+  const handleChange = useCallback((e) => {
     updateField(e.target.name, e.target.value);
-  };
+  }, [updateField]);
 
-  const handleBlur = (e) => {
+  // Memoizar el handler de blur
+  const handleBlur = useCallback((e) => {
     validateField(e.target.name);
-  };
+  }, [validateField]);
 
-  const handleSubmit = async (e) => {
+  // Memoizar el handler de submit
+  const handleSubmit = useCallback(async (e) => {
     e.preventDefault();
     
     // Validar formulario antes de enviar
@@ -57,7 +60,7 @@ const ContactForm = ({ t, theme }) => {
       setSubmitStatus("error");
       setSubmitError(err.message || "Error al enviar el formulario");
     }
-  };
+  }, [validateForm, resetForm]);
 
   return (
     <section id="contact" className={`scroll-mt-24 py-20 sm:py-28 md:py-32 lg:py-40 px-4 sm:px-6 relative overflow-hidden border-t ${theme.border}`}>
@@ -159,6 +162,8 @@ const ContactForm = ({ t, theme }) => {
       </div>
     </section>
   );
-};
+});
+
+ContactForm.displayName = 'ContactForm';
 
 export default ContactForm;

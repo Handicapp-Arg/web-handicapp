@@ -1,27 +1,27 @@
-import React from 'react';
+import React, { Suspense, lazy, useCallback } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-// Importar componentes separados
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import WhatsAppButton from './components/WhatsAppButton';
-import MobileMenu from './components/MobileMenu';
-import VideoModal from './components/VideoModal';
-import Preloader from './components/Preloader';
-import CustomCursor from './components/CustomCursor';
-import ThreeEquestrianFlow from './components/ThreeEquestrianFlow';
-// Configuración de tema y assets
-import { theme, assets } from './theme';
-// Importar hooks personalizados
-import useAppState from './hooks/useAppState';
-import useAssets from './hooks/useAssets';
+// Context API
+import { AppProvider, useAppContext, ThemeProvider, useTheme } from './contexts';
+
+// Lazy loading de componentes para mejorar performance
+const Navbar = lazy(() => import('./components/Navbar'));
+const Footer = lazy(() => import('./components/Footer'));
+const WhatsAppButton = lazy(() => import('./components/WhatsAppButton'));
+const MobileMenu = lazy(() => import('./components/MobileMenu'));
+const VideoModal = lazy(() => import('./components/VideoModal'));
+const Preloader = lazy(() => import('./components/Preloader'));
+const CustomCursor = lazy(() => import('./components/CustomCursor'));
+const ThreeEquestrianFlow = lazy(() => import('./components/ThreeEquestrianFlow'));
+
+// Importar hook de rutas
 import useRoutes from './hooks/useRoutes.jsx';
 
 /**
  * --- APP PRINCIPAL ---
  */
-function AppContent() {
-  // Usar hooks personalizados
+const AppContent = React.memo(() => {
+  // Usar contexto en lugar de props drilling
   const {
     videoOpen,
     menuOpen,
@@ -34,64 +34,83 @@ function AppContent() {
     openMenu,
     closeMenu,
     completeLoad
-  } = useAppState();
+  } = useAppContext();
 
-  // Cargar recursos externos
-  useAssets();
+  // Usar contexto de tema
+  const { theme, assets } = useTheme();
+
+  // Memoizar callbacks para evitar re-renders innecesarios
+  const handleVideoOpen = useCallback(openVideo, [openVideo]);
+  const handleVideoClose = useCallback(closeVideo, [closeVideo]);
+  const handleMenuOpen = useCallback(openMenu, [openMenu]);
+  const handleMenuClose = useCallback(closeMenu, [closeMenu]);
+  const handleToggleLang = useCallback(toggleLang, [toggleLang]);
+  const handleLoadComplete = useCallback(completeLoad, [completeLoad]);
 
   // Configurar rutas
   const { routeConfigs } = useRoutes({ 
     t, 
     theme, 
     assets, 
-    onVideoOpen: openVideo 
+    onVideoOpen: handleVideoOpen 
   });
 
   return (
     <div className={`min-h-screen transition-colors duration-500 ${theme.bg} ${theme.text} font-['Outfit'] selection:bg-[#af936f] selection:text-white`}>
       <style>{`.animate-marquee { animation: marquee 30s linear infinite; } @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }`}</style>
       
-      <Preloader onLoadComplete={completeLoad} assets={assets} />
-      <CustomCursor />
-      <MobileMenu isOpen={menuOpen} onClose={closeMenu} t={t} theme={theme} />
-      
-      {loaded && (
-        <>
-          <ThreeEquestrianFlow />
-          <div className="fixed inset-0 -z-10 pointer-events-none bg-gradient-to-b from-transparent via-[#0f172a]/50 to-[#0f172a]"></div>
-          <VideoModal isOpen={videoOpen} onClose={closeVideo} />
+      <Suspense fallback={<div className="bg-slate-900 min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-[#af936f]"></div>
+      </div>}>
+        <Preloader onLoadComplete={handleLoadComplete} />
+        <CustomCursor />
+        <MobileMenu isOpen={menuOpen} onClose={handleMenuClose} />
+        
+        {loaded && (
+          <>
+            <ThreeEquestrianFlow />
+            <div className="fixed inset-0 -z-10 pointer-events-none bg-gradient-to-b from-transparent via-[#0f172a]/50 to-[#0f172a]"></div>
+            <VideoModal isOpen={videoOpen} onClose={handleVideoClose} />
 
-          <Navbar 
-            t={t} 
-            theme={theme}
-            scrolled={scrolled} 
-            ASSETS={assets}
-            onToggleLang={toggleLang}
-            onMenuOpen={openMenu}
-          />
+            <Navbar 
+              scrolled={scrolled} 
+              onToggleLang={handleToggleLang}
+              onMenuOpen={handleMenuOpen}
+            />
 
-          <Routes>
-            {routeConfigs.map((route) => (
-              <Route 
-                key={route.path} 
-                path={route.path} 
-                element={<route.component {...route.props} />} 
-              />
-            ))}
-          </Routes>
+            <Routes>
+              {routeConfigs.map((route) => (
+                <Route 
+                  key={route.path} 
+                  path={route.path} 
+                  element={<route.component {...route.props} />} 
+                />
+              ))}
+            </Routes>
 
-          <Footer theme={theme} ASSETS={assets} />
-          <WhatsAppButton phoneNumber="5492477357665" />
-        </>
-      )}
+            <Footer />
+            <WhatsAppButton phoneNumber="5492477357665" />
+          </>
+        )}
+      </Suspense>
     </div>
   );
-}
+});
 
-export default function App() {
+AppContent.displayName = 'AppContent';
+
+const App = React.memo(() => {
   return (
     <BrowserRouter>
-      <AppContent />
+      <ThemeProvider>
+        <AppProvider>
+          <AppContent />
+        </AppProvider>
+      </ThemeProvider>
     </BrowserRouter>
   );
-}
+});
+
+App.displayName = 'App';
+
+export default App;

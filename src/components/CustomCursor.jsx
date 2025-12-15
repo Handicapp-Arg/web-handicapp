@@ -1,10 +1,11 @@
+import React from 'react';
 import useCustomCursor from '../hooks/useCustomCursor';
 
 /**
  * Componente CustomCursor usando hook personalizado
  * Cursor interactivo para desktop con efecto de seguimiento
  */
-const CustomCursor = () => {
+const CustomCursor = React.memo(() => {
   const { cursorRef, trailingRef } = useCustomCursor();
 
   return (
@@ -19,6 +20,8 @@ const CustomCursor = () => {
       />
     </div>
   );
-};
+});
+
+CustomCursor.displayName = 'CustomCursor';
 
 export default CustomCursor;

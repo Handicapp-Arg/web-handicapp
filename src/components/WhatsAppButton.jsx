@@ -1,17 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback, useMemo } from 'react';
 
-const WhatsAppButton = ({ phoneNumber = '5492477357665' }) => {
+const WhatsAppButton = React.memo(({ phoneNumber = '5492477357665' }) => {
   const [isHovered, setIsHovered] = useState(false);
   
-  const whatsappUrl = `https://wa.me/${phoneNumber}?text=Hola%20Handicapp,%20me%20gustaría%20obtener%20más%20información`;
+  // Memoizar la URL de WhatsApp
+  const whatsappUrl = useMemo(() => {
+    return `https://wa.me/${phoneNumber}?text=Hola%20Handicapp,%20me%20gustaría%20obtener%20más%20información`;
+  }, [phoneNumber]);
+
+  // Memoizar los handlers de hover
+  const handleMouseEnter = useCallback(() => {
+    setIsHovered(true);
+  }, []);
+
+  const handleMouseLeave = useCallback(() => {
+    setIsHovered(false);
+  }, []);
 
   return (
     <a
       href={whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
       className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50 group"
       aria-label="Contactar por WhatsApp"
     >
@@ -47,6 +59,8 @@ const WhatsAppButton = ({ phoneNumber = '5492477357665' }) => {
       <div className="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-20"></div>
     </a>
   );
-};
+});
+
+WhatsAppButton.displayName = 'WhatsAppButton';
 
 export default WhatsAppButton;

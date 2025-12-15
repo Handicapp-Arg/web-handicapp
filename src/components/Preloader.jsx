@@ -1,25 +1,32 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
+import { useVisualConfig } from '../hooks/useContextHooks';
 
-const Preloader = ({ onLoadComplete, assets }) => {
+const Preloader = React.memo(({ onLoadComplete }) => {
+  // Usar contexto para assets
+  const { assets } = useVisualConfig();
+  
   const [progress, setProgress] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
+
+  // Memoizar la función de completar carga
+  const handleLoadComplete = useCallback(() => {
+    setIsVisible(false);
+    onLoadComplete();
+  }, [onLoadComplete]);
 
   useEffect(() => {
     const timer = setInterval(() => {
       setProgress(prev => {
         if (prev >= 100) {
           clearInterval(timer);
-          setTimeout(() => { 
-            setIsVisible(false); 
-            onLoadComplete(); 
-          }, 500);
+          setTimeout(handleLoadComplete, 500);
           return 100;
         }
         return prev + Math.random() * 15;
       });
     }, 100);
     return () => clearInterval(timer);
-  }, [onLoadComplete]);
+  }, [handleLoadComplete]);
 
   if (!isVisible) return null;
 
@@ -49,6 +56,8 @@ const Preloader = ({ onLoadComplete, assets }) => {
       </div>
     </div>
   );
-};
+});
+
+Preloader.displayName = 'Preloader';
 
 export default Preloader;

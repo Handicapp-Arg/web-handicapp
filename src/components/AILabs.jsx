@@ -1,8 +1,9 @@
+import React, { useCallback } from "react";
 import { ArrowRight, Loader2, Dna } from "lucide-react";
 import { useGeminiChat } from "../hooks/useGeminiChat";
 import { HANDICAPP_KNOWLEDGE } from "../handicappKnowledgeBase";
 
-const AILabs = ({ t, theme }) => {
+const AILabs = React.memo(({ t, theme }) => {
   const {
     prompt,
     response,
@@ -12,6 +13,16 @@ const AILabs = ({ t, theme }) => {
     generateResponse,
     hasError
   } = useGeminiChat(HANDICAPP_KNOWLEDGE);
+
+  // Memoizar el handler del input
+  const handleInputChange = useCallback((e) => {
+    updatePrompt(e.target.value);
+  }, [updatePrompt]);
+
+  // Memoizar el handler del botón
+  const handleGenerateClick = useCallback(() => {
+    generateResponse();
+  }, [generateResponse]);
   
   return (
     <section id="labs" className="scroll-mt-24 py-16 sm:py-20 md:py-24 lg:py-32 px-4 sm:px-6 relative">
@@ -27,7 +38,7 @@ const AILabs = ({ t, theme }) => {
               <div className="relative">
                 <input 
                   value={prompt} 
-                  onChange={(e) => updatePrompt(e.target.value)} 
+                  onChange={handleInputChange} 
                   placeholder={t.labs.input_ph} 
                   className="w-full p-5 sm:p-6 rounded-xl border outline-none transition-all font-medium placeholder:opacity-50 text-sm sm:text-base bg-black/50 border-zinc-800 text-white focus:border-[#af936f]" 
                 />
@@ -36,7 +47,7 @@ const AILabs = ({ t, theme }) => {
                 </div>
               </div>
               <button 
-                onClick={generateResponse} 
+                onClick={handleGenerateClick} 
                 disabled={loading} 
                 className="w-full py-5 sm:py-6 rounded-xl font-bold uppercase tracking-widest transition-all flex items-center justify-center gap-3 text-sm sm:text-base bg-white text-black hover:bg-[#af936f] hover:text-white disabled:opacity-50 disabled:cursor-not-allowed"
               >
@@ -61,6 +72,8 @@ const AILabs = ({ t, theme }) => {
       </div>
     </section>
   );
-};
+});
+
+AILabs.displayName = 'AILabs';
 
 export default AILabs;

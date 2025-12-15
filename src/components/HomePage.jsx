@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useMemo } from 'react';
 import Hero from './Hero';
 import BrandedVideo from './BrandedVideo';
 import SocialProof from './SocialProof';
@@ -24,9 +24,10 @@ import {
 // Componentes que estaban en App.jsx y se usan solo en Home
 
 // ProblemSolution - Antes vs Después
-const ProblemSolution = ({ t, theme }) => {
-  const problems = t.problemSolution.beforeList;
-  const solutions = t.problemSolution.afterList;
+const ProblemSolution = React.memo(({ t, theme }) => {
+  // Memoizar las listas para evitar re-renders innecesarios
+  const problems = useMemo(() => t.problemSolution.beforeList, [t.problemSolution.beforeList]);
+  const solutions = useMemo(() => t.problemSolution.afterList, [t.problemSolution.afterList]);
   return (
     <section className={`py-32 px-6 relative border-y ${theme.border} overflow-hidden bg-zinc-900/30`}>
       {/* Título */}
@@ -99,10 +100,12 @@ const ProblemSolution = ({ t, theme }) => {
       </div>
     </section>
   );
-};
+});
+
+ProblemSolution.displayName = 'ProblemSolution';
 
 // KeyFeatures - Características clave (Bento Grid Design)
-const KeyFeatures = ({ t, theme }) => {
+const KeyFeatures = React.memo(({ t, theme }) => {
   return (
     <section id="funcionalidades" className={`scroll-mt-24 py-32 relative overflow-hidden bg-[#0f172a]`}>
       {/* Background Gradient Spot */}
@@ -224,11 +227,13 @@ const KeyFeatures = ({ t, theme }) => {
       </div>
     </section>
   );
-};
+});
+
+KeyFeatures.displayName = 'KeyFeatures';
 
 // KeyFeatures Alternative - Grid de 6 características
-const KeyFeaturesGrid = ({ t, theme }) => {
-  const features = [
+const KeyFeaturesGrid = React.memo(({ t, theme }) => {
+  const features = useMemo(() => [
     {
       icon: Zap,
       title: t.keyFeatures.mobile_title,
@@ -265,7 +270,7 @@ const KeyFeaturesGrid = ({ t, theme }) => {
       desc: t.keyFeatures.bulk_select,
       color: "from-indigo-500 to-violet-500"
     }
-  ];
+  ], [t.keyFeatures]);
 
   return (
     <section className={`py-24 px-6 relative bg-[#0f172a]`}>
@@ -296,9 +301,11 @@ const KeyFeaturesGrid = ({ t, theme }) => {
       </div>
     </section>
   );
-};
+});
 
-const RoleSelector = ({ t, theme, roles, activeRole, setActiveRole, isAutoPlaying, setIsAutoPlaying, ChevronLeft, ChevronRight }) => {
+KeyFeaturesGrid.displayName = 'KeyFeaturesGrid';
+
+const RoleSelector = React.memo(({ t, theme, roles, activeRole, setActiveRole, isAutoPlaying, setIsAutoPlaying, ChevronLeft, ChevronRight }) => {
   return (
     <section className={`py-24 relative z-10 px-6 bg-[#1e293b]/30`}>
       <div className="max-w-6xl mx-auto">
@@ -359,7 +366,9 @@ const RoleSelector = ({ t, theme, roles, activeRole, setActiveRole, isAutoPlayin
       </div>
     </section>
   );
-};
+});
+
+RoleSelector.displayName = 'RoleSelector';
 
 // AboutSection - Sección Nosotros
 
@@ -369,13 +378,20 @@ const aboutImages = [
   "https://res.cloudinary.com/dh2m9ychv/image/upload/v1765652254/handicapp/uploads/DSC07420.webp"
 ];
 
-const AboutSection = ({ t, theme, ASSETS }) => {
+const AboutSection = React.memo(({ t, theme, ASSETS }) => {
   const [activeImage, setActiveImage] = React.useState(0);
-  const aboutVals = [
+  
+  // Memoizar los valores de about
+  const aboutVals = useMemo(() => [
     { t: t.about.val1, d: t.about.val1_d, i: Heart },
     { t: t.about.val2, d: t.about.val2_d, i: Code2 },
     { t: t.about.val3, d: t.about.val3_d, i: Award }
-  ];
+  ], [t.about]);
+
+  // Memoizar el handler de cambio de imagen
+  const handleImageChange = useCallback(() => {
+    setActiveImage(prev => (prev + 1) % aboutImages.length);
+  }, []);
   return (
     <section id="about" className={`min-h-screen flex items-center py-32 px-6 relative border-y ${theme.border} bg-[#1e293b]/30`}>
       <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
@@ -444,9 +460,11 @@ const AboutSection = ({ t, theme, ASSETS }) => {
       </div>
     </section>
   );
-};
+});
 
-const HomePage = ({ 
+AboutSection.displayName = 'AboutSection';
+
+const HomePage = React.memo(({ 
   t, 
   theme, 
   ASSETS, 
@@ -534,6 +552,8 @@ const HomePage = ({
       <ContactForm t={t} theme={theme} />
     </>
   );
-};
+});
+
+HomePage.displayName = 'HomePage';
 
 export default HomePage;

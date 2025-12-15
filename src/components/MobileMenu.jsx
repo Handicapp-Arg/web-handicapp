@@ -1,6 +1,17 @@
+import React, { useCallback } from "react";
 import { X } from "lucide-react";
+import { useTranslation, useVisualConfig } from '../hooks/useContextHooks';
 
-const MobileMenu = ({ isOpen, onClose, t, theme }) => {
+const MobileMenu = React.memo(({ isOpen, onClose }) => {
+  // Usar hooks de contexto
+  const { t } = useTranslation();
+  const { theme } = useVisualConfig();
+
+  // Memoizar el handler de cierre para enlaces
+  const handleLinkClick = useCallback(() => {
+    onClose();
+  }, [onClose]);
+
   if (!isOpen) return null;
   
   return (
@@ -13,7 +24,7 @@ const MobileMenu = ({ isOpen, onClose, t, theme }) => {
           <a 
             key={key} 
             href={`#${key}`} 
-            onClick={onClose} 
+            onClick={handleLinkClick} 
             className="hover:text-[#D1F366] transition-colors transform hover:translate-x-2 transition-transform"
           >
             {label}
@@ -22,6 +33,8 @@ const MobileMenu = ({ isOpen, onClose, t, theme }) => {
       </div>
     </div>
   );
-};
+});
+
+MobileMenu.displayName = 'MobileMenu';
 
 export default MobileMenu;

@@ -1,41 +1,46 @@
-import { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useMemo, useCallback } from "react";
 import { Smartphone, Network, BellRing, Radio, Cpu, User } from "lucide-react";
 
-const VerticalWorkflow = ({ t, theme }) => {
-  // Precarga de imágenes pesadas al cargar la app
-  const stepImages = [
+const VerticalWorkflow = React.memo(({ t, theme }) => {
+  // Memoizar las URLs de imágenes para evitar re-creación
+  const stepImages = useMemo(() => [
     "https://res.cloudinary.com/dh2m9ychv/image/upload/v1765640273/handicapp/uploads/0T1A5784.webp",  // Paso 1: Sube Tu Información
     "https://res.cloudinary.com/dh2m9ychv/image/upload/v1765579209/orejitas_serqac.jpg",  // Paso 2: Automatiza Tu Operación (nuevo link)
     "https://res.cloudinary.com/dh2m9ychv/image/upload/v1763217620/handicapp/uploads/caballo.webp" // Paso 3: Toma Mejores Decisiones
-  ];
+  ], []);
 
+  // Precarga de imágenes pesadas al cargar la app - memoizada
   useEffect(() => {
     stepImages.forEach((src) => {
       const img = new window.Image();
       img.src = src;
     });
-  }, []);
+  }, [stepImages]);
 
   const [activeStep, setActiveStep] = useState(0);
   const stepsRef = useRef([]);
+
+  // Memoizar el callback del intersection observer
+  const handleIntersection = useCallback((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        setActiveStep(parseInt(entry.target.getAttribute('data-index')));
+      }
+    });
+  }, []); // Sin dependencias para evitar el ciclo
   
   useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          setActiveStep(parseInt(entry.target.getAttribute('data-index')));
-        }
-      });
-    }, { threshold: 0.3 }); // Más sensible, responde antes
+    const observer = new IntersectionObserver(handleIntersection, { threshold: 0.3 }); // Más sensible, responde antes
     stepsRef.current.forEach(step => { if (step) observer.observe(step); });
     return () => observer.disconnect();
-  }, []);
+  }, [handleIntersection]);
   
-  const steps = [ 
-    { title: t.workflow.step1_t, desc: t.workflow.step1_d, icon: Smartphone, id: 0 }, 
-    { title: t.workflow.step2_t, desc: t.workflow.step2_d, icon: Network, id: 1 }, 
+  // Memoizar los pasos del workflow
+  const steps = useMemo(() => [
+    { title: t.workflow.step1_t, desc: t.workflow.step1_d, icon: Smartphone, id: 0 },
+    { title: t.workflow.step2_t, desc: t.workflow.step2_d, icon: Network, id: 1 },
     { title: t.workflow.step3_t, desc: t.workflow.step3_d, icon: BellRing, id: 2 }
-  ];
+  ], [t.workflow]);
   
   return (
     <section id="workflow" className="scroll-mt-24 py-24 relative bg-zinc-900/30">
@@ -103,6 +108,8 @@ const VerticalWorkflow = ({ t, theme }) => {
       </div>
     </section>
   );
-};
+});
+
+VerticalWorkflow.displayName = 'VerticalWorkflow';
 
 export default VerticalWorkflow;

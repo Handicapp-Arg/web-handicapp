@@ -1,29 +1,34 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu } from 'lucide-react';
 import { Logo } from './Logo';
+import { useUIState, useTranslation, useVisualConfig } from '../hooks/useContextHooks';
 
-const Navbar = ({ t, theme, scrolled, ASSETS, onToggleLang, onMenuOpen }) => {
+const Navbar = React.memo(({ scrolled, onToggleLang, onMenuOpen }) => {
+  // Usar hooks de contexto en lugar de props
+  const { t, toggleLang } = useTranslation();
+  const { theme, assets } = useVisualConfig();
+  
   const location = useLocation();
   const currentPath = location.pathname;
 
-  // Handler para el click en el logo
-  const handleLogoClick = (e) => {
+  // Handler para el click en el logo - memoizado
+  const handleLogoClick = useCallback((e) => {
     if (currentPath === '/') {
       // Si ya estamos en home, hacer scroll al top
       e.preventDefault();
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
     // Si no estamos en home, el Link manejará la navegación
-  };
+  }, [currentPath]);
 
-  // Handler para links que deben ir al top de la página
-  const handlePageClick = (e, path) => {
+  // Handler para links que deben ir al top de la página - memoizado
+  const handlePageClick = useCallback((e, path) => {
     // Siempre hacer scroll al top cuando se navega a una página
     setTimeout(() => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }, 100);
-  };
+  }, []);
 
   // Navigation items configuration
   const navItems = [
@@ -51,7 +56,7 @@ const Navbar = ({ t, theme, scrolled, ASSETS, onToggleLang, onMenuOpen }) => {
         {/* Logo */}
         <div className="z-10 flex items-center h-16">
           <Logo 
-            logoSrc={ASSETS.logoIcon || "/logo.svg"}
+            logoSrc={assets.logoIcon || "/logo.svg"}
             brand="Handicapp"
             textColor="#fff"
           />
@@ -102,7 +107,7 @@ const Navbar = ({ t, theme, scrolled, ASSETS, onToggleLang, onMenuOpen }) => {
         {/* Botones de acción */}
         <div className="flex items-center gap-2 md:gap-3 lg:gap-4">
           <button 
-            onClick={onToggleLang} 
+            onClick={toggleLang} 
             className="text-[10px] md:text-[11px] font-black px-2.5 md:px-3 py-2 md:py-2.5 rounded-lg border-2 transition-all hover:scale-105 border-zinc-700 hover:border-[#af936f] hover:bg-[#af936f]/10 text-white"
           >
             {t.lang_code}
@@ -125,6 +130,8 @@ const Navbar = ({ t, theme, scrolled, ASSETS, onToggleLang, onMenuOpen }) => {
       </div>
     </nav>
   );
-};
+});
+
+Navbar.displayName = 'Navbar';
 
 export default Navbar;

@@ -1,16 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useVisualConfig } from '../hooks/useContextHooks';
 
-const Footer = ({ theme, ASSETS }) => {
+const Footer = React.memo(() => {
+  // Usar hooks de contexto
+  const { theme, assets } = useVisualConfig();
   return (
     <footer className={`py-20 border-t ${theme.border} text-center relative z-10 ${theme.bg}`}>
       <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-10">
         {/* Logo y nombre de la empresa */}
         <div className="flex items-center gap-4">
-          {ASSETS.logoIcon ? (
+          {assets.logoIcon ? (
             <div className="w-14 h-14 flex-shrink-0">
               <img 
-                src={ASSETS.logoIcon} 
+                src={assets.logoIcon} 
                 alt="Handicapp" 
                 className={`w-full h-full object-contain`} 
               />
@@ -38,6 +41,8 @@ const Footer = ({ theme, ASSETS }) => {
       </div>
     </footer>
   );
-};
+});
+
+Footer.displayName = 'Footer';
 
 export default Footer;
