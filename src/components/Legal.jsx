@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FileText, Shield, Cookie } from 'lucide-react';
 
-const LegalPage = ({ t, isDark, theme }) => {
+const LegalPage = ({ t, theme }) => {
   const [activeSection, setActiveSection] = useState('terms');
 
   // Scroll to top when component mounts
@@ -123,14 +123,14 @@ const LegalPage = ({ t, isDark, theme }) => {
   const Icon = currentSection.icon;
 
   return (
-    <div className={`min-h-screen ${isDark ? theme.bg : 'bg-gradient-to-br from-zinc-50 via-white to-zinc-100'} pt-32 pb-24 px-6`}>
+    <div className={`min-h-screen ${theme.bg} pt-32 pb-24 px-6`}>
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16 space-y-6">
           <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-[#af936f] to-[#8f7657] mb-6 animate-bounce-slow">
             <FileText size={40} className="text-white" />
           </div>
-          <h1 className={`text-5xl md:text-7xl font-black tracking-tight ${isDark ? 'text-white' : 'text-zinc-900'}`}>
+          <h1 className={`text-5xl md:text-7xl font-black tracking-tight text-white`}>
             Legal
           </h1>
           <p className={`text-lg md:text-xl max-w-2xl mx-auto ${theme.textMuted}`}>
@@ -139,7 +139,7 @@ const LegalPage = ({ t, isDark, theme }) => {
         </div>
 
         {/* Tabs */}
-        <div className={`flex flex-wrap gap-4 mb-12 justify-center p-2 rounded-2xl ${isDark ? 'bg-[#1e293b]/50' : 'bg-white'}`}>
+        <div className={`flex flex-wrap gap-4 mb-12 justify-center p-2 rounded-2xl bg-[#1e293b]/50`}>
           {Object.entries(sections).map(([key, section]) => {
             const TabIcon = section.icon;
             return (
@@ -149,9 +149,7 @@ const LegalPage = ({ t, isDark, theme }) => {
                 className={`flex items-center gap-2 px-6 py-3 rounded-xl font-bold transition-all ${
                   activeSection === key
                     ? 'bg-gradient-to-r from-[#af936f] to-[#8f7657] text-white shadow-lg'
-                    : isDark
-                      ? 'bg-transparent text-zinc-400 hover:text-white hover:bg-[#1e293b]'
-                      : 'bg-transparent text-zinc-600 hover:text-zinc-900 hover:bg-zinc-100'
+                    : 'bg-transparent text-zinc-400 hover:text-white hover:bg-[#1e293b]'
                 }`}
               >
                 <TabIcon size={20} />
@@ -162,17 +160,13 @@ const LegalPage = ({ t, isDark, theme }) => {
         </div>
 
         {/* Content */}
-        <div className={`rounded-3xl border-2 p-8 md:p-12 ${
-          isDark 
-            ? 'bg-gradient-to-br from-[#1e293b] to-[#0f172a] border-zinc-700'
-            : 'bg-white border-zinc-200'
-        }`}>
+        <div className={`rounded-3xl border-2 p-8 md:p-12 bg-gradient-to-br from-[#1e293b] to-[#0f172a] border-zinc-700`}>
           {/* Section Header */}
           <div className="flex items-center gap-4 mb-10 pb-6 border-b border-[#af936f]/20">
             <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#af936f]/20 to-[#8f7657]/20 flex items-center justify-center">
               <Icon size={32} className="text-[#af936f]" />
             </div>
-            <h2 className={`text-3xl md:text-4xl font-black ${isDark ? 'text-white' : 'text-zinc-900'}`}>
+            <h2 className={`text-3xl md:text-4xl font-black text-white`}>
               {currentSection.title}
             </h2>
           </div>
@@ -192,7 +186,7 @@ const LegalPage = ({ t, isDark, theme }) => {
           </div>
 
           {/* Footer Note */}
-          <div className={`mt-12 pt-8 border-t ${isDark ? 'border-zinc-700' : 'border-zinc-200'}`}>
+          <div className={`mt-12 pt-8 border-t border-zinc-700`}>
             <p className={`text-sm ${theme.textMuted} text-center`}>
               Última actualización: Diciembre 2025 | Para consultas: <a href="mailto:legal@handicapp.com" className={`${theme.accent} hover:underline font-bold`}>legal@handicapp.com</a>
             </p>

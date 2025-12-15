@@ -1,12 +1,12 @@
 import React from 'react';
 
-const Hero = ({ t, theme, isDark, ASSETS }) => {
+const Hero = ({ t, theme, ASSETS }) => {
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
       <div className="absolute inset-0 z-0 opacity-40 mix-blend-luminosity">
         <img src={ASSETS.heroHorse} className="w-full h-full object-cover grayscale scale-105 animate-[pulse_10s_ease-in-out_infinite]" alt="Hero" />
       </div>
-      <div className={`absolute inset-0 z-0 bg-gradient-to-t ${isDark ? 'from-[#050505] via-[#050505]/80' : 'from-[#F4F4F5] via-[#F4F4F5]/80'} to-transparent`}></div>
+      <div className={`absolute inset-0 z-0 bg-gradient-to-t from-[#050505] via-[#050505]/80 to-transparent`}></div>
       <div className="relative z-10 text-center px-6 max-w-7xl">
         <div className={`inline-flex items-center gap-3 px-6 py-3 rounded-full mb-12 border ${theme.glass} shadow-lg animate-in fade-in slide-in-from-bottom-4 duration-1000`}>
           <span className={`w-2.5 h-2.5 rounded-full animate-pulse ${theme.accentBg}`}></span>

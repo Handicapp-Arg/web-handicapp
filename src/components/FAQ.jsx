@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Plus, Minus, HelpCircle } from 'lucide-react';
 
-const FAQ = ({ t, isDark, theme }) => {
+const FAQ = ({ t, theme }) => {
   const [openIndex, setOpenIndex] = useState(null);
   
   // FAQ extendido con más preguntas
@@ -23,7 +23,7 @@ const FAQ = ({ t, isDark, theme }) => {
   };
 
   return (
-    <div className={`min-h-screen ${isDark ? theme.bg : 'bg-gradient-to-br from-zinc-50 via-white to-zinc-100'} pt-32 pb-24 px-6`}>
+    <div className={`min-h-screen ${theme.bg} pt-32 pb-24 px-6`}>
       <div className="max-w-5xl mx-auto">
         {/* Header con animación */}
         <div className="text-center mb-16 space-y-6">
@@ -31,7 +31,7 @@ const FAQ = ({ t, isDark, theme }) => {
             <HelpCircle size={40} className="text-white" />
           </div>
           
-          <h1 className={`text-5xl md:text-7xl font-black tracking-tight ${isDark ? 'text-white' : 'text-zinc-900'}`}>
+          <h1 className={`text-5xl md:text-7xl font-black tracking-tight text-white`}>
             {t.faq.title}
           </h1>
           
@@ -47,12 +47,8 @@ const FAQ = ({ t, isDark, theme }) => {
               key={index}
               className={`group relative overflow-hidden rounded-2xl border-2 transition-all duration-500 transform hover:scale-[1.02] ${
                 openIndex === index
-                  ? isDark
-                    ? 'bg-gradient-to-br from-[#1e293b] via-[#0f172a] to-[#1e293b] border-[#af936f] shadow-2xl shadow-[#af936f]/20'
-                    : 'bg-gradient-to-br from-white via-zinc-50 to-white border-[#af936f] shadow-2xl shadow-[#af936f]/10'
-                  : isDark
-                    ? 'bg-[#1e293b]/50 border-zinc-700/50 hover:border-zinc-600 hover:bg-[#1e293b]/70'
-                    : 'bg-white border-zinc-200 hover:border-zinc-300 hover:shadow-lg'
+                  ? 'bg-gradient-to-br from-[#1e293b] via-[#0f172a] to-[#1e293b] border-[#af936f] shadow-2xl shadow-[#af936f]/20'
+                  : 'bg-[#1e293b]/50 border-zinc-700/50 hover:border-zinc-600 hover:bg-[#1e293b]/70'
               }`}
               style={{
                 animation: `fadeInUp 0.6s ease-out ${index * 0.1}s backwards`
@@ -71,11 +67,7 @@ const FAQ = ({ t, isDark, theme }) => {
                     {item.q}
                   </span>
                   {/* Categoría badge */}
-                  <span className={`inline-block text-xs font-semibold px-3 py-1 rounded-full ${
-                    isDark 
-                      ? 'bg-[#af936f]/20 text-[#af936f]'
-                      : 'bg-[#af936f]/10 text-[#8f7657]'
-                  }`}>
+                  <span className={`inline-block text-xs font-semibold px-3 py-1 rounded-full bg-[#af936f]/20 text-[#af936f]`}>
                     {item.category}
                   </span>
                 </div>
@@ -85,15 +77,13 @@ const FAQ = ({ t, isDark, theme }) => {
                   className={`flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 ${
                     openIndex === index
                       ? 'bg-gradient-to-br from-[#af936f] to-[#8f7657] rotate-180 shadow-lg shadow-[#af936f]/30'
-                      : isDark
-                        ? 'bg-zinc-700 group-hover:bg-zinc-600'
-                        : 'bg-zinc-200 group-hover:bg-zinc-300'
+                      : 'bg-zinc-700 group-hover:bg-zinc-600'
                   }`}
                 >
                   {openIndex === index ? (
                     <Minus size={24} className="text-white" />
                   ) : (
-                    <Plus size={24} className={isDark ? 'text-white' : 'text-zinc-700'} />
+                    <Plus size={24} className="text-white" />
                   )}
                 </div>
               </button>
@@ -121,12 +111,8 @@ const FAQ = ({ t, isDark, theme }) => {
         </div>
 
         {/* Call to action al final - Con box pero texto simplificado */}
-        <div className={`mt-20 text-center p-10 rounded-3xl border-2 ${
-          isDark 
-            ? 'bg-gradient-to-br from-[#1e293b] to-[#0f172a] border-zinc-700'
-            : 'bg-gradient-to-br from-zinc-50 to-white border-zinc-200'
-        }`}>
-          <h3 className={`text-2xl md:text-3xl font-bold mb-4 ${isDark ? 'text-white' : 'text-zinc-900'}`}>
+        <div className={`text-center p-8 md:p-12 rounded-3xl border-2 bg-gradient-to-br from-[#1e293b] to-[#0f172a] border-zinc-700`}>
+          <h3 className={`text-2xl md:text-3xl font-bold mb-4 text-white`}>
             ¿No encontraste lo que buscabas?
           </h3>
           <p className={`${theme.textMuted} mb-8 text-lg`}>

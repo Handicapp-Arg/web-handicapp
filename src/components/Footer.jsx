@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Footer = ({ theme, isDark, ASSETS }) => {
+const Footer = ({ theme, ASSETS }) => {
   return (
     <footer className={`py-20 border-t ${theme.border} text-center relative z-10 ${theme.bg}`}>
       <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-10">
@@ -12,7 +12,7 @@ const Footer = ({ theme, isDark, ASSETS }) => {
               <img 
                 src={ASSETS.logoIcon} 
                 alt="Handicapp" 
-                className={`w-full h-full object-contain ${isDark ? '' : 'brightness-0'}`} 
+                className={`w-full h-full object-contain`} 
               />
             </div>
           ) : (

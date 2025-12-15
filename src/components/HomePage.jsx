@@ -1,6 +1,7 @@
 import React from 'react';
 import Hero from './Hero';
 import BrandedVideo from './BrandedVideo';
+import SocialProof from './SocialProof';
 import { 
   CheckCircle2, X, 
   Zap, Shield, 
@@ -23,11 +24,11 @@ import {
 // Componentes que estaban en App.jsx y se usan solo en Home
 
 // ProblemSolution - Antes vs Después
-const ProblemSolution = ({ t, isDark, theme }) => {
+const ProblemSolution = ({ t, theme }) => {
   const problems = t.problemSolution.beforeList;
   const solutions = t.problemSolution.afterList;
   return (
-    <section className={`py-32 px-6 relative border-y ${theme.border} overflow-hidden ${isDark ? 'bg-zinc-900/30' : 'bg-zinc-50'}`}>
+    <section className={`py-32 px-6 relative border-y ${theme.border} overflow-hidden bg-zinc-900/30`}>
       {/* Título */}
       <div className="max-w-7xl mx-auto text-center mb-20 relative z-10">
         <h2 className={`text-4xl md:text-6xl font-black mb-4 uppercase tracking-tight ${theme.text}`}>
@@ -101,12 +102,12 @@ const ProblemSolution = ({ t, isDark, theme }) => {
 };
 
 // KeyFeatures - Características clave (Bento Grid Design)
-const KeyFeatures = ({ t, isDark, theme }) => {
+const KeyFeatures = ({ t, theme }) => {
   return (
-    <section id="funcionalidades" className={`scroll-mt-24 py-32 relative overflow-hidden ${isDark ? 'bg-[#0f172a]' : 'bg-gradient-to-b from-zinc-50 via-white to-zinc-50'}`}>
+    <section id="funcionalidades" className={`scroll-mt-24 py-32 relative overflow-hidden bg-[#0f172a]`}>
       {/* Background Gradient Spot */}
-      <div className={`absolute top-0 right-0 w-[500px] h-[500px] blur-[120px] rounded-full pointer-events-none ${isDark ? 'bg-indigo-900/10' : 'bg-indigo-300/20'}`}></div>
-      <div className={`absolute bottom-0 left-0 w-[500px] h-[500px] blur-[100px] rounded-full pointer-events-none ${isDark ? 'bg-orange-900/5' : 'bg-[#af936f]/10'}`}></div>
+      <div className={`absolute top-0 right-0 w-[500px] h-[500px] blur-[120px] rounded-full pointer-events-none bg-indigo-900/10`}></div>
+      <div className={`absolute bottom-0 left-0 w-[500px] h-[500px] blur-[100px] rounded-full pointer-events-none bg-orange-900/5`}></div>
 
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         <div className="text-center mb-20">
@@ -121,17 +122,11 @@ const KeyFeatures = ({ t, isDark, theme }) => {
         {/* BENTO GRID LAYOUT */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6 auto-rows-[minmax(250px,auto)]">
           {/* Card 1: Mobile First - Large Square */}
-          <div className={`md:col-span-2 md:row-span-2 group relative p-8 md:p-12 rounded-[2rem] border transition-all duration-500 overflow-hidden hover:shadow-2xl ${
-            isDark 
-              ? 'bg-neutral-900/40 border-white/5 hover:bg-neutral-900/60 hover:shadow-black/50' 
-              : 'bg-gradient-to-br from-white to-zinc-50 border-zinc-300 hover:bg-white hover:shadow-2xl'
-          }`}>
-            <div className={`absolute inset-0 bg-gradient-to-br ${isDark ? 'from-indigo-500/10' : 'from-indigo-400/10'} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
+          <div className={`md:col-span-2 md:row-span-2 group relative p-8 md:p-12 rounded-[2rem] border transition-all duration-500 overflow-hidden hover:shadow-2xl bg-neutral-900/40 border-white/5 hover:bg-neutral-900/60 hover:shadow-black/50`}>
+            <div className={`absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
             <div className="relative z-10 h-full flex flex-col justify-between">
               <div>
-                <div className={`w-16 h-16 rounded-2xl border flex items-center justify-center mb-6 shadow-xl ${
-                  isDark ? 'bg-neutral-800 border-white/10' : 'bg-white border-zinc-300 shadow-inner'
-                }`}>
+                <div className={`w-16 h-16 rounded-2xl border flex items-center justify-center mb-6 shadow-xl bg-neutral-800 border-white/10`}>
                   <IconDeviceMobile size={32} stroke={1.5} className="text-indigo-400" />
                 </div>
                 <h3 className={`text-3xl font-bold mb-4 ${theme.text}`}>{t.keyFeatures.mobile_title}</h3>
@@ -144,22 +139,14 @@ const KeyFeatures = ({ t, isDark, theme }) => {
               </div>
             </div>
             {/* Background decoration */}
-            <IconDeviceMobile className={`absolute -bottom-10 -right-10 w-64 h-64 rotate-12 group-hover:rotate-6 transition-transform duration-700 ${
-              isDark ? 'text-white/5' : 'text-zinc-200/50'
-            }`} />
+            <IconDeviceMobile className={`absolute -bottom-10 -right-10 w-64 h-64 rotate-12 group-hover:rotate-6 transition-transform duration-700 text-white/5`} />
           </div>
 
           {/* Card 2: Trazabilidad - Wide Rectangle */}
-          <div className={`md:col-span-2 group relative p-8 rounded-[2rem] border transition-all duration-500 overflow-hidden ${
-            isDark 
-              ? 'bg-neutral-900/40 border-white/5 hover:bg-neutral-900/60' 
-              : 'bg-gradient-to-br from-white to-zinc-50 border-zinc-300 hover:shadow-lg'
-          }`}>
-             <div className={`absolute inset-0 bg-gradient-to-br ${isDark ? 'from-emerald-500/10' : 'from-emerald-400/10'} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
+          <div className={`md:col-span-2 group relative p-8 rounded-[2rem] border transition-all duration-500 overflow-hidden bg-neutral-900/40 border-white/5 hover:bg-neutral-900/60`}>
+             <div className={`absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
              <div className="relative z-10 flex flex-col md:flex-row gap-6 items-start md:items-center h-full">
-                <div className={`w-14 h-14 rounded-2xl border flex items-center justify-center shrink-0 ${
-                  isDark ? 'bg-neutral-800 border-white/10' : 'bg-white border-zinc-300'
-                }`}>
+                <div className={`w-14 h-14 rounded-2xl border flex items-center justify-center shrink-0 bg-neutral-800 border-white/10`}>
                   <IconHistory size={28} stroke={1.5} className="text-emerald-400" />
                 </div>
                 <div>
@@ -170,16 +157,10 @@ const KeyFeatures = ({ t, isDark, theme }) => {
           </div>
 
           {/* Card 3: Roles - Vertical */}
-          <div className={`md:col-span-1 md:row-span-2 group relative p-8 rounded-[2rem] border transition-all duration-500 overflow-hidden ${
-            isDark 
-              ? 'bg-neutral-900/40 border-white/5 hover:bg-neutral-900/60' 
-              : 'bg-gradient-to-br from-white to-zinc-50 border-zinc-300 hover:shadow-lg'
-          }`}>
-            <div className={`absolute inset-0 bg-gradient-to-br ${isDark ? 'from-orange-500/10' : 'from-orange-400/10'} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
+          <div className={`md:col-span-1 md:row-span-2 group relative p-8 rounded-[2rem] border transition-all duration-500 overflow-hidden bg-neutral-900/40 border-white/5 hover:bg-neutral-900/60`}>
+            <div className={`absolute inset-0 bg-gradient-to-br from-orange-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
             <div className="relative z-10 h-full flex flex-col">
-                <div className={`w-14 h-14 rounded-2xl border flex items-center justify-center mb-6 ${
-                  isDark ? 'bg-neutral-800 border-white/10' : 'bg-white border-zinc-300'
-                }`}>
+                <div className={`w-14 h-14 rounded-2xl border flex items-center justify-center mb-6 bg-neutral-800 border-white/10`}>
                   <IconUsersGroup size={28} stroke={1.5} className="text-orange-400" />
                 </div>
                 <h3 className={`text-2xl font-bold mb-4 ${theme.text}`}>{t.keyFeatures.roles_title}</h3>
@@ -199,15 +180,9 @@ const KeyFeatures = ({ t, isDark, theme }) => {
           </div>
 
           {/* Card 4: Documentos */}
-          <div className={`md:col-span-1 group relative p-8 rounded-[2rem] border transition-all duration-500 overflow-hidden ${
-            isDark 
-              ? 'bg-neutral-900/40 border-white/5 hover:bg-neutral-900/60' 
-              : 'bg-gradient-to-br from-white to-zinc-50 border-zinc-300 hover:shadow-lg'
-          }`}>
+          <div className={`md:col-span-1 group relative p-8 rounded-[2rem] border transition-all duration-500 overflow-hidden bg-neutral-900/40 border-white/5 hover:bg-neutral-900/60`}>
             <div className="relative z-10">
-                <div className={`w-12 h-12 rounded-xl border flex items-center justify-center mb-4 ${
-                  isDark ? 'bg-neutral-800 border-white/10' : 'bg-white border-zinc-300'
-                }`}>
+                <div className={`w-12 h-12 rounded-xl border flex items-center justify-center mb-4 bg-neutral-800 border-white/10`}>
                   <IconFileCheck size={24} stroke={1.5} />
                 </div>
                 <h3 className={`text-xl font-bold mb-2 ${theme.text}`}>{t.keyFeatures.docs_title}</h3>
@@ -216,18 +191,12 @@ const KeyFeatures = ({ t, isDark, theme }) => {
           </div>
 
           {/* Card 5: Carga Masiva */}
-          <div className={`md:col-span-2 group relative p-8 rounded-[2rem] border transition-all duration-500 overflow-hidden ${
-            isDark 
-              ? 'bg-neutral-900/40 border-white/5 hover:bg-neutral-900/60' 
-              : 'bg-gradient-to-br from-white to-zinc-50 border-zinc-300 hover:shadow-lg'
-          }`}>
-            <div className={`absolute inset-0 bg-gradient-to-r ${isDark ? 'from-blue-500/10' : 'from-blue-400/10'} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
+          <div className={`md:col-span-2 group relative p-8 rounded-[2rem] border transition-all duration-500 overflow-hidden bg-neutral-900/40 border-white/5 hover:bg-neutral-900/60`}>
+            <div className={`absolute inset-0 bg-gradient-to-r from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
             <div className="relative z-10 flex flex-col md:flex-row gap-8 items-center h-full">
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-4">
-                    <div className={`w-12 h-12 rounded-xl border flex items-center justify-center ${
-                      isDark ? 'bg-neutral-800 border-white/10' : 'bg-white border-zinc-300'
-                    }`}>
+                    <div className={`w-12 h-12 rounded-xl border flex items-center justify-center bg-neutral-800 border-white/10`}>
                       <IconBolt size={24} stroke={1.5} className="text-blue-400" />
                     </div>
                     <h3 className={`text-2xl font-bold ${theme.text}`}>{t.keyFeatures.bulk_title}</h3>
@@ -235,18 +204,14 @@ const KeyFeatures = ({ t, isDark, theme }) => {
                   <p className={theme.textMuted}>{t.keyFeatures.bulk_desc}</p>
                 </div>
                 {/* Visual Representation */}
-                <div className={`w-full md:w-1/3 rounded-xl p-3 border ${
-                  isDark ? 'bg-neutral-800/50 border-white/10' : 'bg-zinc-50 border-zinc-300'
-                }`}>
+                <div className={`w-full md:w-1/3 rounded-xl p-3 border bg-neutral-800/50 border-white/10`}>
                    <div className={`flex items-center justify-between mb-2 text-xs uppercase font-bold ${theme.textMuted}`}>
                      <span>{t.keyFeatures.bulk_lote}</span>
                      <span>{t.keyFeatures.bulk_select}</span>
                    </div>
                    <div className="space-y-2">
                      {[1,2,3].map(i => (
-                       <div key={i} className={`h-2 rounded-full w-full relative overflow-hidden ${
-                         isDark ? 'bg-neutral-700' : 'bg-zinc-200'
-                       }`}>
+                       <div key={i} className={`h-2 rounded-full w-full relative overflow-hidden bg-neutral-700`}>
                          <div className="absolute top-0 left-0 h-full w-full bg-blue-500 animate-pulse"></div>
                        </div>
                      ))}
@@ -262,7 +227,7 @@ const KeyFeatures = ({ t, isDark, theme }) => {
 };
 
 // KeyFeatures Alternative - Grid de 6 características
-const KeyFeaturesGrid = ({ t, isDark, theme }) => {
+const KeyFeaturesGrid = ({ t, theme }) => {
   const features = [
     {
       icon: Zap,
@@ -303,7 +268,7 @@ const KeyFeaturesGrid = ({ t, isDark, theme }) => {
   ];
 
   return (
-    <section className={`py-24 px-6 relative ${isDark ? 'bg-[#0f172a]' : 'bg-gradient-to-b from-white to-zinc-100'}`}>
+    <section className={`py-24 px-6 relative bg-[#0f172a]`}>
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className={`text-4xl md:text-6xl font-black mb-4 ${theme.text}`}>
@@ -318,11 +283,7 @@ const KeyFeaturesGrid = ({ t, isDark, theme }) => {
           {features.map((feature, index) => (
             <div
               key={index}
-              className={`group p-8 rounded-2xl border-2 transition-all duration-300 hover:scale-105 ${
-                isDark 
-                  ? 'bg-gradient-to-br from-[#1e293b] to-[#0f172a] border-zinc-700 hover:border-[#af936f]/50' 
-                  : 'bg-gradient-to-br from-white to-zinc-50 border-zinc-300 hover:border-[#af936f]/50 hover:shadow-xl'
-              }`}
+              className={`group p-8 rounded-2xl border-2 transition-all duration-300 hover:scale-105 bg-gradient-to-br from-[#1e293b] to-[#0f172a] border-zinc-700 hover:border-[#af936f]/50`}
             >
               <div className={`inline-flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br ${feature.color} mb-4 group-hover:scale-110 transition-transform`}>
                 <feature.icon size={28} className="text-white" />
@@ -337,9 +298,9 @@ const KeyFeaturesGrid = ({ t, isDark, theme }) => {
   );
 };
 
-const RoleSelector = ({ t, isDark, theme, roles, activeRole, setActiveRole, isAutoPlaying, setIsAutoPlaying, ChevronLeft, ChevronRight }) => {
+const RoleSelector = ({ t, theme, roles, activeRole, setActiveRole, isAutoPlaying, setIsAutoPlaying, ChevronLeft, ChevronRight }) => {
   return (
-    <section className={`py-24 relative z-10 px-6 ${isDark ? 'bg-[#1e293b]/30' : 'bg-gradient-to-b from-zinc-100 to-white'}`}>
+    <section className={`py-24 relative z-10 px-6 bg-[#1e293b]/30`}>
       <div className="max-w-6xl mx-auto">
         <h2 className="text-4xl md:text-6xl font-black mb-20 text-center">{t.roles.title}</h2>
         
@@ -354,11 +315,7 @@ const RoleSelector = ({ t, isDark, theme, roles, activeRole, setActiveRole, isAu
                   key={i}
                   className="w-full flex-shrink-0 px-4"
                 >
-                  <div className={`p-12 md:p-16 rounded-3xl border-2 min-h-[400px] flex flex-col justify-center items-center text-center relative overflow-hidden ${
-                    isDark 
-                      ? 'bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#0f172a] border-[#af936f]/30' 
-                      : 'bg-white border-[#af936f]/20'
-                  } shadow-2xl hover:shadow-[0_0_60px_-15px_rgba(175,147,111,0.4)] transition-all duration-500`}>
+                  <div className={`p-12 md:p-16 rounded-3xl border-2 min-h-[400px] flex flex-col justify-center items-center text-center relative overflow-hidden bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#0f172a] border-[#af936f]/30 shadow-2xl hover:shadow-[0_0_60px_-15px_rgba(175,147,111,0.4)] transition-all duration-500`}>
                     <div className="absolute inset-0 bg-gradient-to-br from-[#af936f]/5 via-transparent to-transparent pointer-events-none"></div>
                     
                     <div className={`relative w-20 h-20 rounded-2xl flex items-center justify-center mb-8 ${theme.accentBg} text-white shadow-lg transform hover:scale-110 transition-transform duration-300`}>
@@ -394,7 +351,7 @@ const RoleSelector = ({ t, isDark, theme, roles, activeRole, setActiveRole, isAu
               className={`h-2.5 rounded-full transition-all duration-300 hover:scale-110 ${
                 i === activeRole 
                   ? `w-12 ${theme.accentBg} shadow-lg` 
-                  : `w-2.5 ${isDark ? 'bg-zinc-600 hover:bg-zinc-500' : 'bg-zinc-300 hover:bg-zinc-400'}`
+                  : `w-2.5 bg-zinc-600 hover:bg-zinc-500`
               }`}
             />
           ))}
@@ -412,7 +369,7 @@ const aboutImages = [
   "https://res.cloudinary.com/dh2m9ychv/image/upload/v1765652254/handicapp/uploads/DSC07420.webp"
 ];
 
-const AboutSection = ({ t, isDark, theme, ASSETS }) => {
+const AboutSection = ({ t, theme, ASSETS }) => {
   const [activeImage, setActiveImage] = React.useState(0);
   const aboutVals = [
     { t: t.about.val1, d: t.about.val1_d, i: Heart },
@@ -420,7 +377,7 @@ const AboutSection = ({ t, isDark, theme, ASSETS }) => {
     { t: t.about.val3, d: t.about.val3_d, i: Award }
   ];
   return (
-    <section id="about" className={`min-h-screen flex items-center py-32 px-6 relative border-y ${theme.border} ${isDark ? 'bg-[#1e293b]/30' : 'bg-zinc-50'}`}>
+    <section id="about" className={`min-h-screen flex items-center py-32 px-6 relative border-y ${theme.border} bg-[#1e293b]/30`}>
       <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
         <div>
           <div className={`inline-flex items-center gap-2 mb-6 ${theme.accent} font-bold text-xs uppercase tracking-widest`}>
@@ -492,10 +449,8 @@ const AboutSection = ({ t, isDark, theme, ASSETS }) => {
 const HomePage = ({ 
   t, 
   theme, 
-  isDark, 
   ASSETS, 
   onVideoOpen,
-  SocialProof,
   VerticalWorkflow,
   AILabs,
   ContactForm,
@@ -530,7 +485,6 @@ const HomePage = ({
       <Hero 
         t={t} 
         theme={theme} 
-        isDark={isDark} 
         ASSETS={ASSETS}
         onVideoOpen={onVideoOpen}
       />
@@ -538,7 +492,6 @@ const HomePage = ({
       {/* 2. RoleSelector - Identificación inmediata por roles */}
       <RoleSelector 
         t={t} 
-        isDark={isDark} 
         theme={theme} 
         roles={roles}
         activeRole={activeRole}
@@ -550,36 +503,35 @@ const HomePage = ({
       />
 
       {/* 3. ProblemSolution - Conexión emocional (Antes vs Después) */}
-      <ProblemSolution t={t} isDark={isDark} theme={theme} />
+      <ProblemSolution t={t} theme={theme} />
 
       {/* 4. KeyFeatures - Solución técnica profunda (Bento Grid) */}
-      <KeyFeatures t={t} isDark={isDark} theme={theme} />
+      <KeyFeatures t={t} theme={theme} />
 
       {/* 5. KeyFeaturesGrid - Características detalladas */}
-      <KeyFeaturesGrid t={t} isDark={isDark} theme={theme} />
+      <KeyFeaturesGrid t={t} theme={theme} />
 
       {/* 6. SocialProof - Validación social (Trust) */}
-      <SocialProof t={t} isDark={isDark} theme={theme} />
+      <SocialProof t={t} theme={theme} assets={ASSETS} />
 
       {/* 7. VerticalWorkflow - Cómo empezar (Call to action suave) */}
-      <VerticalWorkflow t={t} isDark={isDark} theme={theme} />
+      <VerticalWorkflow t={t} theme={theme} />
       
       {/* 8. AI Labs - Feature diferenciadora adicional */}
-      <AILabs t={t} isDark={isDark} theme={theme} />
+      <AILabs t={t} theme={theme} />
 
       {/* 9. AboutSection - Nosotros */}
-      <AboutSection t={t} isDark={isDark} theme={theme} ASSETS={ASSETS} />
+      <AboutSection t={t} theme={theme} ASSETS={ASSETS} />
 
       {/* 10. Video Branded - Cierre visual impactante antes del CTA */}
       <section className="relative w-full">
         <BrandedVideo 
           ASSETS={ASSETS} 
-          isDark={isDark}
         />
       </section>
 
       {/* 11. ContactForm - Conversión final */}
-      <ContactForm t={t} isDark={isDark} theme={theme} />
+      <ContactForm t={t} theme={theme} />
     </>
   );
 };

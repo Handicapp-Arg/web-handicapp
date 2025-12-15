@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { CheckCircle2 } from 'lucide-react';
 
-const Pricing = ({ t, theme, isDark }) => {
+const Pricing = ({ t, theme }) => {
   const [isYearly, setIsYearly] = useState(false);
   
   const calculatePrice = (monthlyPrice) => {
@@ -21,20 +21,20 @@ const Pricing = ({ t, theme, isDark }) => {
           {/* Toggle Switch Funcional */}
           <div className="flex flex-col items-center gap-4">
             <div className="inline-flex items-center gap-4">
-              <span className={`text-sm font-bold transition-colors ${!isYearly ? (isDark ? 'text-white' : 'text-zinc-900') : 'opacity-50'}`}>
+              <span className={`text-sm font-bold transition-colors ${!isYearly ? 'text-white' : 'opacity-50'}`}>
                 {t.pricing.monthly}
               </span>
               <button
                 onClick={() => setIsYearly(!isYearly)}
                 className={`relative w-16 h-8 rounded-full transition-all duration-300 ${
-                  isYearly ? 'bg-gradient-to-r from-[#c9a96e] to-[#af936f]' : isDark ? 'bg-zinc-700' : 'bg-zinc-300'
+                  isYearly ? 'bg-gradient-to-r from-[#c9a96e] to-[#af936f]' : 'bg-zinc-700'
                 }`}
               >
                 <div className={`absolute top-1 w-6 h-6 rounded-full bg-white shadow-lg transition-transform duration-300 ${
                   isYearly ? 'translate-x-9' : 'translate-x-1'
                 }`} />
               </button>
-              <span className={`text-sm font-bold transition-colors ${isYearly ? (isDark ? 'text-white' : 'text-zinc-900') : 'opacity-50'}`}>
+              <span className={`text-sm font-bold transition-colors ${isYearly ? 'text-white' : 'opacity-50'}`}>
                 {t.pricing.yearly}
               </span>
             </div>
@@ -53,14 +53,10 @@ const Pricing = ({ t, theme, isDark }) => {
             return (
               <div 
                 key={i} 
-                className={`relative p-10 rounded-[2rem] border-2 transition-all duration-500 hover:-translate-y-4 ${
-                  isDark 
-                    ? 'bg-gradient-to-br from-[#0f172a] to-[#1e293b]' 
-                    : 'bg-white'
-                } ${
+                className={`relative p-10 rounded-[2rem] border-2 transition-all duration-500 hover:-translate-y-4 bg-gradient-to-br from-[#0f172a] to-[#1e293b] ${
                   i === 1 
                     ? 'border-[#af936f] shadow-[0_0_50px_-20px_rgba(175,147,111,0.4)]' 
-                    : isDark ? 'border-zinc-700' : 'border-zinc-200'
+                    : 'border-zinc-700'
                 }`}
               >
                 {i === 1 && (
@@ -88,7 +84,7 @@ const Pricing = ({ t, theme, isDark }) => {
                 <button className={`w-full py-5 rounded-xl font-bold uppercase tracking-widest text-xs transition-all hover:scale-105 ${
                   i === 1 
                     ? 'bg-gradient-to-r from-[#c9a96e] to-[#af936f] text-white shadow-lg hover:shadow-[0_0_30px_rgba(175,147,111,0.6)]' 
-                    : `border-2 ${isDark ? 'border-[#af936f] hover:bg-[#af936f]/10' : 'border-[#af936f] hover:bg-[#af936f]/5'} ${theme.accent}`
+                    : `border-2 border-[#af936f] hover:bg-[#af936f]/10 ${theme.accent}`
                 }`}>
                   Choose {plan.name}
                 </button>

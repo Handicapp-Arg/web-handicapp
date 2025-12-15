@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const WhatsAppButton = ({ phoneNumber = '5492477357665', isDark }) => {
+const WhatsAppButton = ({ phoneNumber = '5492477357665' }) => {
   const [isHovered, setIsHovered] = useState(false);
   
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=Hola%20Handicapp,%20me%20gustaría%20obtener%20más%20información`;
@@ -19,11 +19,7 @@ const WhatsAppButton = ({ phoneNumber = '5492477357665', isDark }) => {
       <div className={`absolute right-16 top-1/2 -translate-y-1/2 whitespace-nowrap transition-all duration-300 ${
         isHovered ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-2 pointer-events-none'
       }`}>
-        <div className={`px-4 py-2 rounded-xl font-bold text-sm shadow-lg ${
-          isDark 
-            ? 'bg-white text-zinc-900' 
-            : 'bg-zinc-900 text-white'
-        }`}>
+        <div className={`px-4 py-2 rounded-xl font-bold text-sm shadow-lg bg-white text-zinc-900`}>
           ¿Necesitas ayuda?
         </div>
       </div>

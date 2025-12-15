@@ -15,7 +15,7 @@ const Hotspot = ({ x, y, label, desc, theme }) => (
   </div>
 );
 
-const Dashboard = ({ t, theme, isDark, ASSETS }) => {
+const Dashboard = ({ t, theme, ASSETS }) => {
   return (
     <section id="system" className={`py-32 relative overflow-hidden ${theme.glass} border-y ${theme.border}`}>
       <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">

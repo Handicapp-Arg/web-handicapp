@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { Play, Pause, Volume2, VolumeX } from 'lucide-react';
 
-const BrandedVideo = ({ ASSETS, isDark = true }) => {
+const BrandedVideo = ({ ASSETS }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
   const [showOutro, setShowOutro] = useState(false);
