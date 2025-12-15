@@ -82,12 +82,3 @@ export const generateContent = async (prompt) => {
     throw error;
   }
 };
-
-/**
- * Valida que el prompt no esté vacío
- * @param {string} prompt - El prompt a validar
- * @returns {boolean} - True si el prompt es válido
- */
-export const validatePrompt = (prompt) => {
-  return prompt && prompt.trim().length > 0;
-};

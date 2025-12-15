@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
-import { generateContent, validatePrompt } from '../services/geminiService';
-import { buildHandicappPrompt, ERROR_MESSAGES } from '../constants/prompts';
+import { generateContent } from '../services/geminiService';
+import { buildHandicappPrompt, ERROR_MESSAGES, validatePrompt } from '../utils/prompts';
 
 /**
  * Hook personalizado para interactuar con Gemini AI
@@ -43,9 +43,10 @@ export const useGeminiChat = (knowledgeBase) => {
    * Genera una respuesta usando Gemini AI
    */
   const generateResponse = useCallback(async () => {
-    // Validación del prompt
-    if (!validatePrompt(prompt)) {
-      setError(ERROR_MESSAGES.EMPTY_PROMPT);
+    // Validación del prompt usando la nueva función
+    const validation = validatePrompt(prompt);
+    if (!validation.isValid) {
+      setError(validation.error);
       return;
     }
 

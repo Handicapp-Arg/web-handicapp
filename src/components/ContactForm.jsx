@@ -1,26 +1,61 @@
 import { useState } from "react";
 import { Loader2 } from "lucide-react";
 import { postContactForm } from "../api";
+import useFormValidation from "../hooks/useFormValidation";
 
 const ContactForm = ({ t, theme }) => {
-  const [form, setForm] = useState({ nombre: "", email: "", mensaje: "" });
-  const [status, setStatus] = useState("idle");
-  const [error, setError] = useState("");
+  const [submitStatus, setSubmitStatus] = useState("idle"); // idle, loading, success, error
+  const [submitError, setSubmitError] = useState("");
+  
+  // Usar el hook de validación con Zod
+  const {
+    data: form,
+    updateField,
+    validateForm,
+    validateField,
+    hasError,
+    getError,
+    canSubmit,
+    resetForm,
+    isSubmitting
+  } = useFormValidation({ 
+    nombre: "", 
+    email: "", 
+    mensaje: "" 
+  });
 
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    updateField(e.target.name, e.target.value);
+  };
+
+  const handleBlur = (e) => {
+    validateField(e.target.name);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setStatus("loading");
-    setError("");
+    
+    // Validar formulario antes de enviar
+    const validation = validateForm();
+    if (!validation.success) {
+      return; // Los errores ya están mostrados por el hook
+    }
+
+    setSubmitStatus("loading");
+    setSubmitError("");
+    
     try {
-      await postContactForm(form);
-      setStatus("success");
+      await postContactForm(validation.data);
+      setSubmitStatus("success");
+      resetForm(); // Limpiar formulario al enviar exitosamente
+      
+      // Volver al estado inicial después de 3 segundos
+      setTimeout(() => {
+        setSubmitStatus("idle");
+      }, 3000);
     } catch (err) {
-      setError(err.message);
-      setStatus("error");
+      setSubmitStatus("error");
+      setSubmitError(err.message || "Error al enviar el formulario");
     }
   };
 
@@ -41,9 +76,13 @@ const ContactForm = ({ t, theme }) => {
               name="nombre"
               value={form.nombre}
               onChange={handleChange}
-              className={`w-full p-3 sm:p-4 rounded-xl border bg-transparent outline-none text-sm sm:text-base ${theme.border} focus:border-current`}
-              required
+              onBlur={handleBlur}
+              className={`w-full p-3 sm:p-4 rounded-xl border bg-transparent outline-none text-sm sm:text-base transition-colors ${hasError('nombre') ? 'border-red-500 focus:border-red-500' : `${theme.border} focus:border-current`}`}
+              placeholder={t.contact.name}
             />
+            {hasError('nombre') && (
+              <p className="text-red-500 text-xs mt-1">{getError('nombre')}</p>
+            )}
           </div>
           <div>
             <label className="text-[10px] sm:text-xs font-bold uppercase opacity-50 mb-1.5 sm:mb-2 block">{t.contact.email}</label>
@@ -52,9 +91,13 @@ const ContactForm = ({ t, theme }) => {
               type="email"
               value={form.email}
               onChange={handleChange}
-              className={`w-full p-3 sm:p-4 rounded-xl border bg-transparent outline-none text-sm sm:text-base ${theme.border} focus:border-current`}
-              required
+              onBlur={handleBlur}
+              className={`w-full p-3 sm:p-4 rounded-xl border bg-transparent outline-none text-sm sm:text-base transition-colors ${hasError('email') ? 'border-red-500 focus:border-red-500' : `${theme.border} focus:border-current`}`}
+              placeholder={t.contact.email}
             />
+            {hasError('email') && (
+              <p className="text-red-500 text-xs mt-1">{getError('email')}</p>
+            )}
           </div>
           <div>
             <label className="text-[10px] sm:text-xs font-bold uppercase opacity-50 mb-1.5 sm:mb-2 block">{t.contact.msg}</label>
@@ -63,25 +106,55 @@ const ContactForm = ({ t, theme }) => {
               rows={4}
               value={form.mensaje}
               onChange={handleChange}
-              className={`w-full p-3 sm:p-4 rounded-xl border bg-transparent outline-none text-sm sm:text-base ${theme.border} focus:border-current`}
-              required
+              onBlur={handleBlur}
+              className={`w-full p-3 sm:p-4 rounded-xl border bg-transparent outline-none text-sm sm:text-base transition-colors resize-none ${hasError('mensaje') ? 'border-red-500 focus:border-red-500' : `${theme.border} focus:border-current`}`}
+              placeholder={t.contact.msg}
             />
+            {hasError('mensaje') && (
+              <p className="text-red-500 text-xs mt-1">{getError('mensaje')}</p>
+            )}
           </div>
           <button
-            disabled={status === "loading"}
-            className={`w-full py-4 sm:py-5 rounded-xl font-bold uppercase tracking-widest transition-all hover:scale-105 flex items-center justify-center gap-2 text-sm sm:text-base ${
-              status === "success"
+            type="submit"
+            disabled={submitStatus === "loading" || !canSubmit || isSubmitting}
+            className={`w-full py-4 sm:py-5 rounded-xl font-bold uppercase tracking-widest transition-all hover:scale-105 disabled:hover:scale-100 flex items-center justify-center gap-2 text-sm sm:text-base ${
+              submitStatus === "success"
                 ? "bg-green-500 text-white"
-                : "bg-white text-black"
+                : submitStatus === "loading" || !canSubmit
+                ? "bg-gray-500 text-gray-300 cursor-not-allowed"
+                : "bg-white text-black hover:bg-gray-100"
             }`}
           >
-            {status === "loading"
+            {submitStatus === "loading" || isSubmitting
               ? <Loader2 className="animate-spin w-4 h-4 sm:w-5 sm:h-5" />
-              : status === "success"
+              : submitStatus === "success"
               ? t.contact.success
               : t.contact.btn}
           </button>
-          {error && <div className="text-red-500 text-sm mt-2">{error}</div>}
+          
+          {/* Mensaje de éxito */}
+          {submitStatus === "success" && (
+            <div className="text-center p-4 border border-green-500 rounded-lg bg-green-50/10">
+              <div className="text-green-500 font-semibold text-sm">
+                ✅ {t.contact.success}
+              </div>
+              <div className="text-green-400 text-xs mt-1">
+                Te contactaremos pronto
+              </div>
+            </div>
+          )}
+          
+          {/* Mensaje de error */}
+          {submitError && (
+            <div className="text-center p-4 border border-red-500 rounded-lg bg-red-50/10">
+              <div className="text-red-500 font-semibold text-sm">
+                ❌ Error al enviar
+              </div>
+              <div className="text-red-400 text-xs mt-1">
+                {submitError}
+              </div>
+            </div>
+          )}
         </form>
       </div>
     </section>

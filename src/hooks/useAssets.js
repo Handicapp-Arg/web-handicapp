@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { URLS } from '../utils';
 
 /**
  * Hook personalizado para cargar recursos externos
@@ -9,7 +10,7 @@ const useAssets = () => {
     // Cargar fuentes de Google Fonts
     const loadFonts = () => {
       const link = document.createElement('link');
-      link.href = "https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;700&display=swap";
+      link.href = URLS.GOOGLE_FONTS;
       link.rel = "stylesheet";
       document.head.appendChild(link);
     };

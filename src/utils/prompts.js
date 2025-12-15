@@ -1,7 +1,8 @@
 /**
- * Plantillas de prompts para la IA
- * Centraliza toda la configuración de prompts del sistema
+ * Utilidades para prompts de IA
+ * Funciones para construir y validar prompts del sistema
  */
+import { validatePrompt as zodValidatePrompt } from './validators';
 
 /**
  * Construye el prompt completo para Gemini con la base de conocimiento
@@ -47,10 +48,24 @@ export const ERROR_MESSAGES = {
 };
 
 /**
- * Configuración de límites
+ * Configuración de límites para prompts
  */
 export const PROMPT_CONFIG = {
   MIN_LENGTH: 3,
   MAX_LENGTH: 500,
   TIMEOUT: 30000 // 30 segundos
+};
+
+/**
+ * Valida prompt usando Zod (wrapper para compatibilidad)
+ * @param {string} prompt - El prompt a validar
+ * @returns {Object} - {isValid: boolean, error?: string, data?: string}
+ */
+export const validatePrompt = (prompt) => {
+  const result = zodValidatePrompt(prompt);
+  return {
+    isValid: result.success,
+    error: result.error,
+    data: result.data
+  };
 };
