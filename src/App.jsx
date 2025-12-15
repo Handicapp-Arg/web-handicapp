@@ -117,12 +117,12 @@ const I18N = {
     lang_code: "ES",
     nav: { funcionalidades: "FUNCIONALIDADES", workflow: "CÓMO FUNCIONA", labs: "ASISTENTE IA", about: "NOSOTROS", contact: "CONTACTO" },
     hero: { 
-      pill: "HANDICAPP", 
-      line1: "EL FUTURO DE LA", 
-      line2: "GESTIÓN ECUESTRE", 
-      desc: "Toda la gestión de tus caballos en una plataforma inteligente y profesional. Historial clínico completo, control administrativo y seguimiento deportivo integrados.", 
-      cta: "Probar Gratis 14 Días", 
-      video: "Hablar con Ventas" 
+  pill: "REVOLUCIÓN ECUESTRE", 
+  line1: "GESTIONA TU HARAS", 
+  line2: "COMO LOS GRANDES", 
+  desc: "Olvidate del caos: digitaliza tu haras, controla caballos, salud y equipo en tiempo real. Handicapp te da el poder de los mejores, con IA y reportes automáticos. ¿Listo para transformar tu gestión?", 
+  cta: "Probar Gratis Ahora", 
+  video: "Hablar con Ventas" 
     },
     video: {
       title: "Mira Handicapp en Acción",

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu } from 'lucide-react';
+import { Logo } from './Logo';
 
 const Navbar = ({ t, theme, isDark, scrolled, ASSETS, onToggleLang, onMenuOpen }) => {
   const location = useLocation();
@@ -50,19 +51,13 @@ const Navbar = ({ t, theme, isDark, scrolled, ASSETS, onToggleLang, onMenuOpen }
     <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? 'py-3 ' + theme.glass + ' border-b ' + theme.border : 'py-5 bg-transparent'}`}>
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         {/* Logo */}
-        <Link to="/" onClick={handleLogoClick} className="flex items-center gap-3 group cursor-pointer relative z-10">
-          {ASSETS.logoIcon ? (
-            <div className={`${scrolled ? 'w-11 h-11' : 'w-14 h-14'} transition-all duration-500 flex-shrink-0`}>
-              <img 
-                src={ASSETS.logoIcon} 
-                alt="Handicapp" 
-                className={`w-full h-full object-contain transition-all duration-500 group-hover:scale-110 ${isDark ? '' : 'brightness-0'}`} 
-              />
-            </div>
-          ) : (
-            <span className={`font-bold tracking-tighter text-2xl ${isDark ? 'text-white' : 'text-[#0f172a]'}`}>HANDICAPP</span>
-          )}
-        </Link>
+        <div className="z-10 flex items-center h-16">
+          <Logo 
+            logoSrc={ASSETS.logoIcon || "/logo.svg"}
+            brand="Handicapp"
+            textColor={isDark ? "#fff" : "#0f172a"}
+          />
+        </div>
 
         {/* Links de navegación */}
         <div className="hidden md:flex items-center gap-8 lg:gap-10 text-[12px] font-bold tracking-[0.15em]">
