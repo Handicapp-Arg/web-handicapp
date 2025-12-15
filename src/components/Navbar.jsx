@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Sun, Moon, Menu } from 'lucide-react';
+import { Menu } from 'lucide-react';
 
-const Navbar = ({ t, theme, isDark, scrolled, ASSETS, onToggleDark, onToggleLang, onMenuOpen }) => {
+const Navbar = ({ t, theme, isDark, scrolled, ASSETS, onToggleLang, onMenuOpen }) => {
   const location = useLocation();
   const currentPath = location.pathname;
 
@@ -36,10 +36,13 @@ const Navbar = ({ t, theme, isDark, scrolled, ASSETS, onToggleDark, onToggleLang
   // Helper to render nav link styles
   const getLinkStyles = (path) => {
     const active = isActive(path);
-    return `${
+    const textColor = isDark ? 'text-white' : 'text-[#0f172a]';
+    const underlineColor = isDark ? 'after:bg-white' : 'after:bg-[#0f172a]';
+    
+    return `${textColor} ${
       active 
-        ? 'opacity-100 relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-white'
-        : 'opacity-70 hover:opacity-100 transition-all hover:-translate-y-0.5 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-white after:transition-all hover:after:w-full'
+        ? `opacity-100 relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 ${underlineColor}`
+        : `opacity-70 hover:opacity-100 transition-all hover:-translate-y-0.5 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 ${underlineColor} after:transition-all hover:after:w-full`
     }`;
   };
 
@@ -57,7 +60,7 @@ const Navbar = ({ t, theme, isDark, scrolled, ASSETS, onToggleDark, onToggleLang
               />
             </div>
           ) : (
-            <span className="font-bold tracking-tighter text-2xl">HANDICAPP</span>
+            <span className={`font-bold tracking-tighter text-2xl ${isDark ? 'text-white' : 'text-[#0f172a]'}`}>HANDICAPP</span>
           )}
         </Link>
 
@@ -70,7 +73,9 @@ const Navbar = ({ t, theme, isDark, scrolled, ASSETS, onToggleDark, onToggleLang
                 <a 
                   key={key} 
                   href={`#${key}`} 
-                  className="opacity-70 hover:opacity-100 transition-all hover:-translate-y-0.5 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-white after:transition-all hover:after:w-full"
+                  className={`opacity-70 hover:opacity-100 transition-all hover:-translate-y-0.5 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:transition-all hover:after:w-full ${
+                    isDark ? 'text-white after:bg-white' : 'text-[#0f172a] after:bg-[#0f172a]'
+                  }`}
                 >
                   {label}
                 </a>
@@ -107,29 +112,31 @@ const Navbar = ({ t, theme, isDark, scrolled, ASSETS, onToggleDark, onToggleLang
         <div className="flex items-center gap-2 md:gap-3 lg:gap-4">
           <button 
             onClick={onToggleLang} 
-            className={`text-[10px] md:text-[11px] font-black px-2.5 md:px-3 py-2 md:py-2.5 rounded-lg border transition-all hover:scale-105 ${
+            className={`text-[10px] md:text-[11px] font-black px-2.5 md:px-3 py-2 md:py-2.5 rounded-lg border-2 transition-all hover:scale-105 ${
               isDark 
                 ? 'border-zinc-700 hover:border-[#af936f] hover:bg-[#af936f]/10 text-white' 
-                : 'border-zinc-300 hover:border-[#af936f] hover:bg-[#af936f]/10 text-zinc-900'
+                : 'border-zinc-400 hover:border-[#af936f] hover:bg-[#af936f]/10 text-[#0f172a]'
             }`}
           >
             {t.lang_code}
           </button>
-          <button 
-            onClick={onToggleDark} 
-            className={`p-2 md:p-2.5 rounded-lg border transition-all hover:scale-105 ${
+          <a 
+            href="https://www.handicapp.com.ar/login"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`text-[10px] md:text-[11px] font-black px-3 md:px-4 py-2 md:py-2.5 rounded-lg border-2 transition-all hover:scale-105 ${
               isDark 
-                ? 'border-zinc-700 hover:border-[#af936f] hover:bg-[#af936f]/10 text-white' 
-                : 'border-zinc-300 hover:border-[#af936f] hover:bg-[#af936f]/10 text-zinc-900'
+                ? 'border-[#af936f] bg-[#af936f] hover:bg-[#af936f]/90 text-white' 
+                : 'border-[#af936f] bg-[#af936f] hover:bg-[#af936f]/90 text-white'
             }`}
           >
-            {isDark ? <Sun size={16} className="md:w-[18px] md:h-[18px]" /> : <Moon size={16} className="md:w-[18px] md:h-[18px]" />}
-          </button>
+            INGRESAR
+          </a>
           <button 
             className={`md:hidden p-2 rounded-lg border transition-all hover:scale-105 ${
               isDark 
-                ? 'border-zinc-700 hover:border-[#af936f] hover:bg-[#af936f]/10' 
-                : 'border-zinc-300 hover:border-[#af936f] hover:bg-[#af936f]/10'
+                ? 'border-zinc-700 hover:border-[#af936f] hover:bg-[#af936f]/10 text-white' 
+                : 'border-zinc-300 hover:border-[#af936f] hover:bg-[#af936f]/10 text-[#0f172a]'
             }`}
             onClick={onMenuOpen}
           >

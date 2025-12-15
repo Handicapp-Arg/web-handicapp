@@ -12,9 +12,13 @@ const Hero = ({ t, theme, isDark, ASSETS }) => {
           <span className={`w-2.5 h-2.5 rounded-full animate-pulse ${theme.accentBg}`}></span>
           <span className={`text-[11px] font-black tracking-[0.25em] ${theme.text}`}>{t.hero.pill}</span>
         </div>
-        <h1 className={`text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-8 md:mb-12 animate-in fade-in zoom-in duration-1000 delay-100 leading-[0.9] ${theme.text}`}>
-          <span className="block bg-clip-text bg-gradient-to-b from-current to-transparent opacity-90">{t.hero.line1}</span>
-          <span className={`block ${theme.accent}`}>{t.hero.line2}</span>
+        <h1 className={`font-black tracking-tighter mb-8 md:mb-12 animate-in fade-in zoom-in duration-1000 delay-100 leading-[0.9] ${theme.text}`}>
+          <span className="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl opacity-80 mb-2">
+            {t.hero.line1}
+          </span>
+          <span className={`block text-5xl sm:text-6xl md:text-7xl lg:text-8xl ${theme.accent}`}>
+            {t.hero.line2}
+          </span>
         </h1>
         <p className={`text-base sm:text-lg md:text-xl lg:text-2xl xl:text-2xl max-w-4xl mx-auto mb-12 md:mb-16 leading-relaxed font-light animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-200 ${theme.textMuted}`}>
           {t.hero.desc}

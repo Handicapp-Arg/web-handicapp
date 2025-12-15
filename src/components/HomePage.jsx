@@ -1,10 +1,12 @@
 import React from 'react';
 import Hero from './Hero';
+import BrandedVideo from './BrandedVideo';
 import { 
   CheckCircle2, X, 
   Zap, Shield, 
   BarChart3, Bell, FileText, Calendar,
-  Heart, Code2, Award, Dna
+  Heart, Code2, Award, Dna,
+  Terminal, XCircle, Check, ArrowRightCircle, Cpu
 } from 'lucide-react';
 import { 
   IconWifiOff, 
@@ -39,61 +41,82 @@ const ProblemSolution = ({ t, isDark, theme }) => {
   ];
 
   return (
-    <section className={`py-24 px-6 relative ${isDark ? 'bg-[#0f172a]' : 'bg-gradient-to-b from-zinc-50 via-white to-zinc-50'}`}>
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className={`text-4xl md:text-6xl font-black mb-4 ${theme.text}`}>
-            Del Caos al <span className={theme.accent}>Control Total</span>
-          </h2>
-          <p className={`text-lg md:text-xl ${theme.textMuted}`}>
-            Transforma tu gestión en minutos
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-8">
-          {/* Problemas */}
-          <div className={`p-8 rounded-3xl border-2 ${
-            isDark 
-              ? 'bg-red-950/20 border-red-900/50' 
-              : 'bg-red-50 border-red-200'
-          }`}>
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-xl bg-red-500 flex items-center justify-center">
-                <X size={24} className="text-white" />
+    <section className={`py-32 px-6 relative border-y ${theme.border} overflow-hidden ${isDark ? 'bg-zinc-900/30' : 'bg-zinc-50'}`}>
+      {/* Título */}
+      <div className="max-w-7xl mx-auto text-center mb-20 relative z-10">
+        <h2 className={`text-4xl md:text-6xl font-black mb-4 uppercase tracking-tight ${theme.text}`}>
+          DEL CAOS AL CONTROL TOTAL
+        </h2>
+        <p className={`text-xl ${theme.textMuted}`}>
+          Transforma tu gestión en minutos
+        </p>
+      </div>
+      
+      {/* Grid de comparación */}
+      <div className="max-w-6xl mx-auto relative z-10">
+        <div className="grid md:grid-cols-11 gap-8 items-center">
+          
+          {/* BEFORE CARD - Estilo Legacy/Retro */}
+          <div className="md:col-span-5 group">
+            <div className="p-8 rounded-3xl border border-red-900/30 bg-[#1a0505] relative overflow-hidden transition-all duration-500 hover:border-red-600/50 hover:shadow-[0_0_30px_-5px_rgba(220,38,38,0.2)] min-h-[420px] flex flex-col">
+              {/* Scanline effect */}
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-red-950/5 to-transparent pointer-events-none"></div>
+              <div className="absolute top-0 left-0 w-full h-1 bg-red-600 animate-pulse"></div>
+              
+              <div className="flex items-center justify-between mb-8 opacity-70">
+                <div className="flex items-center gap-3">
+                  <Terminal size={20} className="text-red-500" />
+                  <span className="font-mono text-xs text-red-400 tracking-widest uppercase">Antes: Desorganización</span>
+                </div>
+                <div className="w-2 h-2 rounded-full bg-red-500 animate-ping"></div>
               </div>
-              <h3 className={`text-2xl font-black ${theme.text}`}>Antes: Desorganización</h3>
+
+              <ul className="space-y-5 font-medium text-sm flex-1">
+                {problems.map((problem, i) => (
+                  <li key={i} className="flex items-start gap-4 text-red-300/70 transition-all group-hover:text-red-300/90">
+                    <XCircle size={18} className="flex-shrink-0 mt-0.5" />
+                    <span className="line-through decoration-red-500/30">{problem}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
-            <ul className="space-y-4">
-              {problems.map((problem, index) => (
-                <li key={index} className="flex items-start gap-3">
-                  <X size={20} className="text-red-500 flex-shrink-0 mt-1" />
-                  <span className={theme.textMuted}>{problem}</span>
-                </li>
-              ))}
-            </ul>
           </div>
 
-          {/* Soluciones */}
-          <div className={`p-8 rounded-3xl border-2 ${
-            isDark 
-              ? 'bg-gradient-to-br from-[#1e293b] to-[#0f172a] border-[#af936f]/50' 
-              : 'bg-gradient-to-br from-white to-zinc-50 border-[#af936f]/50'
-          }`}>
-            <div className="flex items-center gap-3 mb-6">
-              <div className={`w-12 h-12 rounded-xl ${theme.accentBg} flex items-center justify-center`}>
-                <CheckCircle2 size={24} className="text-white" />
-              </div>
-              <h3 className={`text-2xl font-black ${theme.text}`}>Ahora: Handicapp</h3>
+          {/* CONNECTOR - Flecha animada */}
+          <div className="md:col-span-1 flex justify-center py-4 md:py-0">
+            <div className="relative">
+              <ArrowRightCircle size={48} className="text-[#af936f] animate-pulse" strokeWidth={1.5} />
+              <div className="absolute inset-0 bg-[#af936f] blur-xl opacity-40 animate-pulse"></div>
             </div>
-            <ul className="space-y-4">
-              {solutions.map((solution, index) => (
-                <li key={index} className="flex items-start gap-3">
-                  <CheckCircle2 size={20} className="text-[#af936f] flex-shrink-0 mt-1" />
-                  <span className={theme.textMuted}>{solution}</span>
-                </li>
-              ))}
-            </ul>
           </div>
+
+          {/* AFTER CARD - Estilo Next-Gen/Modern */}
+          <div className="md:col-span-5 group">
+            <div className={`p-8 rounded-3xl border ${theme.border} bg-gradient-to-br from-[#1e293b] to-[#0f172a] relative overflow-hidden transition-all duration-500 transform hover:scale-[1.03] hover:shadow-[0_0_50px_-10px_rgba(175,147,111,0.3)] min-h-[420px] flex flex-col`}>
+              <div className="absolute top-0 left-0 w-full h-1 bg-[#af936f]"></div>
+              <div className="absolute -right-20 -top-20 w-64 h-64 bg-[#af936f] opacity-10 blur-[80px] rounded-full group-hover:opacity-20 transition-opacity"></div>
+              
+              <div className="flex items-center justify-between mb-8">
+                <div className="flex items-center gap-3">
+                  <Cpu size={20} className="text-[#af936f]" />
+                  <span className="font-mono text-xs font-bold tracking-widest text-[#af936f] uppercase">Ahora: HandicApp</span>
+                </div>
+                <div className="px-2 py-1 rounded text-[10px] font-bold bg-green-500/20 text-green-400">100% ONLINE</div>
+              </div>
+
+              <ul className="space-y-5 flex-1">
+                {solutions.map((solution, i) => (
+                  <li key={i} className="flex items-start gap-4 font-bold text-base text-white">
+                    <div className="w-6 h-6 rounded-full flex items-center justify-center bg-[#af936f] text-black flex-shrink-0 mt-0.5">
+                      <Check size={14} strokeWidth={4} />
+                    </div>
+                    {solution}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
@@ -110,9 +133,8 @@ const KeyFeatures = ({ t, isDark, theme }) => {
 
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         <div className="text-center mb-20">
-          <span className="text-[#af936f] font-bold tracking-widest uppercase text-xs mb-3 block">HandicApp OS</span>
-          <h2 className={`text-4xl md:text-6xl font-bold mb-6 ${theme.text}`}>
-            El sistema operativo <br/> de tu establecimiento.
+          <h2 className={`text-4xl md:text-6xl font-black mb-6 ${theme.text}`}>
+            EL SISTEMA OPERATIVO <br/> DE TU ESTABLECIMIENTO
           </h2>
           <p className={`${theme.textMuted} max-w-2xl mx-auto text-lg`}>
             No es solo una app, es una infraestructura completa diseñada para escalar con tu haras.
@@ -308,7 +330,7 @@ const KeyFeaturesGrid = ({ t, isDark, theme }) => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className={`text-4xl md:text-6xl font-black mb-4 ${theme.text}`}>
-            Características que Marcan la Diferencia
+            CARACTERÍSTICAS QUE MARCAN LA DIFERENCIA
           </h2>
           <p className={`text-lg md:text-xl ${theme.textMuted} max-w-3xl mx-auto`}>
             Todo lo que necesitas para gestionar profesionalmente tu operación ecuestre
@@ -413,7 +435,7 @@ const aboutImages = [
   "https://res.cloudinary.com/dh2m9ychv/image/upload/v1765652254/handicapp/uploads/DSC07420.webp"
 ];
 
-const AboutSection = ({ t, isDark, theme }) => {
+const AboutSection = ({ t, isDark, theme, ASSETS }) => {
   const [activeImage, setActiveImage] = React.useState(0);
   const aboutVals = [
     { t: t.about.val1, d: t.about.val1_d, i: Heart },
@@ -421,54 +443,68 @@ const AboutSection = ({ t, isDark, theme }) => {
     { t: t.about.val3, d: t.about.val3_d, i: Award }
   ];
   return (
-    <section id="about" className={`py-32 px-6 relative border-y ${theme.border} ${isDark ? 'bg-[#1e293b]/30' : 'bg-zinc-50'}`}>
+    <section id="about" className={`min-h-screen flex items-center py-32 px-6 relative border-y ${theme.border} ${isDark ? 'bg-[#1e293b]/30' : 'bg-zinc-50'}`}>
       <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
         <div>
           <div className={`inline-flex items-center gap-2 mb-6 ${theme.accent} font-bold text-xs uppercase tracking-widest`}>
             <Dna size={16} /> {t.about.title}
           </div>
-          <h2 className="text-5xl font-black mb-8 leading-tight">{t.about.subtitle}</h2>
-          <p className={`text-lg leading-relaxed mb-10 ${theme.textMuted}`}>{t.about.desc}</p>
-          <div className="grid gap-6">
-            {aboutVals.map((val, i) => (
-              <button
-                key={i}
-                className={`flex items-start gap-4 p-4 rounded-xl border transition-all ${theme.glass} hover:border-current focus:outline-none focus:ring-2 focus:ring-[#af936f] ${activeImage === i ? 'ring-2 ring-[#af936f] border-[#af936f]' : ''}`}
-                onClick={() => setActiveImage(i)}
-                type="button"
-              >
-                <div className={`mt-1 p-2 rounded-lg ${theme.accentBg} text-white`}>
-                  <val.i size={18} />
-                </div>
-                <div>
-                  <h4 className="font-bold text-lg">{val.t}</h4>
-                  <p className={`text-sm ${theme.textMuted}`}>{val.d}</p>
-                </div>
-              </button>
-            ))}
+          <h2 className={`text-3xl md:text-4xl font-black mb-8 leading-[1.2] ${theme.text}`}>{t.about.subtitle}</h2>
+          
+          <div className={`space-y-6 text-base md:text-lg leading-relaxed ${theme.textMuted}`}>
+            <p>
+              HandicApp nace de una necesidad real: organizar la información de los caballos sin depender de papeles, mensajes sueltos o la memoria de alguien más.
+            </p>
+            
+            <p>
+              Somos un equipo que vive el mundo equino desde adentro y entiende la tecnología como una aliada para ordenar, dar trazabilidad y generar confianza.
+            </p>
+            
+            <p className={`font-bold text-lg md:text-xl ${theme.text}`}>
+              Nuestra misión es clara: <span className={theme.accent}>digitalizar la gestión equina sin perder la esencia del campo.</span>
+            </p>
+            
+            <p>
+              Centralizamos toda la información de cada caballo —salud, entrenamiento, consumos y documentos— en un solo lugar, accesible desde cualquier dispositivo, con roles claros y total transparencia.
+            </p>
+            
+            <p>
+              No reemplazamos la experiencia humana. La potenciamos, para que el trabajo fluya mejor y las decisiones sean más precisas.
+            </p>
           </div>
         </div>
         {/* Imagen del equipo/operación ecuestre */}
         <div className="relative aspect-[4/5] lg:aspect-[3/4] group">
           {/* Glow effect detrás de la imagen */}
           <div className={`absolute inset-0 rounded-full blur-[120px] opacity-30 ${theme.accentBg} animate-pulse`}></div>
+          
           {/* Contenedor principal de la imagen */}
-          <div className={`relative h-full w-full rounded-[3rem] overflow-hidden border-2 ${theme.border} shadow-2xl transition-all duration-700 group-hover:scale-[1.02] group-hover:shadow-[0_0_60px_-15px_rgba(175,147,111,0.5)]`}>
-            {/* Imagen - object-cover centrado para mostrar bien el caballo */}
-            <div className="absolute inset-0">
-              <img 
-                src={aboutImages[activeImage]}
-                alt="Gestión ecuestre profesional con Handicapp"
-                className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
-              />
-              {/* Overlay sutil solo en los bordes para mantener el foco en el caballo */}
-              <div className={`absolute inset-0 bg-gradient-to-t ${isDark ? 'from-[#0f172a]/40 via-transparent to-transparent' : 'from-zinc-900/20 via-transparent to-transparent'}`}></div>
-              {/* Efecto glass muy sutil en hover */}
-              <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div className="relative h-full w-full rounded-[3rem] overflow-hidden border-2 border-white/10 shadow-2xl transition-all duration-700 group-hover:scale-[1.02] group-hover:shadow-[0_0_60px_-15px_rgba(175,147,111,0.5)]">
+            {/* Imagen */}
+            <img 
+              src={aboutImages[activeImage]}
+              alt="Gestión ecuestre profesional con Handicapp"
+              className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+            />
+            
+            {/* Overlay gradient para contenido */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+            
+            {/* Content overlay - Solo Logo */}
+            <div className="absolute bottom-0 left-0 right-0 p-8 text-center">
+              {/* Logo HandicApp */}
+              <div className="flex justify-center">
+                <img 
+                  src={ASSETS?.logoIcon || ASSETS?.logoFull} 
+                  className="w-24 h-24 drop-shadow-2xl animate-in fade-in zoom-in duration-700" 
+                  alt="HandicApp" 
+                />
+              </div>
             </div>
+            
             {/* Decorative corner accents dorados */}
-            <div className={`absolute top-4 right-4 w-20 h-20 border-t-2 border-r-2 rounded-tr-3xl opacity-40 transition-all duration-500 group-hover:w-24 group-hover:h-24 group-hover:opacity-60 ${isDark ? 'border-[#af936f]' : 'border-[#af936f]'}`}></div>
-            <div className={`absolute bottom-4 left-4 w-20 h-20 border-b-2 border-l-2 rounded-bl-3xl opacity-40 transition-all duration-500 group-hover:w-24 group-hover:h-24 group-hover:opacity-60 ${isDark ? 'border-[#af936f]' : 'border-[#af936f]'}`}></div>
+            <div className="absolute top-4 right-4 w-20 h-20 border-t-2 border-r-2 border-[#af936f] rounded-tr-3xl opacity-40 transition-all duration-500 group-hover:w-24 group-hover:h-24 group-hover:opacity-60" />
+            <div className="absolute bottom-4 left-4 w-20 h-20 border-b-2 border-l-2 border-[#af936f] rounded-bl-3xl opacity-40 transition-all duration-500 group-hover:w-24 group-hover:h-24 group-hover:opacity-60" />
           </div>
         </div>
       </div>
@@ -513,7 +549,7 @@ const HomePage = ({
 
   return (
     <>
-      {/* 1. Hero - Impacto inicial */}
+      {/* 1. Hero - Promesa grande inicial */}
       <Hero 
         t={t} 
         theme={theme} 
@@ -522,10 +558,7 @@ const HomePage = ({
         onVideoOpen={onVideoOpen}
       />
 
-      {/* 2. ProblemSolution - Antes vs Después */}
-      <ProblemSolution t={t} isDark={isDark} theme={theme} />
-
-      {/* 3. RoleSelector - Muestra versatilidad */}
+      {/* 2. RoleSelector - Identificación inmediata por roles */}
       <RoleSelector 
         t={t} 
         isDark={isDark} 
@@ -539,25 +572,36 @@ const HomePage = ({
         ChevronRight={ChevronRight}
       />
 
-      {/* 4. KeyFeatures - Características clave (Bento Grid) */}
+      {/* 3. ProblemSolution - Conexión emocional (Antes vs Después) */}
+      <ProblemSolution t={t} isDark={isDark} theme={theme} />
+
+      {/* 4. KeyFeatures - Solución técnica profunda (Bento Grid) */}
       <KeyFeatures t={t} isDark={isDark} theme={theme} />
 
-      {/* 5. KeyFeaturesGrid - Grid de 6 características */}
+      {/* 5. KeyFeaturesGrid - Características detalladas */}
       <KeyFeaturesGrid t={t} isDark={isDark} theme={theme} />
 
-      {/* 6. VerticalWorkflow - Cómo funciona */}
-      <VerticalWorkflow t={t} isDark={isDark} theme={theme} />
-      
-      {/* 7. AI Labs - Feature diferenciadora */}
-      <AILabs t={t} isDark={isDark} theme={theme} />
-
-      {/* 8. SocialProof - Validación social */}
+      {/* 6. SocialProof - Validación social (Trust) */}
       <SocialProof t={t} isDark={isDark} theme={theme} />
 
-      {/* 9. AboutSection - Nosotros */}
-      <AboutSection t={t} isDark={isDark} theme={theme} />
+      {/* 7. VerticalWorkflow - Cómo empezar (Call to action suave) */}
+      <VerticalWorkflow t={t} isDark={isDark} theme={theme} />
+      
+      {/* 8. AI Labs - Feature diferenciadora adicional */}
+      <AILabs t={t} isDark={isDark} theme={theme} />
 
-      {/* 10. ContactForm - Conversión final */}
+      {/* 9. AboutSection - Nosotros */}
+      <AboutSection t={t} isDark={isDark} theme={theme} ASSETS={ASSETS} />
+
+      {/* 10. Video Branded - Cierre visual impactante antes del CTA */}
+      <section className="relative w-full">
+        <BrandedVideo 
+          ASSETS={ASSETS} 
+          isDark={isDark}
+        />
+      </section>
+
+      {/* 11. ContactForm - Conversión final */}
       <ContactForm t={t} isDark={isDark} theme={theme} />
     </>
   );

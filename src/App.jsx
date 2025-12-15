@@ -71,11 +71,8 @@ const ASSETS = {
   
   // Logos de sponsors y partners hípicos
   logos: [
-    "/images/Abolonego.avif",      // Stud Abolengo - Criadero de caballos de carrera
-    "https://res.cloudinary.com/dh2m9ychv/image/upload/v1765636416/handicapp/uploads/logo.webp",             // Hipódromo de San Isidro - Institución hípica
-    "/images/harasParaiso.webp",   // Haras El Paraíso - Establecimiento ecuestre
-    "https://res.cloudinary.com/dh2m9ychv/image/upload/v1765636408/handicapp/uploads/LADOLFINA.webp",       // La Dolfina - Equipo de polo argentino
-    "https://res.cloudinary.com/dh2m9ychv/image/upload/v1765640273/handicapp/uploads/0T1A5784.webp"         // Nueva imagen agregada
+    "https://res.cloudinary.com/dh2m9ychv/image/upload/v1765636408/handicapp/uploads/LADOLFINA.webp",  // La Dolfina - Equipo de polo argentino
+    "https://res.cloudinary.com/dh2m9ychv/image/upload/v1765795314/harasParaiso_ffzcct.webp"  // Haras El Paraíso
   ]
 };
 
@@ -121,11 +118,15 @@ const I18N = {
     nav: { funcionalidades: "FUNCIONALIDADES", workflow: "CÓMO FUNCIONA", labs: "ASISTENTE IA", about: "NOSOTROS", contact: "CONTACTO" },
     hero: { 
       pill: "HANDICAPP", 
-      line1: "GESTIÓN DE HARAS", 
-      line2: "SIN PRECEDENTES.", 
-      desc: "Reemplaza el caos de WhatsApp y Excel por una plataforma inteligente. Trazabilidad clínica, administrativa y deportiva en un solo lugar.", 
+      line1: "EL FUTURO DE LA", 
+      line2: "GESTIÓN ECUESTRE", 
+      desc: "Toda la gestión de tus caballos en una plataforma inteligente y profesional. Historial clínico completo, control administrativo y seguimiento deportivo integrados.", 
       cta: "Probar Gratis 14 Días", 
       video: "Hablar con Ventas" 
+    },
+    video: {
+      title: "Mira Handicapp en Acción",
+      subtitle: "Descubre cómo transformamos la gestión ecuestre con tecnología inteligente"
     },
     roles: {
       title: "TODO LO QUE NECESITAS, EN UN SOLO LUGAR",
@@ -162,7 +163,7 @@ const I18N = {
       step3_d: "Dashboard con vista panorámica de todas tus operaciones: caballos activos, competencias próximas, consultas veterinarias del mes y estado general de salud. Genera reportes de rendimiento deportivo, análisis de largo plazo y estadísticas comparativas con un solo click." 
     },
     labs: { 
-      title: "Pregunta Lo Que Necesites", 
+      title: "PREGUNTA LO QUE NECESITES", 
       desc: "Nuestro asistente inteligente responde todas tus dudas sobre Handicapp: funcionalidades, migración de datos, planes, comparativas o cómo mejorar la gestión de tu haras.", 
       input_ph: "Ej: ¿Cuánto tiempo ahorro con Handicapp vs Excel?", 
       btn: "Consultar Ahora", 
@@ -170,7 +171,7 @@ const I18N = {
       disclaimer: "Asistente IA entrenado con documentación oficial de Handicapp. Respuestas instantáneas." 
     },
     pricing: { 
-      title: "Planes para Cada Necesidad", 
+      title: "PLANES PARA CADA NECESIDAD", 
       monthly: "Mes", 
       yearly: "Año", 
       plans: [
@@ -220,7 +221,7 @@ const I18N = {
     },
     about: { 
       title: "NUESTRO ADN", 
-      subtitle: "Nacidos en el campo, criados en el código.", 
+      subtitle: "NACIDOS EN EL CAMPO. CONSTRUIDOS CON TECNOLOGÍA", 
       desc: "Handicapp nace de la frustración de perder registros médicos en papeles arrugados. Somos un equipo híbrido de jinetes, veterinarios e ingenieros de software obsesionados con una misión: digitalizar la tradición sin perder el alma.",
       val1: "Pasión Ecuestre", 
       val1_d: "Entendemos el sudor y la gloria del campo.",
@@ -230,13 +231,13 @@ const I18N = {
       val3_d: "Datos claros para propietarios claros."
     },
     contact: { 
-      title: "Empieza Gratis Hoy", 
+      title: "EMPEZÁ GRATIS HOY", 
       subtitle: "Prueba Handicapp 14 días sin compromiso. Si no ves resultados, no pagas nada. Así de simple.", 
       name: "Nombre completo", 
       email: "Email de contacto", 
-      msg: "Cuéntanos sobre tu operación (cantidad de caballos, equipo, principales necesidades)", 
-      btn: "Empezar Prueba Gratuita", 
-      success: "¡LISTO! REVISA TU EMAIL PARA ACCEDER A TU CUENTA DE PRUEBA." 
+      msg: "Cuéntanos sobre tu operación: cantidad de caballos, equipo, principales necesidades", 
+      btn: "Enviar Consulta", 
+      success: "¡MENSAJE ENVIADO! NOS PONDREMOS EN CONTACTO PRONTO." 
     }
   },
   en: {
@@ -244,11 +245,15 @@ const I18N = {
     nav: { funcionalidades: "FEATURES", workflow: "HOW IT WORKS", labs: "AI ASSISTANT", about: "ABOUT US", contact: "CONTACT" },
     hero: { 
       pill: "HANDICAPP", 
-      line1: "PROFESSIONAL", 
-      line2: "EQUESTRIAN MANAGEMENT", 
-      desc: "Comprehensive system for complete equestrian activity management. Manage horses, health, competitions, training and facilities from one place.", 
+      line1: "THE FUTURE OF", 
+      line2: "EQUESTRIAN MANAGEMENT.", 
+      desc: "All your horse management in one intelligent and professional platform. Complete clinical history, administrative control and integrated sport tracking.", 
       cta: "View Demo", 
       video: "Talk to Sales" 
+    },
+    video: {
+      title: "See Handicapp in Action",
+      subtitle: "Discover how we transform equestrian management with smart technology"
     },
     roles: {
       title: "ONE PLATFORM, ALL ROLES",
@@ -357,9 +362,9 @@ const I18N = {
       subtitle: "Schedule a personalized demo and discover how Handicapp can optimize your operation.", 
       name: "Full name", 
       email: "Email", 
-      msg: "Tell us about your operation (number of horses, team, main needs)", 
-      btn: "Request Demo", 
-      success: "DONE! CHECK YOUR EMAIL TO ACCESS YOUR TRIAL ACCOUNT." 
+      msg: "Tell us about your operation: number of horses, team, main needs", 
+      btn: "Send Inquiry", 
+      success: "MESSAGE SENT! WE'LL GET BACK TO YOU SOON." 
     }
   },
   de: {
@@ -372,6 +377,10 @@ const I18N = {
       desc: "Umfassendes System für komplette Pferdehaltungsverwaltung. Verwalten Sie Pferde, Gesundheit, Wettbewerbe, Training und Einrichtungen an einem Ort.", 
       cta: "Demo Ansehen", 
       video: "Vertrieb Kontaktieren" 
+    },
+    video: {
+      title: "Sehen Sie Handicapp in Aktion",
+      subtitle: "Entdecken Sie, wie wir die Pferdehaltung mit intelligenter Technologie transformieren"
     },
     roles: {
       title: "EINE PLATTFORM, MEHRERE VISIONEN",
@@ -886,28 +895,28 @@ EJEMPLO MALO: "Handicapp ofrece tres planes de precios diferentes: 1. Plan Stabl
   
   return (
     <section id="labs" className="scroll-mt-24 py-16 sm:py-20 md:py-24 lg:py-32 px-4 sm:px-6 relative">
-      <div className={`max-w-6xl mx-auto rounded-2xl sm:rounded-[2rem] md:rounded-[2.5rem] p-6 sm:p-8 md:p-12 lg:p-16 relative overflow-hidden border ${theme.glass} shadow-2xl`}>
+      <div className={`max-w-7xl mx-auto rounded-2xl sm:rounded-[2rem] md:rounded-[2.5rem] p-8 sm:p-10 md:p-14 lg:p-20 relative overflow-hidden border ${theme.glass} shadow-2xl`}>
         <div className={`absolute -top-32 -right-32 sm:-top-40 sm:-right-40 w-80 h-80 sm:w-96 sm:h-96 rounded-full blur-[100px] sm:blur-[120px] opacity-20 ${theme.accentBg}`}></div>
-        <div className="relative z-10 grid lg:grid-cols-2 gap-8 sm:gap-12 md:gap-16">
-          <div className="space-y-6 sm:space-y-8">
-            <div>
-              <h2 className={`text-3xl sm:text-4xl md:text-5xl font-black mb-3 sm:mb-4 leading-tight ${isDark ? 'text-white' : 'text-zinc-900'}`}>{t.labs.title}</h2>
-              <p className={`text-base sm:text-lg ${theme.textMuted}`}>{t.labs.desc}</p>
+        <div className="relative z-10 grid lg:grid-cols-2 gap-10 sm:gap-14 md:gap-16 lg:gap-20">
+          <div className="flex flex-col">
+            <div className="space-y-4 mb-10 sm:mb-12 md:mb-16">
+              <h2 className={`text-3xl sm:text-4xl md:text-5xl font-black leading-tight ${isDark ? 'text-white' : 'text-zinc-900'}`}>{t.labs.title}</h2>
+              <p className={`text-base sm:text-lg md:text-xl leading-relaxed ${theme.textMuted}`}>{t.labs.desc}</p>
             </div>
-            <div className="space-y-3 sm:space-y-4">
-              <div className="relative"><input value={prompt} onChange={(e) => setPrompt(e.target.value)} placeholder={t.labs.input_ph} className={`w-full p-4 sm:p-5 rounded-xl border outline-none transition-all font-medium placeholder:opacity-50 text-sm sm:text-base ${isDark ? 'bg-black/50 border-zinc-800 text-white focus:border-[#af936f]' : 'bg-white border-zinc-200 text-zinc-900 focus:border-[#af936f]'}`} /><div className="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2"><Dna size={18} className="sm:w-5 sm:h-5 ${theme.textMuted}" /></div></div>
-              <button onClick={handleGen} disabled={loading} className={`w-full py-4 sm:py-5 rounded-xl font-bold uppercase tracking-widest transition-all flex items-center justify-center gap-2 sm:gap-3 text-sm sm:text-base ${isDark ? 'bg-white text-black hover:bg-[#af936f] hover:text-white' : 'bg-black text-white hover:bg-[#af936f]'} disabled:opacity-50 disabled:cursor-not-allowed`}>{loading ? <Loader2 className="animate-spin w-4 h-4 sm:w-5 sm:h-5" /> : t.labs.btn} <ArrowRight size={16} className="sm:w-[18px] sm:h-[18px]" /></button>
+            <div className="space-y-4 sm:space-y-5">
+              <div className="relative"><input value={prompt} onChange={(e) => setPrompt(e.target.value)} placeholder={t.labs.input_ph} className={`w-full p-5 sm:p-6 rounded-xl border outline-none transition-all font-medium placeholder:opacity-50 text-sm sm:text-base ${isDark ? 'bg-black/50 border-zinc-800 text-white focus:border-[#af936f]' : 'bg-white border-zinc-200 text-zinc-900 focus:border-[#af936f]'}`} /><div className="absolute right-4 sm:right-5 top-1/2 -translate-y-1/2"><Dna size={20} className="sm:w-6 sm:h-6 ${theme.textMuted}" /></div></div>
+              <button onClick={handleGen} disabled={loading} className={`w-full py-5 sm:py-6 rounded-xl font-bold uppercase tracking-widest transition-all flex items-center justify-center gap-3 text-sm sm:text-base ${isDark ? 'bg-white text-black hover:bg-[#af936f] hover:text-white' : 'bg-black text-white hover:bg-[#af936f]'} disabled:opacity-50 disabled:cursor-not-allowed`}>{loading ? <Loader2 className="animate-spin w-5 h-5 sm:w-6 sm:h-6" /> : t.labs.btn} <ArrowRight size={18} className="sm:w-5 sm:h-5" /></button>
             </div>
           </div>
-          <div className={`rounded-2xl sm:rounded-3xl p-6 sm:p-8 border ${isDark ? 'bg-black/40 border-zinc-800' : 'bg-gradient-to-br from-zinc-50 to-white border-zinc-300 shadow-inner'} min-h-[300px] sm:min-h-[400px] flex flex-col relative overflow-hidden`}>
-            <div className={`flex justify-between items-center mb-4 sm:mb-6 ${isDark ? 'opacity-50' : 'opacity-60'}`}>
-              <div className="flex gap-1.5 sm:gap-2">
-                <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-red-500"></div>
-                <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-yellow-500"></div>
+          <div className={`rounded-2xl sm:rounded-3xl p-8 sm:p-10 border ${isDark ? 'bg-black/40 border-zinc-800' : 'bg-gradient-to-br from-zinc-50 to-white border-zinc-300 shadow-inner'} min-h-[350px] sm:min-h-[450px] md:min-h-[500px] flex flex-col relative overflow-hidden`}>
+            <div className={`flex justify-between items-center mb-6 sm:mb-8 ${isDark ? 'opacity-50' : 'opacity-60'}`}>
+              <div className="flex gap-2">
+                <div className="w-3 h-3 sm:w-3.5 sm:h-3.5 rounded-full bg-red-500"></div>
+                <div className="w-3 h-3 sm:w-3.5 sm:h-3.5 rounded-full bg-yellow-500"></div>
               </div>
-              <div className={`font-mono text-[10px] sm:text-xs ${theme.textMuted}`}>AI_OUTPUT_V1</div>
+              <div className={`font-mono text-xs sm:text-sm ${theme.textMuted}`}>AI_OUTPUT_V1</div>
             </div>
-            <div className={`flex-1 font-mono text-xs sm:text-sm leading-relaxed sm:leading-loose whitespace-pre-wrap ${error ? 'text-red-500' : isDark ? theme.accent : 'text-[#af936f] font-semibold'}`}>
+            <div className={`flex-1 font-mono text-sm sm:text-base md:text-lg leading-relaxed sm:leading-loose whitespace-pre-wrap ${error ? 'text-red-500' : isDark ? theme.accent : 'text-[#af936f] font-semibold'}`}>
               {error ? `❌ ${error}` : response || <span className="opacity-30">// Ready...</span>}
             </div>
           </div>
@@ -958,18 +967,20 @@ const SocialProof = ({ t, isDark, theme }) => {
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#af936f] rounded-full blur-[150px]"></div>
       </div>
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 sm:mb-14 md:mb-16 lg:mb-20 text-center relative z-10">
-        <p className={`text-[10px] sm:text-xs font-black tracking-[0.3em] uppercase mb-3 sm:mb-4 ${theme.accent}`}>{t.trust.title}</p>
-        <h3 className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold ${theme.text} px-4`}>{t.trust.desc}</h3>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 sm:mb-20 md:mb-24 text-center relative z-10">
+        <p className={`text-xs sm:text-sm font-black tracking-[0.3em] uppercase mb-4 sm:mb-6 ${theme.accent}`}>YA CONFÍAN EN HANDICAPP</p>
+        <h3 className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black ${theme.text} px-4 max-w-5xl mx-auto leading-tight`}>
+          LOS MEJORES ESTABLECIMIENTOS DE ARGENTINA<br />DIGITALIZARON SU GESTIÓN
+        </h3>
       </div>
       
-      {/* Logos carousel con sponsors reales */}
-      <div className="flex overflow-hidden relative mb-16 sm:mb-20 md:mb-24 lg:mb-28">
-        <div className="flex gap-12 sm:gap-16 md:gap-20 lg:gap-24 animate-marquee whitespace-nowrap">
+      {/* Logos carousel con sponsors reales - tamaño optimizado */}
+      <div className="flex overflow-hidden relative mb-16 sm:mb-20 md:mb-24">
+        <div className="flex gap-12 sm:gap-16 md:gap-20 lg:gap-24 animate-marquee whitespace-nowrap py-4">
           {[...ASSETS.logos, ...ASSETS.logos, ...ASSETS.logos].map((logo, i) => {
             const isHipodromoLogo = logo.includes('logo.png');
             return (
-              <div key={i} className="flex items-center justify-center min-w-[140px] sm:min-w-[160px] md:min-w-[180px] lg:min-w-[200px] h-16 sm:h-20 md:h-24">
+              <div key={i} className="flex items-center justify-center min-w-[150px] sm:min-w-[180px] md:min-w-[200px] lg:min-w-[220px] h-16 sm:h-20 md:h-24 lg:h-28">
                 <img 
                   src={logo} 
                   alt="Partner" 
@@ -989,22 +1000,22 @@ const SocialProof = ({ t, isDark, theme }) => {
         </div>
       </div>
       
-      {/* Testimonial carousel mejorado */}
-      <div className="max-w-4xl lg:max-w-5xl 2xl:max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-8 sm:pt-10 md:pt-12">
-        {/* Icono de estrella flotante FUERA de la tarjeta */}
-        <div className={`absolute -top-1 sm:-top-2 left-1/2 -translate-x-1/2 w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full ${theme.accentBg} flex items-center justify-center text-white shadow-2xl z-20`}>
-          <Star fill="currentColor" size={20} className="sm:w-6 sm:h-6 md:w-7 md:h-7" />
+      {/* Testimonial carousel */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-14">
+        {/* Icono de estrella flotante */}
+        <div className={`absolute -top-2 left-1/2 -translate-x-1/2 w-16 h-16 sm:w-20 sm:h-20 rounded-full ${theme.accentBg} flex items-center justify-center text-white shadow-2xl z-20`}>
+          <Star fill="currentColor" size={24} className="sm:w-8 sm:h-8" />
         </div>
         
-        <div className={`px-6 py-10 sm:px-10 sm:py-12 md:px-14 lg:px-18 2xl:px-24 md:py-14 lg:py-16 rounded-xl sm:rounded-2xl md:rounded-[2rem] border-2 text-center relative ${
+        <div className={`px-16 py-16 sm:px-20 sm:py-20 md:px-24 md:py-24 lg:px-28 lg:py-20 rounded-[2.5rem] border-2 text-center relative ${
           isDark 
             ? 'bg-gradient-to-br from-[#0f172a] to-[#1e293b] border-[#af936f]/30' 
             : 'bg-gradient-to-br from-white via-zinc-50 to-white border-[#af936f]/40'
         } shadow-2xl`}>
           {/* Quote decorativo eliminado para que sea más rectangular */}
           
-          {/* Testimonial content with fade animation */}
-          <div className="relative min-h-[200px] sm:min-h-[180px] md:min-h-[160px] lg:min-h-[170px] flex flex-col items-center justify-center">
+          {/* Testimonial content */}
+          <div className="relative min-h-[200px] sm:min-h-[180px] md:min-h-[160px] flex flex-col items-center justify-center">
             {testimonials.map((testimonial, index) => (
               <div
                 key={index}
@@ -1014,18 +1025,18 @@ const SocialProof = ({ t, isDark, theme }) => {
                     : 'opacity-0 translate-y-4 pointer-events-none'
                 }`}
               >
-                <p className={`text-base sm:text-lg md:text-xl lg:text-2xl 2xl:text-3xl font-medium italic mb-5 sm:mb-6 md:mb-7 leading-relaxed px-2 sm:px-4 md:px-6 ${theme.text}`}>
+                <p className={`text-base sm:text-lg md:text-xl lg:text-2xl font-medium italic mb-6 leading-relaxed px-4 lg:px-8 ${theme.text}`}>
                   "{testimonial.quote}"
                 </p>
                 
                 {/* Divider dorado */}
-                <div className="flex items-center justify-center gap-2 sm:gap-3 mb-4 sm:mb-5">
-                  <div className={`h-px w-10 sm:w-12 md:w-16 ${theme.accentBg}`}></div>
-                  <div className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full ${theme.accentBg}`}></div>
-                  <div className={`h-px w-10 sm:w-12 md:w-16 ${theme.accentBg}`}></div>
+                <div className="flex items-center justify-center gap-3 mb-6">
+                  <div className={`h-px w-16 ${theme.accentBg}`}></div>
+                  <div className={`w-2 h-2 rounded-full ${theme.accentBg}`}></div>
+                  <div className={`h-px w-16 ${theme.accentBg}`}></div>
                 </div>
                 
-                <p className={`text-[10px] sm:text-xs md:text-sm lg:text-base font-bold tracking-widest uppercase ${theme.accent} px-4`}>
+                <p className={`text-xs sm:text-sm md:text-base font-bold tracking-widest uppercase ${theme.accent} px-4`}>
                   {testimonial.author}, {testimonial.position}
                 </p>
               </div>
@@ -1080,7 +1091,9 @@ const ContactForm = ({ t, isDark, theme }) => {
       <div className={`absolute inset-0 opacity-10 ${theme.accentBg} blur-[150px] sm:blur-[200px]`}></div>
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 sm:gap-12 md:gap-16 relative z-10 items-center">
         <div>
-          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tighter mb-6 sm:mb-8 md:mb-10 leading-[0.9]">{t.contact.title}</h2>
+          <h2 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tighter mb-6 sm:mb-8 md:mb-10 leading-[0.9] ${theme.text}`}>
+            Empieza gratis <span className={theme.accent}>Hoy</span>
+          </h2>
           <p className={`text-base sm:text-lg md:text-xl ${theme.textMuted}`}>{t.contact.subtitle}</p>
         </div>
         <form onSubmit={handleSubmit} className={`p-6 sm:p-8 md:p-10 rounded-xl sm:rounded-2xl md:rounded-[2rem] border ${theme.glass} space-y-4 sm:space-y-6`}>
@@ -1161,12 +1174,12 @@ function AppContent() {
   const langs = ['es', 'en', 'de'];
   const toggleLang = () => setLangIndex((prev) => (prev + 1) % langs.length);
   const t = I18N[langs[langIndex]];
-  const [isDark, setIsDark] = useState(true);
+  const isDark = true; // Modo oscuro fijo
   const [videoOpen, setVideoOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [loaded, setLoaded] = useState(false);
-  const theme = isDark ? THEME.dark : THEME.light;
+  const theme = THEME.dark; // Siempre usar tema oscuro
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -1204,7 +1217,6 @@ function AppContent() {
             isDark={isDark} 
             scrolled={scrolled} 
             ASSETS={ASSETS}
-            onToggleDark={() => setIsDark(!isDark)}
             onToggleLang={toggleLang}
             onMenuOpen={() => setMenuOpen(true)}
           />
