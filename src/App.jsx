@@ -17,45 +17,10 @@ import WhatsAppButton from './components/WhatsAppButton';
 import FAQPage from './components/FAQ';
 import LegalPage from './components/Legal';
 import HANDICAPP_KNOWLEDGE from './handicappKnowledgeBase';
-
-/**
- * --- GEMINI API UTILITIES ---
- */
-const callGeminiAPI = async (prompt) => {
-  const apiKey = import.meta.env.VITE_GEMINI_API_KEY; 
-  
-  if (!apiKey) {
-    throw new Error("API Key no configurada. Por favor, agrega tu API Key de Gemini en el archivo .env");
-  }
-
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
-  const payload = { contents: [{ parts: [{ text: prompt }] }] };
-
-  try {
-    const response = await fetch(url, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    });
-    
-    if (!response.ok) {
-      const errorData = await response.json().catch(() => ({}));
-      throw new Error(`Error API Gemini: ${response.status} - ${errorData.error?.message || 'Error desconocido'}`);
-    }
-    
-    const data = await response.json();
-    const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
-    
-    if (!text) {
-      throw new Error("La API no devolvió ninguna respuesta válida.");
-    }
-    
-    return text;
-  } catch (error) {
-    console.error("Error llamando a Gemini API:", error);
-    throw error;
-  }
-};
+// Importar traducciones
+import translations from './i18n';
+// Importar hook personalizado para Gemini AI
+import useGeminiChat from './hooks/useGeminiChat';
 
 /**
  * --- ASSETS ---
@@ -78,485 +43,31 @@ const ASSETS = {
 
 /**
  * --- CONFIGURACIÓN DE TEMA ---
- * Paleta de identidad Handicapp
+ * Paleta de identidad Handicapp (Dark Mode)
  */
 const THEME = {
-  dark: {
-    bg: "bg-[#0f172a]",                    // Navy Blue Principal
-    bgSecondary: "bg-[#1e293b]",           // Navy Blue Light
-    text: "text-white",
-    textMuted: "text-zinc-400",
-    accent: "text-[#af936f]",              // Golden Brown
-    accentBg: "bg-[#af936f]",              // Golden Brown
-    accentHover: "bg-[#8f7657]",           // Darker Gold (hover)
-    accentCyan: "bg-[#0e445d]",            // Cyan Secundario
-    border: "border-zinc-700",
-    glass: "bg-[#1e293b]/80 backdrop-blur-xl border-zinc-700",
-    navBg: "bg-[#0f172a]"                  // Navbar Navy
-  },
-  light: {
-    bg: "bg-gradient-to-br from-zinc-50 via-white to-zinc-100",
-    bgSecondary: "bg-gradient-to-br from-white to-zinc-50",
-    text: "text-[#0f172a]",                // Navy text en light mode
-    textMuted: "text-zinc-600",
-    accent: "text-[#af936f]",              // Golden Brown
-    accentBg: "bg-[#af936f]",              // Golden Brown
-    accentHover: "bg-[#8f7657]",           // Darker Gold (hover)
-    accentCyan: "bg-[#0e445d]",            // Cyan Secundario
-    border: "border-zinc-300",
-    glass: "bg-white/90 backdrop-blur-xl border-zinc-300 shadow-xl",
-    navBg: "bg-white/95 backdrop-blur-xl"
-  }
+  bg: "bg-[#0f172a]",                    // Navy Blue Principal
+  bgSecondary: "bg-[#1e293b]",           // Navy Blue Light
+  text: "text-white",
+  textMuted: "text-zinc-400",
+  accent: "text-[#af936f]",              // Golden Brown
+  accentBg: "bg-[#af936f]",              // Golden Brown
+  accentHover: "bg-[#8f7657]",           // Darker Gold (hover)
+  accentCyan: "bg-[#0e445d]",            // Cyan Secundario
+  border: "border-zinc-700",
+  glass: "bg-[#1e293b]/80 backdrop-blur-xl border-zinc-700",
+  navBg: "bg-[#0f172a]"                  // Navbar Navy
 };
 
 /**
- * --- DICTIONARY ---
+ * --- DICTIONARY (Importado desde /i18n) ---
  */
-const I18N = {
-  es: {
-    problemSolution: {
-      title: "DEL CAOS AL CONTROL TOTAL",
-      subtitle: "Transforma tu gestión en minutos con Handicapp. Deja atrás el caos y la desorganización: digitaliza, automatiza y toma el control absoluto de tu haras desde cualquier lugar.",
-      beforeLabel: "Antes: Desorganización",
-      beforeList: [
-        "WhatsApp colapsado y mensajes perdidos",
-        "Planillas Excel desactualizadas y duplicadas",
-        "Vacunas y controles veterinarios olvidados",
-        "Sin reportes claros para propietarios",
-        "Información dispersa en papeles y chats"
-      ],
-      afterLabel: "Ahora: Handicapp",
-      afterBadge: "100% ONLINE",
-      afterList: [
-        "Tareas y equipo centralizados en tiempo real",
-        "Base de datos única, siempre actualizada y segura",
-        "Alertas automáticas que previenen errores",
-        "Reportes profesionales y automáticos para propietarios",
-        "Gestión digital, simple y accesible 24/7 desde cualquier dispositivo"
-      ]
-    },
-    lang_code: "ES",
-    nav: { funcionalidades: "FUNCIONALIDADES", workflow: "CÓMO FUNCIONA", labs: "ASISTENTE IA", about: "NOSOTROS", contact: "CONTACTO" },
-    hero: { 
-  pill: "REVOLUCIÓN ECUESTRE", 
-  line1: "GESTIONA TU HARAS", 
-  line2: "COMO LOS GRANDES", 
-  desc: "Olvidate del caos: digitaliza tu haras, controla caballos, salud y equipo en tiempo real. Handicapp te da el poder de los mejores, con IA y reportes automáticos. ¿Listo para transformar tu gestión?", 
-  cta: "Probar Gratis Ahora", 
-  video: "Hablar con Ventas" 
-    },
-    video: {
-      title: "Mira Handicapp en Acción",
-      subtitle: "Descubre cómo transformamos la gestión ecuestre con tecnología inteligente"
-    },
-    roles: {
-      title: "TODO LO QUE NECESITAS, EN UN SOLO LUGAR",
-      r1: "Propietario", 
-      r1_d: "Tu inversión, siempre bajo control. Accede a reportes médicos instantáneos, historial completo y alertas automáticas. Visualiza el estado de tus caballos en tiempo real y toma decisiones inteligentes desde cualquier lugar, 24/7. Tranquilidad y poder en la palma de tu mano.",
-      r2: "Veterinario", 
-      r2_d: "Olvídate del papeleo y enfócate en lo importante: tus pacientes. Lleva el historial clínico digital completo, recibe recordatorios automáticos y organiza tu agenda con un calendario inteligente. Más eficiencia, menos errores y más tiempo para cuidar caballos.",
-      r3: "Manager / Administrador", 
-      r3_d: "Optimiza la operación y reduce costos hasta un 40%. Dashboard ejecutivo con KPIs en vivo, sistema de tareas para coordinar equipos, reportes financieros automáticos y control total de recursos. Gestión profesional sin complicaciones.",
-      r4: "Haras / Establecimiento", 
-      r4_d: "Aumenta tu reputación y rentabilidad. Administra múltiples caballos huéspedes, coordina equipos profesionales, genera reportes automáticos para propietarios y mantén contratos organizados. La herramienta que usan los haras líderes."
-    },
-    keyFeatures: {
-      title: "CARACTERÍSTICAS QUE MARCAN LA DIFERENCIA",
-      desc: "Todo lo que necesitas para gestionar profesionalmente tu operación ecuestre.",
-      mobile_title: "Velocidad Extrema",
-      mobile_desc: "Interfaz ultrarrápida. Carga instantánea, sin esperas. Trabaja a la velocidad que exige el campo real.",
-      mobile_badge: "Siempre Rápido",
-      trace_title: "Seguridad Máxima",
-      trace_desc: "Encriptación AES-256. Tus datos más seguros que en un banco. Confidencialidad y tranquilidad garantizadas.",
-      roles_title: "Reportes Inteligentes",
-      roles_desc: "Dashboard con métricas en vivo. Exporta en PDF/Excel con un click y toma decisiones basadas en datos reales.",
-      roles_list: ["Admin", "Veterinario", "Capataz", "Propietario"],
-      docs_title: "Alertas Automáticas",
-      docs_desc: "Notificaciones push personalizadas. Nunca olvides nada importante: vacunas, controles y eventos siempre bajo control.",
-      bulk_title: "Historial Completo",
-      bulk_desc: "Registros médicos, entrenamientos y competencias centralizados. Toda la historia de cada caballo, siempre disponible.",
-      bulk_lote: "Calendario Integrado",
-      bulk_select: "Planifica eventos, vacunas y controles en un solo lugar. Organización total, sin esfuerzo."
-    },
-    trust: { 
-      title: "YA CONFÍAN EN HANDICAPP", 
-      desc: "Los principales establecimientos ecuestres de Argentina digitalizaron su gestión.", 
-      quote: "El sistema de gestión integral nos permite tener control total de nuestros ejemplares. Es el futuro del turf.", 
-      author: "Martín Petrini, Director Técnico - Stud Abolengo" 
-    },
-    workflow: { 
-      title: "EMPIEZA HOY, VE RESULTADOS MAÑANA", 
-      step1_t: "1. Sube Tu Información en Minutos", 
-      step1_d: "Importa datos desde Excel/PDF o carga manualmente. Fichas de caballos, historial médico, establecimientos y documentación. Sin instalaciones complicadas, sin capacitación técnica. En 24 horas estás operativo. Migración gratuita incluida.",
-      step2_t: "2. Automatiza Tu Operación Diaria", 
-      step2_d: "Deja que Handicapp haga el trabajo pesado: asigna tareas automáticas, programa controles médicos recurrentes, genera reportes para propietarios con un click y coordina todo el equipo desde un solo lugar. Ahorra hasta 15 horas semanales.",
-      step3_t: "3. Accede a Reportes y Análisis Completos", 
-      step3_d: "Dashboard con vista panorámica de todas tus operaciones: caballos activos, competencias próximas, consultas veterinarias del mes y estado general de salud. Genera reportes de rendimiento deportivo, análisis de largo plazo y estadísticas comparativas con un solo click." 
-    },
-    labs: { 
-      title: "PREGUNTA LO QUE NECESITES", 
-      desc: "Nuestro asistente inteligente responde todas tus dudas sobre Handicapp: funcionalidades, migración de datos, planes, comparativas o cómo mejorar la gestión de tu haras.", 
-      input_ph: "Ej: ¿Cuánto tiempo ahorro con Handicapp vs Excel?", 
-      btn: "Consultar Ahora", 
-      chat_ph: "Escribe tu pregunta aquí...", 
-      disclaimer: "Asistente IA entrenado con documentación oficial de Handicapp. Respuestas instantáneas." 
-    },
-    pricing: { 
-      title: "PLANES PARA CADA NECESIDAD", 
-      monthly: "Mes", 
-      yearly: "Año", 
-      plans: [
-        { 
-          name: "Starter", 
-          price: "29", 
-          feat: ["Hasta 10 Caballos", "Dashboard", "Salud", "Notificaciones", "Soporte Email"] 
-        }, 
-        { 
-          name: "Professional", 
-          price: "79", 
-          feat: ["Hasta 50 Caballos", "Todas las funciones", "Competencias", "Reportes", "Asistente IA", "Soporte Prioritario"] 
-        }, 
-        { 
-          name: "Enterprise", 
-          price: "199", 
-          feat: ["Caballos Ilimitados", "Multi-establecimiento", "API Integración", "Manager dedicado", "Onboarding personalizado", "Soporte 24/7"] 
-        }
-      ] 
-    },
-    faq: { 
-      title: "Resolvemos Tus Dudas", 
-      subtitle: "Las respuestas más directas a las preguntas más importantes",
-      q1: "¿Qué incluye Handicapp realmente?", 
-      a1: "12 módulos profesionales todo incluido: Dashboard con métricas en vivo, Notificaciones automáticas inteligentes, Gestión de establecimientos múltiples, Fichas digitales completas de caballos, Módulo veterinario con historial clínico, Calendario de competencias y eventos, Sistema de entrenamiento y progreso, Reportes ejecutivos descargables, Sistema de tareas para coordinar equipos, Configuración personalizable y Gestión de suscripciones. Todo en una sola plataforma, sin módulos adicionales que comprar.",
-      q2: "¿Es complicado migrar desde Excel o papeles?", 
-      a2: "Es lo más fácil que existe. Importación automática desde Excel/CSV/PDF + nuestro equipo hace la migración por ti sin costo extra. Promedio: 24-48h y estás operativo. Incluye capacitación del equipo y soporte personalizado. Cero pérdida de datos, cero dolor de cabeza.",
-      q3: "¿Mis datos están realmente seguros?", 
-      a3: "Más seguros que en tu oficina. Encriptación militar AES-256 (misma que usan bancos), backup automático cada 6 horas, servidores certificados en Argentina, cumplimiento total GDPR y acceso controlado por roles. Tu información está más protegida que en cualquier archivo físico o Excel.",
-      q4: "¿Cuánto cuesta comparado con mi sistema actual?", 
-      a4: "Desde $29/mes (menos que una cena). Plan Professional $79/mes con TODO incluido para 50 caballos. Sin permanencia, cancela cuando quieras. Ahorra hasta 15 horas/semana en gestión manual. ROI positivo desde el primer mes. Incluye migración, capacitación y soporte sin costo extra.",
-      q5: "¿Realmente funciona para MI haras?", 
-      a5: "Sí, 100%. Ya sea que tengas 5 o 500 caballos, 1 o 10 establecimientos, equipo pequeño o grande. Handicapp se adapta a tu operación. Usado desde pequeños haras familiares hasta studs premium con operaciones complejas. Empieza simple, crece cuando necesites. Escalable sin límites.",
-      q6: "¿Qué pasa si mi equipo no es técnico?", 
-      a6: "No hay problema. Interfaz ultra simple, diseñada para gente de campo (no ingenieros). Incluye capacitación personalizada de tu equipo sin costo, videos tutoriales paso a paso y soporte técnico en español respondiendo en menos de 2 horas. Si usas WhatsApp, puedes usar Handicapp.",
-      q7: "¿Puedo integrarlo con mi sistema contable?", 
-      a7: "Plan Enterprise incluye API completa para conectar con sistemas contables (facturación automática), software veterinario externo, plataformas de gestión existentes y cualquier herramienta que uses. También desarrollamos conectores personalizados para grandes operaciones.",
-      q8: "¿Hay costos ocultos o sorpresas?", 
-      a8: "Cero. Precio fijo mensual, todo incluido. Sin costos de setup, sin cargos por usuario extra, sin módulos premium que desbloquear. Lo que ves es lo que pagas. Migración, capacitación y soporte incluidos. Sin permanencia, cancela cuando quieras y llévate toda tu información en CSV/Excel/PDF.",
-      q9: "¿Funciona en el campo sin internet?", 
-      a9: "La app funciona offline para consultar información y cargar datos básicos. Cuando recuperas conexión, todo se sincroniza automáticamente. Diseñado para funcionar en zonas rurales con conectividad intermitente. También optimizado para datos móviles (bajo consumo).",
-      q10: "¿Qué tan rápido veo resultados reales?", 
-      a10: "Resultados desde el Día 1. Implementación en 24-48h, equipo capacitado en 1 semana, ROI positivo en 30 días. Clientes reportan: 40% reducción de tiempo administrativo, 60% menos errores operativos, 100% mejor comunicación con propietarios. Primera semana gratis para comprobar.",
-      stillHaveQuestions: "¿Todavía tienes preguntas?",
-      contactUs: "Hablemos directamente. Respuesta en menos de 2 horas.",
-      getInTouch: "Hablar con un Experto"
-    },
-    about: { 
-      title: "NUESTRO ADN", 
-      subtitle: "NACIDOS EN EL CAMPO. CONSTRUIDOS CON TECNOLOGÍA", 
-      desc: "Handicapp nace de la frustración de perder registros médicos en papeles arrugados. Somos un equipo híbrido de jinetes, veterinarios e ingenieros de software obsesionados con una misión: digitalizar la tradición sin perder el alma.",
-      val1: "Pasión Ecuestre", 
-      val1_d: "Entendemos el sudor y la gloria del campo.",
-      val2: "Innovación Radical", 
-      val2_d: "Tecnología de punta aplicada al mundo hípico.",
-      val3: "Transparencia Total", 
-      val3_d: "Datos claros para propietarios claros."
-    },
-    contact: { 
-      title: "EMPEZÁ GRATIS HOY", 
-      subtitle: "Prueba Handicapp 14 días sin compromiso. Si no ves resultados, no pagas nada. Así de simple.", 
-      name: "Nombre completo", 
-      email: "Email de contacto", 
-      msg: "Cuéntanos sobre tu operación: cantidad de caballos, equipo, principales necesidades", 
-      btn: "Enviar Consulta", 
-      success: "¡MENSAJE ENVIADO! NOS PONDREMOS EN CONTACTO PRONTO." 
-    }
-  },
-  en: {
-    problemSolution: {
-      title: "FROM CHAOS TO TOTAL CONTROL",
-      subtitle: "Transform your management in minutes with Handicapp. Leave chaos and disorganization behind: digitize, automate, and take absolute control of your stable from anywhere.",
-      beforeLabel: "Before: Disorganization",
-      beforeList: [
-        "WhatsApp overloaded and lost messages",
-        "Outdated and duplicated Excel sheets",
-        "Forgotten vaccines and veterinary checks",
-        "No clear reports for owners",
-        "Information scattered in papers and chats"
-      ],
-      afterLabel: "Now: Handicapp",
-      afterBadge: "100% ONLINE",
-      afterList: [
-        "Centralized tasks and team in real time",
-        "Single, always updated and secure database",
-        "Automatic alerts that prevent errors",
-        "Professional and automatic reports for owners",
-        "Digital management, simple and accessible 24/7 from any device"
-      ]
-    },
-    lang_code: "EN",
-    nav: { funcionalidades: "FEATURES", workflow: "HOW IT WORKS", labs: "AI ASSISTANT", about: "ABOUT US", contact: "CONTACT" },
-    hero: { 
-      pill: "HANDICAPP", 
-      line1: "THE FUTURE OF", 
-      line2: "EQUESTRIAN MANAGEMENT.", 
-      desc: "All your horse management in one intelligent and professional platform. Complete clinical history, administrative control and integrated sport tracking.", 
-      cta: "View Demo", 
-      video: "Talk to Sales" 
-    },
-    video: {
-      title: "See Handicapp in Action",
-      subtitle: "Discover how we transform equestrian management with smart technology"
-    },
-    roles: {
-      title: "ONE PLATFORM, ALL ROLES",
-      r1: "Owner", 
-      r1_d: "Access complete horse profiles, health history, competitions and training. Maintain total control of your investment.",
-      r2: "Veterinarian", 
-      r2_d: "Complete digital medical history, vaccination calendar, automatic reminders and professional medical tracking.",
-      r3: "Manager", 
-      r3_d: "Central dashboard with reports, task management, event control and comprehensive facility administration.",
-      r4: "Facility", 
-      r4_d: "Manage multiple horses, coordinate your team with the task system and maintain control of all daily operations."
-    },
-    keyFeatures: {
-      title: "FEATURES THAT MAKE THE DIFFERENCE",
-      desc: "Everything you need to manage your equestrian operation like a pro.",
-      mobile_title: "Extreme Speed",
-      mobile_desc: "Ultra-fast interface. Instant loading, no waiting. Work at the speed your stable demands.",
-      mobile_badge: "Always Fast",
-      trace_title: "Maximum Security",
-      trace_desc: "AES-256 encryption. Your data safer than at a bank. Confidentiality and peace of mind guaranteed.",
-      roles_title: "Smart Reports",
-      roles_desc: "Dashboard with live metrics. Export to PDF/Excel with one click and make decisions based on real data.",
-      roles_list: ["Admin", "Veterinarian", "Foreman", "Owner"],
-      docs_title: "Automatic Alerts",
-      docs_desc: "Personalized push notifications. Never miss anything important: vaccines, checkups, and events always under control.",
-      bulk_title: "Complete History",
-      bulk_desc: "Medical records, training, and competitions all centralized. Every horse’s full story, always available.",
-      bulk_lote: "Integrated Calendar",
-      bulk_select: "Plan events, vaccines, and checkups in one place. Total organization, zero hassle."
-    },
-    trust: { 
-      title: "TRUST", 
-      desc: "Argentina's leading equestrian facilities already trust Handicapp.", 
-      quote: "Handicapp transformed our operation. We went from Excel spreadsheets to professional and centralized management.", 
-      author: "Roberto Álvarez, Director El Paraiso Stud" 
-    },
-    workflow: { 
-      title: "YOUR EQUESTRIAN MANAGEMENT IN 3 STEPS", 
-      step1_t: "Register Everything in One Place", 
-      step1_d: "Upload horses, facilities, health data, scheduled competitions and training sessions. Everything organized and easy to find.",
-      step2_t: "Control and Plan", 
-      step2_d: "Use the task system to coordinate your team, schedule events in the calendar and generate detailed performance and health reports.",
-      step3_t: "Optimize with Information", 
-      step3_d: "Dashboard with key metrics, complete history of each horse and smart notifications to make better decisions." 
-    },
-    labs: { 
-      title: "Ask What You Need", 
-      desc: "Ask what you need about Handicapp: features, equestrian management, plans or any question.", 
-      input_ph: "Ex: What features does Handicapp have?", 
-      btn: "Ask AI", 
-      chat_ph: "Write your question...", 
-      disclaimer: "AI Beta - Answers based on official information." 
-    },
-    pricing: { 
-      title: "Plans for Every Need", 
-      monthly: "Mo", 
-      yearly: "Yr", 
-      plans: [
-        { 
-          name: "Starter", 
-          price: "29", 
-          feat: ["Up to 10 Horses", "Dashboard", "Health", "Notifications", "Email Support"] 
-        }, 
-        { 
-          name: "Professional", 
-          price: "79", 
-          feat: ["Up to 50 Horses", "All Features", "Competitions", "Reports", "AI Assistant", "Priority Support"] 
-        }, 
-        { 
-          name: "Enterprise", 
-          price: "199", 
-          feat: ["Unlimited Horses", "Multi-facility", "API Integration", "Dedicated Manager", "Custom Onboarding", "24/7 Support"] 
-        }
-      ] 
-    },
-    faq: { 
-      title: "FAQ", 
-      subtitle: "Everything you need to know about Handicapp",
-      q1: "What does Handicapp include?", 
-      a1: "Handicapp includes 12 complete modules: Dashboard, Notifications, Facilities, My Horses, Health, Competitions, Training, Events, Reports, Tasks, Settings and Subscriptions. Everything needed to manage your equestrian activity professionally.",
-      q2: "Can I migrate my current data?", 
-      a2: "Yes, we import your data from Excel, spreadsheets or any previous system at no cost. Our team personally assists you throughout the migration process.",
-      q3: "How secure is Handicapp?", 
-      a3: "We use AES-256 encryption (bank-level) and certified servers. Your data is protected with the highest security standards and available 24/7.",
-      q4: "What does it really cost?", 
-      a4: "Plans from $29/month for up to 10 horses. Professional plan ($79/month) includes all features for up to 50 horses. No hidden costs, no commitment.",
-      q5: "What management modules does it have?", 
-      a5: "Complete horse management, veterinary health, sports competitions, training, event calendar, team task system, detailed reports and facility administration.",
-      q6: "Do you offer technical support?", 
-      a6: "Yes, all plans include support. Professional plan has priority support and Enterprise has dedicated manager and 24/7 attention.",
-      q7: "Does it integrate with other systems?", 
-      a7: "Enterprise plan includes API for custom integrations with accounting, veterinary and management systems. We can also develop specific connectors.",
-      q8: "What happens to my data if I cancel?", 
-      a8: "You have full control of your information. You can export all your data in standard formats (CSV, PDF, Excel) at any time. We never retain your information.",
-      q9: "How does the task system work?", 
-      a9: "You can create tasks, assign them to team members, set deadlines and mark them as complete. Ideal for coordinating daily stable routines.",
-      q10: "How long does implementation take?", 
-      a10: "Most of our clients are operational within 24-48 hours. We include personalized onboarding, team training and support during the first month of use.",
-      stillHaveQuestions: "Still have questions?",
-      contactUs: "Our team is ready to help you and answer all your questions",
-      getInTouch: "Contact Now"
-    },
-    about: { 
-      title: "OUR DNA", 
-      subtitle: "Born in the field, raised in code.", 
-      desc: "Handicapp was born from the frustration of losing medical records on crumpled paper. We are a hybrid team of riders, vets, and software engineers obsessed with one mission: digitizing tradition without losing its soul.",
-      val1: "Equestrian Passion", 
-      val1_d: "We understand the sweat and glory of the field.",
-      val2: "Radical Innovation", 
-      val2_d: "Cutting-edge technology applied to equestrian world.",
-      val3: "Total Transparency", 
-      val3_d: "Clear data for clear owners."
-    },
-    contact: { 
-      title: "Ready to transform your management?", 
-      subtitle: "Schedule a personalized demo and discover how Handicapp can optimize your operation.", 
-      name: "Full name", 
-      email: "Email", 
-      msg: "Tell us about your operation: number of horses, team, main needs", 
-      btn: "Send Inquiry", 
-      success: "MESSAGE SENT! WE'LL GET BACK TO YOU SOON." 
-    }
-  },
-  de: {
-    problemSolution: {
-      title: "VOM CHAOS ZUR TOTALEN KONTROLLE",
-      subtitle: "Verwandeln Sie Ihr Management in Minuten mit Handicapp. Lassen Sie Chaos und Unordnung hinter sich: digitalisieren, automatisieren und übernehmen Sie die volle Kontrolle über Ihr Gestüt – von überall aus.",
-      beforeLabel: "Vorher: Unordnung",
-      beforeList: [
-        "WhatsApp überlastet und Nachrichten gehen verloren",
-        "Veraltete und doppelte Excel-Tabellen",
-        "Vergessene Impfungen und tierärztliche Kontrollen",
-        "Keine klaren Berichte für Besitzer",
-        "Informationen verstreut auf Papier und in Chats"
-      ],
-      afterLabel: "Jetzt: Handicapp",
-      afterBadge: "100% ONLINE",
-      afterList: [
-        "Zentrale Aufgaben und Team in Echtzeit",
-        "Einzige, immer aktuelle und sichere Datenbank",
-        "Automatische Benachrichtigungen verhindern Fehler",
-        "Professionelle und automatische Berichte für Besitzer",
-        "Digitale Verwaltung, einfach und 24/7 von jedem Gerät zugänglich"
-      ]
-    },
-    lang_code: "DE",
-    nav: { funcionalidades: "FUNKTIONEN", workflow: "WIE ES FUNKTIONIERT", labs: "KI-ASSISTENT", about: "ÜBER UNS", contact: "KONTAKT" },
-    hero: { 
-      pill: "HANDICAPP", 
-      line1: "PROFESSIONELLE", 
-      line2: "PFERDEHALTUNG", 
-      desc: "Umfassendes System für komplette Pferdehaltungsverwaltung. Verwalten Sie Pferde, Gesundheit, Wettbewerbe, Training und Einrichtungen an einem Ort.", 
-      cta: "Demo Ansehen", 
-      video: "Vertrieb Kontaktieren" 
-    },
-    video: {
-      title: "Sehen Sie Handicapp in Aktion",
-      subtitle: "Entdecken Sie, wie wir die Pferdehaltung mit intelligenter Technologie transformieren"
-    },
-    roles: {
-      title: "EINE PLATTFORM, MEHRERE VISIONEN",
-      r1: "Besitzer", r1_d: "Erhalten Sie Videos und Berichte in Echtzeit. Totale Transparenz.",
-      r2: "Tierarzt", r2_d: "Digitale Krankenakte. Gesundheitswarnungen und Impferinnerungen.",
-      r3: "Manager", r3_d: "Bestandskontrolle, Personalmanagement und Finanzen in einem Dashboard.",
-      r4: "Einrichtung", r4_d: "Verwalten Sie Gastpferde, koordinieren Sie Mitarbeiter und weisen Sie tägliche Aufgaben zu."
-    },
-    keyFeatures: {
-      title: "FUNKTIONEN, DIE DEN UNTERSCHIED MACHEN",
-      desc: "Alles, was Sie für ein professionelles Gestütsmanagement brauchen.",
-      mobile_title: "Extreme Geschwindigkeit",
-      mobile_desc: "Ultraschnelle Oberfläche. Sofortiges Laden, keine Wartezeiten. Arbeiten Sie so schnell, wie es Ihr Betrieb verlangt.",
-      mobile_badge: "Immer Schnell",
-      trace_title: "Maximale Sicherheit",
-      trace_desc: "AES-256-Verschlüsselung. Ihre Daten sind sicherer als bei einer Bank. Vertraulichkeit und Ruhe garantiert.",
-      roles_title: "Intelligente Berichte",
-      roles_desc: "Dashboard mit Live-Kennzahlen. Exportieren Sie mit einem Klick nach PDF/Excel und treffen Sie Entscheidungen auf Basis echter Daten.",
-      roles_list: ["Admin", "Tierarzt", "Vorarbeiter", "Besitzer"],
-      docs_title: "Automatische Benachrichtigungen",
-      docs_desc: "Personalisierte Push-Benachrichtigungen. Sie verpassen nie wieder etwas Wichtiges: Impfungen, Kontrollen und Ereignisse immer im Blick.",
-      bulk_title: "Vollständige Historie",
-      bulk_desc: "Medizinische Aufzeichnungen, Training und Wettbewerbe zentralisiert. Die gesamte Geschichte jedes Pferdes, immer verfügbar.",
-      bulk_lote: "Integrierter Kalender",
-      bulk_select: "Planen Sie Ereignisse, Impfungen und Kontrollen an einem Ort. Totale Organisation, ohne Aufwand."
-    },
-    trust: { title: "VERTRAUEN", desc: "Branchenführer vertrauen uns.", quote: "Handicapp hat uns verändert.", author: "Roberto Álvarez, Direktor Gestüt El Paraíso" },
-    workflow: { title: "KOMPLETTE VERWALTUNG", step1_t: "Registrieren & Organisieren", step1_d: "Pferdeprofile, Einrichtungen, Gesundheit, Wettbewerbe und Training an einem Ort verwalten.", step2_t: "Kontrollieren & Planen", step2_d: "Aufgabensystem, automatische Erinnerungen, Ereigniskalender und detaillierte Leistungsberichte.", step3_t: "Entscheidungen Treffen", step3_d: "Dashboard mit wichtigen Metriken, vollständiger Historie und intelligenten Benachrichtigungen." },
-    labs: { title: "KI-Assistent", desc: "Fragen Sie alles über Handicapp. Pferdemanagement, Tierarzt, Pläne oder jede Frage.", input_ph: "Wie funktioniert Handicapp?", btn: "KI Fragen", chat_ph: "Tierarztfrage...", disclaimer: "KI Beta." },
-    pricing: { 
-      title: "Pläne für Jeden Bedarf", 
-      monthly: "Monat", 
-      yearly: "Jahr", 
-      plans: [
-        { name: "Starter", price: "29", feat: ["Bis 10 Pferde", "Dashboard", "Gesundheit", "Benachrichtigungen", "Email Support"] }, 
-        { name: "Professional", price: "79", feat: ["Bis 50 Pferde", "Alle Funktionen", "Wettbewerbe", "Berichte", "KI-Assistent", "Prioritäts-Support"] }, 
-        { name: "Enterprise", price: "199", feat: ["Unbegrenzte Pferde", "Mehrere Einrichtungen", "API Integration", "Dedizierter Manager", "Persönliches Onboarding", "24/7 Support"] }
-      ] 
-    },
-    faq: { 
-      title: "FAQ", 
-      subtitle: "Alles, was Sie über Handicapp wissen müssen",
-      q1: "Was beinhaltet Handicapp?", 
-      a1: "Handicapp ist eine komplette Lösung mit 12 Modulen: Dashboard, Benachrichtigungen, Einrichtungen, Meine Pferde, Gesundheit, Wettbewerbe, Training, Ereignisse, Berichte, Aufgaben, Konfiguration und Abonnements. Alle Tools, die Sie für professionelles Management benötigen.",
-      q2: "Kann ich meine aktuellen Daten migrieren?", 
-      a2: "Auf jeden Fall. Wir importieren Ihre Daten aus Excel, PDF oder jedem vorherigen System kostenlos. Unser Team unterstützt Sie während des gesamten Migrationsprozesses.",
-      q3: "Wie sicher ist Handicapp?", 
-      a3: "Wir verwenden moderne Verschlüsselung und sichere Server. Ihre Daten sind sicherer als jede physische Datei. Wir befolgen strenge Datenschutz- und Sicherheitsprotokolle.",
-      q4: "Was kostet es wirklich?", 
-      a4: "Pläne beginnen ab 29€/Monat für bis zu 10 Pferde. Keine versteckten Kosten, keine Bindung. Sie können jederzeit Ihren Plan ändern oder kündigen.",
-      q5: "Welche Verwaltungsmodule sind enthalten?", 
-      a5: "Sie haben Zugriff auf: Zentral-Dashboard mit wichtigen Metriken, Einrichtungsverwaltung, Komplettes Pferdeprofil, Krankenakten, Wettbewerbskalender, Trainingsplanung, Ereignisverwaltung und detaillierte Berichte.",
-      q6: "Bieten Sie technischen Support an?", 
-      a6: "Ja, E-Mail- und Chat-Support in allen Plänen enthalten. Durchschnittliche Antwortzeit: 2 Stunden. Professional- und Enterprise-Pläne erhalten Prioritäts-Support.",
-      q7: "Integriert es sich mit anderen Systemen?", 
-      a7: "Ja, wir haben eine API und Konnektoren für beliebte Verwaltungs- und Buchhaltungssysteme. Enterprise-Pläne können benutzerdefinierte Integrationen anfordern.",
-      q8: "Was passiert mit meinen Daten, wenn ich kündige?", 
-      a8: "Sie haben die volle Kontrolle. Sie können alle Ihre Informationen jederzeit in Standardformaten (CSV, PDF) exportieren. Wir behalten Ihre Daten niemals ohne Ihre Zustimmung.",
-      q9: "Wie funktioniert das Aufgabensystem?", 
-      a9: "Das Aufgabenmodul ermöglicht es Ihnen, tägliche Routinen zu erstellen, Verantwortliche zuzuweisen und den Fortschritt in Echtzeit zu verfolgen. Ideal für die Koordination von Stallteams und sicherzustellen, dass keine Pflege vergessen wird.",
-      q10: "Wie lange dauert die Implementierung?", 
-      a10: "Die meisten Kunden sind in weniger als 48 Stunden einsatzbereit. Wir bieten personalisiertes Onboarding, Teamschulung und Support im ersten Monat kostenlos.",
-      stillHaveQuestions: "Haben Sie noch Fragen?",
-      contactUs: "Unser Team ist bereit zu helfen",
-      getInTouch: "Jetzt Kontaktieren"
-    },
-    about: { 
-      title: "UNSERE DNA", 
-      subtitle: "Geboren auf dem Feld, aufgewachsen im Code.", 
-      desc: "Handicapp entstand aus der Frustration über verlorene Krankenakten. Wir sind ein hybrides Team aus Reitern, Tierärzten und Softwareingenieuren mit einer Mission: Tradition digitalisieren ohne die Seele zu verlieren.",
-      val1: "Pferdeleidenschaft", 
-      val1_d: "Wir verstehen Schweiß und Ruhm des Feldes.",
-      val2: "Radikale Innovation", 
-      val2_d: "Spitzentechnologie für die Pferdewelt.",
-      val3: "Totale Transparenz", 
-      val3_d: "Klare Daten für klare Besitzer."
-    },
-    contact: { 
-      title: "Bereit, Ihre Verwaltung zu transformieren?", 
-      subtitle: "Vereinbaren Sie eine persönliche Demo und entdecken Sie, wie Handicapp Ihren Betrieb optimieren kann.", 
-      name: "Vollständiger Name", 
-      email: "Email", 
-      msg: "Erzählen Sie uns von Ihrem Projekt und Ihren Anforderungen", 
-      btn: "Demo Anfragen", 
-      success: "Nachricht Gesendet! Wir werden uns bald bei Ihnen melden." 
-    }
-  }
-};
+const I18N = translations;
 
 /**
  * --- CUSTOM CURSOR ---
  */
-const CustomCursor = ({ isDark }) => {
+const CustomCursor = () => {
   const cursorRef = useRef(null);
   const trailingRef = useRef(null);
 
@@ -572,8 +83,8 @@ const CustomCursor = ({ isDark }) => {
 
   return (
     <div className="hidden md:block pointer-events-none fixed inset-0 z-[9999]">
-      <div ref={cursorRef} className={`absolute w-3 h-3 rounded-full mix-blend-difference ${isDark ? 'bg-[#af936f]' : 'bg-[#af936f]'} top-0 left-0 -mt-1.5 -ml-1.5`} />
-      <div ref={trailingRef} className={`absolute w-8 h-8 rounded-full border opacity-50 top-0 left-0 ${isDark ? 'border-[#af936f]' : 'border-[#af936f]'}`} />
+      <div ref={cursorRef} className="absolute w-3 h-3 rounded-full mix-blend-difference bg-[#af936f] top-0 left-0 -mt-1.5 -ml-1.5" />
+      <div ref={trailingRef} className="absolute w-8 h-8 rounded-full border opacity-50 top-0 left-0 border-[#af936f]" />
     </div>
   );
 };
@@ -615,7 +126,7 @@ const Preloader = ({ onLoadComplete }) => {
 /**
  * --- THREE.JS BACKGROUND ---
  */
-const ThreeEquestrianFlow = ({ isDark }) => {
+const ThreeEquestrianFlow = () => {
   const mountRef = useRef(null);
   useEffect(() => {
     const THREE = window.THREE;
@@ -623,7 +134,7 @@ const ThreeEquestrianFlow = ({ isDark }) => {
     if (mountRef.current.firstChild) while(mountRef.current.firstChild) mountRef.current.removeChild(mountRef.current.firstChild);
 
     const scene = new THREE.Scene();
-    scene.fog = new THREE.FogExp2(isDark ? 0x0f172a : 0xffffff, 0.005);
+    scene.fog = new THREE.FogExp2(0x0f172a, 0.005);
     const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
     camera.position.set(0, 0, 50);
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
@@ -642,7 +153,7 @@ const ThreeEquestrianFlow = ({ isDark }) => {
       velocities[i] = 0.2 + Math.random() * 0.5;
     }
     geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-    const material = new THREE.PointsMaterial({ color: isDark ? 0xaf936f : 0xaf936f, size: 0.5, transparent: true, opacity: 0.6, blending: THREE.AdditiveBlending });
+    const material = new THREE.PointsMaterial({ color: 0xaf936f, size: 0.5, transparent: true, opacity: 0.6, blending: THREE.AdditiveBlending });
     const particles = new THREE.Points(geometry, material);
     scene.add(particles);
 
@@ -663,14 +174,14 @@ const ThreeEquestrianFlow = ({ isDark }) => {
     const handleResize = () => { camera.aspect = window.innerWidth / window.innerHeight; camera.updateProjectionMatrix(); renderer.setSize(window.innerWidth, window.innerHeight); };
     window.addEventListener('resize', handleResize);
     return () => { window.removeEventListener('resize', handleResize); cancelAnimationFrame(frameId); if (mountRef.current && renderer.domElement) mountRef.current.removeChild(renderer.domElement); };
-  }, [isDark]);
+  }, []);
   return <div ref={mountRef} className="fixed top-0 left-0 w-full h-full pointer-events-none -z-10" />;
 };
 
 /**
  * --- ROLE SELECTOR ---
  */
-const RoleSelector = ({ t, isDark, theme }) => {
+const RoleSelector = ({ t, theme }) => {
   const [activeRole, setActiveRole] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const roles = [
@@ -705,7 +216,7 @@ const RoleSelector = ({ t, isDark, theme }) => {
   };
 
   return (
-    <section className={`py-24 relative z-10 px-6 ${isDark ? 'bg-[#1e293b]/30' : 'bg-gradient-to-b from-zinc-50 to-white'}`}>
+    <section className="py-24 relative z-10 px-6 bg-[#1e293b]/30">
       <div className="max-w-6xl mx-auto">
         <h2 className={`text-4xl md:text-6xl font-black mb-20 text-center ${theme.text}`}>{t.roles.title}</h2>
         
@@ -722,11 +233,7 @@ const RoleSelector = ({ t, isDark, theme }) => {
                   key={i}
                   className="w-full flex-shrink-0 px-4"
                 >
-                  <div className={`p-12 md:p-16 rounded-3xl border-2 min-h-[400px] flex flex-col justify-center items-center text-center relative overflow-hidden ${
-                    isDark 
-                      ? 'bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#0f172a] border-[#af936f]/30' 
-                      : 'bg-gradient-to-br from-white via-zinc-50 to-white border-[#af936f]/30'
-                  } shadow-2xl hover:shadow-[0_0_60px_-15px_rgba(175,147,111,0.4)] transition-all duration-500`}>
+                  <div className="p-12 md:p-16 rounded-3xl border-2 min-h-[400px] flex flex-col justify-center items-center text-center relative overflow-hidden bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#0f172a] border-[#af936f]/30 shadow-2xl hover:shadow-[0_0_60px_-15px_rgba(175,147,111,0.4)] transition-all duration-500">
                     {/* Efecto de brillo sutil */}
                     <div className="absolute inset-0 bg-gradient-to-br from-[#af936f]/5 via-transparent to-transparent pointer-events-none"></div>
                     
@@ -768,7 +275,7 @@ const RoleSelector = ({ t, isDark, theme }) => {
               className={`h-2.5 rounded-full transition-all duration-300 hover:scale-110 ${
                 i === activeRole 
                   ? `w-12 ${theme.accentBg} shadow-lg` 
-                  : `w-2.5 ${isDark ? 'bg-zinc-600 hover:bg-zinc-500' : 'bg-zinc-300 hover:bg-zinc-400'}`
+                  : 'w-2.5 bg-zinc-600 hover:bg-zinc-500'
               }`}
               aria-label={`Ir al rol ${i + 1}`}
             />
@@ -826,7 +333,7 @@ const VideoModal = ({ isOpen, onClose }) => {
   );
 };
 
-const VerticalWorkflow = ({ t, isDark, theme }) => {
+const VerticalWorkflow = ({ t, theme }) => {
   // Precarga de imágenes pesadas al cargar la app
   useEffect(() => {
     stepImages.forEach((src) => {
@@ -863,17 +370,13 @@ const VerticalWorkflow = ({ t, isDark, theme }) => {
   ];
   
   return (
-    <section id="workflow" className={`scroll-mt-24 py-24 relative ${isDark ? 'bg-zinc-900/30' : 'bg-gradient-to-b from-white to-zinc-100'}`}>
+    <section id="workflow" className="scroll-mt-24 py-24 relative bg-zinc-900/30">
       <div className="max-w-7xl mx-auto px-6">
         <h2 className={`text-4xl md:text-6xl font-black mb-24 text-center ${theme.text}`}>{t.workflow.title}</h2>
         <div className="flex flex-col md:flex-row gap-20">
           <div className="md:w-1/2 hidden md:block">
             <div className="sticky top-32 h-[500px] w-full">
-              <div className={`relative w-full h-full rounded-[2.5rem] border-2 overflow-hidden shadow-2xl ${
-                isDark 
-                  ? 'border-zinc-800/50 bg-zinc-900/20' 
-                  : 'border-zinc-300 bg-white'
-              }`}>
+              <div className="relative w-full h-full rounded-[2.5rem] border-2 overflow-hidden shadow-2xl border-zinc-800/50 bg-zinc-900/20">
                 {/* Imagen de fondo con transición */}
                 {stepImages.map((image, index) => (
                   <div
@@ -892,27 +395,19 @@ const VerticalWorkflow = ({ t, isDark, theme }) => {
                       style={{transition: 'opacity 0.7s', opacity: activeStep === index ? 1 : 0}}
                     />
                     {/* Overlay oscuro para mejor legibilidad */}
-                    <div className={`absolute inset-0 ${
-                      isDark 
-                        ? 'bg-gradient-to-t from-[#0f172a] via-[#0f172a]/60 to-transparent' 
-                        : 'bg-gradient-to-t from-black/70 via-black/40 to-transparent'
-                    }`}></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a] via-[#0f172a]/60 to-transparent"></div>
                   </div>
                 ))}
                 {/* Contenido sobre la imagen */}
                 <div className="absolute inset-0 flex flex-col items-center justify-center p-12 text-center z-10">
-                  <div className={`mb-8 p-8 rounded-full border-2 bg-[#0f172a]/80 backdrop-blur-sm transition-all duration-500 transform ${
-                    isDark 
-                      ? 'border-zinc-700/50' 
-                      : 'border-zinc-600/30'
-                  } ${
+                  <div className={`mb-8 p-8 rounded-full border-2 bg-[#0f172a]/80 backdrop-blur-sm transition-all duration-500 transform border-zinc-700/50 ${
                     activeStep === 0 ? 'scale-100 rotate-0' : activeStep === 1 ? 'scale-110 rotate-180' : 'scale-100 rotate-0'
                   }`}>
                     {activeStep === 0 && <Radio size={64} className="animate-pulse text-[#af936f]" />}
                     {activeStep === 1 && <Cpu size={64} className="text-[#af936f]" />}
                     {activeStep === 2 && <User size={64} className="text-white" />}
                   </div>
-                  <h3 className={`text-2xl font-black mb-4 uppercase tracking-widest drop-shadow-lg ${isDark ? 'text-white' : 'text-white'}`}>
+                  <h3 className="text-2xl font-black mb-4 uppercase tracking-widest drop-shadow-lg text-white">
                     {activeStep === 0 ? "ORGANIZA" : activeStep === 1 ? "AUTOMATIZA" : "OPTIMIZA"}
                   </h3>
                 </div>
@@ -942,52 +437,16 @@ const VerticalWorkflow = ({ t, isDark, theme }) => {
   );
 };
 
-const AILabs = ({ t, isDark, theme }) => {
-  const [prompt, setPrompt] = useState('');
-  const [response, setResponse] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
-  
-  const handleGen = async () => { 
-    if(!prompt) return; 
-    setLoading(true); 
-    setError('');
-    setResponse('');
-    
-    try {
-      const fullPrompt = `${HANDICAPP_KNOWLEDGE}
-
-CONSULTA DEL USUARIO: ${prompt}
-
-INSTRUCCIONES IMPORTANTES - PERSONALIDAD:
-Eres un asistente amigable y cercano de Handicapp. Responde como si fueras una persona real conversando.
-
-ESTILO DE RESPUESTA:
-- Máximo 3-4 líneas de texto
-- Usa lenguaje natural y conversacional (como WhatsApp o chat)
-- Evita listas largas y textos formales
-- Si necesitas dar opciones, máximo 2-3
-- Usa emojis ocasionalmente para ser más humano (🐴 💡 ✅)
-- Tutea al usuario, sé cercano
-
-CONTENIDO:
-- Responde SOLO con info de la BASE DE CONOCIMIENTO
-- Si es sobre nombres de caballos: 3 nombres creativos (no 5)
-- Si es sobre Handicapp: respuesta directa y breve
-- Si es consulta veterinaria: ayuda rápida + "consultá con tu vet"
-- Si no sabés: "No tengo esa info, pero el equipo te puede ayudar 😊"
-
-EJEMPLO BUENO: "Handicapp cuesta desde $29/mes para 10 caballos. El plan más popular es Grand Prix a $79 con IA incluida 🚀"
-EJEMPLO MALO: "Handicapp ofrece tres planes de precios diferentes: 1. Plan Stable: $29 por mes que incluye..."`;
-
-      const res = await callGeminiAPI(fullPrompt); 
-      setResponse(res);
-    } catch (err) {
-      setError(err.message || 'Error al conectar con la API');
-    } finally {
-      setLoading(false);
-    }
-  };
+const AILabs = ({ t, theme }) => {
+  const {
+    prompt,
+    response,
+    loading,
+    error,
+    updatePrompt,
+    generateResponse,
+    hasError
+  } = useGeminiChat(HANDICAPP_KNOWLEDGE);
   
   return (
     <section id="labs" className="scroll-mt-24 py-16 sm:py-20 md:py-24 lg:py-32 px-4 sm:px-6 relative">
@@ -996,24 +455,24 @@ EJEMPLO MALO: "Handicapp ofrece tres planes de precios diferentes: 1. Plan Stabl
         <div className="relative z-10 grid lg:grid-cols-2 gap-10 sm:gap-14 md:gap-16 lg:gap-20">
           <div className="flex flex-col">
             <div className="space-y-4 mb-10 sm:mb-12 md:mb-16">
-              <h2 className={`text-3xl sm:text-4xl md:text-5xl font-black leading-tight ${isDark ? 'text-white' : 'text-zinc-900'}`}>{t.labs.title}</h2>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-black leading-tight text-white">{t.labs.title}</h2>
               <p className={`text-base sm:text-lg md:text-xl leading-relaxed ${theme.textMuted}`}>{t.labs.desc}</p>
             </div>
             <div className="space-y-4 sm:space-y-5">
-              <div className="relative"><input value={prompt} onChange={(e) => setPrompt(e.target.value)} placeholder={t.labs.input_ph} className={`w-full p-5 sm:p-6 rounded-xl border outline-none transition-all font-medium placeholder:opacity-50 text-sm sm:text-base ${isDark ? 'bg-black/50 border-zinc-800 text-white focus:border-[#af936f]' : 'bg-white border-zinc-200 text-zinc-900 focus:border-[#af936f]'}`} /><div className="absolute right-4 sm:right-5 top-1/2 -translate-y-1/2"><Dna size={20} className="sm:w-6 sm:h-6 ${theme.textMuted}" /></div></div>
-              <button onClick={handleGen} disabled={loading} className={`w-full py-5 sm:py-6 rounded-xl font-bold uppercase tracking-widest transition-all flex items-center justify-center gap-3 text-sm sm:text-base ${isDark ? 'bg-white text-black hover:bg-[#af936f] hover:text-white' : 'bg-black text-white hover:bg-[#af936f]'} disabled:opacity-50 disabled:cursor-not-allowed`}>{loading ? <Loader2 className="animate-spin w-5 h-5 sm:w-6 sm:h-6" /> : t.labs.btn} <ArrowRight size={18} className="sm:w-5 sm:h-5" /></button>
+              <div className="relative"><input value={prompt} onChange={(e) => updatePrompt(e.target.value)} placeholder={t.labs.input_ph} className="w-full p-5 sm:p-6 rounded-xl border outline-none transition-all font-medium placeholder:opacity-50 text-sm sm:text-base bg-black/50 border-zinc-800 text-white focus:border-[#af936f]" /><div className="absolute right-4 sm:right-5 top-1/2 -translate-y-1/2"><Dna size={20} className="sm:w-6 sm:h-6 ${theme.textMuted}" /></div></div>
+              <button onClick={generateResponse} disabled={loading} className="w-full py-5 sm:py-6 rounded-xl font-bold uppercase tracking-widest transition-all flex items-center justify-center gap-3 text-sm sm:text-base bg-white text-black hover:bg-[#af936f] hover:text-white disabled:opacity-50 disabled:cursor-not-allowed">{loading ? <Loader2 className="animate-spin w-5 h-5 sm:w-6 sm:h-6" /> : t.labs.btn} <ArrowRight size={18} className="sm:w-5 sm:h-5" /></button>
             </div>
           </div>
-          <div className={`rounded-2xl sm:rounded-3xl p-8 sm:p-10 border ${isDark ? 'bg-black/40 border-zinc-800' : 'bg-gradient-to-br from-zinc-50 to-white border-zinc-300 shadow-inner'} min-h-[350px] sm:min-h-[450px] md:min-h-[500px] flex flex-col relative overflow-hidden`}>
-            <div className={`flex justify-between items-center mb-6 sm:mb-8 ${isDark ? 'opacity-50' : 'opacity-60'}`}>
+          <div className="rounded-2xl sm:rounded-3xl p-8 sm:p-10 border bg-black/40 border-zinc-800 min-h-[350px] sm:min-h-[450px] md:min-h-[500px] flex flex-col relative overflow-hidden">
+            <div className="flex justify-between items-center mb-6 sm:mb-8 opacity-50">
               <div className="flex gap-2">
                 <div className="w-3 h-3 sm:w-3.5 sm:h-3.5 rounded-full bg-red-500"></div>
                 <div className="w-3 h-3 sm:w-3.5 sm:h-3.5 rounded-full bg-yellow-500"></div>
               </div>
               <div className={`font-mono text-xs sm:text-sm ${theme.textMuted}`}>AI_OUTPUT_V1</div>
             </div>
-            <div className={`flex-1 font-mono text-sm sm:text-base md:text-lg leading-relaxed sm:leading-loose whitespace-pre-wrap ${error ? 'text-red-500' : isDark ? theme.accent : 'text-[#af936f] font-semibold'}`}>
-              {error ? `❌ ${error}` : response || <span className="opacity-30">// Ready...</span>}
+            <div className={`flex-1 font-mono text-sm sm:text-base md:text-lg leading-relaxed sm:leading-loose whitespace-pre-wrap ${hasError ? 'text-red-500' : theme.accent}`}>
+              {hasError ? `❌ ${error}` : response || <span className="opacity-30">// Ready...</span>}
             </div>
           </div>
         </div>
@@ -1064,9 +523,9 @@ const SocialProof = ({ t, isDark, theme }) => {
       </div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 sm:mb-20 md:mb-24 text-center relative z-10">
-        <p className={`text-xs sm:text-sm font-black tracking-[0.3em] uppercase mb-4 sm:mb-6 ${theme.accent}`}>YA CONFÍAN EN HANDICAPP</p>
+        <p className={`text-xs sm:text-sm font-black tracking-[0.3em] uppercase mb-4 sm:mb-6 ${theme.accent}`}>{t.trust.title}</p>
         <h3 className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black ${theme.text} px-4 max-w-5xl mx-auto leading-tight`}>
-          LOS MEJORES ESTABLECIMIENTOS DE ARGENTINA<br />DIGITALIZARON SU GESTIÓN
+          {t.trust.desc.split('.')[0].toUpperCase()}
         </h3>
       </div>
       
@@ -1270,12 +729,11 @@ function AppContent() {
   const langs = ['es', 'en', 'de'];
   const toggleLang = () => setLangIndex((prev) => (prev + 1) % langs.length);
   const t = I18N[langs[langIndex]];
-  const isDark = true; // Modo oscuro fijo
   const [videoOpen, setVideoOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [loaded, setLoaded] = useState(false);
-  const theme = THEME.dark; // Siempre usar tema oscuro
+  const theme = THEME; // Tema oscuro único
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -1294,23 +752,22 @@ function AppContent() {
   }, []);
 
   return (
-    <div className={`min-h-screen transition-colors duration-500 ${theme.bg} ${theme.text} font-['Outfit'] selection:${isDark ? 'bg-[#af936f] text-white' : 'bg-[#af936f] text-white'}`}>
+    <div className={`min-h-screen transition-colors duration-500 ${theme.bg} ${theme.text} font-['Outfit'] selection:bg-[#af936f] selection:text-white`}>
       <style>{`.animate-marquee { animation: marquee 30s linear infinite; } @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }`}</style>
       
       <Preloader onLoadComplete={() => setLoaded(true)} />
-      <CustomCursor isDark={isDark} />
+      <CustomCursor />
       <MobileMenu isOpen={menuOpen} onClose={() => setMenuOpen(false)} t={t} theme={theme} />
       
       {loaded && (
         <>
-          <ThreeEquestrianFlow isDark={isDark} />
-          <div className={`fixed inset-0 -z-10 pointer-events-none ${isDark ? 'bg-gradient-to-b from-transparent via-[#0f172a]/50 to-[#0f172a]' : 'bg-gradient-to-br from-zinc-50 via-white to-zinc-100'}`}></div>
+          <ThreeEquestrianFlow />
+          <div className="fixed inset-0 -z-10 pointer-events-none bg-gradient-to-b from-transparent via-[#0f172a]/50 to-[#0f172a]"></div>
           <VideoModal isOpen={videoOpen} onClose={() => setVideoOpen(false)} />
 
           <Navbar 
             t={t} 
-            theme={theme} 
-            isDark={isDark} 
+            theme={theme}
             scrolled={scrolled} 
             ASSETS={ASSETS}
             onToggleLang={toggleLang}
@@ -1322,7 +779,6 @@ function AppContent() {
               <HomePage 
                 t={t}
                 theme={theme}
-                isDark={isDark}
                 ASSETS={ASSETS}
                 onVideoOpen={() => setVideoOpen(true)}
                 SocialProof={SocialProof}
@@ -1339,11 +795,11 @@ function AppContent() {
             } />
             
             <Route path="/faq" element={
-              <FAQPage t={t} isDark={isDark} theme={theme} />
+              <FAQPage t={t} theme={theme} />
             } />
             
             <Route path="/legal" element={
-              <LegalPage t={t} isDark={isDark} theme={theme} />
+              <LegalPage t={t} theme={theme} />
             } />
           </Routes>
 
