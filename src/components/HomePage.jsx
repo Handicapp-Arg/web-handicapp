@@ -24,53 +24,35 @@ import {
 
 // ProblemSolution - Antes vs Después
 const ProblemSolution = ({ t, isDark, theme }) => {
-  const problems = [
-    "WhatsApp saturado con mensajes del equipo",
-    "Planillas Excel desactualizadas y duplicadas",
-    "Olvidos de vacunas y controles veterinarios",
-    "Sin reportes para propietarios",
-    "Información dispersa en papeles"
-  ];
-
-  const solutions = [
-    "Sistema de tareas centralizado en tiempo real",
-    "Base de datos única, siempre actualizada",
-    "Alertas automáticas preventivas",
-    "Reportes profesionales con un click",
-    "Todo digital y accesible 24/7"
-  ];
-
+  const problems = t.problemSolution.beforeList;
+  const solutions = t.problemSolution.afterList;
   return (
     <section className={`py-32 px-6 relative border-y ${theme.border} overflow-hidden ${isDark ? 'bg-zinc-900/30' : 'bg-zinc-50'}`}>
       {/* Título */}
       <div className="max-w-7xl mx-auto text-center mb-20 relative z-10">
         <h2 className={`text-4xl md:text-6xl font-black mb-4 uppercase tracking-tight ${theme.text}`}>
-          DEL CAOS AL CONTROL TOTAL
+          {t.problemSolution.title}
         </h2>
         <p className={`text-xl ${theme.textMuted}`}>
-          Transforma tu gestión en minutos
+          {t.problemSolution.subtitle}
         </p>
       </div>
-      
       {/* Grid de comparación */}
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="grid md:grid-cols-11 gap-8 items-center">
-          
           {/* BEFORE CARD - Estilo Legacy/Retro */}
           <div className="md:col-span-5 group">
             <div className="p-8 rounded-3xl border border-red-900/30 bg-[#1a0505] relative overflow-hidden transition-all duration-500 hover:border-red-600/50 hover:shadow-[0_0_30px_-5px_rgba(220,38,38,0.2)] min-h-[420px] flex flex-col">
               {/* Scanline effect */}
               <div className="absolute inset-0 bg-gradient-to-b from-transparent via-red-950/5 to-transparent pointer-events-none"></div>
               <div className="absolute top-0 left-0 w-full h-1 bg-red-600 animate-pulse"></div>
-              
               <div className="flex items-center justify-between mb-8 opacity-70">
                 <div className="flex items-center gap-3">
                   <Terminal size={20} className="text-red-500" />
-                  <span className="font-mono text-xs text-red-400 tracking-widest uppercase">Antes: Desorganización</span>
+                  <span className="font-mono text-xs text-red-400 tracking-widest uppercase">{t.problemSolution.beforeLabel}</span>
                 </div>
                 <div className="w-2 h-2 rounded-full bg-red-500 animate-ping"></div>
               </div>
-
               <ul className="space-y-5 font-medium text-sm flex-1">
                 {problems.map((problem, i) => (
                   <li key={i} className="flex items-start gap-4 text-red-300/70 transition-all group-hover:text-red-300/90">
@@ -81,7 +63,6 @@ const ProblemSolution = ({ t, isDark, theme }) => {
               </ul>
             </div>
           </div>
-
           {/* CONNECTOR - Flecha animada */}
           <div className="md:col-span-1 flex justify-center py-4 md:py-0">
             <div className="relative">
@@ -89,21 +70,18 @@ const ProblemSolution = ({ t, isDark, theme }) => {
               <div className="absolute inset-0 bg-[#af936f] blur-xl opacity-40 animate-pulse"></div>
             </div>
           </div>
-
           {/* AFTER CARD - Estilo Next-Gen/Modern */}
           <div className="md:col-span-5 group">
             <div className={`p-8 rounded-3xl border ${theme.border} bg-gradient-to-br from-[#1e293b] to-[#0f172a] relative overflow-hidden transition-all duration-500 transform hover:scale-[1.03] hover:shadow-[0_0_50px_-10px_rgba(175,147,111,0.3)] min-h-[420px] flex flex-col`}>
               <div className="absolute top-0 left-0 w-full h-1 bg-[#af936f]"></div>
               <div className="absolute -right-20 -top-20 w-64 h-64 bg-[#af936f] opacity-10 blur-[80px] rounded-full group-hover:opacity-20 transition-opacity"></div>
-              
               <div className="flex items-center justify-between mb-8">
                 <div className="flex items-center gap-3">
                   <Cpu size={20} className="text-[#af936f]" />
-                  <span className="font-mono text-xs font-bold tracking-widest text-[#af936f] uppercase">Ahora: HandicApp</span>
+                  <span className="font-mono text-xs font-bold tracking-widest text-[#af936f] uppercase">{t.problemSolution.afterLabel}</span>
                 </div>
-                <div className="px-2 py-1 rounded text-[10px] font-bold bg-green-500/20 text-green-400">100% ONLINE</div>
+                <div className="px-2 py-1 rounded text-[10px] font-bold bg-green-500/20 text-green-400">{t.problemSolution.afterBadge}</div>
               </div>
-
               <ul className="space-y-5 flex-1">
                 {solutions.map((solution, i) => (
                   <li key={i} className="flex items-start gap-4 font-bold text-base text-white">
@@ -116,7 +94,6 @@ const ProblemSolution = ({ t, isDark, theme }) => {
               </ul>
             </div>
           </div>
-
         </div>
       </div>
     </section>
@@ -289,38 +266,38 @@ const KeyFeaturesGrid = ({ t, isDark, theme }) => {
   const features = [
     {
       icon: Zap,
-      title: "Velocidad Extrema",
-      desc: "Interfaz ultrarrápida. Carga instantánea, sin esperas.",
+      title: t.keyFeatures.mobile_title,
+      desc: t.keyFeatures.mobile_desc,
       color: "from-yellow-500 to-orange-500"
     },
     {
       icon: Shield,
-      title: "Seguridad Máxima",
-      desc: "Encriptación AES-256. Tus datos más seguros que en un banco.",
+      title: t.keyFeatures.trace_title,
+      desc: t.keyFeatures.trace_desc,
       color: "from-blue-500 to-cyan-500"
     },
     {
       icon: BarChart3,
-      title: "Reportes Inteligentes",
-      desc: "Dashboard con métricas en vivo. Exporta en PDF/Excel con un click.",
+      title: t.keyFeatures.roles_title,
+      desc: t.keyFeatures.roles_desc,
       color: "from-purple-500 to-pink-500"
     },
     {
       icon: Bell,
-      title: "Alertas Automáticas",
-      desc: "Notificaciones push personalizadas. Nunca olvides nada importante.",
+      title: t.keyFeatures.docs_title,
+      desc: t.keyFeatures.docs_desc,
       color: "from-green-500 to-emerald-500"
     },
     {
       icon: FileText,
-      title: "Historial Completo",
-      desc: "Registros médicos, entrenamientos y competencias centralizados.",
+      title: t.keyFeatures.bulk_title,
+      desc: t.keyFeatures.bulk_desc,
       color: "from-red-500 to-rose-500"
     },
     {
       icon: Calendar,
-      title: "Calendario Integrado",
-      desc: "Planifica eventos, vacunas y controles en un solo lugar.",
+      title: t.keyFeatures.bulk_lote,
+      desc: t.keyFeatures.bulk_select,
       color: "from-indigo-500 to-violet-500"
     }
   ];
@@ -330,10 +307,10 @@ const KeyFeaturesGrid = ({ t, isDark, theme }) => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className={`text-4xl md:text-6xl font-black mb-4 ${theme.text}`}>
-            CARACTERÍSTICAS QUE MARCAN LA DIFERENCIA
+            {t.keyFeatures.title}
           </h2>
           <p className={`text-lg md:text-xl ${theme.textMuted} max-w-3xl mx-auto`}>
-            Todo lo que necesitas para gestionar profesionalmente tu operación ecuestre
+            {t.keyFeatures.desc}
           </p>
         </div>
 

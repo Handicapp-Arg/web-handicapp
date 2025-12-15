@@ -114,6 +114,27 @@ const THEME = {
  */
 const I18N = {
   es: {
+    problemSolution: {
+      title: "DEL CAOS AL CONTROL TOTAL",
+      subtitle: "Transforma tu gestión en minutos con Handicapp. Deja atrás el caos y la desorganización: digitaliza, automatiza y toma el control absoluto de tu haras desde cualquier lugar.",
+      beforeLabel: "Antes: Desorganización",
+      beforeList: [
+        "WhatsApp colapsado y mensajes perdidos",
+        "Planillas Excel desactualizadas y duplicadas",
+        "Vacunas y controles veterinarios olvidados",
+        "Sin reportes claros para propietarios",
+        "Información dispersa en papeles y chats"
+      ],
+      afterLabel: "Ahora: Handicapp",
+      afterBadge: "100% ONLINE",
+      afterList: [
+        "Tareas y equipo centralizados en tiempo real",
+        "Base de datos única, siempre actualizada y segura",
+        "Alertas automáticas que previenen errores",
+        "Reportes profesionales y automáticos para propietarios",
+        "Gestión digital, simple y accesible 24/7 desde cualquier dispositivo"
+      ]
+    },
     lang_code: "ES",
     nav: { funcionalidades: "FUNCIONALIDADES", workflow: "CÓMO FUNCIONA", labs: "ASISTENTE IA", about: "NOSOTROS", contact: "CONTACTO" },
     hero: { 
@@ -131,31 +152,31 @@ const I18N = {
     roles: {
       title: "TODO LO QUE NECESITAS, EN UN SOLO LUGAR",
       r1: "Propietario", 
-      r1_d: "Protege tu inversión ecuestre con visibilidad total en tiempo real. Reportes médicos instantáneos, historial completo, seguimiento de competencias y alertas automáticas. Controla tu patrimonio desde cualquier lugar, 24/7.",
+      r1_d: "Tu inversión, siempre bajo control. Accede a reportes médicos instantáneos, historial completo y alertas automáticas. Visualiza el estado de tus caballos en tiempo real y toma decisiones inteligentes desde cualquier lugar, 24/7. Tranquilidad y poder en la palma de tu mano.",
       r2: "Veterinario", 
-      r2_d: "Trabaja más rápido y profesionalmente. Historial clínico digital completo, calendario inteligente de vacunas, recordatorios automáticos y registro centralizado. Más tiempo para tus pacientes, menos tiempo en papelería.",
+      r2_d: "Olvídate del papeleo y enfócate en lo importante: tus pacientes. Lleva el historial clínico digital completo, recibe recordatorios automáticos y organiza tu agenda con un calendario inteligente. Más eficiencia, menos errores y más tiempo para cuidar caballos.",
       r3: "Manager / Administrador", 
       r3_d: "Optimiza la operación y reduce costos hasta un 40%. Dashboard ejecutivo con KPIs en vivo, sistema de tareas para coordinar equipos, reportes financieros automáticos y control total de recursos. Gestión profesional sin complicaciones.",
       r4: "Haras / Establecimiento", 
       r4_d: "Aumenta tu reputación y rentabilidad. Administra múltiples caballos huéspedes, coordina equipos profesionales, genera reportes automáticos para propietarios y mantén contratos organizados. La herramienta que usan los haras líderes."
     },
     keyFeatures: {
-      title: "EL SISTEMA OPERATIVO DE TU ESTABLECIMIENTO",
-      desc: "No es solo una app, es una infraestructura completa diseñada para escalar con tu haras.",
-      mobile_title: "Mobile First & Offline",
-      mobile_desc: "Diseñada para el campo real: funciona sin señal y sincroniza automáticamente. La app nativa que tu equipo sí va a querer usar.",
-      mobile_badge: "Modo Avión Soportado",
-      trace_title: "Trazabilidad Inmutable",
-      trace_desc: "Cada evento (vacuna, herraje, traslado) queda registrado para siempre con fecha, hora y responsable. Auditoría perfecta y confianza para tus clientes.",
-      roles_title: "Roles & Permisos",
-      roles_desc: "Seguridad de nivel bancario: cada usuario accede solo a lo que le corresponde.",
+      title: "CARACTERÍSTICAS QUE MARCAN LA DIFERENCIA",
+      desc: "Todo lo que necesitas para gestionar profesionalmente tu operación ecuestre.",
+      mobile_title: "Velocidad Extrema",
+      mobile_desc: "Interfaz ultrarrápida. Carga instantánea, sin esperas. Trabaja a la velocidad que exige el campo real.",
+      mobile_badge: "Siempre Rápido",
+      trace_title: "Seguridad Máxima",
+      trace_desc: "Encriptación AES-256. Tus datos más seguros que en un banco. Confidencialidad y tranquilidad garantizadas.",
+      roles_title: "Reportes Inteligentes",
+      roles_desc: "Dashboard con métricas en vivo. Exporta en PDF/Excel con un click y toma decisiones basadas en datos reales.",
       roles_list: ["Admin", "Veterinario", "Capataz", "Propietario"],
-      docs_title: "Docs Digitales",
-      docs_desc: "Pasaportes, radiografías y análisis siempre a mano, adjuntos al perfil de cada animal.",
-      bulk_title: "Carga Masiva",
-      bulk_desc: "¿Día de vacunación general? Selecciona todos los caballos y aplica el evento a la vez. Ahorra horas de carga manual y evita errores.",
-      bulk_lote: "Lote Destete",
-      bulk_select: "Select All"
+      docs_title: "Alertas Automáticas",
+      docs_desc: "Notificaciones push personalizadas. Nunca olvides nada importante: vacunas, controles y eventos siempre bajo control.",
+      bulk_title: "Historial Completo",
+      bulk_desc: "Registros médicos, entrenamientos y competencias centralizados. Toda la historia de cada caballo, siempre disponible.",
+      bulk_lote: "Calendario Integrado",
+      bulk_select: "Planifica eventos, vacunas y controles en un solo lugar. Organización total, sin esfuerzo."
     },
     trust: { 
       title: "YA CONFÍAN EN HANDICAPP", 
@@ -251,6 +272,27 @@ const I18N = {
     }
   },
   en: {
+    problemSolution: {
+      title: "FROM CHAOS TO TOTAL CONTROL",
+      subtitle: "Transform your management in minutes with Handicapp. Leave chaos and disorganization behind: digitize, automate, and take absolute control of your stable from anywhere.",
+      beforeLabel: "Before: Disorganization",
+      beforeList: [
+        "WhatsApp overloaded and lost messages",
+        "Outdated and duplicated Excel sheets",
+        "Forgotten vaccines and veterinary checks",
+        "No clear reports for owners",
+        "Information scattered in papers and chats"
+      ],
+      afterLabel: "Now: Handicapp",
+      afterBadge: "100% ONLINE",
+      afterList: [
+        "Centralized tasks and team in real time",
+        "Single, always updated and secure database",
+        "Automatic alerts that prevent errors",
+        "Professional and automatic reports for owners",
+        "Digital management, simple and accessible 24/7 from any device"
+      ]
+    },
     lang_code: "EN",
     nav: { funcionalidades: "FEATURES", workflow: "HOW IT WORKS", labs: "AI ASSISTANT", about: "ABOUT US", contact: "CONTACT" },
     hero: { 
@@ -277,22 +319,22 @@ const I18N = {
       r4_d: "Manage multiple horses, coordinate your team with the task system and maintain control of all daily operations."
     },
     keyFeatures: {
-      title: "THE OPERATING SYSTEM FOR YOUR STABLE",
-      desc: "Not just an app, but a complete infrastructure designed to scale with your operation.",
-      mobile_title: "Mobile First & Offline",
-      mobile_desc: "Designed for real-world use: works without signal and syncs automatically. The native app your team will actually want to use.",
-      mobile_badge: "Airplane Mode Supported",
-      trace_title: "Immutable Traceability",
-      trace_desc: "Every event (vaccine, shoeing, transfer) is recorded forever with date, time, and responsible. Perfect audit trail and trust for your clients.",
-      roles_title: "Roles & Permissions",
-      roles_desc: "Bank-level security: each user only accesses what they need.",
-  roles_list: ["Admin", "Veterinarian", "Foreman", "Owner", "Reduction"],
-      docs_title: "Digital Docs",
-      docs_desc: "Passports, x-rays, and analyses always at hand, attached to each animal's profile.",
-      bulk_title: "Bulk Actions",
-      bulk_desc: "Vaccination day? Select all horses and apply the event at once. Save hours of manual entry and avoid mistakes.",
-      bulk_lote: "Weaning Lot",
-      bulk_select: "Select All"
+      title: "FEATURES THAT MAKE THE DIFFERENCE",
+      desc: "Everything you need to manage your equestrian operation like a pro.",
+      mobile_title: "Extreme Speed",
+      mobile_desc: "Ultra-fast interface. Instant loading, no waiting. Work at the speed your stable demands.",
+      mobile_badge: "Always Fast",
+      trace_title: "Maximum Security",
+      trace_desc: "AES-256 encryption. Your data safer than at a bank. Confidentiality and peace of mind guaranteed.",
+      roles_title: "Smart Reports",
+      roles_desc: "Dashboard with live metrics. Export to PDF/Excel with one click and make decisions based on real data.",
+      roles_list: ["Admin", "Veterinarian", "Foreman", "Owner"],
+      docs_title: "Automatic Alerts",
+      docs_desc: "Personalized push notifications. Never miss anything important: vaccines, checkups, and events always under control.",
+      bulk_title: "Complete History",
+      bulk_desc: "Medical records, training, and competitions all centralized. Every horse’s full story, always available.",
+      bulk_lote: "Integrated Calendar",
+      bulk_select: "Plan events, vaccines, and checkups in one place. Total organization, zero hassle."
     },
     trust: { 
       title: "TRUST", 
@@ -388,6 +430,27 @@ const I18N = {
     }
   },
   de: {
+    problemSolution: {
+      title: "VOM CHAOS ZUR TOTALEN KONTROLLE",
+      subtitle: "Verwandeln Sie Ihr Management in Minuten mit Handicapp. Lassen Sie Chaos und Unordnung hinter sich: digitalisieren, automatisieren und übernehmen Sie die volle Kontrolle über Ihr Gestüt – von überall aus.",
+      beforeLabel: "Vorher: Unordnung",
+      beforeList: [
+        "WhatsApp überlastet und Nachrichten gehen verloren",
+        "Veraltete und doppelte Excel-Tabellen",
+        "Vergessene Impfungen und tierärztliche Kontrollen",
+        "Keine klaren Berichte für Besitzer",
+        "Informationen verstreut auf Papier und in Chats"
+      ],
+      afterLabel: "Jetzt: Handicapp",
+      afterBadge: "100% ONLINE",
+      afterList: [
+        "Zentrale Aufgaben und Team in Echtzeit",
+        "Einzige, immer aktuelle und sichere Datenbank",
+        "Automatische Benachrichtigungen verhindern Fehler",
+        "Professionelle und automatische Berichte für Besitzer",
+        "Digitale Verwaltung, einfach und 24/7 von jedem Gerät zugänglich"
+      ]
+    },
     lang_code: "DE",
     nav: { funcionalidades: "FUNKTIONEN", workflow: "WIE ES FUNKTIONIERT", labs: "KI-ASSISTENT", about: "ÜBER UNS", contact: "KONTAKT" },
     hero: { 
@@ -410,22 +473,22 @@ const I18N = {
       r4: "Einrichtung", r4_d: "Verwalten Sie Gastpferde, koordinieren Sie Mitarbeiter und weisen Sie tägliche Aufgaben zu."
     },
     keyFeatures: {
-      title: "DAS BETRIEBSSYSTEM FÜR IHREN BETRIEB",
-      desc: "Nicht nur eine App, sondern eine komplette Infrastruktur, die mit Ihrem Gestüt mitwächst.",
-      mobile_title: "Mobile First & Offline",
-      mobile_desc: "Für den echten Einsatz entwickelt: Funktioniert ohne Signal und synchronisiert automatisch. Die native App, die Ihr Team wirklich nutzen will.",
-      mobile_badge: "Flugmodus Unterstützt",
-      trace_title: "Unveränderliche Rückverfolgbarkeit",
-      trace_desc: "Jedes Ereignis (Impfung, Beschlag, Transport) wird für immer mit Datum, Uhrzeit und Verantwortlichem gespeichert. Perfekte Audit-Trails und Vertrauen für Ihre Kunden.",
-      roles_title: "Rollen & Berechtigungen",
-      roles_desc: "Bankenähnliche Sicherheit: Jeder Nutzer sieht nur, was er darf.",
+      title: "FUNKTIONEN, DIE DEN UNTERSCHIED MACHEN",
+      desc: "Alles, was Sie für ein professionelles Gestütsmanagement brauchen.",
+      mobile_title: "Extreme Geschwindigkeit",
+      mobile_desc: "Ultraschnelle Oberfläche. Sofortiges Laden, keine Wartezeiten. Arbeiten Sie so schnell, wie es Ihr Betrieb verlangt.",
+      mobile_badge: "Immer Schnell",
+      trace_title: "Maximale Sicherheit",
+      trace_desc: "AES-256-Verschlüsselung. Ihre Daten sind sicherer als bei einer Bank. Vertraulichkeit und Ruhe garantiert.",
+      roles_title: "Intelligente Berichte",
+      roles_desc: "Dashboard mit Live-Kennzahlen. Exportieren Sie mit einem Klick nach PDF/Excel und treffen Sie Entscheidungen auf Basis echter Daten.",
       roles_list: ["Admin", "Tierarzt", "Vorarbeiter", "Besitzer"],
-      docs_title: "Digitale Dokumente",
-      docs_desc: "Pferdepässe, Röntgenbilder und Analysen immer griffbereit, direkt am Tierprofil angehängt.",
-      bulk_title: "Massenaktionen",
-      bulk_desc: "Impf-Tag? Wählen Sie alle Pferde aus und wenden Sie das Ereignis auf einmal an. Spart Stunden manueller Eingabe und verhindert Fehler.",
-      bulk_lote: "Absetzgruppe",
-      bulk_select: "Alle Auswählen"
+      docs_title: "Automatische Benachrichtigungen",
+      docs_desc: "Personalisierte Push-Benachrichtigungen. Sie verpassen nie wieder etwas Wichtiges: Impfungen, Kontrollen und Ereignisse immer im Blick.",
+      bulk_title: "Vollständige Historie",
+      bulk_desc: "Medizinische Aufzeichnungen, Training und Wettbewerbe zentralisiert. Die gesamte Geschichte jedes Pferdes, immer verfügbar.",
+      bulk_lote: "Integrierter Kalender",
+      bulk_select: "Planen Sie Ereignisse, Impfungen und Kontrollen an einem Ort. Totale Organisation, ohne Aufwand."
     },
     trust: { title: "VERTRAUEN", desc: "Branchenführer vertrauen uns.", quote: "Handicapp hat uns verändert.", author: "Roberto Álvarez, Direktor Gestüt El Paraíso" },
     workflow: { title: "KOMPLETTE VERWALTUNG", step1_t: "Registrieren & Organisieren", step1_d: "Pferdeprofile, Einrichtungen, Gesundheit, Wettbewerbe und Training an einem Ort verwalten.", step2_t: "Kontrollieren & Planen", step2_d: "Aufgabensystem, automatische Erinnerungen, Ereigniskalender und detaillierte Leistungsberichte.", step3_t: "Entscheidungen Treffen", step3_d: "Dashboard mit wichtigen Metriken, vollständiger Historie und intelligenten Benachrichtigungen." },
