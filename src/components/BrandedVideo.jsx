@@ -164,7 +164,7 @@ const BrandedVideo = ({ ASSETS }) => {
         onSuspend={() => setIsBuffering(true)}
         onLoadStart={() => setIsLoading(true)}
       >
-        <source src="/videos/1761326175304193.mp4" type="video/mp4" />
+        <source src="https://res.cloudinary.com/dh2m9ychv/video/upload/v1765886641/video_optimizado_lbpfsw.mp4" type="video/mp4" />
         Tu navegador no soporta video HTML5.
       </video>
 

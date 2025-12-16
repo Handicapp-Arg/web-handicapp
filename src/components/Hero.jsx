@@ -1,6 +1,7 @@
 import React from 'react';
+import { Play } from 'lucide-react';
 
-const Hero = React.memo(({ t, theme, ASSETS }) => {
+const Hero = React.memo(({ t, theme, ASSETS, onVideoOpen }) => {
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
       <div className="absolute inset-0 z-0 opacity-40 mix-blend-luminosity">
@@ -38,6 +39,14 @@ const Hero = React.memo(({ t, theme, ASSETS }) => {
               </svg>
             </span>
           </a>
+          
+          <button 
+            onClick={onVideoOpen}
+            className={`group relative px-10 py-5 rounded-full font-black text-base uppercase tracking-widest transition-all hover:scale-105 active:scale-95 border-2 ${theme.border} ${theme.text} hover:bg-white/10 flex items-center gap-3`}
+          >
+            <Play size={20} className="fill-current" />
+            {t.hero.video}
+          </button>
         </div>
       </div>
     </section>
