@@ -1,4 +1,5 @@
 import React, { useCallback } from "react";
+import { Link } from "react-router-dom";
 import { X } from "lucide-react";
 import { useTranslation, useVisualConfig } from '../hooks/useContextHooks';
 
@@ -31,14 +32,14 @@ const MobileMenu = React.memo(({ isOpen, onClose }) => {
             {label}
           </a>
         ))}
-        {/* Link a página FAQ */}
-        <a 
-          href="/faq" 
+        {/* Link a página FAQ con React Router */}
+        <Link 
+          to="/faq" 
           onClick={handleLinkClick} 
           className="hover:text-[#af936f] transition-colors transform hover:translate-x-2 transition-transform"
         >
           FAQ
-        </a>
+        </Link>
       </div>
     </div>
   );
