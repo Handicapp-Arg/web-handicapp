@@ -89,7 +89,7 @@ const AppContent = React.memo(() => {
             </Routes>
 
             <Footer />
-            <WhatsAppButton phoneNumber="5492477357665" />
+            <WhatsAppButton phoneNumber="5492477357665" t={t} />
           </>
         )}
       </Suspense>

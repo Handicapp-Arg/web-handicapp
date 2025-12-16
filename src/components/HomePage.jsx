@@ -403,23 +403,7 @@ const AboutSection = React.memo(({ t, theme, ASSETS }) => {
           
           <div className={`space-y-6 text-base md:text-lg leading-relaxed ${theme.textMuted}`}>
             <p>
-              HandicApp nace de una necesidad real: organizar la información de los caballos sin depender de papeles, mensajes sueltos o la memoria de alguien más.
-            </p>
-            
-            <p>
-              Somos un equipo que vive el mundo equino desde adentro y entiende la tecnología como una aliada para ordenar, dar trazabilidad y generar confianza.
-            </p>
-            
-            <p className={`font-bold text-lg md:text-xl ${theme.text}`}>
-              Nuestra misión es clara: <span className={theme.accent}>digitalizar la gestión equina sin perder la esencia del campo.</span>
-            </p>
-            
-            <p>
-              Centralizamos toda la información de cada caballo —salud, entrenamiento, consumos y documentos— en un solo lugar, accesible desde cualquier dispositivo, con roles claros y total transparencia.
-            </p>
-            
-            <p>
-              No reemplazamos la experiencia humana. La potenciamos, para que el trabajo fluya mejor y las decisiones sean más precisas.
+              {t.about.desc}
             </p>
           </div>
         </div>

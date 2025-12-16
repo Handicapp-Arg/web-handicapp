@@ -88,10 +88,13 @@ export default {
     title: "EMPIEZA HOY, VE RESULTADOS MAÑANA",
     step1_t: "1. Sube Tu Información en Minutos",
     step1_d: "Importa datos desde Excel/PDF o carga manualmente. Fichas de caballos, historial médico, establecimientos y documentación. Sin instalaciones complicadas, sin capacitación técnica. En 24 horas estás operativo. Migración gratuita incluida.",
+    step1_label: "ORGANIZA",
     step2_t: "2. Automatiza Tu Operación Diaria",
     step2_d: "Deja que Handicapp haga el trabajo pesado: asigna tareas automáticas, programa controles médicos recurrentes, genera reportes para propietarios con un click y coordina todo el equipo desde un solo lugar. Ahorra hasta 15 horas semanales.",
+    step2_label: "AUTOMATIZA",
     step3_t: "3. Accede a Reportes y Análisis Completos",
-    step3_d: "Dashboard con vista panorámica de todas tus operaciones: caballos activos, competencias próximas, consultas veterinarias del mes y estado general de salud. Genera reportes de rendimiento deportivo, análisis de largo plazo y estadísticas comparativas con un solo click."
+    step3_d: "Dashboard con vista panorámica de todas tus operaciones: caballos activos, competencias próximas, consultas veterinarias del mes y estado general de salud. Genera reportes de rendimiento deportivo, análisis de largo plazo y estadísticas comparativas con un solo click.",
+    step3_label: "OPTIMIZA"
   },
 
   labs: {
@@ -157,7 +160,7 @@ export default {
   about: {
     title: "NUESTRO ADN",
     subtitle: "NACIDOS EN EL CAMPO. CONSTRUIDOS CON TECNOLOGÍA",
-    desc: "Handicapp nace de la frustración de perder registros médicos en papeles arrugados. Somos un equipo híbrido de jinetes, veterinarios e ingenieros de software obsesionados con una misión: digitalizar la tradición sin perder el alma.",
+    desc: "HandicApp nace de una necesidad real: organizar la información de los caballos sin depender de papeles, mensajes sueltos o la memoria de alguien más. Somos un equipo que vive el mundo equino desde adentro y entiende la tecnología como una aliada para ordenar, dar trazabilidad y generar confianza. Nuestra misión es clara: digitalizar la gestión equina sin perder la esencia del campo. Centralizamos toda la información de cada caballo —salud, entrenamiento, consumos y documentos— en un solo lugar, accesible desde cualquier dispositivo, con roles claros y total transparencia. No reemplazamos la experiencia humana. La potenciamos, para que el trabajo fluya mejor y las decisiones sean más precisas.",
     val1: "Pasión Ecuestre",
     val1_d: "Entendemos el sudor y la gloria del campo.",
     val2: "Innovación Radical",
@@ -174,5 +177,9 @@ export default {
     msg: "Cuéntanos sobre tu operación: cantidad de caballos, equipo, principales necesidades",
     btn: "Enviar Consulta",
     success: "¡MENSAJE ENVIADO! NOS PONDREMOS EN CONTACTO PRONTO."
+  },
+
+  whatsapp: {
+    tooltip: "¿Necesitas ayuda?"
   }
 };

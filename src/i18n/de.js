@@ -47,15 +47,15 @@ export default {
   },
 
   roles: {
-    title: "EINE PLATTFORM, MEHRERE VISIONEN",
+    title: "ALLES, WAS SIE BRAUCHEN, AN EINEM ORT",
     r1: "Besitzer",
-    r1_d: "Erhalten Sie Videos und Berichte in Echtzeit. Totale Transparenz.",
+    r1_d: "Ihre Investition, immer unter Kontrolle. Zugriff auf sofortige medizinische Berichte, vollständige Historie und automatische Warnungen. Visualisieren Sie den Status Ihrer Pferde in Echtzeit und treffen Sie intelligente Entscheidungen von überall, 24/7. Seelenfrieden und Macht in Ihrer Handfläche.",
     r2: "Tierarzt",
-    r2_d: "Digitale Krankenakte. Gesundheitswarnungen und Impferinnerungen.",
-    r3: "Manager",
-    r3_d: "Bestandskontrolle, Personalmanagement und Finanzen in einem Dashboard.",
-    r4: "Einrichtung",
-    r4_d: "Verwalten Sie Gastpferde, koordinieren Sie Mitarbeiter und weisen Sie tägliche Aufgaben zu."
+    r2_d: "Vergessen Sie Papierkram und konzentrieren Sie sich auf das Wesentliche: Ihre Patienten. Führen Sie eine vollständige digitale Krankengeschichte, erhalten Sie automatische Erinnerungen und organisieren Sie Ihren Zeitplan mit einem intelligenten Kalender. Mehr Effizienz, weniger Fehler und mehr Zeit für die Pflege von Pferden.",
+    r3: "Manager / Administrator",
+    r3_d: "Optimieren Sie den Betrieb und senken Sie die Kosten um bis zu 40%. Executive Dashboard mit Live-KPIs, Aufgabensystem zur Koordination von Teams, automatische Finanzberichte und vollständige Ressourcenkontrolle. Professionelles Management ohne Komplikationen.",
+    r4: "Gestüt / Einrichtung",
+    r4_d: "Steigern Sie Ihren Ruf und Ihre Rentabilität. Verwalten Sie mehrere Gastpferde, koordinieren Sie professionelle Teams, erstellen Sie automatische Berichte für Besitzer und halten Sie Verträge organisiert. Das Tool, das von führenden Gestüten verwendet wird."
   },
 
   keyFeatures: {
@@ -85,22 +85,25 @@ export default {
   },
 
   workflow: {
-    title: "KOMPLETTE VERWALTUNG",
-    step1_t: "Registrieren & Organisieren",
-    step1_d: "Pferdeprofile, Einrichtungen, Gesundheit, Wettbewerbe und Training an einem Ort verwalten.",
-    step2_t: "Kontrollieren & Planen",
-    step2_d: "Aufgabensystem, automatische Erinnerungen, Ereigniskalender und detaillierte Leistungsberichte.",
-    step3_t: "Entscheidungen Treffen",
-    step3_d: "Dashboard mit wichtigen Metriken, vollständiger Historie und intelligenten Benachrichtigungen."
+    title: "STARTEN SIE HEUTE, SEHEN SIE MORGEN ERGEBNISSE",
+    step1_t: "1. Laden Sie Ihre Informationen in Minuten Hoch",
+    step1_d: "Importieren Sie Daten aus Excel/PDF oder laden Sie manuell. Pferdeakten, Krankengeschichte, Einrichtungen und Dokumentation. Keine komplizierten Installationen, keine technische Schulung. In 24 Stunden sind Sie einsatzbereit. Kostenlose Migration inklusive.",
+    step1_label: "ORGANISIEREN",
+    step2_t: "2. Automatisieren Sie Ihren Täglichen Betrieb",
+    step2_d: "Lassen Sie Handicapp die schwere Arbeit erledigen: Weisen Sie automatische Aufgaben zu, planen Sie wiederkehrende medizinische Kontrollen, erstellen Sie Berichte für Besitzer mit einem Klick und koordinieren Sie Ihr gesamtes Team von einem Ort aus. Sparen Sie bis zu 15 Stunden pro Woche.",
+    step2_label: "AUTOMATISIEREN",
+    step3_t: "3. Greifen Sie auf Vollständige Berichte und Analysen zu",
+    step3_d: "Dashboard mit Panoramablick auf alle Ihre Operationen: aktive Pferde, bevorstehende Wettbewerbe, monatliche tierärztliche Konsultationen und allgemeiner Gesundheitszustand. Erstellen Sie Sportleistungsberichte, Langzeitanalysen und vergleichende Statistiken mit nur einem Klick.",
+    step3_label: "OPTIMIEREN"
   },
 
   labs: {
-    title: "KI-Assistent",
-    desc: "Fragen Sie alles über Handicapp. Pferdemanagement, Tierarzt, Pläne oder jede Frage.",
-    input_ph: "Wie funktioniert Handicapp?",
-    btn: "KI Fragen",
-    chat_ph: "Tierarztfrage...",
-    disclaimer: "KI Beta."
+    title: "FRAGEN SIE, WAS SIE BRAUCHEN",
+    desc: "Unser intelligenter Assistent beantwortet alle Ihre Fragen zu Handicapp: Funktionen, Datenmigration, Pläne, Vergleiche oder wie Sie Ihr Gestütsmanagement verbessern können.",
+    input_ph: "Z.B.: Wie viel Zeit spare ich mit Handicapp vs Excel?",
+    btn: "Jetzt Fragen",
+    chat_ph: "Schreiben Sie Ihre Frage hier...",
+    disclaimer: "KI-Assistent trainiert mit offizieller Handicapp-Dokumentation. Sofortige Antworten."
   },
 
   pricing: {
@@ -156,10 +159,10 @@ export default {
 
   about: {
     title: "UNSERE DNA",
-    subtitle: "Geboren auf dem Feld, aufgewachsen im Code.",
-    desc: "Handicapp entstand aus der Frustration über verlorene Krankenakten. Wir sind ein hybrides Team aus Reitern, Tierärzten und Softwareingenieuren mit einer Mission: Tradition digitalisieren ohne die Seele zu verlieren.",
+    subtitle: "GEBOREN AUF DEM FELD. GEBAUT MIT TECHNOLOGIE",
+    desc: "HandicApp entstand aus einem echten Bedürfnis: Pferdeinformationen zu organisieren, ohne auf Papiere, verstreute Nachrichten oder das Gedächtnis anderer angewiesen zu sein. Wir sind ein Team, das die Pferdewelt von innen kennt und Technologie als Verbündeten versteht, um Ordnung zu schaffen, Rückverfolgbarkeit zu bieten und Vertrauen aufzubauen. Unsere Mission ist klar: das Pferdemanagement zu digitalisieren, ohne die Essenz des Feldes zu verlieren. Wir zentralisieren alle Informationen für jedes Pferd —Gesundheit, Training, Ausgaben und Dokumente— an einem Ort, zugänglich von jedem Gerät, mit klaren Rollen und totaler Transparenz. Wir ersetzen nicht die menschliche Erfahrung. Wir verstärken sie, damit die Arbeit besser fließt und Entscheidungen präziser werden.",
     val1: "Pferdeleidenschaft",
-    val1_d: "Wir verstehen Schweiß und Ruhm des Feldes.",
+    val1_d: "Wir verstehen den Schweiß und den Ruhm des Feldes.",
     val2: "Radikale Innovation",
     val2_d: "Spitzentechnologie für die Pferdewelt.",
     val3: "Totale Transparenz",
@@ -174,5 +177,9 @@ export default {
     msg: "Erzählen Sie uns von Ihrem Betrieb: Anzahl der Pferde, Team, Hauptbedürfnisse",
     btn: "Anfrage senden",
     success: "NACHRICHT GESENDET! WIR WERDEN UNS BALD BEI IHNEN MELDEN."
+  },
+
+  whatsapp: {
+    tooltip: "Brauchen Sie Hilfe?"
   }
 };

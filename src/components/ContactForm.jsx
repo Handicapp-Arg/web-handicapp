@@ -81,7 +81,7 @@ const ContactForm = React.memo(({ t, theme }) => {
               onChange={handleChange}
               onBlur={handleBlur}
               className={`w-full p-3 sm:p-4 rounded-xl border bg-transparent outline-none text-sm sm:text-base transition-colors ${hasError('nombre') ? 'border-red-500 focus:border-red-500' : `${theme.border} focus:border-current`}`}
-              placeholder={t.contact.name}
+              placeholder=""
             />
             {hasError('nombre') && (
               <p className="text-red-500 text-xs mt-1">{getError('nombre')}</p>
@@ -96,7 +96,7 @@ const ContactForm = React.memo(({ t, theme }) => {
               onChange={handleChange}
               onBlur={handleBlur}
               className={`w-full p-3 sm:p-4 rounded-xl border bg-transparent outline-none text-sm sm:text-base transition-colors ${hasError('email') ? 'border-red-500 focus:border-red-500' : `${theme.border} focus:border-current`}`}
-              placeholder={t.contact.email}
+              placeholder=""
             />
             {hasError('email') && (
               <p className="text-red-500 text-xs mt-1">{getError('email')}</p>
@@ -111,7 +111,7 @@ const ContactForm = React.memo(({ t, theme }) => {
               onChange={handleChange}
               onBlur={handleBlur}
               className={`w-full p-3 sm:p-4 rounded-xl border bg-transparent outline-none text-sm sm:text-base transition-colors resize-none ${hasError('mensaje') ? 'border-red-500 focus:border-red-500' : `${theme.border} focus:border-current`}`}
-              placeholder={t.contact.msg}
+              placeholder=""
             />
             {hasError('mensaje') && (
               <p className="text-red-500 text-xs mt-1">{getError('mensaje')}</p>

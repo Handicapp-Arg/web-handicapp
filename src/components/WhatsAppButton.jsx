@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useMemo } from 'react';
 
-const WhatsAppButton = React.memo(({ phoneNumber = '5492477357665' }) => {
+const WhatsAppButton = React.memo(({ phoneNumber = '5492477357665', t }) => {
   const [isHovered, setIsHovered] = useState(false);
   
   // Memoizar la URL de WhatsApp
@@ -32,7 +32,7 @@ const WhatsAppButton = React.memo(({ phoneNumber = '5492477357665' }) => {
         isHovered ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-2 pointer-events-none'
       }`}>
         <div className={`px-4 py-2 rounded-xl font-bold text-sm shadow-lg bg-white text-zinc-900`}>
-          ¿Necesitas ayuda?
+          {t?.whatsapp?.tooltip || '¿Necesitas ayuda?'}
         </div>
       </div>
 

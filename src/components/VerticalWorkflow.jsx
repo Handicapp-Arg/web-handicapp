@@ -81,7 +81,7 @@ const VerticalWorkflow = React.memo(({ t, theme }) => {
                     {activeStep === 2 && <User size={64} className="text-white" />}
                   </div>
                   <h3 className="text-2xl font-black mb-4 uppercase tracking-widest drop-shadow-lg text-white">
-                    {activeStep === 0 ? "ORGANIZA" : activeStep === 1 ? "AUTOMATIZA" : "OPTIMIZA"}
+                    {activeStep === 0 ? t.workflow.step1_label : activeStep === 1 ? t.workflow.step2_label : t.workflow.step3_label}
                   </h3>
                 </div>
               </div>

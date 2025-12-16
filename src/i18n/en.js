@@ -47,15 +47,15 @@ export default {
   },
 
   roles: {
-    title: "ONE PLATFORM, ALL ROLES",
+    title: "EVERYTHING YOU NEED, IN ONE PLACE",
     r1: "Owner",
-    r1_d: "Access complete horse profiles, health history, competitions and training. Maintain total control of your investment.",
+    r1_d: "Your investment, always under control. Access instant medical reports, complete history and automatic alerts. Visualize your horses' status in real time and make smart decisions from anywhere, 24/7. Peace of mind and power in the palm of your hand.",
     r2: "Veterinarian",
-    r2_d: "Complete digital medical history, vaccination calendar, automatic reminders and professional medical tracking.",
-    r3: "Manager",
-    r3_d: "Central dashboard with reports, task management, event control and comprehensive facility administration.",
-    r4: "Facility",
-    r4_d: "Manage multiple horses, coordinate your team with the task system and maintain control of all daily operations."
+    r2_d: "Forget about paperwork and focus on what matters: your patients. Maintain complete digital clinical history, receive automatic reminders and organize your schedule with a smart calendar. More efficiency, fewer errors and more time to care for horses.",
+    r3: "Manager / Administrator",
+    r3_d: "Optimize operations and reduce costs by up to 40%. Executive dashboard with live KPIs, task system to coordinate teams, automatic financial reports and total resource control. Professional management without complications.",
+    r4: "Stable / Facility",
+    r4_d: "Increase your reputation and profitability. Manage multiple guest horses, coordinate professional teams, generate automatic reports for owners and keep contracts organized. The tool used by leading stables."
   },
 
   keyFeatures: {
@@ -85,22 +85,25 @@ export default {
   },
 
   workflow: {
-    title: "YOUR EQUESTRIAN MANAGEMENT IN 3 STEPS",
-    step1_t: "Register Everything in One Place",
-    step1_d: "Upload horses, facilities, health data, scheduled competitions and training sessions. Everything organized and easy to find.",
-    step2_t: "Control and Plan",
-    step2_d: "Use the task system to coordinate your team, schedule events in the calendar and generate detailed performance and health reports.",
-    step3_t: "Optimize with Information",
-    step3_d: "Dashboard with key metrics, complete history of each horse and smart notifications to make better decisions."
+    title: "START TODAY, SEE RESULTS TOMORROW",
+    step1_t: "1. Upload Your Information in Minutes",
+    step1_d: "Import data from Excel/PDF or load manually. Horse records, medical history, facilities and documentation. No complicated installations, no technical training. You're operational in 24 hours. Free migration included.",
+    step1_label: "ORGANIZE",
+    step2_t: "2. Automate Your Daily Operation",
+    step2_d: "Let Handicapp do the heavy lifting: assign automatic tasks, schedule recurring medical checkups, generate reports for owners with one click and coordinate your entire team from one place. Save up to 15 hours per week.",
+    step2_label: "AUTOMATE",
+    step3_t: "3. Access Complete Reports and Analysis",
+    step3_d: "Dashboard with panoramic view of all your operations: active horses, upcoming competitions, monthly veterinary consultations and general health status. Generate sports performance reports, long-term analysis and comparative statistics with just one click.",
+    step3_label: "OPTIMIZE"
   },
 
   labs: {
-    title: "Ask What You Need",
-    desc: "Ask what you need about Handicapp: features, equestrian management, plans or any question.",
-    input_ph: "Ex: What features does Handicapp have?",
-    btn: "Ask AI",
-    chat_ph: "Write your question...",
-    disclaimer: "AI Beta - Answers based on official information."
+    title: "ASK WHAT YOU NEED",
+    desc: "Our intelligent assistant answers all your questions about Handicapp: features, data migration, plans, comparisons or how to improve your stable management.",
+    input_ph: "Ex: How much time do I save with Handicapp vs Excel?",
+    btn: "Ask Now",
+    chat_ph: "Write your question here...",
+    disclaimer: "AI Assistant trained with official Handicapp documentation. Instant answers."
   },
 
   pricing: {
@@ -156,12 +159,12 @@ export default {
 
   about: {
     title: "OUR DNA",
-    subtitle: "Born in the field, raised in code.",
-    desc: "Handicapp was born from the frustration of losing medical records on crumpled paper. We are a hybrid team of riders, vets, and software engineers obsessed with one mission: digitizing tradition without losing its soul.",
+    subtitle: "BORN IN THE FIELD. BUILT WITH TECHNOLOGY",
+    desc: "HandicApp was born from a real need: organizing horse information without relying on papers, scattered messages, or someone else's memory. We are a team that lives the equestrian world from within and understands technology as an ally to organize, provide traceability, and build trust. Our mission is clear: digitize equestrian management without losing the essence of the field. We centralize all information for each horse —health, training, expenses, and documents— in one place, accessible from any device, with clear roles and total transparency. We don't replace human experience. We enhance it, so work flows better and decisions are more precise.",
     val1: "Equestrian Passion",
     val1_d: "We understand the sweat and glory of the field.",
     val2: "Radical Innovation",
-    val2_d: "Cutting-edge technology applied to equestrian world.",
+    val2_d: "Cutting-edge technology applied to the equestrian world.",
     val3: "Total Transparency",
     val3_d: "Clear data for clear owners."
   },
@@ -174,5 +177,9 @@ export default {
     msg: "Tell us about your operation: number of horses, team, main needs",
     btn: "Send Inquiry",
     success: "MESSAGE SENT! WE'LL GET BACK TO YOU SOON."
+  },
+
+  whatsapp: {
+    tooltip: "Need help?"
   }
 };
