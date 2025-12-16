@@ -41,7 +41,17 @@ const Hero = React.memo(({ t, theme, ASSETS, onVideoOpen }) => {
           </a>
           
           <button 
-            onClick={onVideoOpen}
+            onClick={() => {
+              const contactSection = document.getElementById('contact');
+              if (contactSection) {
+                contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                // Enfocar el primer input después del scroll
+                setTimeout(() => {
+                  const firstInput = contactSection.querySelector('input[name="nombre"]');
+                  if (firstInput) firstInput.focus();
+                }, 800);
+              }
+            }}
             className={`group relative px-10 py-5 rounded-full font-black text-base uppercase tracking-widest transition-all hover:scale-105 active:scale-95 border-2 ${theme.border} ${theme.text} hover:bg-white/10 flex items-center gap-3`}
           >
             <Play size={20} className="fill-current" />

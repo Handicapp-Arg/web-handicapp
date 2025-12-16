@@ -52,18 +52,56 @@ const Navbar = React.memo(({ scrolled, onToggleLang, onMenuOpen }) => {
 
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? 'py-3 ' + theme.glass + ' border-b ' + theme.border : 'py-5 bg-transparent'}`}>
-      <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        {/* Logo */}
-        <div className="z-10 flex items-center h-16">
-          <Logo 
-            logoSrc={assets.logoIcon || "/logo.svg"}
-            brand="Handicapp"
-            textColor="#fff"
-          />
+      <div className="max-w-7xl mx-auto px-6">
+        {/* Layout móvil: Logo y hamburguesa juntos a la izquierda */}
+        <div className="md:hidden flex justify-between items-center">
+          {/* Lado izquierdo: Logo + Hamburguesa */}
+          <div className="flex items-center gap-3">
+            <Logo 
+              logoSrc={assets.logoIcon || "/logo.svg"}
+              brand="Handicapp"
+              textColor="#fff"
+            />
+            <button 
+              className="p-2 rounded-lg border transition-all hover:scale-105 border-zinc-700 hover:border-[#af936f] hover:bg-[#af936f]/10 text-white"
+              onClick={onMenuOpen}
+            >
+              <Menu size={22}/>
+            </button>
+          </div>
+
+          {/* Lado derecho: Botones */}
+          <div className="flex items-center gap-2">
+            <button 
+              onClick={toggleLang} 
+              className="text-[10px] font-black px-2.5 py-2 rounded-lg border-2 transition-all hover:scale-105 border-zinc-700 hover:border-[#af936f] hover:bg-[#af936f]/10 text-white"
+            >
+              {t.lang_code}
+            </button>
+            <a 
+              href="https://www.handicapp.com.ar/login"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[10px] font-black px-3 py-2 rounded-lg border-2 transition-all hover:scale-105 border-[#af936f] bg-[#af936f] hover:bg-[#af936f]/90 text-white"
+            >
+              {t.loginBtn}
+            </a>
+          </div>
         </div>
 
-        {/* Links de navegación */}
-        <div className="hidden md:flex items-center gap-8 lg:gap-10 text-[12px] font-bold tracking-[0.15em]">
+        {/* Layout desktop: flex normal */}
+        <div className="hidden md:flex justify-between items-center">
+          {/* Logo */}
+          <div className="z-10 flex items-center h-16">
+            <Logo 
+              logoSrc={assets.logoIcon || "/logo.svg"}
+              brand="Handicapp"
+              textColor="#fff"
+            />
+          </div>
+
+          {/* Links de navegación */}
+          <div className="flex items-center gap-8 lg:gap-10 text-[12px] font-bold tracking-[0.15em]">
           {currentPath === '/' ? (
             <>
               {/* Home page - show anchor links */}
@@ -102,30 +140,25 @@ const Navbar = React.memo(({ scrolled, onToggleLang, onMenuOpen }) => {
               ))}
             </>
           )}
-        </div>
+          </div>
 
-        {/* Botones de acción */}
-        <div className="flex items-center gap-2 md:gap-3 lg:gap-4">
-          <button 
-            onClick={toggleLang} 
-            className="text-[10px] md:text-[11px] font-black px-2.5 md:px-3 py-2 md:py-2.5 rounded-lg border-2 transition-all hover:scale-105 border-zinc-700 hover:border-[#af936f] hover:bg-[#af936f]/10 text-white"
-          >
-            {t.lang_code}
-          </button>
-          <a 
-            href="https://www.handicapp.com.ar/login"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[10px] md:text-[11px] font-black px-3 md:px-4 py-2 md:py-2.5 rounded-lg border-2 transition-all hover:scale-105 border-[#af936f] bg-[#af936f] hover:bg-[#af936f]/90 text-white"
-          >
-            {t.loginBtn}
-          </a>
-          <button 
-            className="md:hidden p-2 rounded-lg border transition-all hover:scale-105 border-zinc-700 hover:border-[#af936f] hover:bg-[#af936f]/10 text-white"
-            onClick={onMenuOpen}
-          >
-            <Menu size={22}/>
-          </button>
+          {/* Botones de acción desktop */}
+          <div className="flex items-center gap-3 lg:gap-4">
+            <button 
+              onClick={toggleLang} 
+              className="text-[11px] font-black px-3 py-2.5 rounded-lg border-2 transition-all hover:scale-105 border-zinc-700 hover:border-[#af936f] hover:bg-[#af936f]/10 text-white"
+            >
+              {t.lang_code}
+            </button>
+            <a 
+              href="https://www.handicapp.com.ar/login"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[11px] font-black px-4 py-2.5 rounded-lg border-2 transition-all hover:scale-105 border-[#af936f] bg-[#af936f] hover:bg-[#af936f]/90 text-white"
+            >
+              {t.loginBtn}
+            </a>
+          </div>
         </div>
       </div>
     </nav>

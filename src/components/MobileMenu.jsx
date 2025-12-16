@@ -25,7 +25,7 @@ const MobileMenu = React.memo(({ isOpen, onClose }) => {
             key={key} 
             href={`#${key}`} 
             onClick={handleLinkClick} 
-            className="hover:text-[#D1F366] transition-colors transform hover:translate-x-2 transition-transform"
+            className="hover:text-[#af936f] transition-colors transform hover:translate-x-2 transition-transform"
           >
             {label}
           </a>

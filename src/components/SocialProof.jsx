@@ -55,13 +55,33 @@ const SocialProof = ({ t, theme, assets }) => {
         </h3>
       </div>
       
-      {/* Logos carousel con sponsors reales - tamaño optimizado */}
+      {/* Logos carousel infinito sin espacios */}
       <div className="flex overflow-hidden relative mb-16 sm:mb-20 md:mb-24">
+        {/* Primera fila - scroll hacia la izquierda */}
         <div className="flex gap-12 sm:gap-16 md:gap-20 lg:gap-24 animate-marquee whitespace-nowrap py-4">
-          {[...assets.logos, ...assets.logos, ...assets.logos].map((logo, i) => {
+          {[...assets.logos, ...assets.logos, ...assets.logos, ...assets.logos, ...assets.logos, ...assets.logos].map((logo, i) => {
             const isHipodromoLogo = logo.includes('logo.png');
             return (
-              <div key={i} className="flex items-center justify-center min-w-[150px] sm:min-w-[180px] md:min-w-[200px] lg:min-w-[220px] h-16 sm:h-20 md:h-24 lg:h-28">
+              <div key={i} className="flex items-center justify-center min-w-[150px] sm:min-w-[180px] md:min-w-[200px] lg:min-w-[220px] h-16 sm:h-20 md:h-24 lg:h-28 flex-shrink-0">
+                <img 
+                  src={logo} 
+                  alt="Partner" 
+                  className={`h-full w-auto object-contain transition-all duration-300 ${
+                    isHipodromoLogo
+                      ? 'grayscale brightness-150 opacity-60 hover:opacity-90 hover:brightness-200'
+                      : 'brightness-0 invert opacity-50 hover:opacity-90'
+                  }`} 
+                />
+              </div>
+            );
+          })}
+        </div>
+        {/* Duplicado para seamless loop */}
+        <div className="flex gap-12 sm:gap-16 md:gap-20 lg:gap-24 animate-marquee whitespace-nowrap py-4" aria-hidden="true">
+          {[...assets.logos, ...assets.logos, ...assets.logos, ...assets.logos, ...assets.logos, ...assets.logos].map((logo, i) => {
+            const isHipodromoLogo = logo.includes('logo.png');
+            return (
+              <div key={`dup-${i}`} className="flex items-center justify-center min-w-[150px] sm:min-w-[180px] md:min-w-[200px] lg:min-w-[220px] h-16 sm:h-20 md:h-24 lg:h-28 flex-shrink-0">
                 <img 
                   src={logo} 
                   alt="Partner" 

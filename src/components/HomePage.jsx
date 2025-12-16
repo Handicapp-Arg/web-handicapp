@@ -65,10 +65,24 @@ const ProblemSolution = React.memo(({ t, theme }) => {
               </ul>
             </div>
           </div>
-          {/* CONNECTOR - Flecha animada */}
+          {/* CONNECTOR - Flecha animada: abajo en móvil, derecha en desktop */}
           <div className="md:col-span-1 flex justify-center py-4 md:py-0">
             <div className="relative">
-              <ArrowRightCircle size={48} className="text-[#af936f] animate-pulse" strokeWidth={1.5} />
+              {/* Flecha hacia abajo en móvil */}
+              <svg 
+                className="md:hidden text-[#af936f] animate-pulse" 
+                width="48" 
+                height="48" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="currentColor" 
+                strokeWidth="1.5"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 8v8m0 0l-4-4m4 4l4-4" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              {/* Flecha hacia la derecha en desktop */}
+              <ArrowRightCircle size={48} className="hidden md:block text-[#af936f] animate-pulse" strokeWidth={1.5} />
               <div className="absolute inset-0 bg-[#af936f] blur-xl opacity-40 animate-pulse"></div>
             </div>
           </div>
