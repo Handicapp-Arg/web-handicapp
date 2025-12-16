@@ -98,13 +98,12 @@ const SocialProof = ({ t, theme, assets }) => {
       </div>
       
       {/* Testimonial carousel */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-14">
-        {/* Icono de estrella flotante */}
-        <div className={`absolute -top-2 left-1/2 -translate-x-1/2 w-16 h-16 sm:w-20 sm:h-20 rounded-full ${theme.accentBg} flex items-center justify-center text-white shadow-2xl z-20`}>
-          <Star fill="currentColor" size={24} className="sm:w-8 sm:h-8" />
-        </div>
-        
-        <div className={`px-16 py-16 sm:px-20 sm:py-20 md:px-24 md:py-24 lg:px-28 lg:py-20 rounded-[2.5rem] border-2 text-center relative bg-gradient-to-br from-[#0f172a] to-[#1e293b] border-[#af936f]/30 shadow-2xl`}>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className={`px-10 py-16 sm:px-16 sm:py-20 md:px-20 md:py-24 lg:px-24 lg:py-20 rounded-[2.5rem] border-2 text-center relative bg-gradient-to-br from-[#0f172a] to-[#1e293b] border-[#af936f]/30 shadow-2xl`}>
+          {/* Icono de estrella flotante - centro superpuesto exactamente en el borde superior */}
+          <div className={`absolute -top-8 sm:-top-10 left-1/2 -translate-x-1/2 w-16 h-16 sm:w-20 sm:h-20 rounded-full ${theme.accentBg} flex items-center justify-center text-white shadow-2xl z-20`}>
+            <Star fill="currentColor" size={24} className="sm:w-8 sm:h-8" />
+          </div>
           {/* Testimonial content */}
           <div className="relative min-h-[200px] sm:min-h-[180px] md:min-h-[160px] flex flex-col items-center justify-center">
             {testimonials.map((testimonial, index) => (

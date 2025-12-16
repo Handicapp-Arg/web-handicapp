@@ -98,11 +98,11 @@ const AILabs = React.memo(({ t, theme }) => {
               <input 
                 value={prompt} 
                 onChange={handleInputChange} 
-                placeholder={t.labs.input_ph} 
-                className="w-full p-4 sm:p-5 rounded-xl border outline-none transition-all font-medium placeholder:opacity-50 text-sm sm:text-base bg-black/50 border-zinc-800 text-white focus:border-[#af936f]" 
+                placeholder="Pregunta sobre Handicapp..." 
+                className="w-full p-4 pr-12 sm:p-5 sm:pr-14 rounded-xl border outline-none transition-all font-medium placeholder:opacity-50 text-sm sm:text-base bg-black/50 border-zinc-800 text-white focus:border-[#af936f]" 
               />
-              <div className="absolute right-4 top-1/2 -translate-y-1/2">
-                <Dna size={20} className={theme.textMuted} />
+              <div className="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2">
+                <Dna size={18} className={`sm:w-5 sm:h-5 ${theme.textMuted}`} />
               </div>
             </div>
             <button 

@@ -220,28 +220,6 @@ const BrandedVideo = ({ ASSETS }) => {
         </div>
       )}
 
-      {/* Controles superpuestos - Solo cuando NO está el outro */}
-      {!showOutro && hasStarted && (
-        <div className="absolute inset-0 z-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <button
-            onClick={togglePlay}
-            className="relative group/btn"
-          >
-            {/* Glow ring */}
-            <div className="absolute inset-0 rounded-full bg-[#af936f]/30 blur-xl scale-150 opacity-50 group-hover/btn:opacity-100 transition-opacity"></div>
-            
-            {/* Button */}
-            <div className="relative bg-[#0f172a]/90 backdrop-blur-xl border-2 border-[#af936f]/50 text-white rounded-full p-6 shadow-2xl transform hover:scale-110 transition-all duration-300">
-              {isPlaying ? (
-                <Pause className="w-8 h-8" />
-              ) : (
-                <Play className="w-8 h-8 ml-1" />
-              )}
-            </div>
-          </button>
-        </div>
-      )}
-
       {/* Control de volumen - Esquina superior derecha (para evitar WhatsApp) */}
       <button
         onClick={toggleMute}
@@ -254,16 +232,36 @@ const BrandedVideo = ({ ASSETS }) => {
         )}
       </button>
 
-      {/* Overlay de play inicial - Solo al principio, antes de empezar */}
-      {!isPlaying && !showOutro && !isLoading && (
-        <div className="absolute inset-0 z-25 flex items-center justify-center cursor-pointer" onClick={handleVideoClick}>
+      {/* Botón de Play/Pause ÚNICO - Funciona en todos los estados */}
+      {!showOutro && !isLoading && (
+        <div 
+          className={`absolute inset-0 z-30 flex items-center justify-center cursor-pointer transition-opacity duration-300 ${
+            hasStarted ? 'opacity-0 group-hover:opacity-100' : 'opacity-100'
+          }`} 
+          onClick={handleVideoClick}
+        >
           <div className="relative group/play">
-            {/* Pulse ring */}
-            <div className="absolute inset-0 rounded-full bg-[#af936f]/50 animate-ping"></div>
+            {/* Pulse ring - solo antes de empezar */}
+            {!hasStarted && (
+              <div className="absolute inset-0 rounded-full bg-[#af936f]/50 animate-ping"></div>
+            )}
             
-            {/* Play button grande inicial */}
-            <div className="relative bg-gradient-to-br from-[#af936f] to-[#8f7657] hover:from-[#d4b896] hover:to-[#af936f] text-white rounded-full p-10 shadow-2xl transform hover:scale-110 transition-all duration-300 border-4 border-white/20">
-              <Play className="w-14 h-14 ml-2" />
+            {/* Glow ring - solo después de empezar */}
+            {hasStarted && (
+              <div className="absolute inset-0 rounded-full bg-[#af936f]/30 blur-lg scale-150 opacity-50 group-hover/play:opacity-100 transition-opacity"></div>
+            )}
+            
+            {/* Botón unificado */}
+            <div className={`relative rounded-full shadow-2xl transform hover:scale-110 transition-all duration-300 ${
+              hasStarted 
+                ? 'bg-[#0f172a]/90 backdrop-blur-xl border-2 border-[#af936f]/50 p-4 md:p-5'
+                : 'bg-gradient-to-br from-[#af936f] to-[#8f7657] hover:from-[#d4b896] hover:to-[#af936f] border-2 md:border-3 border-white/20 p-6 md:p-7'
+            }`}>
+              {isPlaying ? (
+                <Pause className={hasStarted ? "w-6 h-6 md:w-7 md:h-7 text-white" : "w-10 h-10 md:w-12 md:h-12 text-white ml-1"} />
+              ) : (
+                <Play className={hasStarted ? "w-6 h-6 md:w-7 md:h-7 text-white ml-0.5" : "w-10 h-10 md:w-12 md:h-12 text-white ml-1"} />
+              )}
             </div>
           </div>
         </div>

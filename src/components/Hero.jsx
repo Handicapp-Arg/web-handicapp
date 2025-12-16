@@ -26,7 +26,7 @@ const Hero = React.memo(({ t, theme, ASSETS, onVideoOpen }) => {
         </p>
         <div className="flex flex-col sm:flex-row justify-center items-center gap-6 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300">
           <a 
-            href="https://www.handicapp.com.ar/login" 
+            href="https://app.handicapp.com.ar/" 
             target="_blank" 
             rel="noopener noreferrer" 
             className="group relative px-10 py-5 rounded-full font-black text-base uppercase tracking-widest transition-all hover:scale-105 active:scale-95 bg-gradient-to-r from-[#c9a96e] via-[#af936f] to-[#c9a96e] text-white shadow-[0_0_30px_rgba(175,147,111,0.4)] hover:shadow-[0_0_50px_rgba(175,147,111,0.6)] bg-[length:200%_100%] hover:bg-[position:100%_0] overflow-hidden"

@@ -17,7 +17,10 @@ import {
   IconDeviceMobile, 
   IconBolt, 
   IconCalendarStats, 
-  IconCloudUpload 
+  IconCloudUpload,
+  IconShieldLock,
+  IconBell,
+  IconChartBar
 } from '@tabler/icons-react';
 // import Pricing from './Pricing';
 
@@ -136,104 +139,133 @@ const KeyFeatures = React.memo(({ t, theme }) => {
           </p>
         </div>
 
-        {/* BENTO GRID LAYOUT */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6 auto-rows-[minmax(250px,auto)]">
-          {/* Card 1: Mobile First - Large Square */}
-          <div className={`md:col-span-2 md:row-span-2 group relative p-8 md:p-12 rounded-[2rem] border transition-all duration-500 overflow-hidden hover:shadow-2xl bg-neutral-900/40 border-white/5 hover:bg-neutral-900/60 hover:shadow-black/50`}>
-            <div className={`absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
+        {/* BENTO GRID LAYOUT - Optimizado */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
+          
+          {/* ROW 1: Card Principal + 2 Cards Pequeñas */}
+          {/* Card 1: Velocidad Extrema - Hero Card */}
+          <div className={`md:col-span-2 md:row-span-2 group relative p-10 md:p-12 rounded-3xl border transition-all duration-500 overflow-hidden bg-gradient-to-br from-neutral-900/90 to-neutral-900/40 border-white/10 hover:border-indigo-500/30 hover:shadow-2xl hover:shadow-indigo-500/10`}>
+            <div className={`absolute inset-0 bg-gradient-to-br from-indigo-500/5 via-transparent to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700`}></div>
+            
+            {/* Badge flotante */}
+            <div className="absolute top-6 right-6">
+              <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/20 border border-indigo-400/30 text-indigo-300 text-xs font-bold uppercase tracking-wider backdrop-blur-sm">
+                <IconWifiOff size={16} stroke={2} /> 
+                {t.keyFeatures.mobile_badge}
+              </div>
+            </div>
+
             <div className="relative z-10 h-full flex flex-col justify-between">
               <div>
-                <div className={`w-16 h-16 rounded-2xl border flex items-center justify-center mb-6 shadow-xl bg-neutral-800 border-white/10`}>
-                  <IconDeviceMobile size={32} stroke={1.5} className="text-indigo-400" />
+                <div className={`w-20 h-20 rounded-2xl border-2 flex items-center justify-center mb-8 shadow-lg bg-gradient-to-br from-indigo-500/20 to-purple-500/20 border-indigo-400/30`}>
+                  <IconDeviceMobile size={40} stroke={1.5} className="text-indigo-300" />
                 </div>
-                <h3 className={`text-3xl font-bold mb-4 ${theme.text}`}>{t.keyFeatures.mobile_title}</h3>
-                <p className={`text-lg leading-relaxed ${theme.textMuted}`}>{t.keyFeatures.mobile_desc}</p>
-              </div>
-              <div className="mt-8">
-                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 text-xs font-bold uppercase tracking-wider">
-                   <IconWifiOff size={14} /> {t.keyFeatures.mobile_badge}
-                 </div>
-              </div>
-            </div>
-            {/* Background decoration */}
-            <IconDeviceMobile className={`absolute -bottom-10 -right-10 w-64 h-64 rotate-12 group-hover:rotate-6 transition-transform duration-700 text-white/5`} />
-          </div>
-
-          {/* Card 2: Trazabilidad - Wide Rectangle */}
-          <div className={`md:col-span-2 group relative p-8 rounded-[2rem] border transition-all duration-500 overflow-hidden bg-neutral-900/40 border-white/5 hover:bg-neutral-900/60`}>
-             <div className={`absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
-             <div className="relative z-10 flex flex-col md:flex-row gap-6 items-start md:items-center h-full">
-                <div className={`w-14 h-14 rounded-2xl border flex items-center justify-center shrink-0 bg-neutral-800 border-white/10`}>
-                  <IconHistory size={28} stroke={1.5} className="text-emerald-400" />
-                </div>
-                <div>
-                   <h3 className={`text-2xl font-bold mb-2 ${theme.text}`}>{t.keyFeatures.trace_title}</h3>
-                   <p className={theme.textMuted}>{t.keyFeatures.trace_desc}</p>
-                </div>
-             </div>
-          </div>
-
-          {/* Card 3: Roles - Vertical */}
-          <div className={`md:col-span-1 md:row-span-2 group relative p-8 rounded-[2rem] border transition-all duration-500 overflow-hidden bg-neutral-900/40 border-white/5 hover:bg-neutral-900/60`}>
-            <div className={`absolute inset-0 bg-gradient-to-br from-orange-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
-            <div className="relative z-10 h-full flex flex-col">
-                <div className={`w-14 h-14 rounded-2xl border flex items-center justify-center mb-6 bg-neutral-800 border-white/10`}>
-                  <IconUsersGroup size={28} stroke={1.5} className="text-orange-400" />
-                </div>
-                <h3 className={`text-2xl font-bold mb-4 ${theme.text}`}>{t.keyFeatures.roles_title}</h3>
-                <p className={`${theme.textMuted} mb-6 flex-grow`}>
-                  {t.keyFeatures.roles_desc}
+                <h3 className={`text-4xl md:text-5xl font-black mb-6 bg-gradient-to-r from-white to-indigo-200 bg-clip-text text-transparent`}>
+                  {t.keyFeatures.mobile_title}
+                </h3>
+                <p className={`text-lg md:text-xl leading-relaxed ${theme.textMuted} max-w-lg`}>
+                  {t.keyFeatures.mobile_desc}
                 </p>
-                <ul className={`space-y-3 text-sm ${theme.textMuted}`}>
-                  {t.keyFeatures.roles_list.map((role, idx) => (
-                    <li key={role+idx} className="flex items-center gap-2">
-                      <div className={`w-2 h-2 rounded-full ${[
-                        'bg-green-500','bg-blue-500','bg-orange-500','bg-purple-500','bg-pink-500'
-                      ][idx % 5]}`}></div> {role}
-                    </li>
-                  ))}
-                </ul>
+              </div>
             </div>
+            
+            {/* Background decoration mejorado */}
+            <IconDeviceMobile className={`absolute -bottom-16 -right-16 w-80 h-80 rotate-12 group-hover:rotate-6 group-hover:scale-110 transition-all duration-700 text-white/[0.02]`} />
           </div>
 
-          {/* Card 4: Documentos */}
-          <div className={`md:col-span-1 group relative p-8 rounded-[2rem] border transition-all duration-500 overflow-hidden bg-neutral-900/40 border-white/5 hover:bg-neutral-900/60`}>
+          {/* Card 2: Seguridad Máxima - Top Right */}
+          <div className={`group relative p-6 md:p-7 rounded-3xl border transition-all duration-500 overflow-hidden bg-neutral-900/60 border-white/5 hover:border-emerald-500/30 hover:bg-neutral-900/80`}>
+            <div className={`absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
             <div className="relative z-10">
-                <div className={`w-12 h-12 rounded-xl border flex items-center justify-center mb-4 bg-neutral-800 border-white/10`}>
-                  <IconFileCheck size={24} stroke={1.5} />
-                </div>
-                <h3 className={`text-xl font-bold mb-2 ${theme.text}`}>{t.keyFeatures.docs_title}</h3>
-                <p className={`text-sm ${theme.textMuted}`}>{t.keyFeatures.docs_desc}</p>
+              <div className={`w-14 h-14 rounded-xl border flex items-center justify-center mb-5 bg-gradient-to-br from-emerald-500/20 to-green-500/20 border-emerald-400/30`}>
+                <IconShieldLock size={28} stroke={1.5} className="text-emerald-300" />
+              </div>
+              <h3 className={`text-2xl font-bold mb-3 ${theme.text}`}>{t.keyFeatures.trace_title}</h3>
+              <p className={`text-sm leading-relaxed ${theme.textMuted}`}>{t.keyFeatures.trace_desc}</p>
             </div>
           </div>
 
-          {/* Card 5: Carga Masiva */}
-          <div className={`md:col-span-2 group relative p-8 rounded-[2rem] border transition-all duration-500 overflow-hidden bg-neutral-900/40 border-white/5 hover:bg-neutral-900/60`}>
-            <div className={`absolute inset-0 bg-gradient-to-r from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
-            <div className="relative z-10 flex flex-col md:flex-row gap-8 items-center h-full">
-                <div className="flex-1">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className={`w-12 h-12 rounded-xl border flex items-center justify-center bg-neutral-800 border-white/10`}>
-                      <IconBolt size={24} stroke={1.5} className="text-blue-400" />
+          {/* Card 3: Alertas Automáticas - Middle Right */}
+          <div className={`group relative p-6 md:p-7 rounded-3xl border transition-all duration-500 overflow-hidden bg-neutral-900/60 border-white/5 hover:border-orange-500/30 hover:bg-neutral-900/80`}>
+            <div className={`absolute inset-0 bg-gradient-to-br from-orange-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
+            <div className="relative z-10">
+              <div className={`w-14 h-14 rounded-xl border flex items-center justify-center mb-5 bg-gradient-to-br from-orange-500/20 to-red-500/20 border-orange-400/30`}>
+                <IconBell size={28} stroke={1.5} className="text-orange-300" />
+              </div>
+              <h3 className={`text-2xl font-bold mb-3 ${theme.text}`}>{t.keyFeatures.docs_title}</h3>
+              <p className={`text-sm leading-relaxed ${theme.textMuted}`}>{t.keyFeatures.docs_desc}</p>
+            </div>
+          </div>
+
+          {/* ROW 2: 3 Cards Iguales */}
+          {/* Card 4: Reportes Inteligentes */}
+          <div className={`group relative p-6 md:p-7 rounded-3xl border transition-all duration-500 overflow-hidden bg-neutral-900/60 border-white/5 hover:border-purple-500/30 hover:bg-neutral-900/80`}>
+            <div className={`absolute inset-0 bg-gradient-to-br from-purple-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
+            <div className="relative z-10">
+              <div className={`w-14 h-14 rounded-xl border flex items-center justify-center mb-5 bg-gradient-to-br from-purple-500/20 to-pink-500/20 border-purple-400/30`}>
+                <IconChartBar size={28} stroke={1.5} className="text-purple-300" />
+              </div>
+              <h3 className={`text-2xl font-bold mb-3 ${theme.text}`}>{t.keyFeatures.roles_title}</h3>
+              <p className={`text-sm leading-relaxed mb-5 ${theme.textMuted}`}>{t.keyFeatures.roles_desc}</p>
+              <div className="flex flex-wrap gap-2">
+                {t.keyFeatures.roles_list.map((role, idx) => (
+                  <span key={role+idx} className={`px-3 py-1 rounded-full text-xs font-semibold border ${[
+                    'bg-green-500/10 border-green-500/30 text-green-300',
+                    'bg-blue-500/10 border-blue-500/30 text-blue-300',
+                    'bg-orange-500/10 border-orange-500/30 text-orange-300',
+                    'bg-purple-500/10 border-purple-500/30 text-purple-300'
+                  ][idx % 4]}`}>
+                    {role}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Card 5: Historial Completo */}
+          <div className={`group relative p-6 md:p-7 rounded-3xl border transition-all duration-500 overflow-hidden bg-neutral-900/60 border-white/5 hover:border-blue-500/30 hover:bg-neutral-900/80`}>
+            <div className={`absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
+            <div className="relative z-10">
+              <div className={`w-14 h-14 rounded-xl border flex items-center justify-center mb-5 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 border-blue-400/30`}>
+                <IconHistory size={28} stroke={1.5} className="text-blue-300" />
+              </div>
+              <h3 className={`text-2xl font-bold mb-3 ${theme.text}`}>{t.keyFeatures.bulk_title}</h3>
+              <p className={`text-sm leading-relaxed ${theme.textMuted}`}>{t.keyFeatures.bulk_desc}</p>
+              
+              {/* Indicador visual minimalista */}
+              <div className="mt-6 space-y-2">
+                {[1,2,3].map(i => (
+                  <div key={i} className="flex items-center gap-3">
+                    <div className="w-2 h-2 rounded-full bg-blue-400"></div>
+                    <div className={`h-1.5 flex-1 rounded-full bg-neutral-700 overflow-hidden`}>
+                      <div className="h-full bg-gradient-to-r from-blue-500 to-cyan-500 animate-pulse" style={{width: `${80 + i*5}%`}}></div>
                     </div>
-                    <h3 className={`text-2xl font-bold ${theme.text}`}>{t.keyFeatures.bulk_title}</h3>
                   </div>
-                  <p className={theme.textMuted}>{t.keyFeatures.bulk_desc}</p>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Card 6: Operación Lote */}
+          <div className={`group relative p-6 md:p-7 rounded-3xl border transition-all duration-500 overflow-hidden bg-neutral-900/60 border-white/5 hover:border-yellow-500/30 hover:bg-neutral-900/80`}>
+            <div className={`absolute inset-0 bg-gradient-to-br from-yellow-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
+            <div className="relative z-10">
+              <div className={`w-14 h-14 rounded-xl border flex items-center justify-center mb-5 bg-gradient-to-br from-yellow-500/20 to-amber-500/20 border-yellow-400/30`}>
+                <IconBolt size={28} stroke={1.5} className="text-yellow-300" />
+              </div>
+              <h3 className={`text-2xl font-bold mb-3 ${theme.text}`}>{t.keyFeatures.bulk_lote}</h3>
+              <p className={`text-sm leading-relaxed ${theme.textMuted}`}>{t.keyFeatures.bulk_select}</p>
+              
+              {/* Mini dashboard */}
+              <div className="mt-6 rounded-xl border border-white/5 bg-neutral-800/50 p-3">
+                <div className="flex items-center justify-between text-xs font-mono mb-2">
+                  <span className="text-green-400">✓ 127 registros</span>
+                  <span className={theme.textMuted}>1.2s</span>
                 </div>
-                {/* Visual Representation */}
-                <div className={`w-full md:w-1/3 rounded-xl p-3 border bg-neutral-800/50 border-white/10`}>
-                   <div className={`flex items-center justify-between mb-2 text-xs uppercase font-bold ${theme.textMuted}`}>
-                     <span>{t.keyFeatures.bulk_lote}</span>
-                     <span>{t.keyFeatures.bulk_select}</span>
-                   </div>
-                   <div className="space-y-2">
-                     {[1,2,3].map(i => (
-                       <div key={i} className={`h-2 rounded-full w-full relative overflow-hidden bg-neutral-700`}>
-                         <div className="absolute top-0 left-0 h-full w-full bg-blue-500 animate-pulse"></div>
-                       </div>
-                     ))}
-                   </div>
+                <div className="h-1 rounded-full bg-neutral-700 overflow-hidden">
+                  <div className="h-full w-full bg-gradient-to-r from-green-500 to-emerald-500 animate-pulse"></div>
                 </div>
+              </div>
             </div>
           </div>
 

@@ -20,6 +20,7 @@ const MobileMenu = React.memo(({ isOpen, onClose }) => {
         <X size={32} />
       </button>
       <div className="flex-1 flex flex-col justify-center gap-10 text-4xl font-black tracking-tighter">
+        {/* Links de navegación (secciones con #) */}
         {Object.entries(t.nav).map(([key, label]) => (
           <a 
             key={key} 
@@ -30,6 +31,14 @@ const MobileMenu = React.memo(({ isOpen, onClose }) => {
             {label}
           </a>
         ))}
+        {/* Link a página FAQ */}
+        <a 
+          href="/faq" 
+          onClick={handleLinkClick} 
+          className="hover:text-[#af936f] transition-colors transform hover:translate-x-2 transition-transform"
+        >
+          FAQ
+        </a>
       </div>
     </div>
   );

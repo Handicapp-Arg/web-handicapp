@@ -79,7 +79,7 @@ const Navbar = React.memo(({ scrolled, onToggleLang, onMenuOpen }) => {
               {t.lang_code}
             </button>
             <a 
-              href="https://www.handicapp.com.ar/login"
+              href="https://app.handicapp.com.ar/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-[10px] font-black px-3 py-2 rounded-lg border-2 transition-all hover:scale-105 border-[#af936f] bg-[#af936f] hover:bg-[#af936f]/90 text-white"
@@ -151,7 +151,7 @@ const Navbar = React.memo(({ scrolled, onToggleLang, onMenuOpen }) => {
               {t.lang_code}
             </button>
             <a 
-              href="https://www.handicapp.com.ar/login"
+              href="https://app.handicapp.com.ar/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-[11px] font-black px-4 py-2.5 rounded-lg border-2 transition-all hover:scale-105 border-[#af936f] bg-[#af936f] hover:bg-[#af936f]/90 text-white"
