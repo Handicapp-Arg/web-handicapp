@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: handicapp-web
+    env: node
+    plan: free
+    buildCommand: pnpm install --frozen-lockfile && pnpm run build
+    publishDir: dist
+    startCommand: npx serve dist
+    envVars:
+      - key: NODE_VERSION
+        value: 22.16.0
