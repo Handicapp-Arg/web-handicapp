@@ -1,0 +1,31 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Horseshoe -->
+  <path d="M 100 60 
+           Q 60 60, 45 90 
+           Q 40 105, 42 120 
+           L 50 118 
+           Q 48 108, 52 95 
+           Q 65 70, 100 70 
+           Q 135 70, 148 95 
+           Q 152 108, 150 118 
+           L 158 120 
+           Q 160 105, 155 90 
+           Q 140 60, 100 60 Z" 
+           fill="none" 
+           stroke="#af936f" 
+           stroke-width="4"/>
+  
+  <!-- Horseshoe holes left -->
+  <circle cx="55" cy="95" r="3" fill="#af936f"/>
+  <circle cx="50" cy="110" r="3" fill="#af936f"/>
+  
+  <!-- Horseshoe holes right -->
+  <circle cx="145" cy="95" r="3" fill="#af936f"/>
+  <circle cx="150" cy="110" r="3" fill="#af936f"/>
+  
+  <!-- Text CHV -->
+  <text x="100" y="155" font-family="serif" font-size="36" font-weight="bold" fill="#af936f" text-anchor="middle">CHV</text>
+  
+  <!-- Subtitle -->
+  <text x="100" y="175" font-family="serif" font-size="10" fill="#af936f" text-anchor="middle" letter-spacing="2">CLUB HÍPICO DEL VALLE</text>
+</svg>

@@ -71,8 +71,8 @@ export const assets = {
   
   // Logos de sponsors y partners hípicos
   logos: [
-    "https://res.cloudinary.com/dh2m9ychv/image/upload/v1765636408/handicapp/uploads/LADOLFINA.webp",  // La Dolfina - Equipo de polo argentino
-    "https://res.cloudinary.com/dh2m9ychv/image/upload/v1765795314/harasParaiso_ffzcct.webp"  // Haras El Paraíso
+    "https://res.cloudinary.com/dh2m9ychv/image/upload/v1765930128/stud-san-lorenzo_pxp6jo.png",  // Stud San Lorenzo
+    "https://res.cloudinary.com/dh2m9ychv/image/upload/v1765930127/club-hipico-valle_idnjuo.png"  // Club Hípico del Valle
   ]
 };
 

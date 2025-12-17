@@ -1,0 +1,16 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="95" fill="none" stroke="#af936f" stroke-width="3"/>
+  
+  <!-- Inner circle -->
+  <circle cx="100" cy="100" r="80" fill="none" stroke="#af936f" stroke-width="1"/>
+  
+  <!-- Text SSL -->
+  <text x="100" y="120" font-family="serif" font-size="48" font-weight="bold" fill="#af936f" text-anchor="middle">SSL</text>
+  
+  <!-- Subtitle -->
+  <text x="100" y="145" font-family="serif" font-size="12" fill="#af936f" text-anchor="middle" letter-spacing="3">STUD SAN LORENZO</text>
+  
+  <!-- Top decoration - horse head silhouette -->
+  <path d="M 85 45 Q 90 35, 100 35 Q 110 35, 115 45 L 112 50 Q 110 48, 100 48 Q 90 48, 88 50 Z" fill="#af936f"/>
+</svg>
