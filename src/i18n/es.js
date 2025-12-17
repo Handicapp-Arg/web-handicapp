@@ -80,8 +80,8 @@ export default {
   trust: {
     title: "YA CONFÍAN EN HANDICAPP",
     desc: "Los principales establecimientos ecuestres de Argentina digitalizaron su gestión.",
-    quote: "El sistema de gestión integral nos permite tener control total de nuestros ejemplares. Es el futuro del turf.",
-    author: "Martín Petrini, Director Técnico - Stud Abolengo"
+    quote: "Implementamos Handicapp en 3 establecimientos y la coordinación del equipo mejoró un 200%. Muy recomendable.",
+    author: "Patricia Gómez, Manager Regional - Grupo Ecuestre del Sur"
   },
 
   workflow: {

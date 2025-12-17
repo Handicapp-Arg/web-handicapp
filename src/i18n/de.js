@@ -80,8 +80,8 @@ export default {
   trust: {
     title: "VERTRAUEN BEREITS IN HANDICAPP",
     desc: "Die führenden Reiteinrichtungen Argentiniens haben ihre Verwaltung bereits digitalisiert.",
-    quote: "Handicapp hat uns verändert.",
-    author: "Roberto Álvarez, Direktor Gestüt El Paraíso"
+    quote: "Wir haben Handicapp in 3 Einrichtungen implementiert und die Teamkoordination um 200% verbessert. Sehr empfehlenswert.",
+    author: "Patricia Gómez, Regionalmanagerin - Südliche Reitergruppe"
   },
 
   workflow: {

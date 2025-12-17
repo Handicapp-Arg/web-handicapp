@@ -12,24 +12,24 @@ const SocialProof = ({ t, theme, assets }) => {
   
   const testimonials = [
     {
-      quote: "Handicapp transformó nuestra operación. Dejamos de perder tiempo en papeles.",
-      author: "Roberto Álvarez",
-      position: "Director - Haras El Paraíso"
+      quote: "Handicapp transformó nuestra operación. Dejamos de perder tiempo en papeles y ahora todo está digitalizado.",
+      author: "Mariano Fernández",
+      position: "Director - Haras Los Ceibos"
     },
     {
-      quote: "La IA predictiva nos ayudó a mejorar el rendimiento de nuestros caballos en un 40%. Increíble.",
-      author: "Carolina Méndez",
-      position: "Gerente de Operaciones - Hipódromo de San Isidro"
+      quote: "La gestión de salud veterinaria nunca fue tan simple. Reportes automáticos y alertas que realmente funcionan.",
+      author: "Dra. Silvia Romero",
+      position: "Veterinaria Principal - Estancia San Miguel"
     },
     {
-      quote: "Desde que usamos Handicapp, toda nuestra gestión es digital. Ahorramos costos y ganamos eficiencia.",
-      author: "Adolfo Cambiaso",
-      position: "Fundador - La Dolfina Polo Team"
+      quote: "Como propietario, tener acceso 24/7 al estado de mis caballos me da tranquilidad total. Excelente herramienta.",
+      author: "Guillermo Sánchez",
+      position: "Propietario - Stud La Armonía"
     },
     {
-      quote: "El sistema de gestión integral nos permite tener control total de nuestros ejemplares. Es el futuro del turf.",
-      author: "Martín Petrini",
-      position: "Director Técnico - Stud Abolengo"
+      quote: "Implementamos Handicapp en 3 establecimientos y la coordinación del equipo mejoró un 200%. Muy recomendable.",
+      author: "Patricia Gómez",
+      position: "Manager Regional - Grupo Ecuestre del Sur"
     }
   ];
   

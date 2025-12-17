@@ -80,8 +80,8 @@ export default {
   trust: {
     title: "ALREADY TRUSTING HANDICAPP",
     desc: "Argentina's leading equestrian facilities already digitized their management.",
-    quote: "Handicapp transformed our operation. We went from Excel spreadsheets to professional and centralized management.",
-    author: "Roberto Álvarez, Director El Paraiso Stud"
+    quote: "We implemented Handicapp across 3 facilities and team coordination improved 200%. Highly recommended.",
+    author: "Patricia Gómez, Regional Manager - Southern Equestrian Group"
   },
 
   workflow: {
